@@ -20,7 +20,7 @@
 
 
 
-  <meta name="keywords" content="Hexo,next" />
+  <meta name="keywords" content="CleanCode,Java," />
 
 
 
@@ -194,6 +194,7 @@
 <p>从代码中看不出任何信息,w和h是何含义?</p>
 <p>不如改为:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> width;</span><br><span class="line"><span class="keyword">int</span> height;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">calculateArea</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> width*height;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>这样没有注释也能看懂代码的意图.</p>
+<a id="more"></a>
 <hr>
 <h3 id="2-避免误导">2.避免误导</h3><p>如果仅仅给你一个accountList,很容易让人误以为是一个账户类表.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Account[] accountList;</span><br><span class="line"></span><br><span class="line"><span class="comment">//此处又很长的代码</span></span><br><span class="line"></span><br><span class="line">accountList = getAccountList(); <span class="comment">//你能辨别出accountList是什么吗?</span></span><br></pre></td></tr></table></figure></p>
 <p>为了避免误导,应该改为:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Account[] accountGroup;</span><br><span class="line"></span><br><span class="line"><span class="comment">//此处又很长的代码</span></span><br><span class="line"></span><br><span class="line">accountGroup = getAccountGroup(); <span class="comment">//你能辨别出accountGroup是什么吗?</span></span><br></pre></td></tr></table></figure></p>
@@ -240,12 +241,20 @@
 
     <div class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/CleanCode/"> #CleanCode </a>
+          
+            <a href="/tags/Java/"> #Java </a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/06/18/AndroidStudio-export-aar/">AndroidStudio中aar文件引用</a>
+              <a href="/2015/06/18/Java-Design-Pattern-Observer/">Java设计模式---观察者模式</a>
             
           </div>
 
@@ -354,7 +363,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-count">2</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -375,6 +384,10 @@
             
               <span class="links-of-author-item">
               <a href="http://github.com/dev-wiki" target="_blank">GitHub</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.zhihu.com/people/devwiki" target="_blank">ZhiHu</a>
             </span>
             
           

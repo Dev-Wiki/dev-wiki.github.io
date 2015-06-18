@@ -5,7 +5,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com//"/>
-  <updated>2015-06-18T10:45:40.506Z</updated>
+  <updated>2015-06-18T11:21:56.666Z</updated>
   <id>http://yoursite.com//</id>
   
   <author>
@@ -16,16 +16,40 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[AndroidStudio中aar文件引用]]></title>
+    <link href="http://yoursite.com/2015/06/18/AndroidStudio-export-aar/"/>
+    <id>http://yoursite.com/2015/06/18/AndroidStudio-export-aar/</id>
+    <published>2015-06-18T11:21:56.666Z</published>
+    <updated>2015-06-18T11:21:56.666Z</updated>
+    <content type="html"><![CDATA[<p>最近在看一个项目,里面将一个库项目打包成了aar文件.在项目中引用时如下:</p>
+<p>项目目录如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Demo&#10;    |-app&#10;    |-IMDemo&#10;    |-imkit</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>其中imkit为打包aar格式的项目,其在项目中的结构如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">imkit&#10;    |-build.gradle&#10;    |-imkit.iml&#10;    |-imkit-1.0.0.aar</span><br></pre></td></tr></table></figure></p>
+<p>其中build.gradle文件如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">configurations.create(&#34;default&#34;)&#10;artifacts.add(&#34;default&#34;, file(&#39;imkit-1.0.0.aar&#39;))</span><br></pre></td></tr></table></figure></p>
+<p>app和IMDemo中的build.gradle中包含有以下内容:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;&#10;    compile project(&#39;:imkit&#39;)&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在整个项目的setting.gradle文件中为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include &#39;:app&#39;, &#39;:imkit&#39;, &#34;:IMDemo&#34;</span><br></pre></td></tr></table></figure></p>
+<p>这样整个项目可以正常运行.</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>最近在看一个项目,里面将一个库项目打包成了aar文件.在项目中引用时如下:</p>
+<p>项目目录如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Demo&#10;    |-app&#10;    |-IMDemo&#10;    |-imkit</span><br></pre></td></tr></table></figure></p>]]>
+    
+    </summary>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[Java设计模式---观察者模式]]></title>
     <link href="http://yoursite.com/2015/06/18/Java-Design-Pattern-Observer/"/>
     <id>http://yoursite.com/2015/06/18/Java-Design-Pattern-Observer/</id>
-    <published>2015-06-18T10:45:40.506Z</published>
-    <updated>2015-06-18T10:45:40.506Z</updated>
+    <published>2015-06-18T11:21:53.624Z</published>
+    <updated>2015-06-18T11:21:53.624Z</updated>
     <content type="html"><![CDATA[<h2 id="故事概要">故事概要</h2><h3 id="概要">概要</h3><p>故事要从一个业务需求开始:</p>
 <blockquote>
 <p>天气监测站目前可以监测到气温,气压,湿度三种指标,有一个WeatherData类,当前面的三个数据发生变化时,就会调用WeatherData类的setWeatherData()方法,改变天气数据.</p>
 </blockquote>
 <p>现在要求:需要有两个显示装置显示现在的状态和平均状态.当监测的数据有变化时,就更新显示.而且需要提供给第三方的人员可调用这些数据以设置想要的显示装置.如下图:</p>
+<a id="more"></a>
 <p><img src="https://raw.githubusercontent.com/sn10086/DesignPattern/master/Observer/Observer01.png" alt="业务需求图"></p>
 <p>下面是给出的WeatherData类:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WeatherData</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> temp;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> humidity;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> pressure;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">WeatherData</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setWeatherData</span><span class="params">(<span class="keyword">float</span> temp, <span class="keyword">float</span> humidity, <span class="keyword">float</span> pressure)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.temp = temp;</span><br><span class="line">        <span class="keyword">this</span>.humidity = humidity;</span><br><span class="line">        <span class="keyword">this</span>.pressure = pressure;</span><br><span class="line">        dataChanged();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dataChanged</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//数据发生变化则调用此方法,可在此处填写你的代码</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">float</span> <span class="title">getTemp</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> temp;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">float</span> <span class="title">getHumidity</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> humidity;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">float</span> <span class="title">getPressure</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> pressure;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="提取已知条件">提取已知条件</h3><p>目前已知的条件:</p>
@@ -121,28 +145,10 @@
     <summary type="html">
     <![CDATA[<h2 id="故事概要">故事概要</h2><h3 id="概要">概要</h3><p>故事要从一个业务需求开始:</p>
 <blockquote>
-<p>天气监测站目前可以监测到气温,气压,湿度三种指标,有一个WeatherData类,当前面的三个数据发生变化时,就会调用We]]>
-    </summary>
+<p>天气监测站目前可以监测到气温,气压,湿度三种指标,有一个WeatherData类,当前面的三个数据发生变化时,就会调用WeatherData类的setWeatherData()方法,改变天气数据.</p>
+</blockquote>
+<p>现在要求:需要有两个显示装置显示现在的状态和平均状态.当监测的数据有变化时,就更新显示.而且需要提供给第三方的人员可调用这些数据以设置想要的显示装置.如下图:</p>]]>
     
-  </entry>
-  
-  <entry>
-    <title><![CDATA[AndroidStudio中aar文件引用]]></title>
-    <link href="http://yoursite.com/2015/06/18/AndroidStudio-export-aar/"/>
-    <id>http://yoursite.com/2015/06/18/AndroidStudio-export-aar/</id>
-    <published>2015-06-18T08:58:23.789Z</published>
-    <updated>2015-06-18T08:58:23.789Z</updated>
-    <content type="html"><![CDATA[<p>最近在看一个项目,里面将一个库项目打包成了aar文件.在项目中引用时如下:</p>
-<p>项目目录如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Demo&#10;    |-app&#10;    |-IMDemo&#10;    |-imkit</span><br></pre></td></tr></table></figure></p>
-<p>其中imkit为打包aar格式的项目,其在项目中的结构如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">imkit&#10;    |-build.gradle&#10;    |-imkit.iml&#10;    |-imkit-1.0.0.aar</span><br></pre></td></tr></table></figure></p>
-<p>其中build.gradle文件如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">configurations.create(&#34;default&#34;)&#10;artifacts.add(&#34;default&#34;, file(&#39;imkit-1.0.0.aar&#39;))</span><br></pre></td></tr></table></figure></p>
-<p>app和IMDemo中的build.gradle中包含有以下内容:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;&#10;    compile project(&#39;:imkit&#39;)&#10;&#125;</span><br></pre></td></tr></table></figure></p>
-<p>在整个项目的setting.gradle文件中为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include &#39;:app&#39;, &#39;:imkit&#39;, &#34;:IMDemo&#34;</span><br></pre></td></tr></table></figure></p>
-<p>这样整个项目可以正常运行.</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>最近在看一个项目,里面将一个库项目打包成了aar文件.在项目中引用时如下:</p>
-<p>项目目录如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="l]]>
     </summary>
     
   </entry>
@@ -151,12 +157,13 @@
     <title><![CDATA[CleanCode笔记---有意义的命名]]></title>
     <link href="http://yoursite.com/2015/06/18/CleanCode-Note-Name/"/>
     <id>http://yoursite.com/2015/06/18/CleanCode-Note-Name/</id>
-    <published>2015-06-18T07:49:29.183Z</published>
-    <updated>2015-06-18T07:49:29.183Z</updated>
+    <published>2015-06-18T04:45:17.000Z</published>
+    <updated>2015-06-18T11:22:06.884Z</updated>
     <content type="html"><![CDATA[<h3 id="1-_命名应该和实际意义相符合">1. 命名应该和实际意义相符合</h3><p><strong>反例:</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> w;</span><br><span class="line"><span class="keyword">int</span> h;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fun</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> w*h;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>从代码中看不出任何信息,w和h是何含义?</p>
 <p>不如改为:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> width;</span><br><span class="line"><span class="keyword">int</span> height;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">calculateArea</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> width*height;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>这样没有注释也能看懂代码的意图.</p>
+<a id="more"></a>
 <hr>
 <h3 id="2-避免误导">2.避免误导</h3><p>如果仅仅给你一个accountList,很容易让人误以为是一个账户类表.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Account[] accountList;</span><br><span class="line"></span><br><span class="line"><span class="comment">//此处又很长的代码</span></span><br><span class="line"></span><br><span class="line">accountList = getAccountList(); <span class="comment">//你能辨别出accountList是什么吗?</span></span><br></pre></td></tr></table></figure></p>
 <p>为了避免误导,应该改为:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Account[] accountGroup;</span><br><span class="line"></span><br><span class="line"><span class="comment">//此处又很长的代码</span></span><br><span class="line"></span><br><span class="line">accountGroup = getAccountGroup(); <span class="comment">//你能辨别出accountGroup是什么吗?</span></span><br></pre></td></tr></table></figure></p>
@@ -199,8 +206,13 @@
 <h3 id="16-不要添加没用的语境-">16.不要添加没用的语境.</h3><p>就像前面的lxmcreateData()一样,前缀lxm是没有任何含义的.一定不要附带这样的没有意义的语境.</p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<h3 id="1-_命名应该和实际意义相符合">1. 命名应该和实际意义相符合</h3><p><strong>反例:</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><s]]>
+    <![CDATA[整洁的代码的各种命名应该是言简意赅,简洁明了,让人一看名称就能明白该变量,方法,类等的用途.]]>
+    
     </summary>
+    
+      <category term="CleanCode" scheme="http://yoursite.com/tags/CleanCode/"/>
+    
+      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
     
   </entry>
   
