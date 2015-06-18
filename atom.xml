@@ -5,7 +5,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com//"/>
-  <updated>2015-06-18T11:32:23.724Z</updated>
+  <updated>2015-06-18T12:46:12.421Z</updated>
   <id>http://yoursite.com//</id>
   
   <author>
@@ -14,6 +14,428 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[View的Click,LongClick,Touch事件的研究]]></title>
+    <link href="http://yoursite.com/2015/06/18/Android-View-Click-Event/"/>
+    <id>http://yoursite.com/2015/06/18/Android-View-Click-Event/</id>
+    <published>2015-06-18T12:43:48.000Z</published>
+    <updated>2015-06-18T12:46:12.421Z</updated>
+    <content type="html"><![CDATA[<h2 id="概述">概述</h2><p>我们都知道一个View有以下三个事件监听方法:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setOnClickListener();</span><br><span class="line">setOnLongClickListener();</span><br><span class="line">setOnTouchListener();</span><br></pre></td></tr></table></figure></p>
+<p>每一个方法代表着用户不同的操作,分别为:短按,长按和触摸操作.</p>
+<a id="more"></a>
+<p><strong>短按事件</strong><br>通常一个View设置短按事件监听的代码如下:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">view.setOnClickListener(<span class="keyword">new</span> OnClickListener() &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//do something</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p><strong>长按事件</strong><br>通常一个View设置长按事件监听的代码如下:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ttttButton.setOnLongClickListener(<span class="keyword">new</span> OnLongClickListener() &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onLongClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//do something</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>这里有一个返回值:</p>
+<blockquote>
+<p>true if the callback consumed the long click, false otherwise.</p>
+</blockquote>
+<p>意思是说:如果时间被消费了返回true,否则返回false.</p>
+<p><strong>触摸事件</strong><br>通常一个View设置触摸事件监听的代码如下:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">ttttButton.setOnTouchListener(<span class="keyword">new</span> OnTouchListener() &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouch</span><span class="params">(View v, MotionEvent event)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> action = event.getAction();</span><br><span class="line">        <span class="keyword">if</span> (action == MotionEvent.ACTION_DOWN) &#123;</span><br><span class="line">            <span class="comment">//do something</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (action == MotionEvent.ACTION_MOVE) &#123;</span><br><span class="line">            <span class="comment">//do something</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (action == MotionEvent.ACTION_UP) &#123;</span><br><span class="line">            <span class="comment">//do something</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>这里每一个动作都有一个返回值,返回值会影响触摸事件.一个View如果只设置了onTouchListener事件监听.<br>只有Down返回值为true时,Move和Up动作才能监听到.</p>
+<p>如果给一个View同时设置以上三个方法,会出现怎样的结果呢?</p>
+<hr>
+<h2 id="测试">测试</h2><h3 id="1-测试界面">1.测试界面</h3><p>先附上测试界面的效果图,如下:<br><img src="http://img.blog.csdn.net/20150525081614634" alt="HomePage"><br>上图有8个按钮,全部都是设置了onClickListener,onLongClickListener,onTouchListener.正如图中所示,按钮上的字母代表不同的含义.点击不同的按钮进行测试.</p>
+<h3 id="2-测试结果">2.测试结果</h3><p>最终的测试结果列表如下:<br>|序号|Click|LongClick|Down|Move|Up|短按|长按|备注|<br>|:-:|——-|— ——-|——|——|—-|—-|—-|<br>|1|无|true|true|true|true|down-move-up|down-move-up|<br>|2|无|true|false|true|true|down-move-up-longClick|down-move-longClick-move-up|按钮不抬起|<br>|3|无|true|true|true|false|down-move-up|down-move-up|<br>|4|无|true|false|true|false|down-move-up-click|down-move-longClick-move-up|<br>|5|无|false|true|true|true|down-move-up|down-move-up|<br>|6|无|false|false|true|true|down-move-up-longClick|down-move-longClick-move-up|按钮不抬起|<br>|7|无|false|true|true|false|down-move-up|down-move-up|<br>|8|无|false|false|true|false|down-move-up-click|down-move-longClick-move-up-click|</p>
+<p>其中上表中的第2项结果如下图(上为短按,下为长按),按钮不会弹起:<br><img src="http://img.blog.csdn.net/20150525082058904" alt="短按"><br><img src="http://img.blog.csdn.net/20150525082121383" alt="长按"></p>
+<p>第6项结果如下图(上为短按,下为长按),按钮不会弹起:<br><img src="http://img.blog.csdn.net/20150525082532123" alt="短按"><br><img src="http://img.blog.csdn.net/20150525082726605" alt="长按"></p>
+<h3 id="3-结论">3.结论</h3><p>测试结果因返回值不同而不同.所以尽管onTouchListener中down返回true时move和up才起作用,但是如果设置了onlongclciklistener,即使down返回false也能触发move和up事件.<br><strong>一般地,View的onTouchListener优先级高于onClickListener和onLongClickListener.</strong><br>可以根据需要使用不同的事件监听进行组合.</p>
+<h3 id="4-源码">4.源码</h3><p>源码在我的GitHub中:<a href="https://github.com/sn10086/ViewClickDemo" target="_blank" rel="external">DevWiki的GitHub:ViewClickDemo</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="概述">概述</h2><p>我们都知道一个View有以下三个事件监听方法:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setOnClickListener();</span><br><span class="line">setOnLongClickListener();</span><br><span class="line">setOnTouchListener();</span><br></pre></td></tr></table></figure></p>
+<p>每一个方法代表着用户不同的操作,分别为:短按,长按和触摸操作.</p>]]>
+    
+    </summary>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="View" scheme="http://yoursite.com/tags/View/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[交付用户想要的软件---高效程序员的45个习惯读书笔记]]></title>
+    <link href="http://yoursite.com/2015/06/18/Agile-Develop-Delivering-What-Users-Want/"/>
+    <id>http://yoursite.com/2015/06/18/Agile-Develop-Delivering-What-Users-Want/</id>
+    <published>2015-06-18T12:42:39.000Z</published>
+    <updated>2015-06-18T12:46:24.733Z</updated>
+    <content type="html"><![CDATA[<h2 id="让用户做决定">让用户做决定</h2><p>在设计方面,做决定的时候必须有开发者参与.</p>
+<p>在一个项目中,开发者不应该做所有的决定,特别是业务方面的决定.</p>
+<blockquote>
+<p>决定什么不该决定.<br>让客户做决定.开发者,经理或者业务分析师不应该做业务方面的决定.</p>
+</blockquote>
+<p>业务应用需要开发者和业务负责人互相配合来开发.</p>
+<a id="more"></a>
+<p>平衡的艺术</p>
+<blockquote>
+<p>记录客户做出的决定.<br>不要用过于具体和没有价值的问题打扰繁忙的业务人员.<br>不要假设具体的问题不会影响业务人员的业务.<br>如果业务负责人回答”我不知道”,这也是一个称心如意的答案.</p>
+</blockquote>
+<h2 id="让设计指导而不是操纵开发">让设计指导而不是操纵开发</h2><blockquote>
+<p>设计是软件开发过程不可缺少的步骤.</p>
+</blockquote>
+<p>开发之前画关键工作图是必不可少的,在做设计时你需要花时间去考虑各种不同选择的缺陷和溢出,以及如何权衡.然后下一步才考虑开始编码.</p>
+<p>严格的需求-设计-代码-测试开发流程源于理想化的<strong>瀑布式</strong>开发方法,它导致在前面进行了过度的设计.</p>
+<p>设计可以分为两层:<strong>战略</strong>和<strong>战术</strong>.</p>
+<ol>
+<li>前期的设计属于战略,通常只有在么有深入理解需求的时候需要这样设计.</li>
+<li>战术设计重点是集中在单个的方法或数据类型上.这时更合适讨论如何设计类的职责.</li>
+</ol>
+<blockquote>
+<p>CRC(类-职责-协作)卡片的设计方法就是用来做这个事情的.</p>
+<ul>
+<li>类名</li>
+<li>职责:它应该做什么?</li>
+<li>协作者:要完成工作它需要与其他的什么对象一起工作?</li>
+</ul>
+</blockquote>
+<p>什么是好的设计?</p>
+<blockquote>
+<p>如果需求有了小变化,它仍能容易去实现,那么它就是好的设计.</p>
+</blockquote>
+<p>好的设计应该是正确的而不是精确的.</p>
+<p>平衡的艺术</p>
+<ul>
+<li>不要在前期做大量的设计,并不是说不要设计.</li>
+<li>计时初始的设计到后期不在管用,你仍需设计.</li>
+<li>白板,草图,便利贴都是非常好的设计工具.</li>
+</ul>
+<h2 id="合理地使用技术">合理地使用技术</h2><blockquote>
+<p>根据需要选择技术.</p>
+</blockquote>
+<p>在考虑使用新技术之前,先要把你需要解决的问题找出来.找到了需要解决的问题,接下来就要考虑:</p>
+<ol>
+<li>这个技术框架真能解决这个问题吗?</li>
+<li>你将会被他拴住吗?</li>
+<li>维护成本是多少?</li>
+</ol>
+<blockquote>
+<p><strong>不要开发你能容易下载到的东西</strong></p>
+</blockquote>
+<p><strong>写的代码越少,需要维护的东西就越少!</strong></p>
+<blockquote>
+<p>新技术就应该像是新工具,可以帮助你更好地工作,它自己不应该成为你的工作.</p>
+</blockquote>
+<p>平衡的艺术</p>
+<ol>
+<li>也许在项目中真正评估技术方案还为时太早.</li>
+<li>每一门技术都会有有点和缺点.</li>
+</ol>
+<h2 id="保持可以发布">保持可以发布</h2><blockquote>
+<p>已经提交的代码应该随时可以行动.</p>
+</blockquote>
+<p>任何时候只要你没有准备好,就是敌人进攻你最佳的时机.</p>
+<p>在团队工作中,修改一些东西的时候必须很谨慎.</p>
+<p>如何防止你提交的代码破坏系统的代码?</p>
+<ol>
+<li>在本地测试运行.</li>
+<li>检出最新的代码</li>
+<li>提交代码</li>
+</ol>
+<p><strong>保持你的项目时刻可以发布.</strong>保证你的系统随时可以编译,运行,测试并立即部署.</p>
+<p>平衡的艺术</p>
+<ol>
+<li>有时候,做一些大的改动后,你无法花费太多的时间和精力去保证系统一直可以发布.但是这只是例外,不能养成习惯.</li>
+<li>如果你不得不让系统长期不可发布,那就做一个分支版本,你可以继续进行自己的试验.如果不行,还可以撤销,从头再来.</li>
+<li>千万不能让系统既不可以发布,有不可以插销.</li>
+</ol>
+<h2 id="提早集成,频繁集成">提早集成,频繁集成</h2><p>在产品的开发过程中,集成是一个主要的<strong>风险区域</strong>.</p>
+<p><strong>独立开发</strong>和<strong>早期集成</strong>之间是具有张力的.</p>
+<blockquote>
+<p>当你独立开发时,会发现开发速度更快,生产效率更高,你可以有效地解决出现的问题.<br>但并不意味着你避免或者延迟集成.一般需要每天集成几次,最好不要2~3天集成一次.</p>
+</blockquote>
+<p><strong>绝不要做大爆发式的集成.</strong></p>
+<p>平衡的艺术</p>
+<ol>
+<li>成功的集成就意味着所有的单元测试不停地通过.</li>
+<li>每天要和团队其他成员一起集成好几次.</li>
+<li>如果你集成的不频繁,也许救会发现整天在解决代码集成带来的问题,而不是专心写代码.</li>
+<li>独立开发很好,但是不能独立开发太久,一旦你有了经验就要快速地开始集成.</li>
+</ol>
+<h2 id="提早实现自动化部署">提早实现自动化部署</h2><blockquote>
+<p>如果现在你还是在手工帮助质量保证人员安装应用,花些时间,考虑如何将安装过程自动化.</p>
+</blockquote>
+<p>质量保证人员应该<strong>测试部署过程</strong></p>
+<blockquote>
+<p>在项目一开始就应该实现<strong>自动化部署</strong>.</p>
+</blockquote>
+<p>平衡的艺术</p>
+<ol>
+<li>一般产品在安装的时候,都需要有相应的软硬件环境.这些环境的不同可能会导致很多问题,所以检查依赖关系,也是安装过程的一部分.</li>
+<li>在没有征得用户的统一之前,安装程序绝不能删除用户的数据.</li>
+<li>部署一个紧急修复的bug应该很简单,特别是在生产服务器的环境中.</li>
+<li>用户应该可以安全且完整地卸载安装程序.</li>
+<li>如果维护安装脚本变得很困难,那可能是一个早起警告.</li>
+</ol>
+<h2 id="使用演示获得频繁的反馈">使用演示获得频繁的反馈</h2><blockquote>
+<p>需求就像流动的油墨.</p>
+</blockquote>
+<p>你无法冻结需求,正如你无法冻结市场,竞争,知识,进化或者成长一样.</p>
+<p>没有人的思想和观点可以及时冻结,特别是项目的客户.</p>
+<blockquote>
+<p>不管是什么事情,我们都能做好,不过是以缓慢而逐步的方式.</p>
+</blockquote>
+<p>软件开发的成功就在于最后你离客户的期望有多远.</p>
+<p>应该定期的每隔一段时间,与客户进行演示反馈.</p>
+<p>如果你能频繁地和用户协商,根据他们的反馈,每个人都可以从中收益.</p>
+<blockquote>
+<p>不一致的术语是导致需求误解的一个主要原因.所以需要维护一个项目术语表.</p>
+</blockquote>
+<p>项目开发应该是清晰可见的开发.</p>
+<p>平衡的艺术</p>
+<p><strong>演示是用来让客户提出反馈,有助于驾驭项目的方向.</strong></p>
+<h2 id="使用段迭代,增量发布">使用段迭代,增量发布</h2><blockquote>
+<p><strong>统一过程和敏捷开发都使用迭代和增量开发.</strong></p>
+</blockquote>
+<p>迭代开发是<em>你在小且重复的周期里完成各种开发任务.</em></p>
+<blockquote>
+<p>对付大项目,最理想的办法就是小步前进,这也是敏捷开发的核心.</p>
+</blockquote>
+<p>大部分用户都是希望现在就有一个够用的软件,而不是在一年之后得到一个超级软件.</p>
+<blockquote>
+<p>询问用户哪些是产品的可用且不可少的核心功能.<br>不要为所有可能需要华丽功能而分心,不要沉迷于你的想象,而去做那些华而不实的界面.<br>尽快发布你的应用,迟了也许它就没有作用了.<br>使用段迭代和增量开发,可以让开发者更加专注于自己的工作.</p>
+</blockquote>
+<p><strong>段迭代让人感觉非常专注且具效率</strong></p>
+<p>平衡的艺术</p>
+<ol>
+<li>如果每个迭代的时间都不够用,要么任务太大,要么因为迭代时间太短,把握好自己的开发节奏.</li>
+<li>如果发布的功能背离了用户的需求,多半是因为迭代的周期太长了.</li>
+<li>增量的发布必须是可用的,并且能为用户提供价值.</li>
+</ol>
+<h2 id="固定的价格就意味着背叛承诺">固定的价格就意味着背叛承诺</h2><blockquote>
+<p>软件项目天生就是变化无常的,不可能重复.</p>
+</blockquote>
+<p> 开发项目时如何与客户交流?</p>
+<ol>
+<li>主动提议先构建系统最小,小的和有用的部分.</li>
+<li>第一个迭代结束时客户有两个选择:可以选择一系列新的功能,继承进入下一个迭代.或者可以取消合同.</li>
+<li>如果他们选择继续前进,那么这时候,应该就能很好地预测下一个迭代工作.</li>
+</ol>
+<blockquote>
+<p>基于真实工作的评估.</p>
+</blockquote>
+<p>平衡的艺术</p>
+<ol>
+<li>如果你对答案不满意,那么看看你是否可以改变问题.</li>
+<li>如果你在完成第一个迭代开发之前,拒绝做任何评估,也许你会失去这个合同.</li>
+<li>敏捷不是意味着开始编码,我们最终会知道合适可以完成.你需要根据当前的知识和猜想,做一个大致的评估.</li>
+<li>如果你别无选择,你不得不提供一个固定的价格,那么你需要学到真正好的评估.</li>
+<li>也许你会考虑在合同中确定每一个迭代的固定的价格,但迭代的数量是可以商量的,它可以根据当前的工作状况进行调整.</li>
+</ol>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="让用户做决定">让用户做决定</h2><p>在设计方面,做决定的时候必须有开发者参与.</p>
+<p>在一个项目中,开发者不应该做所有的决定,特别是业务方面的决定.</p>
+<blockquote>
+<p>决定什么不该决定.<br>让客户做决定.开发者,经理或者业务分析师不应该做业务方面的决定.</p>
+</blockquote>
+<p>业务应用需要开发者和业务负责人互相配合来开发.</p>]]>
+    
+    </summary>
+    
+      <category term="敏捷开发" scheme="http://yoursite.com/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="高效程序员" scheme="http://yoursite.com/tags/%E9%AB%98%E6%95%88%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
+    
+      <category term="高效程序员的45个习惯" scheme="http://yoursite.com/categories/%E9%AB%98%E6%95%88%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%8445%E4%B8%AA%E4%B9%A0%E6%83%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[学无止境---高效程序员的45个习惯读书笔记]]></title>
+    <link href="http://yoursite.com/2015/06/18/Aglie-Develop-Feeding-Agility/"/>
+    <id>http://yoursite.com/2015/06/18/Aglie-Develop-Feeding-Agility/</id>
+    <published>2015-06-18T12:40:05.000Z</published>
+    <updated>2015-06-18T12:46:30.923Z</updated>
+    <content type="html"><![CDATA[<h2 id="跟踪变化">跟踪变化</h2><blockquote>
+<p>你不需要精通所有技术,但需要清除知道行业的动向,从而规划你的项目和职业生涯.</p>
+</blockquote>
+<p>如何才能跟上技术变化的步伐?</p>
+<blockquote>
+<ol>
+<li>迭代和增量式的学习</li>
+<li>了解最新行情</li>
+<li>参加本地的用户组活动</li>
+<li>参加研讨会议</li>
+<li>如饥似渴地阅读</li>
+</ol>
+</blockquote>
+<a id="more"></a>
+<p>平衡的艺术</p>
+<blockquote>
+<ol>
+<li>许多新想法从未变的羽翼丰满,成为有用的技术.</li>
+<li>你不可能精通每一样技术,没有必要去尝试.</li>
+<li>你要明白为什么需要一项新技术—-它试图解决什么样的问题?</li>
+<li>避免在一时冲动的情况下,只是因为想学习而将应用切换到新的技术,框架或开发语言.</li>
+</ol>
+</blockquote>
+<h2 id="对团队投资">对团队投资</h2><ol>
+<li><p>在一个团队中,如果只是你个人技术很好远远不够.</p>
+</li>
+<li><p>一个学习型的团队才是较好的团队.</p>
+</li>
+<li><p>所学的知识不用,往往会忘记.</p>
+</li>
+<li><p>你需要和团队的其他成员分享所学的知识,把这些知识引入团队中.</p>
+</li>
+</ol>
+<blockquote>
+<p>“午餐会议”是团队中分享知识的非常好的方式.</p>
+</blockquote>
+<p>平衡的艺术</p>
+<blockquote>
+<ol>
+<li>读书小组逐章一起阅读一本书,会非常有用,但是要选好书.</li>
+<li>不是所有的讲座都能引人入胜,有些甚是显得不合时宜.</li>
+<li>尽量让讲座走入团队中.</li>
+<li>坚持有计划有规律地举行讲座.</li>
+<li>不要局限纯技术的图书和主题,相关的非技术主题也会对团队有帮助!</li>
+<li>午餐会议不是设计会议.</li>
+</ol>
+</blockquote>
+<h2 id="懂得丢弃">懂得丢弃</h2><blockquote>
+<p>根深蒂固的习惯不可轻易地就丢弃掉!Expensive  mental models aren’t discarded lightly.</p>
+</blockquote>
+<ol>
+<li><p>敏捷的根本之一就是拥抱变化.</p>
+</li>
+<li><p>开发者的时间才是紧缺和昂贵的资源.</p>
+</li>
+<li><p>在学习一门新技术的时候,多问问自己,是否把太多的旧的态度和方法用在了新的技术上.</p>
+</li>
+</ol>
+<blockquote>
+<p>打破旧习惯很难,更难的是自己还没意识到这个问题.</p>
+</blockquote>
+<p>应该力求尽可能地完全转入新的开发环境.</p>
+<p>平衡的艺术</p>
+<blockquote>
+<p>要果断丢弃旧的习惯,一味地遵循过时的旧习惯会危害你的职业生涯.<br>不是完全忘记旧习惯,而是只在使用适当的技术时才使用它.<br>对于所使用的语言,要总结熟悉的语言特性,并且比较这些特性在新语言或新版本中的变化.</p>
+</blockquote>
+<h2 id="打破沙锅问到底">打破沙锅问到底</h2><blockquote>
+<p>不能只满足于别人告诉你的表面现象,要不停地提问直到你明白问题的根源.</p>
+</blockquote>
+<ol>
+<li>为了解决问题,你需要很好地了解系统的全局.</li>
+<li>问”为什么”,但是要问到点子上.</li>
+<li>当你问为什么的时候,也许你会被反问为什么你问这个问题,在提问之前,想好你问的理由,这会有助于你问出巧当的问题.</li>
+<li>“这个,我不知道.”是一个好的起点,应该由此进行更进一步的调查,而不是在此戛然而止.</li>
+</ol>
+<h2 id="把握开发的节奏">把握开发的节奏</h2><blockquote>
+<p>项目开打需要有一致和稳定的节奏.</p>
+</blockquote>
+<p>敏捷项目会有一个节奏和循环,让开发更加轻松.</p>
+<p>设定一个短时的期限,为任务设定不能延长的最终期限.</p>
+<blockquote>
+<p>解决问题,在事情变得一团糟之前.</p>
+</blockquote>
+<p>平衡的艺术</p>
+<blockquote>
+<p>在每天结束的时候,测试代码,提交代码,没有残留任何代码.<br>不要搞的经常加班.<br>以固定,有规律的长度运行迭代.<br>如果开发节奏过于密集,你会精疲力尽的.<br>有规律的开发节奏会暴露很多问题,让你有更多的鼓起勇气的接口.<br>就像减肥一样,一点点的成功也是一个很大的激励.</p>
+</blockquote>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="跟踪变化">跟踪变化</h2><blockquote>
+<p>你不需要精通所有技术,但需要清除知道行业的动向,从而规划你的项目和职业生涯.</p>
+</blockquote>
+<p>如何才能跟上技术变化的步伐?</p>
+<blockquote>
+<ol>
+<li>迭代和增量式的学习</li>
+<li>了解最新行情</li>
+<li>参加本地的用户组活动</li>
+<li>参加研讨会议</li>
+<li>如饥似渴地阅读</li>
+</ol>
+</blockquote>]]>
+    
+    </summary>
+    
+      <category term="敏捷开发" scheme="http://yoursite.com/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="高效程序员" scheme="http://yoursite.com/tags/%E9%AB%98%E6%95%88%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
+    
+      <category term="高效程序员的45个习惯" scheme="http://yoursite.com/categories/%E9%AB%98%E6%95%88%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%8445%E4%B8%AA%E4%B9%A0%E6%83%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[态度决定一切---高效程序员的45个习惯读书笔记]]></title>
+    <link href="http://yoursite.com/2015/06/18/Agile-Develop-Beginning-Agility/"/>
+    <id>http://yoursite.com/2015/06/18/Agile-Develop-Beginning-Agility/</id>
+    <published>2015-06-18T12:30:43.000Z</published>
+    <updated>2015-06-18T12:46:39.932Z</updated>
+    <content type="html"><![CDATA[<h2 id="做事">做事</h2><blockquote>
+<p>指责不能修复bug—-Blame dosn’t fix bugs.</p>
+</blockquote>
+<ol>
+<li>把精力放在解决问题上,而不是抱怨和指责.</li>
+<li>过程符合标准并不意味着结果是正确的.</li>
+<li>在团队中,勇于承认自己不知道答案,这会让人放心.</li>
+<li>“这不是我的错”,这句话不对.”这都是你的错”,这句话更不对!</li>
+<li>如果你没犯过任何错误,说明你可能没有努力去工作.</li>
+<li>如果团队中的一个成员的行为一再伤害了团队,则他表现的很不职业.</li>
+</ol>
+<a id="more"></a>
+<h2 id="欲速则不达">欲速则不达</h2><blockquote>
+<p>防微杜渐—-Be ware of land mines.</p>
+</blockquote>
+<ol>
+<li>不要坠入快速的简单修复之中.要投入时间和经精力保持代码的整洁,敞亮.<br>一次又一次的快速修复,每一次都不探究问题的根源,久而久之就形成了一个危险的沼泽池,最终会吞噬整个项目的生命.</li>
+<li>你需要了解团队的开发方法或开发过程.</li>
+<li>如果团队成员花些时间阅读其他成员的代码,他们就能保证代码是可阅读和可理解的.</li>
+<li>代码复审是发现bug的最有效的方法之一.</li>
+<li>单元测试是防止代码难懂的重要技术.</li>
+<li>你必须要理解一块代码的是如何工作的,但不是一定需要成为专家.</li>
+<li>不要急于修复一段没能真正理解的代码.</li>
+<li>所有的大型系统都非常复杂,没有一个人可以完全明白所有的代码.</li>
+</ol>
+<h2 id="对事不对人">对事不对人</h2><blockquote>
+<p>消极扼杀创新—-Negativity kills innovation.</p>
+</blockquote>
+<ol>
+<li>整个团队应该关注真正有价值的问题,而不是勾心斗角,误入歧途.</li>
+<li>你必须把重点放在解决问题上,而不是极力证明谁的注意更好.</li>
+<li>你不需要出色才能起步,但是你必须起步才能出色.</li>
+<li>如果你是一个有远见的人,就一定要特别尊重别人的意见.</li>
+<li>你是一个掌舵者,一定要把握方向,深思熟虑,吸取各方意见.</li>
+<li>关于决策:设定最终期限,逆向思维,设立仲裁人,支持已经做出的决定</li>
+<li>尽力贡献自己的好想法,如果你的想法没有采纳也无需生气.</li>
+<li>脱离实际的反方观点会使争论变味.不带个人情绪并不是盲目接受所有的观点.</li>
+</ol>
+<h2 id="排除万难,奋勇向前">排除万难,奋勇向前</h2><ol>
+<li>动手证明是最有效的方式,把糟糕的代码放到一边,立刻重写.</li>
+<li>当发现问题时,不要视图掩盖这些问题.</li>
+<li>如果设计或代码中出现了奇怪的问题,花时间去理解为什么代码会是这样.</li>
+<li>如果你找到解决的办法,但代码仍旧令人费解,唯一的解决办法是重构代码,让他可读性更强.</li>
+<li>如果你没有马上理解那段代码,不要轻易地否定和重写他们.</li>
+<li>如果你说天快要塌下来了,但是团队成员都不赞同.反思一下,也许是你是正确的但你没有说清楚自己的理由.</li>
+<li>如果你说天快要塌下来了,但是团队成员都不赞同.认真考虑下,他们也许是对的.</li>
+</ol>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="做事">做事</h2><blockquote>
+<p>指责不能修复bug—-Blame dosn’t fix bugs.</p>
+</blockquote>
+<ol>
+<li>把精力放在解决问题上,而不是抱怨和指责.</li>
+<li>过程符合标准并不意味着结果是正确的.</li>
+<li>在团队中,勇于承认自己不知道答案,这会让人放心.</li>
+<li>“这不是我的错”,这句话不对.”这都是你的错”,这句话更不对!</li>
+<li>如果你没犯过任何错误,说明你可能没有努力去工作.</li>
+<li>如果团队中的一个成员的行为一再伤害了团队,则他表现的很不职业.</li>
+</ol>]]>
+    
+    </summary>
+    
+      <category term="敏捷开发" scheme="http://yoursite.com/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="高效程序员" scheme="http://yoursite.com/tags/%E9%AB%98%E6%95%88%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
+    
+      <category term="高效程序员的45个习惯" scheme="http://yoursite.com/categories/%E9%AB%98%E6%95%88%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%8445%E4%B8%AA%E4%B9%A0%E6%83%AF/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[AndroidStudio中aar文件引用]]></title>
@@ -45,7 +467,7 @@
     <link href="http://yoursite.com/2015/06/18/Java-Design-Pattern-Observer/"/>
     <id>http://yoursite.com/2015/06/18/Java-Design-Pattern-Observer/</id>
     <published>2015-06-18T11:27:08.000Z</published>
-    <updated>2015-06-18T11:30:57.732Z</updated>
+    <updated>2015-06-18T12:47:55.105Z</updated>
     <content type="html"><![CDATA[<h2 id="故事概要">故事概要</h2><h3 id="概要">概要</h3><p>故事要从一个业务需求开始:</p>
 <blockquote>
 <p>天气监测站目前可以监测到气温,气压,湿度三种指标,有一个WeatherData类,当前面的三个数据发生变化时,就会调用WeatherData类的setWeatherData()方法,改变天气数据.</p>
@@ -156,6 +578,8 @@
       <category term="观察者模式" scheme="http://yoursite.com/tags/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/"/>
     
       <category term="设计模式" scheme="http://yoursite.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+      <category term="Java设计模式" scheme="http://yoursite.com/categories/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
   </entry>
   

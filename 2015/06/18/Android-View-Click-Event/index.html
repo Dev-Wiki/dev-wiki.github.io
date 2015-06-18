@@ -20,7 +20,7 @@
 
 
 
-  <meta name="keywords" content="AndroidStudio," />
+  <meta name="keywords" content="Android,View," />
 
 
 
@@ -55,7 +55,7 @@
 
 
 
-  <title> AndroidStudio中aar文件引用 // DevWiki's Blog </title>
+  <title> View的Click,LongClick,Touch事件的研究 // DevWiki's Blog </title>
 </head>
 
 <body>
@@ -166,7 +166,7 @@
           
           
             
-              AndroidStudio中aar文件引用
+              View的Click,LongClick,Touch事件的研究
             
           
         </h1>
@@ -183,8 +183,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/06/18/AndroidStudio-export-aar/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/18/AndroidStudio-export-aar/"></span>
+            <a href="/2015/06/18/Android-View-Click-Event/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/18/Android-View-Click-Event/"></span>
             </a>
           </span>
           
@@ -198,14 +198,26 @@
       
 
       
-        <p>最近在看一个项目,里面将一个库项目打包成了aar文件.在项目中引用时如下:</p>
-<p>项目目录如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Demo&#10;    |-app&#10;    |-IMDemo&#10;    |-imkit</span><br></pre></td></tr></table></figure></p>
+        <h2 id="概述">概述</h2><p>我们都知道一个View有以下三个事件监听方法:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setOnClickListener();</span><br><span class="line">setOnLongClickListener();</span><br><span class="line">setOnTouchListener();</span><br></pre></td></tr></table></figure></p>
+<p>每一个方法代表着用户不同的操作,分别为:短按,长按和触摸操作.</p>
 <a id="more"></a>
-<p>其中imkit为打包aar格式的项目,其在项目中的结构如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">imkit&#10;    |-build.gradle&#10;    |-imkit.iml&#10;    |-imkit-1.0.0.aar</span><br></pre></td></tr></table></figure></p>
-<p>其中build.gradle文件如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">configurations.create(&#34;default&#34;)&#10;artifacts.add(&#34;default&#34;, file(&#39;imkit-1.0.0.aar&#39;))</span><br></pre></td></tr></table></figure></p>
-<p>app和IMDemo中的build.gradle中包含有以下内容:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;&#10;    compile project(&#39;:imkit&#39;)&#10;&#125;</span><br></pre></td></tr></table></figure></p>
-<p>在整个项目的setting.gradle文件中为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include &#39;:app&#39;, &#39;:imkit&#39;, &#34;:IMDemo&#34;</span><br></pre></td></tr></table></figure></p>
-<p>这样整个项目可以正常运行.</p>
+<p><strong>短按事件</strong><br>通常一个View设置短按事件监听的代码如下:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">view.setOnClickListener(<span class="keyword">new</span> OnClickListener() &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//do something</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p><strong>长按事件</strong><br>通常一个View设置长按事件监听的代码如下:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ttttButton.setOnLongClickListener(<span class="keyword">new</span> OnLongClickListener() &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onLongClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//do something</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>这里有一个返回值:</p>
+<blockquote>
+<p>true if the callback consumed the long click, false otherwise.</p>
+</blockquote>
+<p>意思是说:如果时间被消费了返回true,否则返回false.</p>
+<p><strong>触摸事件</strong><br>通常一个View设置触摸事件监听的代码如下:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">ttttButton.setOnTouchListener(<span class="keyword">new</span> OnTouchListener() &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouch</span><span class="params">(View v, MotionEvent event)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> action = event.getAction();</span><br><span class="line">        <span class="keyword">if</span> (action == MotionEvent.ACTION_DOWN) &#123;</span><br><span class="line">            <span class="comment">//do something</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (action == MotionEvent.ACTION_MOVE) &#123;</span><br><span class="line">            <span class="comment">//do something</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (action == MotionEvent.ACTION_UP) &#123;</span><br><span class="line">            <span class="comment">//do something</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>这里每一个动作都有一个返回值,返回值会影响触摸事件.一个View如果只设置了onTouchListener事件监听.<br>只有Down返回值为true时,Move和Up动作才能监听到.</p>
+<p>如果给一个View同时设置以上三个方法,会出现怎样的结果呢?</p>
+<hr>
+<h2 id="测试">测试</h2><h3 id="1-测试界面">1.测试界面</h3><p>先附上测试界面的效果图,如下:<br><img src="http://img.blog.csdn.net/20150525081614634" alt="HomePage"><br>上图有8个按钮,全部都是设置了onClickListener,onLongClickListener,onTouchListener.正如图中所示,按钮上的字母代表不同的含义.点击不同的按钮进行测试.</p>
+<h3 id="2-测试结果">2.测试结果</h3><p>最终的测试结果列表如下:<br>|序号|Click|LongClick|Down|Move|Up|短按|长按|备注|<br>|:-:|——-|— ——-|——|——|—-|—-|—-|<br>|1|无|true|true|true|true|down-move-up|down-move-up|<br>|2|无|true|false|true|true|down-move-up-longClick|down-move-longClick-move-up|按钮不抬起|<br>|3|无|true|true|true|false|down-move-up|down-move-up|<br>|4|无|true|false|true|false|down-move-up-click|down-move-longClick-move-up|<br>|5|无|false|true|true|true|down-move-up|down-move-up|<br>|6|无|false|false|true|true|down-move-up-longClick|down-move-longClick-move-up|按钮不抬起|<br>|7|无|false|true|true|false|down-move-up|down-move-up|<br>|8|无|false|false|true|false|down-move-up-click|down-move-longClick-move-up-click|</p>
+<p>其中上表中的第2项结果如下图(上为短按,下为长按),按钮不会弹起:<br><img src="http://img.blog.csdn.net/20150525082058904" alt="短按"><br><img src="http://img.blog.csdn.net/20150525082121383" alt="长按"></p>
+<p>第6项结果如下图(上为短按,下为长按),按钮不会弹起:<br><img src="http://img.blog.csdn.net/20150525082532123" alt="短按"><br><img src="http://img.blog.csdn.net/20150525082726605" alt="长按"></p>
+<h3 id="3-结论">3.结论</h3><p>测试结果因返回值不同而不同.所以尽管onTouchListener中down返回true时move和up才起作用,但是如果设置了onlongclciklistener,即使down返回false也能触发move和up事件.<br><strong>一般地,View的onTouchListener优先级高于onClickListener和onLongClickListener.</strong><br>可以根据需要使用不同的事件监听进行组合.</p>
+<h3 id="4-源码">4.源码</h3><p>源码在我的GitHub中:<a href="https://github.com/sn10086/ViewClickDemo" target="_blank" rel="external">DevWiki的GitHub:ViewClickDemo</a></p>
 
       
     </div>
@@ -214,7 +226,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/AndroidStudio/"> #AndroidStudio </a>
+            <a href="/tags/Android/"> #Android </a>
+          
+            <a href="/tags/View/"> #View </a>
           
         </div>
       
@@ -223,13 +237,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/06/18/Agile-Develop-Beginning-Agility/">态度决定一切---高效程序员的45个习惯读书笔记</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/06/18/Java-Design-Pattern-Observer/">Java设计模式---观察者模式</a>
+              <a href="/2015/06/18/Agile-Develop-Delivering-What-Users-Want/">交付用户想要的软件---高效程序员的45个习惯读书笔记</a>
             
           </div>
         </div>
@@ -272,8 +284,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2015/06/18/AndroidStudio-export-aar/"
-               data-title="AndroidStudio中aar文件引用" data-url="http://yoursite.com/2015/06/18/AndroidStudio-export-aar/">
+          <div class="ds-thread" data-thread-key="2015/06/18/Android-View-Click-Event/"
+               data-title="View的Click,LongClick,Touch事件的研究" data-url="http://yoursite.com/2015/06/18/Android-View-Click-Event/">
           </div>
         
       </div>
@@ -385,7 +397,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试"><span class="nav-number">2.</span> <span class="nav-text">测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-测试界面"><span class="nav-number">2.1.</span> <span class="nav-text">1.测试界面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-测试结果"><span class="nav-number">2.2.</span> <span class="nav-text">2.测试结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-结论"><span class="nav-number">2.3.</span> <span class="nav-text">3.结论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-源码"><span class="nav-number">2.4.</span> <span class="nav-text">4.源码</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

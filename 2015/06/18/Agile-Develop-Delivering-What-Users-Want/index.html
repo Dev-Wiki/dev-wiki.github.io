@@ -20,7 +20,7 @@
 
 
 
-  <meta name="keywords" content="AndroidStudio," />
+  <meta name="keywords" content="敏捷开发,高效程序员," />
 
 
 
@@ -55,7 +55,7 @@
 
 
 
-  <title> AndroidStudio中aar文件引用 // DevWiki's Blog </title>
+  <title> 交付用户想要的软件---高效程序员的45个习惯读书笔记 // DevWiki's Blog </title>
 </head>
 
 <body>
@@ -166,7 +166,7 @@
           
           
             
-              AndroidStudio中aar文件引用
+              交付用户想要的软件---高效程序员的45个习惯读书笔记
             
           
         </h1>
@@ -178,13 +178,24 @@
         </span>
 
         
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/高效程序员的45个习惯/">高效程序员的45个习惯</a>
+
+              
+              
+
+            
+          </span>
+        
 
         
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/06/18/AndroidStudio-export-aar/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/18/AndroidStudio-export-aar/"></span>
+            <a href="/2015/06/18/Agile-Develop-Delivering-What-Users-Want/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/18/Agile-Develop-Delivering-What-Users-Want/"></span>
             </a>
           </span>
           
@@ -198,14 +209,168 @@
       
 
       
-        <p>最近在看一个项目,里面将一个库项目打包成了aar文件.在项目中引用时如下:</p>
-<p>项目目录如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Demo&#10;    |-app&#10;    |-IMDemo&#10;    |-imkit</span><br></pre></td></tr></table></figure></p>
+        <h2 id="让用户做决定">让用户做决定</h2><p>在设计方面,做决定的时候必须有开发者参与.</p>
+<p>在一个项目中,开发者不应该做所有的决定,特别是业务方面的决定.</p>
+<blockquote>
+<p>决定什么不该决定.<br>让客户做决定.开发者,经理或者业务分析师不应该做业务方面的决定.</p>
+</blockquote>
+<p>业务应用需要开发者和业务负责人互相配合来开发.</p>
 <a id="more"></a>
-<p>其中imkit为打包aar格式的项目,其在项目中的结构如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">imkit&#10;    |-build.gradle&#10;    |-imkit.iml&#10;    |-imkit-1.0.0.aar</span><br></pre></td></tr></table></figure></p>
-<p>其中build.gradle文件如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">configurations.create(&#34;default&#34;)&#10;artifacts.add(&#34;default&#34;, file(&#39;imkit-1.0.0.aar&#39;))</span><br></pre></td></tr></table></figure></p>
-<p>app和IMDemo中的build.gradle中包含有以下内容:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;&#10;    compile project(&#39;:imkit&#39;)&#10;&#125;</span><br></pre></td></tr></table></figure></p>
-<p>在整个项目的setting.gradle文件中为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include &#39;:app&#39;, &#39;:imkit&#39;, &#34;:IMDemo&#34;</span><br></pre></td></tr></table></figure></p>
-<p>这样整个项目可以正常运行.</p>
+<p>平衡的艺术</p>
+<blockquote>
+<p>记录客户做出的决定.<br>不要用过于具体和没有价值的问题打扰繁忙的业务人员.<br>不要假设具体的问题不会影响业务人员的业务.<br>如果业务负责人回答”我不知道”,这也是一个称心如意的答案.</p>
+</blockquote>
+<h2 id="让设计指导而不是操纵开发">让设计指导而不是操纵开发</h2><blockquote>
+<p>设计是软件开发过程不可缺少的步骤.</p>
+</blockquote>
+<p>开发之前画关键工作图是必不可少的,在做设计时你需要花时间去考虑各种不同选择的缺陷和溢出,以及如何权衡.然后下一步才考虑开始编码.</p>
+<p>严格的需求-设计-代码-测试开发流程源于理想化的<strong>瀑布式</strong>开发方法,它导致在前面进行了过度的设计.</p>
+<p>设计可以分为两层:<strong>战略</strong>和<strong>战术</strong>.</p>
+<ol>
+<li>前期的设计属于战略,通常只有在么有深入理解需求的时候需要这样设计.</li>
+<li>战术设计重点是集中在单个的方法或数据类型上.这时更合适讨论如何设计类的职责.</li>
+</ol>
+<blockquote>
+<p>CRC(类-职责-协作)卡片的设计方法就是用来做这个事情的.</p>
+<ul>
+<li>类名</li>
+<li>职责:它应该做什么?</li>
+<li>协作者:要完成工作它需要与其他的什么对象一起工作?</li>
+</ul>
+</blockquote>
+<p>什么是好的设计?</p>
+<blockquote>
+<p>如果需求有了小变化,它仍能容易去实现,那么它就是好的设计.</p>
+</blockquote>
+<p>好的设计应该是正确的而不是精确的.</p>
+<p>平衡的艺术</p>
+<ul>
+<li>不要在前期做大量的设计,并不是说不要设计.</li>
+<li>计时初始的设计到后期不在管用,你仍需设计.</li>
+<li>白板,草图,便利贴都是非常好的设计工具.</li>
+</ul>
+<h2 id="合理地使用技术">合理地使用技术</h2><blockquote>
+<p>根据需要选择技术.</p>
+</blockquote>
+<p>在考虑使用新技术之前,先要把你需要解决的问题找出来.找到了需要解决的问题,接下来就要考虑:</p>
+<ol>
+<li>这个技术框架真能解决这个问题吗?</li>
+<li>你将会被他拴住吗?</li>
+<li>维护成本是多少?</li>
+</ol>
+<blockquote>
+<p><strong>不要开发你能容易下载到的东西</strong></p>
+</blockquote>
+<p><strong>写的代码越少,需要维护的东西就越少!</strong></p>
+<blockquote>
+<p>新技术就应该像是新工具,可以帮助你更好地工作,它自己不应该成为你的工作.</p>
+</blockquote>
+<p>平衡的艺术</p>
+<ol>
+<li>也许在项目中真正评估技术方案还为时太早.</li>
+<li>每一门技术都会有有点和缺点.</li>
+</ol>
+<h2 id="保持可以发布">保持可以发布</h2><blockquote>
+<p>已经提交的代码应该随时可以行动.</p>
+</blockquote>
+<p>任何时候只要你没有准备好,就是敌人进攻你最佳的时机.</p>
+<p>在团队工作中,修改一些东西的时候必须很谨慎.</p>
+<p>如何防止你提交的代码破坏系统的代码?</p>
+<ol>
+<li>在本地测试运行.</li>
+<li>检出最新的代码</li>
+<li>提交代码</li>
+</ol>
+<p><strong>保持你的项目时刻可以发布.</strong>保证你的系统随时可以编译,运行,测试并立即部署.</p>
+<p>平衡的艺术</p>
+<ol>
+<li>有时候,做一些大的改动后,你无法花费太多的时间和精力去保证系统一直可以发布.但是这只是例外,不能养成习惯.</li>
+<li>如果你不得不让系统长期不可发布,那就做一个分支版本,你可以继续进行自己的试验.如果不行,还可以撤销,从头再来.</li>
+<li>千万不能让系统既不可以发布,有不可以插销.</li>
+</ol>
+<h2 id="提早集成,频繁集成">提早集成,频繁集成</h2><p>在产品的开发过程中,集成是一个主要的<strong>风险区域</strong>.</p>
+<p><strong>独立开发</strong>和<strong>早期集成</strong>之间是具有张力的.</p>
+<blockquote>
+<p>当你独立开发时,会发现开发速度更快,生产效率更高,你可以有效地解决出现的问题.<br>但并不意味着你避免或者延迟集成.一般需要每天集成几次,最好不要2~3天集成一次.</p>
+</blockquote>
+<p><strong>绝不要做大爆发式的集成.</strong></p>
+<p>平衡的艺术</p>
+<ol>
+<li>成功的集成就意味着所有的单元测试不停地通过.</li>
+<li>每天要和团队其他成员一起集成好几次.</li>
+<li>如果你集成的不频繁,也许救会发现整天在解决代码集成带来的问题,而不是专心写代码.</li>
+<li>独立开发很好,但是不能独立开发太久,一旦你有了经验就要快速地开始集成.</li>
+</ol>
+<h2 id="提早实现自动化部署">提早实现自动化部署</h2><blockquote>
+<p>如果现在你还是在手工帮助质量保证人员安装应用,花些时间,考虑如何将安装过程自动化.</p>
+</blockquote>
+<p>质量保证人员应该<strong>测试部署过程</strong></p>
+<blockquote>
+<p>在项目一开始就应该实现<strong>自动化部署</strong>.</p>
+</blockquote>
+<p>平衡的艺术</p>
+<ol>
+<li>一般产品在安装的时候,都需要有相应的软硬件环境.这些环境的不同可能会导致很多问题,所以检查依赖关系,也是安装过程的一部分.</li>
+<li>在没有征得用户的统一之前,安装程序绝不能删除用户的数据.</li>
+<li>部署一个紧急修复的bug应该很简单,特别是在生产服务器的环境中.</li>
+<li>用户应该可以安全且完整地卸载安装程序.</li>
+<li>如果维护安装脚本变得很困难,那可能是一个早起警告.</li>
+</ol>
+<h2 id="使用演示获得频繁的反馈">使用演示获得频繁的反馈</h2><blockquote>
+<p>需求就像流动的油墨.</p>
+</blockquote>
+<p>你无法冻结需求,正如你无法冻结市场,竞争,知识,进化或者成长一样.</p>
+<p>没有人的思想和观点可以及时冻结,特别是项目的客户.</p>
+<blockquote>
+<p>不管是什么事情,我们都能做好,不过是以缓慢而逐步的方式.</p>
+</blockquote>
+<p>软件开发的成功就在于最后你离客户的期望有多远.</p>
+<p>应该定期的每隔一段时间,与客户进行演示反馈.</p>
+<p>如果你能频繁地和用户协商,根据他们的反馈,每个人都可以从中收益.</p>
+<blockquote>
+<p>不一致的术语是导致需求误解的一个主要原因.所以需要维护一个项目术语表.</p>
+</blockquote>
+<p>项目开发应该是清晰可见的开发.</p>
+<p>平衡的艺术</p>
+<p><strong>演示是用来让客户提出反馈,有助于驾驭项目的方向.</strong></p>
+<h2 id="使用段迭代,增量发布">使用段迭代,增量发布</h2><blockquote>
+<p><strong>统一过程和敏捷开发都使用迭代和增量开发.</strong></p>
+</blockquote>
+<p>迭代开发是<em>你在小且重复的周期里完成各种开发任务.</em></p>
+<blockquote>
+<p>对付大项目,最理想的办法就是小步前进,这也是敏捷开发的核心.</p>
+</blockquote>
+<p>大部分用户都是希望现在就有一个够用的软件,而不是在一年之后得到一个超级软件.</p>
+<blockquote>
+<p>询问用户哪些是产品的可用且不可少的核心功能.<br>不要为所有可能需要华丽功能而分心,不要沉迷于你的想象,而去做那些华而不实的界面.<br>尽快发布你的应用,迟了也许它就没有作用了.<br>使用段迭代和增量开发,可以让开发者更加专注于自己的工作.</p>
+</blockquote>
+<p><strong>段迭代让人感觉非常专注且具效率</strong></p>
+<p>平衡的艺术</p>
+<ol>
+<li>如果每个迭代的时间都不够用,要么任务太大,要么因为迭代时间太短,把握好自己的开发节奏.</li>
+<li>如果发布的功能背离了用户的需求,多半是因为迭代的周期太长了.</li>
+<li>增量的发布必须是可用的,并且能为用户提供价值.</li>
+</ol>
+<h2 id="固定的价格就意味着背叛承诺">固定的价格就意味着背叛承诺</h2><blockquote>
+<p>软件项目天生就是变化无常的,不可能重复.</p>
+</blockquote>
+<p> 开发项目时如何与客户交流?</p>
+<ol>
+<li>主动提议先构建系统最小,小的和有用的部分.</li>
+<li>第一个迭代结束时客户有两个选择:可以选择一系列新的功能,继承进入下一个迭代.或者可以取消合同.</li>
+<li>如果他们选择继续前进,那么这时候,应该就能很好地预测下一个迭代工作.</li>
+</ol>
+<blockquote>
+<p>基于真实工作的评估.</p>
+</blockquote>
+<p>平衡的艺术</p>
+<ol>
+<li>如果你对答案不满意,那么看看你是否可以改变问题.</li>
+<li>如果你在完成第一个迭代开发之前,拒绝做任何评估,也许你会失去这个合同.</li>
+<li>敏捷不是意味着开始编码,我们最终会知道合适可以完成.你需要根据当前的知识和猜想,做一个大致的评估.</li>
+<li>如果你别无选择,你不得不提供一个固定的价格,那么你需要学到真正好的评估.</li>
+<li>也许你会考虑在合同中确定每一个迭代的固定的价格,但迭代的数量是可以商量的,它可以根据当前的工作状况进行调整.</li>
+</ol>
 
       
     </div>
@@ -214,7 +379,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/AndroidStudio/"> #AndroidStudio </a>
+            <a href="/tags/敏捷开发/"> #敏捷开发 </a>
+          
+            <a href="/tags/高效程序员/"> #高效程序员 </a>
           
         </div>
       
@@ -223,13 +390,13 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/06/18/Agile-Develop-Beginning-Agility/">态度决定一切---高效程序员的45个习惯读书笔记</a>
+              <a href="/2015/06/18/Android-View-Click-Event/">View的Click,LongClick,Touch事件的研究</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/06/18/Java-Design-Pattern-Observer/">Java设计模式---观察者模式</a>
+              <a href="/2015/06/18/Aglie-Develop-Feeding-Agility/">学无止境---高效程序员的45个习惯读书笔记</a>
             
           </div>
         </div>
@@ -272,8 +439,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2015/06/18/AndroidStudio-export-aar/"
-               data-title="AndroidStudio中aar文件引用" data-url="http://yoursite.com/2015/06/18/AndroidStudio-export-aar/">
+          <div class="ds-thread" data-thread-key="2015/06/18/Agile-Develop-Delivering-What-Users-Want/"
+               data-title="交付用户想要的软件---高效程序员的45个习惯读书笔记" data-url="http://yoursite.com/2015/06/18/Agile-Develop-Delivering-What-Users-Want/">
           </div>
         
       </div>
@@ -385,7 +552,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#让用户做决定"><span class="nav-number">1.</span> <span class="nav-text">让用户做决定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#让设计指导而不是操纵开发"><span class="nav-number">2.</span> <span class="nav-text">让设计指导而不是操纵开发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合理地使用技术"><span class="nav-number">3.</span> <span class="nav-text">合理地使用技术</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#保持可以发布"><span class="nav-number">4.</span> <span class="nav-text">保持可以发布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提早集成,频繁集成"><span class="nav-number">5.</span> <span class="nav-text">提早集成,频繁集成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提早实现自动化部署"><span class="nav-number">6.</span> <span class="nav-text">提早实现自动化部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用演示获得频繁的反馈"><span class="nav-number">7.</span> <span class="nav-text">使用演示获得频繁的反馈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用段迭代,增量发布"><span class="nav-number">8.</span> <span class="nav-text">使用段迭代,增量发布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#固定的价格就意味着背叛承诺"><span class="nav-number">9.</span> <span class="nav-text">固定的价格就意味着背叛承诺</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
