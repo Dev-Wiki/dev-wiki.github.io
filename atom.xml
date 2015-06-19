@@ -4,9 +4,9 @@
   <title><![CDATA[DevWiki's Blog]]></title>
   
   <link href="/atom.xml" rel="self"/>
-  <link href="http://yoursite.com//"/>
+  <link href="http://www.devwiki.net//"/>
   <updated>2015-06-18T13:29:30.689Z</updated>
-  <id>http://yoursite.com//</id>
+  <id>http://www.devwiki.net//</id>
   
   <author>
     <name><![CDATA[DevWiki]]></name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title><![CDATA[Android自定义组合控件---简单导航栏]]></title>
-    <link href="http://yoursite.com/2015/06/18/Android-View-Custom-Navigation/"/>
-    <id>http://yoursite.com/2015/06/18/Android-View-Custom-Navigation/</id>
+    <link href="http://www.devwiki.net/2015/06/18/Android-View-Custom-Navigation/"/>
+    <id>http://www.devwiki.net/2015/06/18/Android-View-Custom-Navigation/</id>
     <published>2015-06-18T13:23:55.000Z</published>
     <updated>2015-06-18T13:29:30.689Z</updated>
     <content type="html"><![CDATA[<p>最近在做项目的过程中,发现项目中好多界面的导航栏都很类似或者一样,但是每次都要重复写同样的代码,觉得很不爽,所以就简单地自定义了一下导航栏控件.<br>先上图:<br><img src="http://img.blog.csdn.net/20150519123549066" alt="导航栏"></p>
@@ -52,16 +52,16 @@
     
     </summary>
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+      <category term="Android" scheme="http://www.devwiki.net/tags/Android/"/>
     
-      <category term="View" scheme="http://yoursite.com/tags/View/"/>
+      <category term="View" scheme="http://www.devwiki.net/tags/View/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Java设计模式---设计原则]]></title>
-    <link href="http://yoursite.com/2015/06/18/Java-Design-Pattern-Principle/"/>
-    <id>http://yoursite.com/2015/06/18/Java-Design-Pattern-Principle/</id>
+    <link href="http://www.devwiki.net/2015/06/18/Java-Design-Pattern-Principle/"/>
+    <id>http://www.devwiki.net/2015/06/18/Java-Design-Pattern-Principle/</id>
     <published>2015-06-18T13:16:42.000Z</published>
     <updated>2015-06-18T13:18:34.095Z</updated>
     <content type="html"><![CDATA[<p>最近看了Head First 设计模式一书,开篇的故事讲述了设计模式的原则:<strong>封装变化</strong>与<strong>面向接口编程</strong>.</p>
@@ -130,18 +130,18 @@
     
     </summary>
     
-      <category term="设计原则" scheme="http://yoursite.com/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/"/>
+      <category term="设计原则" scheme="http://www.devwiki.net/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/"/>
     
-      <category term="设计模式" scheme="http://yoursite.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+      <category term="设计模式" scheme="http://www.devwiki.net/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
-      <category term="Java设计模式" scheme="http://yoursite.com/categories/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+      <category term="Java设计模式" scheme="http://www.devwiki.net/categories/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[JDK源码学习之String]]></title>
-    <link href="http://yoursite.com/2015/06/18/JDK-Source-String/"/>
-    <id>http://yoursite.com/2015/06/18/JDK-Source-String/</id>
+    <link href="http://www.devwiki.net/2015/06/18/JDK-Source-String/"/>
+    <id>http://www.devwiki.net/2015/06/18/JDK-Source-String/</id>
     <published>2015-06-18T12:55:49.000Z</published>
     <updated>2015-06-18T13:02:22.505Z</updated>
     <content type="html"><![CDATA[<p>String类是最常用的类之一了.</p>
@@ -218,18 +218,18 @@
     
     </summary>
     
-      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
+      <category term="Java" scheme="http://www.devwiki.net/tags/Java/"/>
     
-      <category term="String" scheme="http://yoursite.com/tags/String/"/>
+      <category term="String" scheme="http://www.devwiki.net/tags/String/"/>
     
-      <category term="JDK源码学习" scheme="http://yoursite.com/categories/JDK%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/"/>
+      <category term="JDK源码学习" scheme="http://www.devwiki.net/categories/JDK%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[View的Click,LongClick,Touch事件的研究]]></title>
-    <link href="http://yoursite.com/2015/06/18/Android-View-Click-Event/"/>
-    <id>http://yoursite.com/2015/06/18/Android-View-Click-Event/</id>
+    <link href="http://www.devwiki.net/2015/06/18/Android-View-Click-Event/"/>
+    <id>http://www.devwiki.net/2015/06/18/Android-View-Click-Event/</id>
     <published>2015-06-18T12:43:48.000Z</published>
     <updated>2015-06-18T13:07:07.354Z</updated>
     <content type="html"><![CDATA[<h2 id="概述">概述</h2><p>我们都知道一个View有以下三个事件监听方法:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setOnClickListener();</span><br><span class="line">setOnLongClickListener();</span><br><span class="line">setOnTouchListener();</span><br></pre></td></tr></table></figure></p>
@@ -358,16 +358,16 @@
     
     </summary>
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+      <category term="Android" scheme="http://www.devwiki.net/tags/Android/"/>
     
-      <category term="View" scheme="http://yoursite.com/tags/View/"/>
+      <category term="View" scheme="http://www.devwiki.net/tags/View/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[交付用户想要的软件---高效程序员的45个习惯读书笔记]]></title>
-    <link href="http://yoursite.com/2015/06/18/Agile-Develop-Delivering-What-Users-Want/"/>
-    <id>http://yoursite.com/2015/06/18/Agile-Develop-Delivering-What-Users-Want/</id>
+    <link href="http://www.devwiki.net/2015/06/18/Agile-Develop-Delivering-What-Users-Want/"/>
+    <id>http://www.devwiki.net/2015/06/18/Agile-Develop-Delivering-What-Users-Want/</id>
     <published>2015-06-18T12:42:39.000Z</published>
     <updated>2015-06-18T12:46:24.733Z</updated>
     <content type="html"><![CDATA[<h2 id="让用户做决定">让用户做决定</h2><p>在设计方面,做决定的时候必须有开发者参与.</p>
@@ -543,18 +543,18 @@
     
     </summary>
     
-      <category term="敏捷开发" scheme="http://yoursite.com/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/"/>
+      <category term="敏捷开发" scheme="http://www.devwiki.net/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/"/>
     
-      <category term="高效程序员" scheme="http://yoursite.com/tags/%E9%AB%98%E6%95%88%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
+      <category term="高效程序员" scheme="http://www.devwiki.net/tags/%E9%AB%98%E6%95%88%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
     
-      <category term="高效程序员的45个习惯" scheme="http://yoursite.com/categories/%E9%AB%98%E6%95%88%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%8445%E4%B8%AA%E4%B9%A0%E6%83%AF/"/>
+      <category term="高效程序员的45个习惯" scheme="http://www.devwiki.net/categories/%E9%AB%98%E6%95%88%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%8445%E4%B8%AA%E4%B9%A0%E6%83%AF/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[学无止境---高效程序员的45个习惯读书笔记]]></title>
-    <link href="http://yoursite.com/2015/06/18/Aglie-Develop-Feeding-Agility/"/>
-    <id>http://yoursite.com/2015/06/18/Aglie-Develop-Feeding-Agility/</id>
+    <link href="http://www.devwiki.net/2015/06/18/Aglie-Develop-Feeding-Agility/"/>
+    <id>http://www.devwiki.net/2015/06/18/Aglie-Develop-Feeding-Agility/</id>
     <published>2015-06-18T12:40:05.000Z</published>
     <updated>2015-06-18T12:46:30.923Z</updated>
     <content type="html"><![CDATA[<h2 id="跟踪变化">跟踪变化</h2><blockquote>
@@ -662,18 +662,18 @@
     
     </summary>
     
-      <category term="敏捷开发" scheme="http://yoursite.com/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/"/>
+      <category term="敏捷开发" scheme="http://www.devwiki.net/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/"/>
     
-      <category term="高效程序员" scheme="http://yoursite.com/tags/%E9%AB%98%E6%95%88%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
+      <category term="高效程序员" scheme="http://www.devwiki.net/tags/%E9%AB%98%E6%95%88%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
     
-      <category term="高效程序员的45个习惯" scheme="http://yoursite.com/categories/%E9%AB%98%E6%95%88%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%8445%E4%B8%AA%E4%B9%A0%E6%83%AF/"/>
+      <category term="高效程序员的45个习惯" scheme="http://www.devwiki.net/categories/%E9%AB%98%E6%95%88%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%8445%E4%B8%AA%E4%B9%A0%E6%83%AF/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[态度决定一切---高效程序员的45个习惯读书笔记]]></title>
-    <link href="http://yoursite.com/2015/06/18/Agile-Develop-Beginning-Agility/"/>
-    <id>http://yoursite.com/2015/06/18/Agile-Develop-Beginning-Agility/</id>
+    <link href="http://www.devwiki.net/2015/06/18/Agile-Develop-Beginning-Agility/"/>
+    <id>http://www.devwiki.net/2015/06/18/Agile-Develop-Beginning-Agility/</id>
     <published>2015-06-18T12:30:43.000Z</published>
     <updated>2015-06-18T12:46:39.932Z</updated>
     <content type="html"><![CDATA[<h2 id="做事">做事</h2><blockquote>
@@ -739,18 +739,18 @@
     
     </summary>
     
-      <category term="敏捷开发" scheme="http://yoursite.com/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/"/>
+      <category term="敏捷开发" scheme="http://www.devwiki.net/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/"/>
     
-      <category term="高效程序员" scheme="http://yoursite.com/tags/%E9%AB%98%E6%95%88%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
+      <category term="高效程序员" scheme="http://www.devwiki.net/tags/%E9%AB%98%E6%95%88%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
     
-      <category term="高效程序员的45个习惯" scheme="http://yoursite.com/categories/%E9%AB%98%E6%95%88%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%8445%E4%B8%AA%E4%B9%A0%E6%83%AF/"/>
+      <category term="高效程序员的45个习惯" scheme="http://www.devwiki.net/categories/%E9%AB%98%E6%95%88%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%8445%E4%B8%AA%E4%B9%A0%E6%83%AF/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[AndroidStudio中aar文件引用]]></title>
-    <link href="http://yoursite.com/2015/06/18/AndroidStudio-export-aar/"/>
-    <id>http://yoursite.com/2015/06/18/AndroidStudio-export-aar/</id>
+    <link href="http://www.devwiki.net/2015/06/18/AndroidStudio-export-aar/"/>
+    <id>http://www.devwiki.net/2015/06/18/AndroidStudio-export-aar/</id>
     <published>2015-06-18T11:31:08.000Z</published>
     <updated>2015-06-18T11:32:23.724Z</updated>
     <content type="html"><![CDATA[<p>最近在看一个项目,里面将一个库项目打包成了aar文件.在项目中引用时如下:</p>
@@ -768,14 +768,14 @@
     
     </summary>
     
-      <category term="AndroidStudio" scheme="http://yoursite.com/tags/AndroidStudio/"/>
+      <category term="AndroidStudio" scheme="http://www.devwiki.net/tags/AndroidStudio/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Java设计模式---观察者模式]]></title>
-    <link href="http://yoursite.com/2015/06/18/Java-Design-Pattern-Observer/"/>
-    <id>http://yoursite.com/2015/06/18/Java-Design-Pattern-Observer/</id>
+    <link href="http://www.devwiki.net/2015/06/18/Java-Design-Pattern-Observer/"/>
+    <id>http://www.devwiki.net/2015/06/18/Java-Design-Pattern-Observer/</id>
     <published>2015-06-18T11:27:08.000Z</published>
     <updated>2015-06-18T12:49:29.588Z</updated>
     <content type="html"><![CDATA[<h2 id="故事概要">故事概要</h2><h3 id="概要">概要</h3><p>故事要从一个业务需求开始:</p>
@@ -885,18 +885,18 @@
     
     </summary>
     
-      <category term="观察者模式" scheme="http://yoursite.com/tags/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/"/>
+      <category term="观察者模式" scheme="http://www.devwiki.net/tags/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/"/>
     
-      <category term="设计模式" scheme="http://yoursite.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+      <category term="设计模式" scheme="http://www.devwiki.net/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
-      <category term="Java设计模式" scheme="http://yoursite.com/categories/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+      <category term="Java设计模式" scheme="http://www.devwiki.net/categories/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[CleanCode笔记---有意义的命名]]></title>
-    <link href="http://yoursite.com/2015/06/18/CleanCode-Note-Name/"/>
-    <id>http://yoursite.com/2015/06/18/CleanCode-Note-Name/</id>
+    <link href="http://www.devwiki.net/2015/06/18/CleanCode-Note-Name/"/>
+    <id>http://www.devwiki.net/2015/06/18/CleanCode-Note-Name/</id>
     <published>2015-06-18T04:45:17.000Z</published>
     <updated>2015-06-18T11:30:37.325Z</updated>
     <content type="html"><![CDATA[<h3 id="1-_命名应该和实际意义相符合">1. 命名应该和实际意义相符合</h3><p><strong>反例:</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> w;</span><br><span class="line"><span class="keyword">int</span> h;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fun</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> w*h;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -953,9 +953,9 @@
     
     </summary>
     
-      <category term="CleanCode" scheme="http://yoursite.com/tags/CleanCode/"/>
+      <category term="CleanCode" scheme="http://www.devwiki.net/tags/CleanCode/"/>
     
-      <category term="代码整洁之道" scheme="http://yoursite.com/tags/%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93/"/>
+      <category term="代码整洁之道" scheme="http://www.devwiki.net/tags/%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93/"/>
     
   </entry>
   
