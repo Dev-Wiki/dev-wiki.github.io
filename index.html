@@ -168,6 +168,82 @@
           
           
             
+              <a class="post-title-link" href="/2015/06/23/Android-Pcm2Amr/">
+                Android中Pcm文件转Amr文件
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-06-23
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/06/23/Android-Pcm2Amr/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/23/Android-Pcm2Amr/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>最经在做一个聊天的模块,聊天的模块很简单:</p>
+<blockquote>
+<p>录音-上传-接收-播放</p>
+</blockquote>
+<h2 id="录音">录音</h2><p>录音部分可以采用MediaRecord和AudioRecord两个类进行录音.但是各有优缺点.</p>
+<p>MediaRecord已经封装了很多方法,方便使用.<br>AudioRecord能获取录音的原生数据,以便对录音二次加工.</p>
+<p>在录音过程我采用的是AudioRecord.但是AudioRecord录音数据是PCM格式,数据占用存储空间很大.必须压缩后才能传输.项目中的压缩是项目其他成员写的一个so库进行压缩的,有点不太方便.在网上翻阅了下,其实Android系统内部已经携带有压缩的库文件了.</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/06/23/Android-Pcm2Amr/#more">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2015/06/18/Android-View-Custom-Navigation/">
                 Android自定义组合控件---简单导航栏
               </a>
@@ -900,82 +976,13 @@
 
 
     
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2015/06/18/CleanCode-Note-Name/">
-                CleanCode笔记---有意义的命名
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于 2015-06-18
-        </span>
-
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/06/18/CleanCode-Note-Name/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/18/CleanCode-Note-Name/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <h3 id="1-_命名应该和实际意义相符合">1. 命名应该和实际意义相符合</h3><p><strong>反例:</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> w;</span><br><span class="line"><span class="keyword">int</span> h;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fun</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> w*h;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>从代码中看不出任何信息,w和h是何含义?</p>
-<p>不如改为:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> width;</span><br><span class="line"><span class="keyword">int</span> height;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">calculateArea</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> width*height;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这样没有注释也能看懂代码的意图.</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/06/18/CleanCode-Note-Name/#more">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
   </div>
 
   
+  <div class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
+  </div>
+
 
         </div>
 
@@ -1007,7 +1014,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1021,7 +1028,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
