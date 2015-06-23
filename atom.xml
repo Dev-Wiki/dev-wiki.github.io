@@ -5,7 +5,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.devwiki.net//"/>
-  <updated>2015-06-23T09:49:35.416Z</updated>
+  <updated>2015-06-23T09:55:57.989Z</updated>
   <id>http://www.devwiki.net//</id>
   
   <author>
@@ -20,8 +20,8 @@
     <link href="http://www.devwiki.net/2015/06/23/Android-Pcm2Amr/"/>
     <id>http://www.devwiki.net/2015/06/23/Android-Pcm2Amr/</id>
     <published>2015-06-23T09:45:09.000Z</published>
-    <updated>2015-06-23T09:49:35.416Z</updated>
-    <content type="html"><![CDATA[<p>最经在做一个聊天的模块,聊天的模块很简单:</p>
+    <updated>2015-06-23T09:55:57.989Z</updated>
+    <content type="html"><![CDATA[<p>最近在做一个聊天的模块,聊天的模块很简单:</p>
 <blockquote>
 <p>录音-上传-接收-播放</p>
 </blockquote>
@@ -44,7 +44,7 @@
 <p>本文的项目文件在此:<a href="https://github.com/Dev-Wiki/Pcm2Amr" target="_blank" rel="external">Pcm2Amr</a></p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>最经在做一个聊天的模块,聊天的模块很简单:</p>
+    <![CDATA[<p>最近在做一个聊天的模块,聊天的模块很简单:</p>
 <blockquote>
 <p>录音-上传-接收-播放</p>
 </blockquote>
