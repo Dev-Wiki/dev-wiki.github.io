@@ -5,7 +5,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.devwiki.net//"/>
-  <updated>2015-06-24T04:48:33.501Z</updated>
+  <updated>2015-06-24T11:18:00.535Z</updated>
   <id>http://www.devwiki.net//</id>
   
   <author>
@@ -14,6 +14,146 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Android调试Log二次包装]]></title>
+    <link href="http://www.devwiki.net/2015/06/24/Android-New-Log/"/>
+    <id>http://www.devwiki.net/2015/06/24/Android-New-Log/</id>
+    <published>2015-06-24T11:16:22.000Z</published>
+    <updated>2015-06-24T11:18:00.535Z</updated>
+    <content type="html"><![CDATA[<p>在Android开发过程中经常使用Log打印一些调试的信息,比如:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Log.d(TAG, <span class="string">"xxxxx"</span>);</span><br></pre></td></tr></table></figure></p>
+<p>但是,每一个类都要定义一个TAG,一般TAG等于类名本身,比较繁琐.更重要的是,每次还要带上这个参数.如果打印的信息比较多或者一个类的代码数量比较长时,不太方便查找Log的位置.那么有没有一种方法,解决上面的问题呢?</p>
+<a id="more"></a>
+<h3 id="问题分析">问题分析</h3><blockquote>
+<ol>
+<li>每个类的TAG等于类名,那么能不能自己去寻找类名呢?</li>
+<li>能不能找到打印log所在的位置呢?</li>
+</ol>
+</blockquote>
+<p>答案是肯定的!在Java中可以使用Throwable类获取栈的信息.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">StackTraceElement[] elements = <span class="keyword">new</span> Throwable().getStackTrace();</span><br><span class="line">String className = elements[<span class="number">1</span>].getFileName();</span><br><span class="line">String methodName = elements[<span class="number">1</span>].getMethodName();</span><br><span class="line"><span class="keyword">int</span> lineNumber = elements[<span class="number">1</span>].getLineNumber();</span><br></pre></td></tr></table></figure></p>
+<p>通过此方法可以获取类名,方法名,行号信息.获取到信息后还需在包装一下,因为是Debug时的Log就取名DLog吧.<br>那么Dlog中肯定要有一个Log的实例,还要与Log方法同名的方法,比如v(),d(),e(),w(),i()等.如下所示:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DLog</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> String className;			<span class="comment">//所在的类名</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> String methodName;			<span class="comment">//所在的方法名</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> lineNumber;				<span class="comment">//所在行号</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">	 * 私有化构造器</span><br><span class="line">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">DLog</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span><br><span class="line">	 * 是否处于调试模式</span><br><span class="line">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isDebuggable</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> BuildConfig.DEBUG;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span><br><span class="line">	 * 创建Log信息</span><br><span class="line">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">createLog</span><span class="params">(String log)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		StringBuffer buffer = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">		buffer.append(<span class="string">"["</span>);</span><br><span class="line">		buffer.append(methodName);</span><br><span class="line">		buffer.append(<span class="string">":"</span>);</span><br><span class="line">		buffer.append(lineNumber);</span><br><span class="line">		buffer.append(<span class="string">"]"</span>);</span><br><span class="line">		buffer.append(log);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> buffer.toString();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span><br><span class="line">	 * 获取类名,方法名,行号</span><br><span class="line">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">getMethodNames</span><span class="params">(StackTraceElement[] sElements)</span> </span>&#123;</span><br><span class="line">		className = sElements[<span class="number">1</span>].getFileName();</span><br><span class="line">		methodName = sElements[<span class="number">1</span>].getMethodName();</span><br><span class="line">		lineNumber = sElements[<span class="number">1</span>].getLineNumber();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">v</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (!isDebuggable()) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		getMethodNames(<span class="keyword">new</span> Throwable().getStackTrace());</span><br><span class="line">		Log.v(className, createLog(message));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">d</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (!isDebuggable()) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		getMethodNames(<span class="keyword">new</span> Throwable().getStackTrace());</span><br><span class="line">		Log.d(className, createLog(message));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">i</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (!isDebuggable()) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		getMethodNames(<span class="keyword">new</span> Throwable().getStackTrace());</span><br><span class="line">		Log.i(className, createLog(message));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">w</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (!isDebuggable()) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		getMethodNames(<span class="keyword">new</span> Throwable().getStackTrace());</span><br><span class="line">		Log.w(className, createLog(message));</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">e</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (!isDebuggable()) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		getMethodNames(<span class="keyword">new</span> Throwable().getStackTrace());</span><br><span class="line">		Log.e(className, createLog(message));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样好了,即能自己找到类名,又能打印出Log信息所在的位置.且慢,还有一个问题:</p>
+<blockquote>
+<p>如果一个项目中使用了很多Log输出,项目结束时又不允许在打印这些信息怎么办?难道要一个一个删除?</p>
+</blockquote>
+<p>一个一个删除太麻烦了,谁让我们都想偷懒呢!为何我们不在上面的那个类加个控制,不想输出可以一键屏蔽多好呀.</p>
+<blockquote>
+<p>Log中的信息是有类别的,我们可以给每个类别分个序号,在来一个控制序号的级别,这样就可以控制显示的类别,</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * 包装后的Log输出,可控制显示哪些级别的LOG</span><br><span class="line"> * <span class="doctag">@author</span> Administrator</span><br><span class="line"> *</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DLog</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> String className;			<span class="comment">//所在的类名</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> String methodName;			<span class="comment">//所在的方法名</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> lineNumber;				<span class="comment">//所在行号</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> VERBOSE = <span class="number">1</span>;		  <span class="comment">//显示Verbose及以上的Log</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEBUG = <span class="number">2</span>;			<span class="comment">//显示Debug及以上的Log</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> INFO = <span class="number">3</span>;			<span class="comment">//显示Info及以上的Log</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> WARN = <span class="number">4</span>;			<span class="comment">//显示Warn及以上的Log</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> ERROR = <span class="number">5</span>;			<span class="comment">//显示Error及以上的Log</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> NOTHING = <span class="number">6</span>;		<span class="comment">//全部不显示</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> LEVEL = VERBOSE;	<span class="comment">//控制显示的级别</span></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">DLog</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isDebuggable</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> BuildConfig.DEBUG;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">createLog</span><span class="params">(String log)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		StringBuffer buffer = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">		buffer.append(<span class="string">"["</span>);</span><br><span class="line">		buffer.append(methodName);</span><br><span class="line">		buffer.append(<span class="string">":"</span>);</span><br><span class="line">		buffer.append(lineNumber);</span><br><span class="line">		buffer.append(<span class="string">"]"</span>);</span><br><span class="line">		buffer.append(log);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> buffer.toString();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">getMethodNames</span><span class="params">(StackTraceElement[] sElements)</span> </span>&#123;</span><br><span class="line">		className = sElements[<span class="number">1</span>].getFileName();</span><br><span class="line">		methodName = sElements[<span class="number">1</span>].getMethodName();</span><br><span class="line">		lineNumber = sElements[<span class="number">1</span>].getLineNumber();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">v</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (!isDebuggable()) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (LEVEL &lt;= VERBOSE) &#123;</span><br><span class="line">			getMethodNames(<span class="keyword">new</span> Throwable().getStackTrace());</span><br><span class="line">			Log.v(className, createLog(message));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">d</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (!isDebuggable()) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (LEVEL &lt;= DEBUG) &#123;</span><br><span class="line">			getMethodNames(<span class="keyword">new</span> Throwable().getStackTrace());</span><br><span class="line">			Log.d(className, createLog(message));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">i</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (!isDebuggable()) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (LEVEL &lt;= INFO) &#123;</span><br><span class="line">			getMethodNames(<span class="keyword">new</span> Throwable().getStackTrace());</span><br><span class="line">			Log.i(className, createLog(message));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">w</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (!isDebuggable()) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (LEVEL &lt;= WARN) &#123;</span><br><span class="line">			getMethodNames(<span class="keyword">new</span> Throwable().getStackTrace());</span><br><span class="line">			Log.w(className, createLog(message));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">e</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (!isDebuggable()) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (LEVEL &lt;= ERROR) &#123;</span><br><span class="line">			getMethodNames(<span class="keyword">new</span> Throwable().getStackTrace());</span><br><span class="line">			Log.e(className, createLog(message));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <summary type="html">
+    <![CDATA[<p>在Android开发过程中经常使用Log打印一些调试的信息,比如:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Log.d(TAG, <span class="string">"xxxxx"</span>);</span><br></pre></td></tr></table></figure></p>
+<p>但是,每一个类都要定义一个TAG,一般TAG等于类名本身,比较繁琐.更重要的是,每次还要带上这个参数.如果打印的信息比较多或者一个类的代码数量比较长时,不太方便查找Log的位置.那么有没有一种方法,解决上面的问题呢?</p>]]>
+    
+    </summary>
+    
+      <category term="Android" scheme="http://www.devwiki.net/tags/Android/"/>
+    
+      <category term="Log" scheme="http://www.devwiki.net/tags/Log/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[HTTP学习笔记---状态码]]></title>
+    <link href="http://www.devwiki.net/2015/06/24/Http-Status-Code/"/>
+    <id>http://www.devwiki.net/2015/06/24/Http-Status-Code/</id>
+    <published>2015-06-24T11:06:15.000Z</published>
+    <updated>2015-06-24T11:09:21.578Z</updated>
+    <content type="html"><![CDATA[<h2 id="定义">定义</h2><blockquote>
+<p>状态码:客户端访问服务器时返回的结果状态.</p>
+</blockquote>
+<h2 id="格式">格式</h2><p>通常状态码是三位数字和原因短语组成,其中第一位数字为响应类别.比如</p>
+<blockquote>
+<p>200 OK</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="类别">类别</h2><p>响应类别有以下5种:</p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>类别</th>
+<th>原因短语</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1XX</td>
+<td>Information(信息性状态码)</td>
+<td>接收的请求长在处理</td>
+</tr>
+<tr>
+<td>2XX</td>
+<td>Success(成功状态码)</td>
+<td>请求正常处理完毕</td>
+</tr>
+<tr>
+<td>3XX</td>
+<td>Redirection(重定向状态码)</td>
+<td>需要进行附加操作以完成请求</td>
+</tr>
+<tr>
+<td>4XX</td>
+<td>Client Error(客户端错误状态码)</td>
+<td>服务器无法处理请求</td>
+</tr>
+<tr>
+<td>5XX</td>
+<td>Server Error(服务器错误窗台吗)</td>
+<td>服务器处理请求出错</td>
+</tr>
+</tbody>
+</table>
+<h2 id="常用状态码">常用状态码</h2><h3 id="2XX_成功">2XX 成功</h3><blockquote>
+<ul>
+<li>200 OK 表示客户端发来的请求在服务器被正常处理了.</li>
+<li>204 No Content 服务器接收的请求已经成功处理,但返回的响应报文中不含实体的主体部分.</li>
+<li>206 Partial Content 客户端进行了范围请求,服务器成功执行了这部分的GET请求.</li>
+</ul>
+</blockquote>
+<h3 id="3XX_重定向">3XX 重定向</h3><blockquote>
+<ul>
+<li>301 Moved Permanently 永久性重定向</li>
+<li>302 Found 临时性重定向</li>
+<li>303 See Other 请求对应的资源存在着另一个URI,应使用GET方法重新获取请求的资源.</li>
+<li>304 Not Modify 客户端发送附加条件的请求时,服务器端允许请求访问资源.</li>
+<li>307 Temporary Redirect 临时重定向</li>
+</ul>
+</blockquote>
+<h3 id="4XX_客户端错误">4XX 客户端错误</h3><blockquote>
+<ul>
+<li>400 Bad Request 请求报文中存在语法错误.</li>
+<li>401 Unauthorized 权鉴失败,需要有HTTP认证的认证信息.</li>
+<li>403 Forbidden 请求的资源被服务器拒绝了</li>
+<li>404 Not Fount 服务器无法找到该资源.</li>
+</ul>
+</blockquote>
+<h3 id="5XX_服务器错误">5XX 服务器错误</h3><blockquote>
+<ul>
+<li>500 Internal Server Error 服务器执行请求时发生错误</li>
+<li>503 Service Unavailable 服务器暂时处于超负载或正在进行停机维护,现在无法处理请求.</li>
+</ul>
+</blockquote>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="定义">定义</h2><blockquote>
+<p>状态码:客户端访问服务器时返回的结果状态.</p>
+</blockquote>
+<h2 id="格式">格式</h2><p>通常状态码是三位数字和原因短语组成,其中第一位数字为响应类别.比如</p>
+<blockquote>
+<p>200 OK</p>
+</blockquote>]]>
+    
+    </summary>
+    
+      <category term="HTTP" scheme="http://www.devwiki.net/tags/HTTP/"/>
+    
+      <category term="HTTP状态码" scheme="http://www.devwiki.net/tags/HTTP%E7%8A%B6%E6%80%81%E7%A0%81/"/>
+    
+      <category term="HTTP学习笔记" scheme="http://www.devwiki.net/categories/HTTP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[CleanCode笔记---注释]]></title>

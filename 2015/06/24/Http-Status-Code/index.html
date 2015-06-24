@@ -20,7 +20,7 @@
 
 
 
-  <meta name="keywords" content="CleanCode,代码整洁之道," />
+  <meta name="keywords" content="HTTP,HTTP状态码," />
 
 
 
@@ -55,7 +55,7 @@
 
 
 
-  <title> CleanCode笔记---注释 // DevWiki's Blog </title>
+  <title> HTTP学习笔记---状态码 // DevWiki's Blog </title>
 </head>
 
 <body>
@@ -166,7 +166,7 @@
           
           
             
-              CleanCode笔记---注释
+              HTTP学习笔记---状态码
             
           
         </h1>
@@ -181,7 +181,7 @@
           <span class="post-category">
             &nbsp; | &nbsp; 分类于
             
-              <a href="/categories/CleanCode-代码整洁之道/">CleanCode-代码整洁之道</a>
+              <a href="/categories/HTTP学习笔记/">HTTP学习笔记</a>
 
               
               
@@ -194,8 +194,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/06/24/CleanCode-Note-Comments/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/24/CleanCode-Note-Comments/"></span>
+            <a href="/2015/06/24/Http-Status-Code/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/24/Http-Status-Code/"></span>
             </a>
           </span>
           
@@ -209,48 +209,81 @@
       
 
       
-        <blockquote>
-<p>什么也比不上放置良好的注释来的有用,什么也不会比乱七八糟的注释更有本事搞乱一个模块!</p>
+        <h2 id="定义">定义</h2><blockquote>
+<p>状态码:客户端访问服务器时返回的结果状态.</p>
 </blockquote>
-<p>如果我们擅长用开发语言来表达意图,就不那么需要注释,甚至根本不需要!</p>
-<p>注释的巧当用法是弥补我们在代码表达意图时遭遇失败.</p>
-<p>如果你发现自己需要写注释,在想想看是否有办法不写注释.</p>
-<p>程序员应当负责将注释保持在可维护,有关联,精确的高度.</p>
+<h2 id="格式">格式</h2><p>通常状态码是三位数字和原因短语组成,其中第一位数字为响应类别.比如</p>
+<blockquote>
+<p>200 OK</p>
+</blockquote>
 <a id="more"></a>
-<h2 id="注释不能美化代码">注释不能美化代码</h2><p>写注释的常见动机之一是糟糕代码的存在.与其花时间编写注释不如花时间清洁糟糕的代码.</p>
-<h2 id="用代码来阐述">用代码来阐述</h2><p>比如以下代码:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//check to see if the employee is eligible for full benfits</span></span><br><span class="line"><span class="keyword">if</span>((employee.flag &amp; HOURLY_FLAG) &amp;&amp; (employee.age &gt; <span class="number">65</span>))</span><br></pre></td></tr></table></figure></p>
-<p>为何不改为:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(employee.isEligibleForFullBenefits())</span><br></pre></td></tr></table></figure></p>
-<p>只需要几秒钟,就能用代码解释大部分的意图.</p>
-<h2 id="好注释">好注释</h2><p>好注释有以下几项:</p>
-<ol>
-<li>法律信息</li>
-<li>提供信息的注释</li>
-<li>对意图的解释</li>
-<li>阐释</li>
-<li>警示</li>
-<li>TODO注释</li>
-<li>放大</li>
-<li>公共API中的javadoc</li>
-</ol>
-<h2 id="坏注释">坏注释</h2><p>坏注释包括以下:</p>
-<ol>
-<li>呐呐自语</li>
-<li>多余的注释</li>
-<li>误导性注释</li>
-<li>循规式注释</li>
-<li>日志式注释</li>
-<li>位置标记</li>
-<li>括号后的注释</li>
-<li>归属与署名</li>
-<li>注释掉的代码</li>
-<li>HTML注释</li>
-<li>非本地信息</li>
-<li>信息过多</li>
-<li>不明显的联系</li>
-<li>函数头</li>
-<li>非公共代码中的javadoc</li>
-</ol>
-<p>切记<strong>能用函数或变量就别用注释</strong></p>
+<h2 id="类别">类别</h2><p>响应类别有以下5种:</p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>类别</th>
+<th>原因短语</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1XX</td>
+<td>Information(信息性状态码)</td>
+<td>接收的请求长在处理</td>
+</tr>
+<tr>
+<td>2XX</td>
+<td>Success(成功状态码)</td>
+<td>请求正常处理完毕</td>
+</tr>
+<tr>
+<td>3XX</td>
+<td>Redirection(重定向状态码)</td>
+<td>需要进行附加操作以完成请求</td>
+</tr>
+<tr>
+<td>4XX</td>
+<td>Client Error(客户端错误状态码)</td>
+<td>服务器无法处理请求</td>
+</tr>
+<tr>
+<td>5XX</td>
+<td>Server Error(服务器错误窗台吗)</td>
+<td>服务器处理请求出错</td>
+</tr>
+</tbody>
+</table>
+<h2 id="常用状态码">常用状态码</h2><h3 id="2XX_成功">2XX 成功</h3><blockquote>
+<ul>
+<li>200 OK 表示客户端发来的请求在服务器被正常处理了.</li>
+<li>204 No Content 服务器接收的请求已经成功处理,但返回的响应报文中不含实体的主体部分.</li>
+<li>206 Partial Content 客户端进行了范围请求,服务器成功执行了这部分的GET请求.</li>
+</ul>
+</blockquote>
+<h3 id="3XX_重定向">3XX 重定向</h3><blockquote>
+<ul>
+<li>301 Moved Permanently 永久性重定向</li>
+<li>302 Found 临时性重定向</li>
+<li>303 See Other 请求对应的资源存在着另一个URI,应使用GET方法重新获取请求的资源.</li>
+<li>304 Not Modify 客户端发送附加条件的请求时,服务器端允许请求访问资源.</li>
+<li>307 Temporary Redirect 临时重定向</li>
+</ul>
+</blockquote>
+<h3 id="4XX_客户端错误">4XX 客户端错误</h3><blockquote>
+<ul>
+<li>400 Bad Request 请求报文中存在语法错误.</li>
+<li>401 Unauthorized 权鉴失败,需要有HTTP认证的认证信息.</li>
+<li>403 Forbidden 请求的资源被服务器拒绝了</li>
+<li>404 Not Fount 服务器无法找到该资源.</li>
+</ul>
+</blockquote>
+<h3 id="5XX_服务器错误">5XX 服务器错误</h3><blockquote>
+<ul>
+<li>500 Internal Server Error 服务器执行请求时发生错误</li>
+<li>503 Service Unavailable 服务器暂时处于超负载或正在进行停机维护,现在无法处理请求.</li>
+</ul>
+</blockquote>
 
       
     </div>
@@ -259,9 +292,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/CleanCode/"> #CleanCode </a>
+            <a href="/tags/HTTP/"> #HTTP </a>
           
-            <a href="/tags/代码整洁之道/"> #代码整洁之道 </a>
+            <a href="/tags/HTTP状态码/"> #HTTP状态码 </a>
           
         </div>
       
@@ -270,13 +303,13 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/06/24/Http-Status-Code/">HTTP学习笔记---状态码</a>
+              <a href="/2015/06/24/Android-New-Log/">Android调试Log二次包装</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/06/24/CleanCode-Note-Function/">CleanCode笔记---函数</a>
+              <a href="/2015/06/24/CleanCode-Note-Comments/">CleanCode笔记---注释</a>
             
           </div>
         </div>
@@ -319,8 +352,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2015/06/24/CleanCode-Note-Comments/"
-               data-title="CleanCode笔记---注释" data-url="http://www.devwiki.net/2015/06/24/CleanCode-Note-Comments/">
+          <div class="ds-thread" data-thread-key="2015/06/24/Http-Status-Code/"
+               data-title="HTTP学习笔记---状态码" data-url="http://www.devwiki.net/2015/06/24/Http-Status-Code/">
           </div>
         
       </div>
@@ -432,7 +465,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#注释不能美化代码"><span class="nav-number">1.</span> <span class="nav-text">注释不能美化代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用代码来阐述"><span class="nav-number">2.</span> <span class="nav-text">用代码来阐述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#好注释"><span class="nav-number">3.</span> <span class="nav-text">好注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#坏注释"><span class="nav-number">4.</span> <span class="nav-text">坏注释</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#格式"><span class="nav-number">2.</span> <span class="nav-text">格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类别"><span class="nav-number">3.</span> <span class="nav-text">类别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用状态码"><span class="nav-number">4.</span> <span class="nav-text">常用状态码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2XX_成功"><span class="nav-number">4.1.</span> <span class="nav-text">2XX 成功</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3XX_重定向"><span class="nav-number">4.2.</span> <span class="nav-text">3XX 重定向</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4XX_客户端错误"><span class="nav-number">4.3.</span> <span class="nav-text">4XX 客户端错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5XX_服务器错误"><span class="nav-number">4.4.</span> <span class="nav-text">5XX 服务器错误</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
