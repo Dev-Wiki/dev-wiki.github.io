@@ -5,7 +5,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.devwiki.net//"/>
-  <updated>2015-06-23T09:55:57.989Z</updated>
+  <updated>2015-06-24T00:53:22.164Z</updated>
   <id>http://www.devwiki.net//</id>
   
   <author>
@@ -14,6 +14,85 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[CleanCode笔记---函数]]></title>
+    <link href="http://www.devwiki.net/2015/06/24/CleanCode-Note-Function/"/>
+    <id>http://www.devwiki.net/2015/06/24/CleanCode-Note-Function/</id>
+    <published>2015-06-24T00:47:35.000Z</published>
+    <updated>2015-06-24T00:53:22.164Z</updated>
+    <content type="html"><![CDATA[<h2 id="函数要短小">函数要短小</h2><p><strong>函数第一原则要短小,第二原则还是要短小</strong></p>
+<p>如果函数需要翻页,就有拆分的必要了.翻页往往会导致看着下面忘了上面.</p>
+<p>一个函数不要太长,一般每行不超过100个字符,行数不超过30行.</p>
+<p>if, else, while, case语句中代码应只有一行,该行要描述特定条件下要做的事情.</p>
+<a id="more"></a>
+<h2 id="只做一件事">只做一件事</h2><p>函数也应该遵守单一职责原则,即一个函数只做一件事情.比如一个检查登陆账户的函数:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkAccount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">boolean</span> isAccountAccess = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">if</span>(userName.isAccess() &amp;&amp; password.isAcces())&#123;</span><br><span class="line">        isAccountAccess = <span class="keyword">true</span>;</span><br><span class="line">        login();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        isAccountAccess = <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>函数名称为checkAccount,意为检查账户;而里面当账户可用是却请求登录.</p>
+<p>如果开发人员未仔细检查代码,只看函数名,很容易出现问题.检查账户的函数就应该只检查账户,而不应该在做其他事情.</p>
+<h2 id="每个函数一个抽象层次">每个函数一个抽象层次</h2><p>一个函数不应该既有抽象又有细节!</p>
+<p>我们经常写Android的Activity时这样:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">    setContentView(R.layout.activity_main);</span><br><span class="line">    </span><br><span class="line">    ToastUtil.init(<span class="keyword">this</span>);</span><br><span class="line">        </span><br><span class="line">    startButton = findViewById(R.id.start_button);</span><br><span class="line">    resultView= findViewById(R.id.result_view);</span><br><span class="line">    startButton.setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line">    resultView.setText(<span class="string">"结果为:"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>抛去2,3两行不说.第5行为抽象,而第7~10行为细节,这样读下来,突然发生了变化,会误入到细节之中.<br>不如改为下面这样:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">    setContentView(R.layout.activity_main);</span><br><span class="line">    </span><br><span class="line">    ToastUtil.init(<span class="keyword">this</span>);</span><br><span class="line">        </span><br><span class="line">    initView();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initView</span><span class="params">()</span></span>&#123;</span><br><span class="line">    startButton = findViewById(R.id.start_button);</span><br><span class="line">    resultView= findViewById(R.id.result_view);</span><br><span class="line">    startButton.setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line">    resultView.setText(<span class="string">"结果为:"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样只需阅读在onCreate中做了哪些事情,而不需要去知道具体怎么做的.所以一个函数应保持同一抽象层次.</p>
+<h2 id="switch语句">switch语句</h2><p>我们一般写switch语句往往如下:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> (type) &#123;</span><br><span class="line"><span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">	<span class="comment">//</span></span><br><span class="line">	<span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">	<span class="comment">//</span></span><br><span class="line">	<span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">	<span class="comment">//</span></span><br><span class="line">	<span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">default</span>:</span><br><span class="line">	<span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>当有多个分支时,switch语句往往会很长.可以通过以下来改善:</p>
+<ol>
+<li>每个case下只有一行代码.</li>
+<li>使用策略模式分解.</li>
+</ol>
+<h2 id="使用描述性的名称">使用描述性的名称</h2><p>函数的名称应该看到名字就知道该函数要做什么事情<br>比如上面的checkAccount(),看到改名称就应该知道该函数做的事情是检查账户,其返回值为boolean类型,则返回值应该是账户合法或者不合法.</p>
+<h2 id="函数参数">函数参数</h2><p>关于函数的参数个数:</p>
+<blockquote>
+<p>零个最佳,其次是一参,再次是二参,尽量避免三参或更过</p>
+</blockquote>
+<h3 id="零个最佳">零个最佳</h3><p>最理想的函数是没有参数,直接调用,不考虑其需要的条件.因为函数自己已经拥有相应的条件.<br>比如Android中的Activity的onStart(), onResume()等</p>
+<h3 id="其次是一参">其次是一参</h3><p>一个参数是最普遍的形式.<br>比如常用的setter和getter方法.一个参数可以明确函数运行必要的条件.</p>
+<h3 id="再次是二参">再次是二参</h3><p>两个参数已经可以出现混淆了.<br>比如String类有个方法replace(String oldChar, String newChar)如果不是参数的名称,很容易混淆是用谁代替谁.</p>
+<p>所以当函数出现两个参数时,务必给参数取个好的名称,以区分参数的意义.</p>
+<p>举个返利,放我们给一个对象集合排序时,会实现Comparator接口,如下:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyCompar</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">String</span>&gt;</span>&#123;</span><br><span class="line">	<span class="annotation">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(String lhs, String rhs)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// <span class="doctag"><span class="keyword">TODO</span></span> Auto-generated method stub</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>你知道lhs与rhs的含义么?他们两个比较的结果是什么意思?</p>
+<h3 id="避免三参或更多">避免三参或更多</h3><p>三个参数更容易出现问题.特别是三个参数类型一样时,往往会顺序错误.<br>比如求梯形的面积,我们都知道梯形面积S = (上底a + 下底b) * 高h /2;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">float</span> <span class="title">calculateArea</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> c)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (a + b)*c/<span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如果不看细节,你能一下子就看出参数的含义么?</p>
+<p>有需要三个或者更多参数时就应该抽象为一个类了.<br>上面的方法可以改为:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">float</span> <span class="title">calculateArea</span><span class="params">(Trapezoid trapezoid)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (trapezoid.getTopWidth() + trapezoid.getBottomWidth()) * trapezoid.getHeight / <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="标志参数(boolean值)">标志参数(boolean值)</h3><p><strong>不要使用boolean类型的参数!!!</strong><br>传入boolean类型的参数,那么该函数必定违反单一职责原则!<br>为何不拆分为两个函数呢?</p>
+<h2 id="无副作用">无副作用</h2><p>上面有个checkAccount()函数其实就是一个有副作用的函数!</p>
+<p>方法名为checkAccount(),且函数值也是boolean类型的.但是它却在账户可用时做了登录操作!!!</p>
+<p>如果不知道该函数的细节,多次调用会导致重复登陆!!!</p>
+<p>所以函数内容一定要和函数名称相同.</p>
+<h2 id="分割指令与查询">分割指令与查询</h2><p>函数要么做什么事,要么回答什么事情,但二者不可兼得.</p>
+<p>函数应该修改某对象的状态或者返回该对象的有关信息.</p>
+<p>例子:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">set</span><span class="params">(String attribute, String value)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>该函数用于修改属性,如果成功返回true,如果不存在那个属性则返回false.这样会导致:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(set(<span class="string">"username"</span>, <span class="string">"jack"</span>))..</span><br></pre></td></tr></table></figure></p>
+<p>这句是什么意思呢?意思是设置username为jack成功呢?还是设置username之前检查username是否为jack呢?</p>
+<p>所以要分割指令和查询:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUserName</span><span class="params">(String name)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isAttrExists</span><span class="params">(String attr)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<h2 id="使用异常代替返回错误码">使用异常代替返回错误码</h2><p>我们经常这样写:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">deletePage</span><span class="params">(Page page)</span>；</span><br><span class="line"></span><br><span class="line"><span class="title">if</span><span class="params">(deletePage(page)</span> </span>== E_OK)...</span><br></pre></td></tr></table></figure></p>
+<p>但是这样会导致深层次的嵌套:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(deletePage() == E_OK)&#123;</span><br><span class="line">    <span class="keyword">if</span>(registy.deleteReference(page.name) == E_OK)&#123;</span><br><span class="line">        <span class="keyword">if</span>(configKeys.deleteKey(page.name.makeKey()) == E_OK) &#123;</span><br><span class="line">            logger.log(<span class="string">"page deleted"</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            logger.log(<span class="string">"configkey not delete"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        logger.log(delteReference from registry failed);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    logger.log(<span class="string">"delete failed"</span>);</span><br><span class="line">    <span class="keyword">return</span> E_ERROR;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如果改为返回异常,错误处理就能从主路径中分离出来:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    deletePage(page);</span><br><span class="line">    registry.deleteReference(page.name);</span><br><span class="line">    configKeys.deleteKey(page.name.makeKey());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="抽离Try/Catch代码块">抽离Try/Catch代码块</h3><p>代码处理直接放在try..catch中,要抽离出来,另外形成函数:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deletePage</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">        deletePageAndReferences(page);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">        logError(e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="处理错误就是一件事">处理错误就是一件事</h3><p>一个函数只做一件事,处理错误就是一件事,所以错误处理要抽离单独的函数.</p>
+<p>使用异常代替错误码,新的异常可以从异常类中派生,无需重新编译或重新部署.</p>
+<h2 id="别重复自己">别重复自己</h2><p>代码混乱最直接的原因就是代码重复.重复可能是软件中一切邪恶的根源.所以别重复自己!!!</p>
+<h2 id="结构化编程">结构化编程</h2><p>结构化编程规范:</p>
+<blockquote>
+<p>每个函数,函数中的每个代码块应该只有一个入口,一个出口.</p>
+</blockquote>
+<p>函数应遵守此规范,但是对于小函数,这些规则助益不大,只有在大函数中才有明显的好处.</p>
+<p>只要函数短小,偶尔出现的return, break或 continue语句就没坏处,甚至比单入单出原则更有表达力.</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="函数要短小">函数要短小</h2><p><strong>函数第一原则要短小,第二原则还是要短小</strong></p>
+<p>如果函数需要翻页,就有拆分的必要了.翻页往往会导致看着下面忘了上面.</p>
+<p>一个函数不要太长,一般每行不超过100个字符,行数不超过30行.</p>
+<p>if, else, while, case语句中代码应只有一行,该行要描述特定条件下要做的事情.</p>]]>
+    
+    </summary>
+    
+      <category term="CleanCode" scheme="http://www.devwiki.net/tags/CleanCode/"/>
+    
+      <category term="代码整洁之道" scheme="http://www.devwiki.net/tags/%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93/"/>
+    
+      <category term="CleanCode-代码整洁之道" scheme="http://www.devwiki.net/categories/CleanCode-%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Android中Pcm文件转Amr文件]]></title>
@@ -945,7 +1024,7 @@
     <link href="http://www.devwiki.net/2015/06/18/CleanCode-Note-Name/"/>
     <id>http://www.devwiki.net/2015/06/18/CleanCode-Note-Name/</id>
     <published>2015-06-18T04:45:17.000Z</published>
-    <updated>2015-06-18T11:30:37.325Z</updated>
+    <updated>2015-06-24T00:53:13.639Z</updated>
     <content type="html"><![CDATA[<h3 id="1-_命名应该和实际意义相符合">1. 命名应该和实际意义相符合</h3><p><strong>反例:</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> w;</span><br><span class="line"><span class="keyword">int</span> h;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fun</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> w*h;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>从代码中看不出任何信息,w和h是何含义?</p>
 <p>不如改为:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> width;</span><br><span class="line"><span class="keyword">int</span> height;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">calculateArea</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> width*height;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -1003,6 +1082,8 @@
       <category term="CleanCode" scheme="http://www.devwiki.net/tags/CleanCode/"/>
     
       <category term="代码整洁之道" scheme="http://www.devwiki.net/tags/%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93/"/>
+    
+      <category term="CleanCode-代码整洁之道" scheme="http://www.devwiki.net/categories/CleanCode-%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93/"/>
     
   </entry>
   
