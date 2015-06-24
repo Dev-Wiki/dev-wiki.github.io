@@ -5,7 +5,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.devwiki.net//"/>
-  <updated>2015-06-24T11:18:00.535Z</updated>
+  <updated>2015-06-24T14:11:45.713Z</updated>
   <id>http://www.devwiki.net//</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.devwiki.net/2015/06/24/Android-New-Log/"/>
     <id>http://www.devwiki.net/2015/06/24/Android-New-Log/</id>
     <published>2015-06-24T11:16:22.000Z</published>
-    <updated>2015-06-24T11:18:00.535Z</updated>
+    <updated>2015-06-24T14:11:45.713Z</updated>
     <content type="html"><![CDATA[<p>在Android开发过程中经常使用Log打印一些调试的信息,比如:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Log.d(TAG, <span class="string">"xxxxx"</span>);</span><br></pre></td></tr></table></figure></p>
 <p>但是,每一个类都要定义一个TAG,一般TAG等于类名本身,比较繁琐.更重要的是,每次还要带上这个参数.如果打印的信息比较多或者一个类的代码数量比较长时,不太方便查找Log的位置.那么有没有一种方法,解决上面的问题呢?</p>
 <a id="more"></a>
@@ -59,7 +59,7 @@
     <link href="http://www.devwiki.net/2015/06/24/Http-Status-Code/"/>
     <id>http://www.devwiki.net/2015/06/24/Http-Status-Code/</id>
     <published>2015-06-24T11:06:15.000Z</published>
-    <updated>2015-06-24T11:09:21.578Z</updated>
+    <updated>2015-06-24T14:11:45.744Z</updated>
     <content type="html"><![CDATA[<h2 id="定义">定义</h2><blockquote>
 <p>状态码:客户端访问服务器时返回的结果状态.</p>
 </blockquote>
@@ -156,11 +156,67 @@
   </entry>
   
   <entry>
+    <title><![CDATA[CleanCode笔记---格式]]></title>
+    <link href="http://www.devwiki.net/2015/06/24/CleanCode-Note-Formatter/"/>
+    <id>http://www.devwiki.net/2015/06/24/CleanCode-Note-Formatter/</id>
+    <published>2015-06-24T01:02:25.000Z</published>
+    <updated>2015-06-24T15:42:29.604Z</updated>
+    <content type="html"><![CDATA[<p>我本人算是一个有洁癖的程序猿,喜欢整齐格式的代码.</p>
+<h2 id="格式的意义">格式的意义</h2><p>让代码能工作不是编程的头等大事,因为代码首先是给人看的,其次才是给计算机看的.</p>
+<p>代码是团队沟通的桥梁,乱糟糟的代码是没有人想看的.</p>
+<a id="more"></a>
+<h2 id="垂直格式">垂直格式</h2><p>一个Java类文件应该有多长?这是个问题.有人可能说100行,有人可能说1000行.</p>
+<p>但是人们倾向于短的代码文件,所以一个类文件应该越短越好,尽量不要超过1000行.</p>
+<h3 id="向报纸学习">向报纸学习</h3><p>代码排版应该像报纸一样.从上往下读,在顶部应该有个类似标题一样的东西,告诉读者大致内容是什么,再往下是章节,告诉读者代码有哪些部分组成,章节下面是细节,如果读者感兴趣可以了解这部分实现的细节.</p>
+<p>比如:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Button backButton;</span><br><span class="line"><span class="keyword">private</span> TextView titleView;</span><br><span class="line"><span class="keyword">private</span> Button settingButton;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    initUtil();</span><br><span class="line">    initUI();</span><br><span class="line">    initData();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initUtil</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initUI</span><span class="params">()</span></span>&#123;</span><br><span class="line">    initNavigationView();</span><br><span class="line">    </span><br><span class="line">    initContentView();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initNavigationView</span><span class="params">()</span></span>&#123;</span><br><span class="line">    backButton = (Button) findViewById(R.id.btn_back);</span><br><span class="line">    backButton.setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line">    titleView = (TextView) findViewById(R.id.tv_title);</span><br><span class="line">    settingButton = (Button) findViewById(R.id.btn_setting);</span><br><span class="line">    settingButton.setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initNavigationView</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//....</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initContentView</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initData</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="垂直方向上的分割">垂直方向上的分割</h3><p>几乎所有的代码都是从上往下读,从左往右读.每行展现一个表达式或者一个字句或者一个方法调用,每组代码行展示一条完整的思路.这些思路都是用空白行分隔开来.</p>
+<p>就像上面的initUI()方法:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initUI</span><span class="params">()</span></span>&#123;</span><br><span class="line">    initNavigationView();</span><br><span class="line">    </span><br><span class="line">    initContentView();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>空白行让我们很容易明白初始化界面的步骤:</p>
+<ol>
+<li>初始化导航栏组件</li>
+<li>初始化内容视图</li>
+</ol>
+<h3 id="垂直距离">垂直距离</h3><p>从上面的代码可以看出,关系密切的方法应该靠近;关系不密切的要分隔开来.这样很容易理解系统要做什么,怎么去做,不需要你去记住查找和记住代码碎片在哪里.</p>
+<p>如何做到靠近与分隔呢?</p>
+<ol>
+<li>方法内的局部变量声明放在方法的顶部.</li>
+<li>对象变量的声明放在类的顶部.</li>
+<li>相关的函数应靠近放置.</li>
+<li>概念相近的代码应该放在一起.</li>
+</ol>
+<h3 id="垂直顺序">垂直顺序</h3><p>一般而言,我们都想自上而下展示函数的依赖调用.也就是说被调用的函数在执行函数的下面.</p>
+<h2 id="横向格式">横向格式</h2><p>一般而言,一行代码不应多于100个字符.</p>
+<h3 id="水平方向上的分隔与靠近">水平方向上的分隔与靠近</h3><p>赋值语句的等号左右空一格,可以起到强调的作用.</p>
+<p>多参方法中,参数的逗号后空一格,表明参数的独立性.</p>
+<p>所以水平方向上也应遵循关系密切的靠近,关系交远的分隔.</p>
+<h3 id="水平对齐">水平对齐</h3><p><strong>不需要水平方向上的有意识的对齐</strong>,比如下面:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Button   backButton;</span><br><span class="line"><span class="keyword">private</span> TextView titleView;</span><br><span class="line"><span class="keyword">private</span> Button   settingButton;</span><br></pre></td></tr></table></figure></p>
+<p>如果出现名称更长的类型,所有的变量又得重新对齐.所以不推荐此种方式.</p>
+<h3 id="缩进">缩进</h3><p><strong>缩进表明的代码的影响范围!</strong></p>
+<p>缩进有利于代码的阅读,明确代码之间的等级关系和影响范围.</p>
+<p>切记:单行也要缩进.不要违反缩进规则.</p>
+<p>每个人都有不同的写代码的风格,个人建议按照Google的Java代码风格来编写代码.详情请点击此处查看:<br><a href="http://www.hawstein.com/posts/google-java-style.html" target="_blank" rel="external">Google Java编程风格</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>我本人算是一个有洁癖的程序猿,喜欢整齐格式的代码.</p>
+<h2 id="格式的意义">格式的意义</h2><p>让代码能工作不是编程的头等大事,因为代码首先是给人看的,其次才是给计算机看的.</p>
+<p>代码是团队沟通的桥梁,乱糟糟的代码是没有人想看的.</p>]]>
+    
+    </summary>
+    
+      <category term="CleanCode" scheme="http://www.devwiki.net/tags/CleanCode/"/>
+    
+      <category term="代码整洁之道" scheme="http://www.devwiki.net/tags/%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93/"/>
+    
+      <category term="CleanCode-代码整洁之道" scheme="http://www.devwiki.net/categories/CleanCode-%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[CleanCode笔记---注释]]></title>
     <link href="http://www.devwiki.net/2015/06/24/CleanCode-Note-Comments/"/>
     <id>http://www.devwiki.net/2015/06/24/CleanCode-Note-Comments/</id>
     <published>2015-06-24T01:02:25.000Z</published>
-    <updated>2015-06-24T04:48:33.501Z</updated>
+    <updated>2015-06-24T14:11:45.728Z</updated>
     <content type="html"><![CDATA[<blockquote>
 <p>什么也比不上放置良好的注释来的有用,什么也不会比乱七八糟的注释更有本事搞乱一个模块!</p>
 </blockquote>
@@ -228,7 +284,7 @@
     <link href="http://www.devwiki.net/2015/06/24/CleanCode-Note-Function/"/>
     <id>http://www.devwiki.net/2015/06/24/CleanCode-Note-Function/</id>
     <published>2015-06-24T00:47:35.000Z</published>
-    <updated>2015-06-24T04:48:30.224Z</updated>
+    <updated>2015-06-24T14:11:45.728Z</updated>
     <content type="html"><![CDATA[<h2 id="函数要短小">函数要短小</h2><p><strong>函数第一原则要短小,第二原则还是要短小</strong></p>
 <p>如果函数需要翻页,就有拆分的必要了.翻页往往会导致看着下面忘了上面.</p>
 <p>一个函数不要太长,一般每行不超过100个字符,行数不超过30行.</p>
@@ -307,7 +363,7 @@
     <link href="http://www.devwiki.net/2015/06/23/Android-Pcm2Amr/"/>
     <id>http://www.devwiki.net/2015/06/23/Android-Pcm2Amr/</id>
     <published>2015-06-23T09:45:09.000Z</published>
-    <updated>2015-06-24T04:48:50.705Z</updated>
+    <updated>2015-06-24T14:11:45.713Z</updated>
     <content type="html"><![CDATA[<p>最近在做一个聊天的模块,聊天的模块很简单:</p>
 <blockquote>
 <p>录音-上传-接收-播放</p>
@@ -354,7 +410,7 @@
     <link href="http://www.devwiki.net/2015/06/18/Android-View-Custom-Navigation/"/>
     <id>http://www.devwiki.net/2015/06/18/Android-View-Custom-Navigation/</id>
     <published>2015-06-18T13:23:55.000Z</published>
-    <updated>2015-06-24T04:48:38.106Z</updated>
+    <updated>2015-06-24T14:11:45.713Z</updated>
     <content type="html"><![CDATA[<p>最近在做项目的过程中,发现项目中好多界面的导航栏都很类似或者一样,但是每次都要重复写同样的代码,觉得很不爽,所以就简单地自定义了一下导航栏控件.<br>先上图:<br><img src="http://img.blog.csdn.net/20150519123549066" alt="导航栏"></p>
 <p>导航栏包括:</p>
 <ul>
@@ -397,7 +453,7 @@
     <link href="http://www.devwiki.net/2015/06/18/Java-Design-Pattern-Principle/"/>
     <id>http://www.devwiki.net/2015/06/18/Java-Design-Pattern-Principle/</id>
     <published>2015-06-18T13:16:42.000Z</published>
-    <updated>2015-06-24T04:48:19.259Z</updated>
+    <updated>2015-06-24T14:11:45.744Z</updated>
     <content type="html"><![CDATA[<p>最近看了Head First 设计模式一书,开篇的故事讲述了设计模式的原则:<strong>封装变化</strong>与<strong>面向接口编程</strong>.</p>
 <h2 id="基本需求">基本需求</h2><p>故事从编写一个模拟鸭子的游戏开始,游戏要求:</p>
 <blockquote>
@@ -477,7 +533,7 @@
     <link href="http://www.devwiki.net/2015/06/18/JDK-Source-String/"/>
     <id>http://www.devwiki.net/2015/06/18/JDK-Source-String/</id>
     <published>2015-06-18T12:55:49.000Z</published>
-    <updated>2015-06-24T04:48:11.642Z</updated>
+    <updated>2015-06-24T14:11:45.744Z</updated>
     <content type="html"><![CDATA[<p>String类是最常用的类之一了.</p>
 <h2 id="定义">定义</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">String</span> <span class="keyword">extends</span> <span class="title">Object</span> <span class="keyword">implements</span> <span class="title">Serializable</span>,</span><br><span class="line">	<span class="title">Comparable</span>&lt;<span class="title">String</span>&gt;, <span class="title">CharSequence</span></span></span><br></pre></td></tr></table></figure>
 <h3 id="关键字">关键字</h3><h4 id="public">public</h4><p>被public修饰的类为全局可访问的类</p>
@@ -565,7 +621,7 @@
     <link href="http://www.devwiki.net/2015/06/18/Android-View-Click-Event/"/>
     <id>http://www.devwiki.net/2015/06/18/Android-View-Click-Event/</id>
     <published>2015-06-18T12:43:48.000Z</published>
-    <updated>2015-06-24T04:48:43.511Z</updated>
+    <updated>2015-06-24T14:11:45.713Z</updated>
     <content type="html"><![CDATA[<h2 id="概述">概述</h2><p>我们都知道一个View有以下三个事件监听方法:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setOnClickListener();</span><br><span class="line">setOnLongClickListener();</span><br><span class="line">setOnTouchListener();</span><br></pre></td></tr></table></figure></p>
 <p>每一个方法代表着用户不同的操作,分别为:短按,长按和触摸操作.</p>
 <a id="more"></a>
@@ -703,7 +759,7 @@
     <link href="http://www.devwiki.net/2015/06/18/Agile-Develop-Delivering-What-Users-Want/"/>
     <id>http://www.devwiki.net/2015/06/18/Agile-Develop-Delivering-What-Users-Want/</id>
     <published>2015-06-18T12:42:39.000Z</published>
-    <updated>2015-06-24T04:48:56.451Z</updated>
+    <updated>2015-06-24T14:11:45.682Z</updated>
     <content type="html"><![CDATA[<h2 id="让用户做决定">让用户做决定</h2><p>在设计方面,做决定的时候必须有开发者参与.</p>
 <p>在一个项目中,开发者不应该做所有的决定,特别是业务方面的决定.</p>
 <blockquote>
@@ -890,7 +946,7 @@
     <link href="http://www.devwiki.net/2015/06/18/Aglie-Develop-Feeding-Agility/"/>
     <id>http://www.devwiki.net/2015/06/18/Aglie-Develop-Feeding-Agility/</id>
     <published>2015-06-18T12:40:05.000Z</published>
-    <updated>2015-06-24T04:48:53.736Z</updated>
+    <updated>2015-06-24T14:11:45.682Z</updated>
     <content type="html"><![CDATA[<h2 id="跟踪变化">跟踪变化</h2><blockquote>
 <p>你不需要精通所有技术,但需要清除知道行业的动向,从而规划你的项目和职业生涯.</p>
 </blockquote>
@@ -1009,7 +1065,7 @@
     <link href="http://www.devwiki.net/2015/06/18/Agile-Develop-Beginning-Agility/"/>
     <id>http://www.devwiki.net/2015/06/18/Agile-Develop-Beginning-Agility/</id>
     <published>2015-06-18T12:30:43.000Z</published>
-    <updated>2015-06-24T04:48:59.099Z</updated>
+    <updated>2015-06-24T14:11:45.682Z</updated>
     <content type="html"><![CDATA[<h2 id="做事">做事</h2><blockquote>
 <p>指责不能修复bug—-Blame dosn’t fix bugs.</p>
 </blockquote>
@@ -1086,7 +1142,7 @@
     <link href="http://www.devwiki.net/2015/06/18/AndroidStudio-export-aar/"/>
     <id>http://www.devwiki.net/2015/06/18/AndroidStudio-export-aar/</id>
     <published>2015-06-18T11:31:08.000Z</published>
-    <updated>2015-06-24T04:48:47.363Z</updated>
+    <updated>2015-06-24T14:11:45.728Z</updated>
     <content type="html"><![CDATA[<p>最近在看一个项目,里面将一个库项目打包成了aar文件.在项目中引用时如下:</p>
 <p>项目目录如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Demo&#10;    |-app&#10;    |-IMDemo&#10;    |-imkit</span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
@@ -1111,7 +1167,7 @@
     <link href="http://www.devwiki.net/2015/06/18/Java-Design-Pattern-Observer/"/>
     <id>http://www.devwiki.net/2015/06/18/Java-Design-Pattern-Observer/</id>
     <published>2015-06-18T11:27:08.000Z</published>
-    <updated>2015-06-24T04:48:23.433Z</updated>
+    <updated>2015-06-24T14:11:45.744Z</updated>
     <content type="html"><![CDATA[<h2 id="故事概要">故事概要</h2><h3 id="概要">概要</h3><p>故事要从一个业务需求开始:</p>
 <blockquote>
 <p>天气监测站目前可以监测到气温,气压,湿度三种指标,有一个WeatherData类,当前面的三个数据发生变化时,就会调用WeatherData类的setWeatherData()方法,改变天气数据.</p>
@@ -1232,7 +1288,7 @@
     <link href="http://www.devwiki.net/2015/06/18/CleanCode-Note-Name/"/>
     <id>http://www.devwiki.net/2015/06/18/CleanCode-Note-Name/</id>
     <published>2015-06-18T04:45:17.000Z</published>
-    <updated>2015-06-24T04:48:26.555Z</updated>
+    <updated>2015-06-24T14:11:45.728Z</updated>
     <content type="html"><![CDATA[<h3 id="1-_命名应该和实际意义相符合">1. 命名应该和实际意义相符合</h3><p><strong>反例:</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> w;</span><br><span class="line"><span class="keyword">int</span> h;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fun</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> w*h;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>从代码中看不出任何信息,w和h是何含义?</p>
 <p>不如改为:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> width;</span><br><span class="line"><span class="keyword">int</span> height;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">calculateArea</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> width*height;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
