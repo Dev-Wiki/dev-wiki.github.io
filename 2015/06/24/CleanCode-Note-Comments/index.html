@@ -20,7 +20,7 @@
 
 
 
-  <meta name="keywords" content="敏捷开发,高效程序员," />
+  <meta name="keywords" content="CleanCode,代码整洁之道," />
 
 
 
@@ -55,7 +55,7 @@
 
 
 
-  <title> 态度决定一切---高效程序员的45个习惯读书笔记 // DevWiki's Blog </title>
+  <title> CleanCode笔记---注释 // DevWiki's Blog </title>
 </head>
 
 <body>
@@ -166,7 +166,7 @@
           
           
             
-              态度决定一切---高效程序员的45个习惯读书笔记
+              CleanCode笔记---注释
             
           
         </h1>
@@ -174,14 +174,14 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 2015-06-18
+          发表于 2015-06-24
         </span>
 
         
           <span class="post-category">
             &nbsp; | &nbsp; 分类于
             
-              <a href="/categories/高效程序员的45个习惯/">高效程序员的45个习惯</a>
+              <a href="/categories/CleanCode-代码整洁之道/">CleanCode-代码整洁之道</a>
 
               
               
@@ -194,8 +194,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/06/18/Agile-Develop-Beginning-Agility/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/18/Agile-Develop-Beginning-Agility/"></span>
+            <a href="/2015/06/24/CleanCode-Note-Comments/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/24/CleanCode-Note-Comments/"></span>
             </a>
           </span>
           
@@ -209,53 +209,48 @@
       
 
       
-        <h2 id="做事">做事</h2><blockquote>
-<p>指责不能修复bug—-Blame dosn’t fix bugs.</p>
+        <blockquote>
+<p>什么也比不上放置良好的注释来的有用,什么也不会比乱七八糟的注释更有本事搞乱一个模块!</p>
 </blockquote>
-<ol>
-<li>把精力放在解决问题上,而不是抱怨和指责.</li>
-<li>过程符合标准并不意味着结果是正确的.</li>
-<li>在团队中,勇于承认自己不知道答案,这会让人放心.</li>
-<li>“这不是我的错”,这句话不对.”这都是你的错”,这句话更不对!</li>
-<li>如果你没犯过任何错误,说明你可能没有努力去工作.</li>
-<li>如果团队中的一个成员的行为一再伤害了团队,则他表现的很不职业.</li>
-</ol>
+<p>如果我们擅长用开发语言来表达意图,就不那么需要注释,甚至根本不需要!</p>
+<p>注释的巧当用法是弥补我们在代码表达意图时遭遇失败.</p>
+<p>如果你发现自己需要写注释,在想想看是否有办法不写注释.</p>
+<p>程序员应当负责将注释保持在可维护,有关联,精确的高度.</p>
 <a id="more"></a>
-<h2 id="欲速则不达">欲速则不达</h2><blockquote>
-<p>防微杜渐—-Be ware of land mines.</p>
-</blockquote>
+<h2 id="注释不能美化代码">注释不能美化代码</h2><p>写注释的常见动机之一是糟糕代码的存在.与其花时间编写注释不如花时间清洁糟糕的代码.</p>
+<h2 id="用代码来阐述">用代码来阐述</h2><p>比如以下代码:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//check to see if the employee is eligible for full benfits</span></span><br><span class="line"><span class="keyword">if</span>((employee.flag &amp; HOURLY_FLAG) &amp;&amp; (employee.age &gt; <span class="number">65</span>))</span><br></pre></td></tr></table></figure></p>
+<p>为何不改为:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(employee.isEligibleForFullBenefits())</span><br></pre></td></tr></table></figure></p>
+<p>只需要几秒钟,就能用代码解释大部分的意图.</p>
+<h2 id="好注释">好注释</h2><p>好注释有以下几项:</p>
 <ol>
-<li>不要坠入快速的简单修复之中.要投入时间和经精力保持代码的整洁,敞亮.<br>一次又一次的快速修复,每一次都不探究问题的根源,久而久之就形成了一个危险的沼泽池,最终会吞噬整个项目的生命.</li>
-<li>你需要了解团队的开发方法或开发过程.</li>
-<li>如果团队成员花些时间阅读其他成员的代码,他们就能保证代码是可阅读和可理解的.</li>
-<li>代码复审是发现bug的最有效的方法之一.</li>
-<li>单元测试是防止代码难懂的重要技术.</li>
-<li>你必须要理解一块代码的是如何工作的,但不是一定需要成为专家.</li>
-<li>不要急于修复一段没能真正理解的代码.</li>
-<li>所有的大型系统都非常复杂,没有一个人可以完全明白所有的代码.</li>
+<li>法律信息</li>
+<li>提供信息的注释</li>
+<li>对意图的解释</li>
+<li>阐释</li>
+<li>警示</li>
+<li>TODO注释</li>
+<li>放大</li>
+<li>公共API中的javadoc</li>
 </ol>
-<h2 id="对事不对人">对事不对人</h2><blockquote>
-<p>消极扼杀创新—-Negativity kills innovation.</p>
-</blockquote>
+<h2 id="坏注释">坏注释</h2><p>坏注释包括以下:</p>
 <ol>
-<li>整个团队应该关注真正有价值的问题,而不是勾心斗角,误入歧途.</li>
-<li>你必须把重点放在解决问题上,而不是极力证明谁的注意更好.</li>
-<li>你不需要出色才能起步,但是你必须起步才能出色.</li>
-<li>如果你是一个有远见的人,就一定要特别尊重别人的意见.</li>
-<li>你是一个掌舵者,一定要把握方向,深思熟虑,吸取各方意见.</li>
-<li>关于决策:设定最终期限,逆向思维,设立仲裁人,支持已经做出的决定</li>
-<li>尽力贡献自己的好想法,如果你的想法没有采纳也无需生气.</li>
-<li>脱离实际的反方观点会使争论变味.不带个人情绪并不是盲目接受所有的观点.</li>
+<li>呐呐自语</li>
+<li>多余的注释</li>
+<li>误导性注释</li>
+<li>循规式注释</li>
+<li>日志式注释</li>
+<li>位置标记</li>
+<li>括号后的注释</li>
+<li>归属与署名</li>
+<li>注释掉的代码</li>
+<li>HTML注释</li>
+<li>非本地信息</li>
+<li>信息过多</li>
+<li>不明显的联系</li>
+<li>函数头</li>
+<li>非公共代码中的javadoc</li>
 </ol>
-<h2 id="排除万难,奋勇向前">排除万难,奋勇向前</h2><ol>
-<li>动手证明是最有效的方式,把糟糕的代码放到一边,立刻重写.</li>
-<li>当发现问题时,不要视图掩盖这些问题.</li>
-<li>如果设计或代码中出现了奇怪的问题,花时间去理解为什么代码会是这样.</li>
-<li>如果你找到解决的办法,但代码仍旧令人费解,唯一的解决办法是重构代码,让他可读性更强.</li>
-<li>如果你没有马上理解那段代码,不要轻易地否定和重写他们.</li>
-<li>如果你说天快要塌下来了,但是团队成员都不赞同.反思一下,也许是你是正确的但你没有说清楚自己的理由.</li>
-<li>如果你说天快要塌下来了,但是团队成员都不赞同.认真考虑下,他们也许是对的.</li>
-</ol>
+<p>切记<strong>能用函数或变量就别用注释</strong></p>
 
       
     </div>
@@ -264,9 +259,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/敏捷开发/"> #敏捷开发 </a>
+            <a href="/tags/CleanCode/"> #CleanCode </a>
           
-            <a href="/tags/高效程序员/"> #高效程序员 </a>
+            <a href="/tags/代码整洁之道/"> #代码整洁之道 </a>
           
         </div>
       
@@ -275,13 +270,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/06/18/Aglie-Develop-Feeding-Agility/">学无止境---高效程序员的45个习惯读书笔记</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/06/18/AndroidStudio-export-aar/">AndroidStudio中aar文件引用</a>
+              <a href="/2015/06/24/CleanCode-Note-Function/">CleanCode笔记---函数</a>
             
           </div>
         </div>
@@ -324,8 +317,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2015/06/18/Agile-Develop-Beginning-Agility/"
-               data-title="态度决定一切---高效程序员的45个习惯读书笔记" data-url="http://www.devwiki.net/2015/06/18/Agile-Develop-Beginning-Agility/">
+          <div class="ds-thread" data-thread-key="2015/06/24/CleanCode-Note-Comments/"
+               data-title="CleanCode笔记---注释" data-url="http://www.devwiki.net/2015/06/24/CleanCode-Note-Comments/">
           </div>
         
       </div>
@@ -437,7 +430,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#做事"><span class="nav-number">1.</span> <span class="nav-text">做事</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#欲速则不达"><span class="nav-number">2.</span> <span class="nav-text">欲速则不达</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对事不对人"><span class="nav-number">3.</span> <span class="nav-text">对事不对人</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排除万难,奋勇向前"><span class="nav-number">4.</span> <span class="nav-text">排除万难,奋勇向前</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#注释不能美化代码"><span class="nav-number">1.</span> <span class="nav-text">注释不能美化代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用代码来阐述"><span class="nav-number">2.</span> <span class="nav-text">用代码来阐述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#好注释"><span class="nav-number">3.</span> <span class="nav-text">好注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#坏注释"><span class="nav-number">4.</span> <span class="nav-text">坏注释</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
