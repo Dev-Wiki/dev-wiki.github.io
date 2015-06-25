@@ -1,0 +1,715 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+  <meta name="google-site-verification" content="NbE9T9ctqaOBpXu_MkSghUCx0o5WkpO80-NyLjiFEOc" />
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+
+
+
+  <meta name="keywords" content="七牛,上传工具," />
+
+
+
+  <link rel="alternate" href="/atom.xml" title="DevWiki's Blog" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/devwiki.png?v=0.4.3" />
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    analytics: {
+      google: 'UA-37158281-2'
+    },
+    sidebar: 'post'
+  };
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?f5a1bf8b7591014a8624c8a285456dd0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <title> 七牛简易上传工具的制作 // DevWiki's Blog </title>
+</head>
+
+<body>
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">DevWiki's Blog</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<div class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/">
+            <i class="menu-item-icon icon-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            <i class="menu-item-icon icon-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            <i class="menu-item-icon icon-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            <i class="menu-item-icon icon-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            <i class="menu-item-icon icon-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+</div>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              七牛简易上传工具的制作
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-06-25
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/06/25/Qiniu-Upload-Tool/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/25/Qiniu-Upload-Tool/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <p>最近刚弄博客,存放图片是个问题.想到网公司项目用的是七牛云存储,就想为何不把自己的图片也存到七牛云存储呢?</p>
+<p>说做就做,跑到七牛官网,注册账号,激活账号,终于弄好了.上传文件时才发现,只能网页在线上传和Qsync GUI两种界面上传.觉得不太友好,看到了官网给了那么多SDK,为什么不自己做一个简易的上传工具呢?</p>
+<a id="more"></a>
+<h2 id="开工">开工</h2><p>说做就做,下载SDK,新建工程,开始码代码.上传工具功能很简单,<strong>以后慢慢添加功能</strong>.先上图:</p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Qiniu-Upload-Tool-01.png" alt="主界面"></p>
+<p>项目代码一览:</p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Qiniu-Upload-Tool-00.png" alt="项目代码界面"></p>
+<h2 id="依赖包">依赖包</h2><p>项目依赖的包有:</p>
+<ol>
+<li><a href="http://search.maven.org/remotecontent?filepath=com/qiniu/qiniu-java-sdk/7.0.3/qiniu-java-sdk-7.0.3.jar" target="_blank" rel="external">qiniu-java-sdk-7</a></li>
+<li><a href="http://search.maven.org/remotecontent?filepath=com/google/code/gson/gson/2.3.1/gson-2.3.1.jar" target="_blank" rel="external">Google Gson</a></li>
+<li><a href="http://search.maven.org/remotecontent?filepath=com/squareup/okhttp/okhttp/2.4.0/okhttp-2.4.0.jar" target="_blank" rel="external">okhttp (JDK1.7 及以上)</a></li>
+<li><a href="http://search.maven.org/remotecontent?filepath=com/squareup/okio/okio/1.5.0/okio-1.5.0.jar" target="_blank" rel="external">okio (JDK1.7 及以上)</a></li>
+</ol>
+<h2 id="配置">配置</h2><p>因为急着使用,所以就把配置写死在代码里了,等增加功能时在改为动态.配置代码如下:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Config</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">Config</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String ACCESS_KEY = <span class="string">"你的AccessKey"</span>;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String SECRET_KEY = <span class="string">"你的SecretKey"</span>;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String BUCKET = <span class="string">"你的Bucket名称"</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String URL = <span class="string">"你的外链前缀"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="上传">上传</h2><p>上传部分目前采用官方的简易上传,key值为文件名称.以后再增加其他上传功能.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UploadHelper</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	Auth auth = Auth.create(Config.ACCESS_KEY, Config.SECRET_KEY);</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">uploadFile</span><span class="params">(String filePath, String key)</span></span>&#123;</span><br><span class="line">		UploadManager uploadManager = <span class="keyword">new</span> UploadManager();</span><br><span class="line">	    String token = auth.uploadToken(Config.BUCKET);</span><br><span class="line">	    <span class="keyword">try</span> &#123;</span><br><span class="line">			Response response = uploadManager.put(filePath, key, token);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (QiniuException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="界面">界面</h2><p>使用Swing写的纯Java界面,很简单:</p>
+<ol>
+<li>一个选择文件按钮</li>
+<li>一个显示文本框</li>
+<li>一个文件选择器</li>
+<li>一个上传按钮</li>
+</ol>
+<p>代码如下所示:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">implements</span> <span class="title">ActionListener</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> JFrame rootFrame;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> JButton chooseButton;</span><br><span class="line">	<span class="keyword">private</span> JFileChooser fileChooser;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> TextArea uploadInfoArea;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> JButton uploadButtton;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> File selectedFile;</span><br><span class="line">	<span class="keyword">private</span> String filePath;</span><br><span class="line">	<span class="keyword">private</span> String fileName;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">		initRootLayout();</span><br><span class="line">		</span><br><span class="line">		initFileChooserLayout();</span><br><span class="line"></span><br><span class="line">		initUploadResultLayout();</span><br><span class="line">		</span><br><span class="line">		initUploadLayout();</span><br><span class="line">		</span><br><span class="line">		rootFrame.setVisible(<span class="keyword">true</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initRootLayout</span><span class="params">()</span></span>&#123;</span><br><span class="line">		rootFrame = <span class="keyword">new</span> JFrame(<span class="string">"Qiniu Upload Tool"</span>);</span><br><span class="line">		rootFrame.setBounds(<span class="number">660</span>, <span class="number">340</span>, <span class="number">600</span>, <span class="number">400</span>);</span><br><span class="line">		rootFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initFileChooserLayout</span><span class="params">()</span></span>&#123;</span><br><span class="line">		fileChooser = <span class="keyword">new</span> JFileChooser();</span><br><span class="line">		fileChooser.setApproveButtonText(<span class="string">"打开"</span>);</span><br><span class="line">		fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);</span><br><span class="line">		fileChooser.addActionListener(<span class="keyword">this</span>);</span><br><span class="line">		</span><br><span class="line">		chooseButton = <span class="keyword">new</span> JButton(<span class="string">"打开"</span>);</span><br><span class="line">		chooseButton.addActionListener(<span class="keyword">this</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initUploadResultLayout</span><span class="params">()</span></span>&#123;</span><br><span class="line">		uploadInfoArea = <span class="keyword">new</span> TextArea();</span><br><span class="line">		</span><br><span class="line">		JPanel uploadInfoPanel = <span class="keyword">new</span> JPanel();</span><br><span class="line">		uploadInfoPanel.add(uploadInfoArea);</span><br><span class="line">		</span><br><span class="line">		rootFrame.add(uploadInfoPanel, BorderLayout.CENTER);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initUploadLayout</span><span class="params">()</span></span>&#123;</span><br><span class="line">		uploadButtton = <span class="keyword">new</span> JButton(<span class="string">"上传"</span>);</span><br><span class="line">		uploadButtton.addActionListener(<span class="keyword">this</span>);</span><br><span class="line">		</span><br><span class="line">		JPanel uploadPanel = <span class="keyword">new</span> JPanel();</span><br><span class="line">		uploadPanel.add(chooseButton);</span><br><span class="line">		uploadPanel.add(uploadButtton);</span><br><span class="line">		</span><br><span class="line">		rootFrame.add(uploadPanel, BorderLayout.SOUTH);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="annotation">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">actionPerformed</span><span class="params">(ActionEvent e)</span> </span>&#123;</span><br><span class="line">		String text = e.getActionCommand();</span><br><span class="line">		<span class="keyword">int</span> result ;</span><br><span class="line">		<span class="keyword">switch</span> (text) &#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"打开"</span>:</span><br><span class="line">			result = fileChooser.showOpenDialog(<span class="keyword">null</span>);</span><br><span class="line">			<span class="keyword">if</span> (result == JFileChooser.APPROVE_OPTION)&#123;</span><br><span class="line">				selectedFile = fileChooser.getSelectedFile();</span><br><span class="line">				filePath = selectedFile.getAbsolutePath();</span><br><span class="line">				fileName = selectedFile.getName();</span><br><span class="line">				uploadInfoArea.append(filePath + <span class="string">"\n"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"上传"</span>:</span><br><span class="line">			<span class="keyword">if</span> (filePath != <span class="keyword">null</span>) &#123;</span><br><span class="line">				uploadInfoArea.append(<span class="string">"上传中..."</span> + <span class="string">"\n"</span>);</span><br><span class="line">				<span class="keyword">new</span> UploadHelper().uploadFile(filePath, fileName);</span><br><span class="line">				uploadInfoArea.append(<span class="string">"Success"</span> + <span class="string">"\n"</span>);</span><br><span class="line">				uploadInfoArea.append(<span class="string">"外链为:"</span> + Config.URL + fileName + <span class="string">"\n"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">default</span>:</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="编译打包">编译打包</h2><p>编译打包需要一个工具:<a href="http://samyon.newhua.com:82/down/exe4j_windows-x64_5_0_1.zip" target="_blank" rel="external">exe4j-X64</a></p>
+<p>此过程需要两步:</p>
+<ol>
+<li>用Eclipse导出Jar包</li>
+<li>用exe4j打包成可运行的exe文件</li>
+</ol>
+<h3 id="导出jar包">导出jar包</h3><p>步骤如下:<br>对项目右键—&gt;export</p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Qiniu-Upload-Tool-05.png" alt="导包步骤01"></p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Qiniu-Upload-Tool-06.png" alt="导包步骤02"></p>
+<h3 id="打包为exe文件">打包为exe文件</h3><p>首先安装exe4j,安装完成后启动,如下图,然后直接下一步(next);</p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Qiniu-Upload-Tool-07.png" alt="打包为exe步骤01"></p>
+<p>选择红框处,然后下一步</p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Qiniu-Upload-Tool-08.png" alt="打包为exe步骤02"></p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Qiniu-Upload-Tool-09.png" alt="打包为exe步骤03"></p>
+<p>选择打包为32位还是64位</p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Qiniu-Upload-Tool-10.png" alt="打包为exe步骤04"></p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Qiniu-Upload-Tool-11.png" alt="打包为exe步骤05"></p>
+<p>填写相关信息</p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Qiniu-Upload-Tool-12.png" alt="打包为exe步骤06"></p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Qiniu-Upload-Tool-13.png" alt="打包为exe步骤07"></p>
+<p>选择jre的兼容版本</p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Qiniu-Upload-Tool-14.png" alt="打包为exe步骤08"></p>
+<p>一直下一步到:</p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Qiniu-Upload-Tool-15.png" alt="打包为exe步骤10"></p>
+<h2 id="测试工具">测试工具</h2><p>打开工具:</p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Qiniu-Upload-Tool-01.png" alt="测试步骤01"></p>
+<p>选择文件</p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Qiniu-Upload-Tool-02.png" alt="测试步骤02"></p>
+<p>选择文件完成</p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Qiniu-Upload-Tool-03.png" alt="测试步骤03"></p>
+<p>开始上传</p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Qiniu-Upload-Tool-04.png" alt="测试步骤04"></p>
+<h2 id="总结">总结</h2><p>目前功能十分单一,但是解决了文件上传的问题.以后再慢慢更新.<br>如有问题请在下面留言,我会尽快回复的.</p>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/七牛/"> #七牛 </a>
+          
+            <a href="/tags/上传工具/"> #上传工具 </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/06/24/CleanCode-Note-Formatter/">CleanCode笔记---格式</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="post-spread">
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      </div>
+    
+
+    
+      <div class="comments" id="comments">
+        
+          <div class="ds-thread" data-thread-key="2015/06/25/Qiniu-Upload-Tool/"
+               data-title="七牛简易上传工具的制作" data-url="http://www.devwiki.net/2015/06/25/Qiniu-Upload-Tool/">
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+
+        
+      </div>
+
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/uploads/devwiki.png" alt="DevWiki" />
+          <p class="site-author-name">DevWiki</p>
+        </div>
+        <p class="site-description motion-element"></p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="http://github.com/dev-wiki" target="_blank">GitHub</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://weibo.com/devwiki" target="_blank">Weibo</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.zhihu.com/people/devwiki" target="_blank">ZhiHu</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开工"><span class="nav-number">1.</span> <span class="nav-text">开工</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#依赖包"><span class="nav-number">2.</span> <span class="nav-text">依赖包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">3.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#上传"><span class="nav-number">4.</span> <span class="nav-text">上传</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#界面"><span class="nav-number">5.</span> <span class="nav-text">界面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编译打包"><span class="nav-number">6.</span> <span class="nav-text">编译打包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#导出jar包"><span class="nav-number">6.1.</span> <span class="nav-text">导出jar包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#打包为exe文件"><span class="nav-number">6.2.</span> <span class="nav-text">打包为exe文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试工具"><span class="nav-number">7.</span> <span class="nav-text">测试工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">DevWiki</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<span id="busuanzi_container_site_uv" style='display:none'>
+         |   您是本站第 <span id="busuanzi_value_site_uv" font style="color:black"></span> 个访客
+</span>
+
+<span id="busuanzi_container_site_pv" style='display:none'>
+    , 本站总访问量 : <span id="busuanzi_value_site_pv"></span>次
+</span>
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
+
+
+
+  <script type="text/javascript" src="/js/search-toggle.js"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.3" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if (isDesktop() && CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    });
+  </script>
+
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"devwiki"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/js/analytics_google-analytics.js?v=0.4.3"></script>
+
+
+</body>
+</html>
