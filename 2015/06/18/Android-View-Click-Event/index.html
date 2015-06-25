@@ -214,7 +214,7 @@
 <p>这里每一个动作都有一个返回值,返回值会影响触摸事件.一个View如果只设置了onTouchListener事件监听.<br>只有Down返回值为true时,Move和Up动作才能监听到.</p>
 <p>如果给一个View同时设置以上三个方法,会出现怎样的结果呢?</p>
 <hr>
-<h2 id="测试">测试</h2><h3 id="1-测试界面">1.测试界面</h3><p>先附上测试界面的效果图,如下:<br><img src="http://img.blog.csdn.net/20150525081614634" alt="HomePage"><br>上图有8个按钮,全部都是设置了onClickListener,onLongClickListener,onTouchListener.正如图中所示,按钮上的字母代表不同的含义.点击不同的按钮进行测试.</p>
+<h2 id="测试">测试</h2><h3 id="1-测试界面">1.测试界面</h3><p>先附上测试界面的效果图,如下:<br><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Android-View-Click-Event-01.png" alt="HomePage"><br>上图有8个按钮,全部都是设置了onClickListener,onLongClickListener,onTouchListener.正如图中所示,按钮上的字母代表不同的含义.点击不同的按钮进行测试.</p>
 <h3 id="2-测试结果">2.测试结果</h3><p>最终的测试结果列表如下:</p>
 <table>
 <thead>
@@ -315,8 +315,8 @@
 </tr>
 </tbody>
 </table>
-<p>其中上表中的第2项结果如下图(上为短按,下为长按),按钮不会弹起:<br><img src="http://img.blog.csdn.net/20150525082058904" alt="短按"><br><img src="http://img.blog.csdn.net/20150525082121383" alt="长按"></p>
-<p>第6项结果如下图(上为短按,下为长按),按钮不会弹起:<br><img src="http://img.blog.csdn.net/20150525082532123" alt="短按"><br><img src="http://img.blog.csdn.net/20150525082726605" alt="长按"></p>
+<p>其中上表中的第2项结果如下图(上为短按,下为长按),按钮不会弹起:<br><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Android-View-Click-Event-02.png" alt="短按"><br><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Android-View-Click-Event-03.png" alt="长按"></p>
+<p>第6项结果如下图(上为短按,下为长按),按钮不会弹起:<br><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Android-View-Click-Event-04.png" alt="短按"><br><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Android-View-Click-Event-05.png" alt="长按"></p>
 <h3 id="3-结论">3.结论</h3><p>测试结果因返回值不同而不同.所以尽管onTouchListener中down返回true时move和up才起作用,但是如果设置了onlongclciklistener,即使down返回false也能触发move和up事件.<br><strong>一般地,View的onTouchListener优先级高于onClickListener和onLongClickListener.</strong><br>可以根据需要使用不同的事件监听进行组合.</p>
 <h3 id="4-源码">4.源码</h3><p>源码在我的GitHub中:<a href="https://github.com/sn10086/ViewClickDemo" target="_blank" rel="external">DevWiki的GitHub:ViewClickDemo</a></p>
 
