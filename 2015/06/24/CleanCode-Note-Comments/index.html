@@ -211,14 +211,15 @@
       
 
       
-        <blockquote>
+        <p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Clean-Code-LOGO.png" alt="CleanCode"></p>
+<a id="more"></a>
+<blockquote>
 <p>什么也比不上放置良好的注释来的有用,什么也不会比乱七八糟的注释更有本事搞乱一个模块!</p>
 </blockquote>
 <p>如果我们擅长用开发语言来表达意图,就不那么需要注释,甚至根本不需要!</p>
 <p>注释的巧当用法是弥补我们在代码表达意图时遭遇失败.</p>
 <p>如果你发现自己需要写注释,在想想看是否有办法不写注释.</p>
 <p>程序员应当负责将注释保持在可维护,有关联,精确的高度.</p>
-<a id="more"></a>
 <h2 id="注释不能美化代码">注释不能美化代码</h2><p>写注释的常见动机之一是糟糕代码的存在.与其花时间编写注释不如花时间清洁糟糕的代码.</p>
 <h2 id="用代码来阐述">用代码来阐述</h2><p>比如以下代码:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//check to see if the employee is eligible for full benfits</span></span><br><span class="line"><span class="keyword">if</span>((employee.flag &amp; HOURLY_FLAG) &amp;&amp; (employee.age &gt; <span class="number">65</span>))</span><br></pre></td></tr></table></figure></p>
 <p>为何不改为:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(employee.isEligibleForFullBenefits())</span><br></pre></td></tr></table></figure></p>

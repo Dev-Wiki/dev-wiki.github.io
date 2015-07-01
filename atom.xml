@@ -5,7 +5,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.devwiki.net//"/>
-  <updated>2015-07-01T00:05:44.105Z</updated>
+  <updated>2015-07-01T11:52:58.090Z</updated>
   <id>http://www.devwiki.net//</id>
   
   <author>
@@ -20,8 +20,10 @@
     <link href="http://www.devwiki.net/2015/07/01/Agile-Develop-Agile-Feedback/"/>
     <id>http://www.devwiki.net/2015/07/01/Agile-Develop-Agile-Feedback/</id>
     <published>2015-07-01T00:01:12.000Z</published>
-    <updated>2015-07-01T00:05:44.105Z</updated>
-    <content type="html"><![CDATA[<h2 id="守护天使">守护天使</h2><blockquote>
+    <updated>2015-07-01T11:52:58.090Z</updated>
+    <content type="html"><![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Agile-Develop.png" alt="敏捷开发之道"></p>
+<a id="more"></a>
+<h2 id="守护天使">守护天使</h2><blockquote>
 <p>coding feedback 编写能产生反馈的代码</p>
 </blockquote>
 <p>1.为了应对代码的变化,你需要持续获得代码的健康状态的反馈:它是在做你期望的事情吗?</p>
@@ -32,7 +34,6 @@
 <li>测试你的边界条件</li>
 <li>不要放过任何一个失败的测试</li>
 </ul>
-<a id="more"></a>
 <p>4.只要有了单元测试,就要他们自动运行.也就是每次编译或者构建代码的时候就运行一次测试.</p>
 <p>5.单元测试的理由:</p>
 <ul>
@@ -91,17 +92,7 @@
 <p>7.如果代码解决不了问题,也许可以考虑通过修改文档或者培训来弥补.</p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<h2 id="守护天使">守护天使</h2><blockquote>
-<p>coding feedback 编写能产生反馈的代码</p>
-</blockquote>
-<p>1.为了应对代码的变化,你需要持续获得代码的健康状态的反馈:它是在做你期望的事情吗?</p>
-<p>2.用代码来测试变量的具体值(以及跟踪运行了多少个测试),已经是非常普遍的做法.</p>
-<p>3.对于测试我们要做到:</p>
-<ul>
-<li>确保测试是可重复的</li>
-<li>测试你的边界条件</li>
-<li>不要放过任何一个失败的测试</li>
-</ul>]]>
+    <![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Agile-Develop.png" alt="敏捷开发之道"></p>]]>
     
     </summary>
     
@@ -118,10 +109,11 @@
     <link href="http://www.devwiki.net/2015/06/25/Qiniu-Upload-Tool/"/>
     <id>http://www.devwiki.net/2015/06/25/Qiniu-Upload-Tool/</id>
     <published>2015-06-25T10:24:47.000Z</published>
-    <updated>2015-06-25T10:29:10.870Z</updated>
-    <content type="html"><![CDATA[<p>最近刚弄博客,存放图片是个问题.想到网公司项目用的是七牛云存储,就想为何不把自己的图片也存到七牛云存储呢?</p>
-<p>说做就做,跑到七牛官网,注册账号,激活账号,终于弄好了.上传文件时才发现,只能网页在线上传和Qsync GUI两种界面上传.觉得不太友好,看到了官网给了那么多SDK,为什么不自己做一个简易的上传工具呢?</p>
+    <updated>2015-07-01T11:53:14.334Z</updated>
+    <content type="html"><![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/qiniu-logo.png" alt="七牛LOGO"></p>
 <a id="more"></a>
+<p>最近刚弄博客,存放图片是个问题.想到网公司项目用的是七牛云存储,就想为何不把自己的图片也存到七牛云存储呢?</p>
+<p>说做就做,跑到七牛官网,注册账号,激活账号,终于弄好了.上传文件时才发现,只能网页在线上传和Qsync GUI两种界面上传.觉得不太友好,看到了官网给了那么多SDK,为什么不自己做一个简易的上传工具呢?</p>
 <h2 id="开工">开工</h2><p>说做就做,下载SDK,新建工程,开始码代码.上传工具功能很简单,<strong>以后慢慢添加功能</strong>.先上图:</p>
 <p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Qiniu-Upload-Tool-01.png" alt="主界面"></p>
 <p>项目代码一览:</p>
@@ -178,8 +170,7 @@
 <h2 id="总结">总结</h2><p>目前功能十分单一,但是解决了文件上传的问题.以后再慢慢更新.<br>如有问题请在下面留言,我会尽快回复的.</p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>最近刚弄博客,存放图片是个问题.想到网公司项目用的是七牛云存储,就想为何不把自己的图片也存到七牛云存储呢?</p>
-<p>说做就做,跑到七牛官网,注册账号,激活账号,终于弄好了.上传文件时才发现,只能网页在线上传和Qsync GUI两种界面上传.觉得不太友好,看到了官网给了那么多SDK,为什么不自己做一个简易的上传工具呢?</p>]]>
+    <![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/qiniu-logo.png" alt="七牛LOGO"></p>]]>
     
     </summary>
     
@@ -194,11 +185,12 @@
     <link href="http://www.devwiki.net/2015/06/24/CleanCode-Note-Formatter/"/>
     <id>http://www.devwiki.net/2015/06/24/CleanCode-Note-Formatter/</id>
     <published>2015-06-24T15:46:05.000Z</published>
-    <updated>2015-06-25T00:22:10.890Z</updated>
-    <content type="html"><![CDATA[<p>我本人算是一个有洁癖的程序猿,喜欢整齐格式的代码.</p>
+    <updated>2015-07-01T11:25:52.315Z</updated>
+    <content type="html"><![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Clean-Code-LOGO.png" alt="CleanCode"></p>
+<a id="more"></a>
+<p>我本人算是一个有洁癖的程序猿,喜欢整齐格式的代码.</p>
 <h2 id="格式的意义">格式的意义</h2><p>让代码能工作不是编程的头等大事,因为代码首先是给人看的,其次才是给计算机看的.</p>
 <p>代码是团队沟通的桥梁,乱糟糟的代码是没有人想看的.</p>
-<a id="more"></a>
 <h2 id="垂直格式">垂直格式</h2><p>一个Java类文件应该有多长?这是个问题.有人可能说100行,有人可能说1000行.</p>
 <p>但是人们倾向于短的代码文件,所以一个类文件应该越短越好,尽量不要超过1000行.</p>
 <h3 id="向报纸学习">向报纸学习</h3><p>代码排版应该像报纸一样.从上往下读,在顶部应该有个类似标题一样的东西,告诉读者大致内容是什么,再往下是章节,告诉读者代码有哪些部分组成,章节下面是细节,如果读者感兴趣可以了解这部分实现的细节.</p>
@@ -231,9 +223,7 @@
 <p>每个人都有不同的写代码的风格,个人建议按照Google的Java代码风格来编写代码.详情请点击此处查看:<br><a href="http://www.hawstein.com/posts/google-java-style.html" target="_blank" rel="external">Google Java编程风格</a></p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>我本人算是一个有洁癖的程序猿,喜欢整齐格式的代码.</p>
-<h2 id="格式的意义">格式的意义</h2><p>让代码能工作不是编程的头等大事,因为代码首先是给人看的,其次才是给计算机看的.</p>
-<p>代码是团队沟通的桥梁,乱糟糟的代码是没有人想看的.</p>]]>
+    <![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Clean-Code-LOGO.png" alt="CleanCode"></p>]]>
     
     </summary>
     
@@ -393,15 +383,16 @@
     <link href="http://www.devwiki.net/2015/06/24/CleanCode-Note-Comments/"/>
     <id>http://www.devwiki.net/2015/06/24/CleanCode-Note-Comments/</id>
     <published>2015-06-24T01:02:25.000Z</published>
-    <updated>2015-06-24T04:48:33.501Z</updated>
-    <content type="html"><![CDATA[<blockquote>
+    <updated>2015-07-01T11:25:40.068Z</updated>
+    <content type="html"><![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Clean-Code-LOGO.png" alt="CleanCode"></p>
+<a id="more"></a>
+<blockquote>
 <p>什么也比不上放置良好的注释来的有用,什么也不会比乱七八糟的注释更有本事搞乱一个模块!</p>
 </blockquote>
 <p>如果我们擅长用开发语言来表达意图,就不那么需要注释,甚至根本不需要!</p>
 <p>注释的巧当用法是弥补我们在代码表达意图时遭遇失败.</p>
 <p>如果你发现自己需要写注释,在想想看是否有办法不写注释.</p>
 <p>程序员应当负责将注释保持在可维护,有关联,精确的高度.</p>
-<a id="more"></a>
 <h2 id="注释不能美化代码">注释不能美化代码</h2><p>写注释的常见动机之一是糟糕代码的存在.与其花时间编写注释不如花时间清洁糟糕的代码.</p>
 <h2 id="用代码来阐述">用代码来阐述</h2><p>比如以下代码:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//check to see if the employee is eligible for full benfits</span></span><br><span class="line"><span class="keyword">if</span>((employee.flag &amp; HOURLY_FLAG) &amp;&amp; (employee.age &gt; <span class="number">65</span>))</span><br></pre></td></tr></table></figure></p>
 <p>为何不改为:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(employee.isEligibleForFullBenefits())</span><br></pre></td></tr></table></figure></p>
@@ -438,13 +429,7 @@
 <p>切记<strong>能用函数或变量就别用注释</strong></p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<blockquote>
-<p>什么也比不上放置良好的注释来的有用,什么也不会比乱七八糟的注释更有本事搞乱一个模块!</p>
-</blockquote>
-<p>如果我们擅长用开发语言来表达意图,就不那么需要注释,甚至根本不需要!</p>
-<p>注释的巧当用法是弥补我们在代码表达意图时遭遇失败.</p>
-<p>如果你发现自己需要写注释,在想想看是否有办法不写注释.</p>
-<p>程序员应当负责将注释保持在可维护,有关联,精确的高度.</p>]]>
+    <![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Clean-Code-LOGO.png" alt="CleanCode"></p>]]>
     
     </summary>
     
@@ -461,12 +446,13 @@
     <link href="http://www.devwiki.net/2015/06/24/CleanCode-Note-Function/"/>
     <id>http://www.devwiki.net/2015/06/24/CleanCode-Note-Function/</id>
     <published>2015-06-24T00:47:35.000Z</published>
-    <updated>2015-06-24T04:48:30.224Z</updated>
-    <content type="html"><![CDATA[<h2 id="函数要短小">函数要短小</h2><p><strong>函数第一原则要短小,第二原则还是要短小</strong></p>
+    <updated>2015-07-01T11:26:02.323Z</updated>
+    <content type="html"><![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Clean-Code-LOGO.png" alt="CleanCode"></p>
+<a id="more"></a>
+<h2 id="函数要短小">函数要短小</h2><p><strong>函数第一原则要短小,第二原则还是要短小</strong></p>
 <p>如果函数需要翻页,就有拆分的必要了.翻页往往会导致看着下面忘了上面.</p>
 <p>一个函数不要太长,一般每行不超过100个字符,行数不超过30行.</p>
 <p>if, else, while, case语句中代码应只有一行,该行要描述特定条件下要做的事情.</p>
-<a id="more"></a>
 <h2 id="只做一件事">只做一件事</h2><p>函数也应该遵守单一职责原则,即一个函数只做一件事情.比如一个检查登陆账户的函数:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkAccount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">boolean</span> isAccountAccess = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">if</span>(userName.isAccess() &amp;&amp; password.isAcces())&#123;</span><br><span class="line">        isAccountAccess = <span class="keyword">true</span>;</span><br><span class="line">        login();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        isAccountAccess = <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>函数名称为checkAccount,意为检查账户;而里面当账户可用是却请求登录.</p>
 <p>如果开发人员未仔细检查代码,只看函数名,很容易出现问题.检查账户的函数就应该只检查账户,而不应该在做其他事情.</p>
@@ -520,10 +506,7 @@
 <p>只要函数短小,偶尔出现的return, break或 continue语句就没坏处,甚至比单入单出原则更有表达力.</p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<h2 id="函数要短小">函数要短小</h2><p><strong>函数第一原则要短小,第二原则还是要短小</strong></p>
-<p>如果函数需要翻页,就有拆分的必要了.翻页往往会导致看着下面忘了上面.</p>
-<p>一个函数不要太长,一般每行不超过100个字符,行数不超过30行.</p>
-<p>if, else, while, case语句中代码应只有一行,该行要描述特定条件下要做的事情.</p>]]>
+    <![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Clean-Code-LOGO.png" alt="CleanCode"></p>]]>
     
     </summary>
     
@@ -936,14 +919,15 @@
     <link href="http://www.devwiki.net/2015/06/18/Agile-Develop-Delivering-What-Users-Want/"/>
     <id>http://www.devwiki.net/2015/06/18/Agile-Develop-Delivering-What-Users-Want/</id>
     <published>2015-06-18T12:42:39.000Z</published>
-    <updated>2015-06-24T04:48:56.451Z</updated>
-    <content type="html"><![CDATA[<h2 id="让用户做决定">让用户做决定</h2><p>在设计方面,做决定的时候必须有开发者参与.</p>
+    <updated>2015-07-01T10:57:03.623Z</updated>
+    <content type="html"><![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Agile-Develop.png" alt="敏捷开发之道"></p>
+<a id="more"></a>
+<h2 id="让用户做决定">让用户做决定</h2><p>在设计方面,做决定的时候必须有开发者参与.</p>
 <p>在一个项目中,开发者不应该做所有的决定,特别是业务方面的决定.</p>
 <blockquote>
 <p>决定什么不该决定.<br>让客户做决定.开发者,经理或者业务分析师不应该做业务方面的决定.</p>
 </blockquote>
 <p>业务应用需要开发者和业务负责人互相配合来开发.</p>
-<a id="more"></a>
 <p>平衡的艺术</p>
 <blockquote>
 <p>记录客户做出的决定.<br>不要用过于具体和没有价值的问题打扰繁忙的业务人员.<br>不要假设具体的问题不会影响业务人员的业务.<br>如果业务负责人回答”我不知道”,这也是一个称心如意的答案.</p>
@@ -1101,12 +1085,7 @@
 </ol>
 ]]></content>
     <summary type="html">
-    <![CDATA[<h2 id="让用户做决定">让用户做决定</h2><p>在设计方面,做决定的时候必须有开发者参与.</p>
-<p>在一个项目中,开发者不应该做所有的决定,特别是业务方面的决定.</p>
-<blockquote>
-<p>决定什么不该决定.<br>让客户做决定.开发者,经理或者业务分析师不应该做业务方面的决定.</p>
-</blockquote>
-<p>业务应用需要开发者和业务负责人互相配合来开发.</p>]]>
+    <![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Agile-Develop.png" alt="敏捷开发之道"></p>]]>
     
     </summary>
     
@@ -1123,8 +1102,10 @@
     <link href="http://www.devwiki.net/2015/06/18/Agile-Develop-Feeding-Agility/"/>
     <id>http://www.devwiki.net/2015/06/18/Agile-Develop-Feeding-Agility/</id>
     <published>2015-06-18T12:40:05.000Z</published>
-    <updated>2015-06-24T04:48:53.736Z</updated>
-    <content type="html"><![CDATA[<h2 id="跟踪变化">跟踪变化</h2><blockquote>
+    <updated>2015-07-01T10:57:26.683Z</updated>
+    <content type="html"><![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Agile-Develop.png" alt="敏捷开发之道"></p>
+<a id="more"></a>
+<h2 id="跟踪变化">跟踪变化</h2><blockquote>
 <p>你不需要精通所有技术,但需要清除知道行业的动向,从而规划你的项目和职业生涯.</p>
 </blockquote>
 <p>如何才能跟上技术变化的步伐?</p>
@@ -1137,7 +1118,6 @@
 <li>如饥似渴地阅读</li>
 </ol>
 </blockquote>
-<a id="more"></a>
 <p>平衡的艺术</p>
 <blockquote>
 <ol>
@@ -1213,19 +1193,7 @@
 </blockquote>
 ]]></content>
     <summary type="html">
-    <![CDATA[<h2 id="跟踪变化">跟踪变化</h2><blockquote>
-<p>你不需要精通所有技术,但需要清除知道行业的动向,从而规划你的项目和职业生涯.</p>
-</blockquote>
-<p>如何才能跟上技术变化的步伐?</p>
-<blockquote>
-<ol>
-<li>迭代和增量式的学习</li>
-<li>了解最新行情</li>
-<li>参加本地的用户组活动</li>
-<li>参加研讨会议</li>
-<li>如饥似渴地阅读</li>
-</ol>
-</blockquote>]]>
+    <![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Agile-Develop.png" alt="敏捷开发之道"></p>]]>
     
     </summary>
     
@@ -1242,8 +1210,10 @@
     <link href="http://www.devwiki.net/2015/06/18/Agile-Develop-Beginning-Agility/"/>
     <id>http://www.devwiki.net/2015/06/18/Agile-Develop-Beginning-Agility/</id>
     <published>2015-06-18T12:30:43.000Z</published>
-    <updated>2015-06-24T04:48:59.099Z</updated>
-    <content type="html"><![CDATA[<h2 id="做事">做事</h2><blockquote>
+    <updated>2015-07-01T10:56:43.271Z</updated>
+    <content type="html"><![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Agile-Develop.png" alt="敏捷开发之道"></p>
+<a id="more"></a>
+<h2 id="做事">做事</h2><blockquote>
 <p>指责不能修复bug—-Blame dosn’t fix bugs.</p>
 </blockquote>
 <ol>
@@ -1254,7 +1224,6 @@
 <li>如果你没犯过任何错误,说明你可能没有努力去工作.</li>
 <li>如果团队中的一个成员的行为一再伤害了团队,则他表现的很不职业.</li>
 </ol>
-<a id="more"></a>
 <h2 id="欲速则不达">欲速则不达</h2><blockquote>
 <p>防微杜渐—-Be ware of land mines.</p>
 </blockquote>
@@ -1292,17 +1261,7 @@
 </ol>
 ]]></content>
     <summary type="html">
-    <![CDATA[<h2 id="做事">做事</h2><blockquote>
-<p>指责不能修复bug—-Blame dosn’t fix bugs.</p>
-</blockquote>
-<ol>
-<li>把精力放在解决问题上,而不是抱怨和指责.</li>
-<li>过程符合标准并不意味着结果是正确的.</li>
-<li>在团队中,勇于承认自己不知道答案,这会让人放心.</li>
-<li>“这不是我的错”,这句话不对.”这都是你的错”,这句话更不对!</li>
-<li>如果你没犯过任何错误,说明你可能没有努力去工作.</li>
-<li>如果团队中的一个成员的行为一再伤害了团队,则他表现的很不职业.</li>
-</ol>]]>
+    <![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Agile-Develop.png" alt="敏捷开发之道"></p>]]>
     
     </summary>
     
@@ -1465,12 +1424,13 @@
     <link href="http://www.devwiki.net/2015/06/18/CleanCode-Note-Name/"/>
     <id>http://www.devwiki.net/2015/06/18/CleanCode-Note-Name/</id>
     <published>2015-06-18T04:45:17.000Z</published>
-    <updated>2015-06-24T04:48:26.555Z</updated>
-    <content type="html"><![CDATA[<h3 id="1-_命名应该和实际意义相符合">1. 命名应该和实际意义相符合</h3><p><strong>反例:</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> w;</span><br><span class="line"><span class="keyword">int</span> h;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fun</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> w*h;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+    <updated>2015-07-01T11:53:24.002Z</updated>
+    <content type="html"><![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Clean-Code-LOGO.png" alt="CleanCode"></p>
+<a id="more"></a>
+<h3 id="1-_命名应该和实际意义相符合">1. 命名应该和实际意义相符合</h3><p><strong>反例:</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> w;</span><br><span class="line"><span class="keyword">int</span> h;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fun</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> w*h;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>从代码中看不出任何信息,w和h是何含义?</p>
 <p>不如改为:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> width;</span><br><span class="line"><span class="keyword">int</span> height;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">calculateArea</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> width*height;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>这样没有注释也能看懂代码的意图.</p>
-<a id="more"></a>
 <hr>
 <h3 id="2-避免误导">2.避免误导</h3><p>如果仅仅给你一个accountList,很容易让人误以为是一个账户类表.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Account[] accountList;</span><br><span class="line"></span><br><span class="line"><span class="comment">//此处又很长的代码</span></span><br><span class="line"></span><br><span class="line">accountList = getAccountList(); <span class="comment">//你能辨别出accountList是什么吗?</span></span><br></pre></td></tr></table></figure></p>
 <p>为了避免误导,应该改为:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Account[] accountGroup;</span><br><span class="line"></span><br><span class="line"><span class="comment">//此处又很长的代码</span></span><br><span class="line"></span><br><span class="line">accountGroup = getAccountGroup(); <span class="comment">//你能辨别出accountGroup是什么吗?</span></span><br></pre></td></tr></table></figure></p>
@@ -1513,10 +1473,7 @@
 <h3 id="16-不要添加没用的语境-">16.不要添加没用的语境.</h3><p>就像前面的lxmcreateData()一样,前缀lxm是没有任何含义的.一定不要附带这样的没有意义的语境.</p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<h3 id="1-_命名应该和实际意义相符合">1. 命名应该和实际意义相符合</h3><p><strong>反例:</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> w;</span><br><span class="line"><span class="keyword">int</span> h;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fun</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> w*h;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>从代码中看不出任何信息,w和h是何含义?</p>
-<p>不如改为:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> width;</span><br><span class="line"><span class="keyword">int</span> height;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">calculateArea</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> width*height;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这样没有注释也能看懂代码的意图.</p>]]>
+    <![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Clean-Code-LOGO.png" alt="CleanCode"></p>]]>
     
     </summary>
     

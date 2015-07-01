@@ -211,11 +211,12 @@
       
 
       
-        <h2 id="函数要短小">函数要短小</h2><p><strong>函数第一原则要短小,第二原则还是要短小</strong></p>
+        <p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Clean-Code-LOGO.png" alt="CleanCode"></p>
+<a id="more"></a>
+<h2 id="函数要短小">函数要短小</h2><p><strong>函数第一原则要短小,第二原则还是要短小</strong></p>
 <p>如果函数需要翻页,就有拆分的必要了.翻页往往会导致看着下面忘了上面.</p>
 <p>一个函数不要太长,一般每行不超过100个字符,行数不超过30行.</p>
 <p>if, else, while, case语句中代码应只有一行,该行要描述特定条件下要做的事情.</p>
-<a id="more"></a>
 <h2 id="只做一件事">只做一件事</h2><p>函数也应该遵守单一职责原则,即一个函数只做一件事情.比如一个检查登陆账户的函数:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkAccount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">boolean</span> isAccountAccess = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">if</span>(userName.isAccess() &amp;&amp; password.isAcces())&#123;</span><br><span class="line">        isAccountAccess = <span class="keyword">true</span>;</span><br><span class="line">        login();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        isAccountAccess = <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>函数名称为checkAccount,意为检查账户;而里面当账户可用是却请求登录.</p>
 <p>如果开发人员未仔细检查代码,只看函数名,很容易出现问题.检查账户的函数就应该只检查账户,而不应该在做其他事情.</p>
