@@ -22,7 +22,7 @@
 
 
 
-  <meta name="keywords" content="CleanCode,代码整洁之道," />
+  <meta name="keywords" content="HTTP,网络基础," />
 
 
 
@@ -57,7 +57,7 @@
 
 
 
-  <title> CleanCode笔记---格式 // DevWiki's Blog </title>
+  <title> HTTP学习笔记---了解Web及网络基础 // DevWiki's Blog </title>
 </head>
 
 <body>
@@ -168,7 +168,7 @@
           
           
             
-              CleanCode笔记---格式
+              HTTP学习笔记---了解Web及网络基础
             
           
         </h1>
@@ -176,14 +176,14 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 2015-06-24
+          发表于 2015-07-02
         </span>
 
         
           <span class="post-category">
             &nbsp; | &nbsp; 分类于
             
-              <a href="/categories/CleanCode-代码整洁之道/">CleanCode-代码整洁之道</a>
+              <a href="/categories/HTTP学习笔记/">HTTP学习笔记</a>
 
               
               
@@ -196,8 +196,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/06/24/CleanCode-Note-Formatter/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/24/CleanCode-Note-Formatter/"></span>
+            <a href="/2015/07/02/Http-Web-Internet-Base/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/02/Http-Web-Internet-Base/"></span>
             </a>
           </span>
           
@@ -211,41 +211,106 @@
       
 
       
-        <p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Clean-Code-LOGO.png" alt="CleanCode"></p>
+        <p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Learn-HTTP-With-Image.png" alt="HTTP"></p>
 <a id="more"></a>
-<p>我本人算是一个有洁癖的程序猿,喜欢整齐格式的代码.</p>
-<h2 id="格式的意义">格式的意义</h2><p>让代码能工作不是编程的头等大事,因为代码首先是给人看的,其次才是给计算机看的.</p>
-<p>代码是团队沟通的桥梁,乱糟糟的代码是没有人想看的.</p>
-<h2 id="垂直格式">垂直格式</h2><p>一个Java类文件应该有多长?这是个问题.有人可能说100行,有人可能说1000行.</p>
-<p>但是人们倾向于短的代码文件,所以一个类文件应该越短越好,尽量不要超过1000行.</p>
-<h3 id="向报纸学习">向报纸学习</h3><p>代码排版应该像报纸一样.从上往下读,在顶部应该有个类似标题一样的东西,告诉读者大致内容是什么,再往下是章节,告诉读者代码有哪些部分组成,章节下面是细节,如果读者感兴趣可以了解这部分实现的细节.</p>
-<p>比如:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Button backButton;</span><br><span class="line"><span class="keyword">private</span> TextView titleView;</span><br><span class="line"><span class="keyword">private</span> Button settingButton;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    initUtil();</span><br><span class="line">    initUI();</span><br><span class="line">    initData();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initUtil</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initUI</span><span class="params">()</span></span>&#123;</span><br><span class="line">    initNavigationView();</span><br><span class="line">    </span><br><span class="line">    initContentView();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initNavigationView</span><span class="params">()</span></span>&#123;</span><br><span class="line">    backButton = (Button) findViewById(R.id.btn_back);</span><br><span class="line">    backButton.setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line">    titleView = (TextView) findViewById(R.id.tv_title);</span><br><span class="line">    settingButton = (Button) findViewById(R.id.btn_setting);</span><br><span class="line">    settingButton.setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initNavigationView</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//....</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initContentView</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initData</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h3 id="垂直方向上的分割">垂直方向上的分割</h3><p>几乎所有的代码都是从上往下读,从左往右读.每行展现一个表达式或者一个字句或者一个方法调用,每组代码行展示一条完整的思路.这些思路都是用空白行分隔开来.</p>
-<p>就像上面的initUI()方法:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initUI</span><span class="params">()</span></span>&#123;</span><br><span class="line">    initNavigationView();</span><br><span class="line">    </span><br><span class="line">    initContentView();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>空白行让我们很容易明白初始化界面的步骤:</p>
-<ol>
-<li>初始化导航栏组件</li>
-<li>初始化内容视图</li>
-</ol>
-<h3 id="垂直距离">垂直距离</h3><p>从上面的代码可以看出,关系密切的方法应该靠近;关系不密切的要分隔开来.这样很容易理解系统要做什么,怎么去做,不需要你去记住查找和记住代码碎片在哪里.</p>
-<p>如何做到靠近与分隔呢?</p>
-<ol>
-<li>方法内的局部变量声明放在方法的顶部.</li>
-<li>对象变量的声明放在类的顶部.</li>
-<li>相关的函数应靠近放置.</li>
-<li>概念相近的代码应该放在一起.</li>
-</ol>
-<h3 id="垂直顺序">垂直顺序</h3><p>一般而言,我们都想自上而下展示函数的依赖调用.也就是说被调用的函数在执行函数的下面.</p>
-<h2 id="横向格式">横向格式</h2><p>一般而言,一行代码不应多于100个字符.</p>
-<h3 id="水平方向上的分隔与靠近">水平方向上的分隔与靠近</h3><p>赋值语句的等号左右空一格,可以起到强调的作用.</p>
-<p>多参方法中,参数的逗号后空一格,表明参数的独立性.</p>
-<p>所以水平方向上也应遵循关系密切的靠近,关系交远的分隔.</p>
-<h3 id="水平对齐">水平对齐</h3><p><strong>不需要水平方向上的有意识的对齐</strong>,比如下面:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Button   backButton;</span><br><span class="line"><span class="keyword">private</span> TextView titleView;</span><br><span class="line"><span class="keyword">private</span> Button   settingButton;</span><br></pre></td></tr></table></figure></p>
-<p>如果出现名称更长的类型,所有的变量又得重新对齐.所以不推荐此种方式.</p>
-<h3 id="缩进">缩进</h3><p><strong>缩进表明的代码的影响范围!</strong></p>
-<p>缩进有利于代码的阅读,明确代码之间的等级关系和影响范围.</p>
-<p>切记:单行也要缩进.不要违反缩进规则.</p>
-<p>每个人都有不同的写代码的风格,个人建议按照Google的Java代码风格来编写代码.详情请点击此处查看:<br><a href="http://www.hawstein.com/posts/google-java-style.html" target="_blank" rel="external">Google Java编程风格</a></p>
+<h2 id="使用HTTP协议访问Web">使用HTTP协议访问Web</h2><p>当我们在浏览器的地址栏输入URL之后,信息会被送到某处,然后从某处返回相应的内容,最后显示在浏览器上.</p>
+<p><strong>客户端</strong></p>
+<blockquote>
+<p>像这种通过发送请求获取服务资源的Web浏览器等,被称为客户端</p>
+</blockquote>
+<p>Web使用一种名为HTTP的协议作为规范,完成从客户端到服务器端等一系列运作流程.</p>
+<h2 id="HTTP的诞生">HTTP的诞生</h2><h3 id="HTTP/0-9">HTTP/0.9</h3><p>HTTP问世,但那是的HTTP存在多处的模糊不清,并没有被作为正式的标准被建立.</p>
+<h3 id="HTTP/1-0">HTTP/1.0</h3><p>1996年5月HTTP正式被作为标准,版本命名为HTTP/1.0,并记载于RFC1945.</p>
+<blockquote>
+<ul>
+<li><a href="http://www.ietf.org/rfc/rfc1945.txt" target="_blank" rel="external">RFC1945 - Hypertext Transfer Protocol — HTTP/1.0</a></li>
+</ul>
+</blockquote>
+<h3 id="HTTP/1-1">HTTP/1.1</h3><p>1997年1月公布的HTTP/1.1是目前主流的HTTP协议版本.当初的标准是RFC2068,之后发布的修订版RFC2616是当前的最新版.</p>
+<blockquote>
+<ul>
+<li><a href="http://www.ietf.org/rfc/rfc2616.txt" target="_blank" rel="external">RFC2616 - Hypertext Transfer Protocol — HTTP/1.1</a></li>
+</ul>
+</blockquote>
+<h2 id="网络基础TCP/IP">网络基础TCP/IP</h2><p>通常我们使用的网络是在TCP/IP协议族的基础上运作的,而HTTP属于它内部的一个子集.</p>
+<h3 id="TCP/IP协议族">TCP/IP协议族</h3><p>计算机与网络设备要互相通信,双方就必须基于相同的方法.不同的硬件,操作系统之间的通信,所有的这一切都需要一种规则.而我们就把这种规则称为协议.</p>
+<p>广义上讲:TCP/IP是互联网相关的各类协议族的总称,包括:TCP、IP、ICME、IEEE802.3、FDDI、HTTP、PPPoE、DNS、UDP、SNMP、FTP等.</p>
+<p>侠义上讲:TCP/IP是指TCP和IP这两种协议.</p>
+<h3 id="TCP/IP的分层管理">TCP/IP的分层管理</h3><p>TCP/IP协议族按层次分为以下4层:</p>
+<blockquote>
+<ul>
+<li>应用层</li>
+<li>传输层</li>
+<li>网络层</li>
+<li>数据链路层</li>
+</ul>
+</blockquote>
+<p><strong>应用层</strong></p>
+<blockquote>
+<p>应用层决定了向用户提供应用服务时通信的活动.</p>
+</blockquote>
+<p>TCP/IP协议族内预存了各类通用的应用服务.比如:FTP(File Transfer Protocol,文件传输协议)、DNS(Domain Name System,域名系统)、HTTP(Hypertext Transfer Protocol,超文本传输协议)等;</p>
+<p><strong>传输层</strong></p>
+<blockquote>
+<p>传输层对应上层应用层,提供处于网络连接中的两台计算机之间的数据传输.</p>
+</blockquote>
+<p>在传输层有两个性质不同的协议:TCP(Transmission Control Protocol,传输控制协议)和UDP(User Data Protocol,用户数据报协议).</p>
+<p><strong>网络层(网络互联层)</strong></p>
+<blockquote>
+<p>网络层用来处理在网络上流动的数据包.</p>
+</blockquote>
+<p>数据包是网络传输的最小数据单位.该层规定了通过怎样的路径到达对方的计算机,并把数据包传给对方.</p>
+<p><strong>链路层(网络接口层)</strong></p>
+<blockquote>
+<p>链路层用来处理连接网络的硬件部分.</p>
+</blockquote>
+<p>硬件包括:控制操作系统,精简的设备驱动,NIC,及光纤等物理可见部分.</p>
+<h3 id="通信传输流">通信传输流</h3><p>利用TCP/IP协议族进行通信时,通信传输流入下图所示:</p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/HTTP-TCP-IP-Stream-01.png" alt="通信传输流"></p>
+<p>以HTTP举例说明,客户端在应用层发出一个想看某个Web页面的HTTP请求.</p>
+<p>发送端在曾与层之间传输数据时,每经过一层必定会被打上一个该层所属的首部信息.反之,接收端在层与层之间传输数据时,每经过一层必定会对应的首部消去.如下图所示:</p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/HTTP-TCP-IP-Stream-02.png" alt="通信传输流-详细"></p>
+<h2 id="与HTTP关系密切的协议:IP,TCP和DNS">与HTTP关系密切的协议:IP,TCP和DNS</h2><h3 id="负责传输的IP协议">负责传输的IP协议</h3><blockquote>
+<p>按层次分,IP网际协议位于网络层.</p>
+</blockquote>
+<p>IP协议的作用是把各种数据包传给对方.而要确保传到对方哪里,则需要满足各类条件,其中两个重要的条件是IP地址和MAC地址.</p>
+<p>IP地址指明了节点被分配到的地址,MAC地址是网卡所属的固定地址.IP地址可以变换,但MAC地址基本不可变.</p>
+<p>IP间的通信依赖MAC地址.在网络上,通信双方在同一局域网内的情况很少,通常是经过多态计算机和网络设备中转才能连接到对方,中转时会采用ARP协议根据通信方的IP地址反查出对应的MAC地址.</p>
+<p>中转过程如下:</p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/HTTP-IP-MAC-ARP.png" alt="通过IP中转"></p>
+<h3 id="确保可靠的TCP协议">确保可靠的TCP协议</h3><blockquote>
+<p>按层次分,TCP位于传输层,提供可靠的字节流服务.</p>
+</blockquote>
+<p>所谓的<strong>字节流服务</strong>是指,为了方便传输,将大块数据分割成以报文段为单位的数据包进行管理.</p>
+<p><strong>可靠的传输服务</strong>是指,能够把数据准确可靠地传给对方.</p>
+<p>为了确保数据能准确地到达目标,TCP采用三次握手的策略,其过程如下图所示:</p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/HTTP-TCP-Three-Way-Handshaking.png" alt="TCP三次握手"></p>
+<h3 id="负责域名解析的DNS服务">负责域名解析的DNS服务</h3><p>DNS服务和HTTP协议一样位于应用层的协议.</p>
+<blockquote>
+<p>DNS提供域名到IP之间的解析服务.</p>
+</blockquote>
+<p>解析过程如下图:</p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/HTTP-DNS-IP.png" alt="DNS解析"></p>
+<h2 id="各种协议与HTTP协议的关系">各种协议与HTTP协议的关系</h2><p>各种协议与HTTP的关系如下图所示:</p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/HTTP-Other-Relation.png" alt="协议关系图"></p>
+<h2 id="URI和URL">URI和URL</h2><h3 id="统一资源标识符">统一资源标识符</h3><p>URI是Uniform Resource Identifier的缩写,RFC2396的规定如下:</p>
+<p><strong>Uniform</strong></p>
+<blockquote>
+<p>规定统一的格式可方便处理多种不同类型的资源,而不用根据上下文环境来十倍资源指定的访问方式.</p>
+</blockquote>
+<p><strong>Resource</strong></p>
+<blockquote>
+<p>资源的定义是可标识的任何东西.</p>
+</blockquote>
+<p><strong>Identifier</strong></p>
+<blockquote>
+<p>表示可标示的对象.</p>
+</blockquote>
+<p>综上可知:URI就是有某个协议方案表示的资源定位标识符.协议方案是指访问资源使用的协议类型名称.</p>
+<p>标准的URI协议方案有30z种左右,其统一的资源标识符通用语法如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ftp://ftp.is.co.za/rfc/rfc1808.txt&#10;http://www.ietf.org/rfc/rfc2396.txt&#10;ldap://[2001:db8::7]/c=GB?objectClass?one&#10;mailto:John.Doe@example.com&#10;news:comp.infosystems.www.servers.unix&#10;tel:+1-816-555-1212&#10;telnet://192.0.2.16:80/&#10;urn:oasis:names:specification:docbook:dtd:xml:4.1.2</span><br></pre></td></tr></table></figure>
+<h3 id="URI格式">URI格式</h3><p>URI的格式如下:</p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/HTTP-URI-Format.png" alt="URI格式"></p>
 
       
     </div>
@@ -254,9 +319,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/CleanCode/"> #CleanCode </a>
+            <a href="/tags/HTTP/"> #HTTP </a>
           
-            <a href="/tags/代码整洁之道/"> #代码整洁之道 </a>
+            <a href="/tags/网络基础/"> #网络基础 </a>
           
         </div>
       
@@ -265,13 +330,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/06/25/Qiniu-Upload-Tool/">七牛简易上传工具的制作</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/06/24/Android-New-Log/">Android调试Log二次包装</a>
+              <a href="/2015/07/01/Agile-Develop-Agile-Feedback/">敏捷反馈---高效程序员的45个习惯读书笔记</a>
             
           </div>
         </div>
@@ -314,8 +377,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2015/06/24/CleanCode-Note-Formatter/"
-               data-title="CleanCode笔记---格式" data-url="http://www.devwiki.net/2015/06/24/CleanCode-Note-Formatter/">
+          <div class="ds-thread" data-thread-key="2015/07/02/Http-Web-Internet-Base/"
+               data-title="HTTP学习笔记---了解Web及网络基础" data-url="http://www.devwiki.net/2015/07/02/Http-Web-Internet-Base/">
           </div>
         
       </div>
@@ -427,7 +490,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#格式的意义"><span class="nav-number">1.</span> <span class="nav-text">格式的意义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#垂直格式"><span class="nav-number">2.</span> <span class="nav-text">垂直格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#向报纸学习"><span class="nav-number">2.1.</span> <span class="nav-text">向报纸学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#垂直方向上的分割"><span class="nav-number">2.2.</span> <span class="nav-text">垂直方向上的分割</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#垂直距离"><span class="nav-number">2.3.</span> <span class="nav-text">垂直距离</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#垂直顺序"><span class="nav-number">2.4.</span> <span class="nav-text">垂直顺序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#横向格式"><span class="nav-number">3.</span> <span class="nav-text">横向格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#水平方向上的分隔与靠近"><span class="nav-number">3.1.</span> <span class="nav-text">水平方向上的分隔与靠近</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#水平对齐"><span class="nav-number">3.2.</span> <span class="nav-text">水平对齐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缩进"><span class="nav-number">3.3.</span> <span class="nav-text">缩进</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用HTTP协议访问Web"><span class="nav-number">1.</span> <span class="nav-text">使用HTTP协议访问Web</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP的诞生"><span class="nav-number">2.</span> <span class="nav-text">HTTP的诞生</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP/0-9"><span class="nav-number">2.1.</span> <span class="nav-text">HTTP/0.9</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP/1-0"><span class="nav-number">2.2.</span> <span class="nav-text">HTTP/1.0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP/1-1"><span class="nav-number">2.3.</span> <span class="nav-text">HTTP/1.1</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络基础TCP/IP"><span class="nav-number">3.</span> <span class="nav-text">网络基础TCP/IP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP/IP协议族"><span class="nav-number">3.1.</span> <span class="nav-text">TCP/IP协议族</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP/IP的分层管理"><span class="nav-number">3.2.</span> <span class="nav-text">TCP/IP的分层管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通信传输流"><span class="nav-number">3.3.</span> <span class="nav-text">通信传输流</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#与HTTP关系密切的协议:IP,TCP和DNS"><span class="nav-number">4.</span> <span class="nav-text">与HTTP关系密切的协议:IP,TCP和DNS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#负责传输的IP协议"><span class="nav-number">4.1.</span> <span class="nav-text">负责传输的IP协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#确保可靠的TCP协议"><span class="nav-number">4.2.</span> <span class="nav-text">确保可靠的TCP协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#负责域名解析的DNS服务"><span class="nav-number">4.3.</span> <span class="nav-text">负责域名解析的DNS服务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#各种协议与HTTP协议的关系"><span class="nav-number">5.</span> <span class="nav-text">各种协议与HTTP协议的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URI和URL"><span class="nav-number">6.</span> <span class="nav-text">URI和URL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#统一资源标识符"><span class="nav-number">6.1.</span> <span class="nav-text">统一资源标识符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URI格式"><span class="nav-number">6.2.</span> <span class="nav-text">URI格式</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
