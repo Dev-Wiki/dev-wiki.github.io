@@ -200,9 +200,10 @@
       
 
       
-        <p>在Android开发过程中经常使用Log打印一些调试的信息,比如:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Log.d(TAG, <span class="string">"xxxxx"</span>);</span><br></pre></td></tr></table></figure></p>
-<p>但是,每一个类都要定义一个TAG,一般TAG等于类名本身,比较繁琐.更重要的是,每次还要带上这个参数.如果打印的信息比较多或者一个类的代码数量比较长时,不太方便查找Log的位置.那么有没有一种方法,解决上面的问题呢?</p>
+        <p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Android-New-Log-Logo.png" alt=""></p>
 <a id="more"></a>
+<p>在Android开发过程中经常使用Log打印一些调试的信息,比如:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Log.d(TAG, <span class="string">"xxxxx"</span>);</span><br></pre></td></tr></table></figure></p>
+<p>但是,每一个类都要定义一个TAG,一般TAG等于类名本身,比较繁琐.更重要的是,每次还要带上这个参数.如果打印的信息比较多或者一个类的代码数量比较长时,不太方便查找Log的位置.那么有没有一种方法,解决上面的问题呢?</p>
 <h2 id="问题分析">问题分析</h2><blockquote>
 <ol>
 <li>每个类的TAG等于类名,那么能不能自己去寻找类名呢?</li>

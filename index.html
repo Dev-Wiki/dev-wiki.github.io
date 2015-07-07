@@ -599,8 +599,7 @@
 
       
         
-          <p>在Android开发过程中经常使用Log打印一些调试的信息,比如:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Log.d(TAG, <span class="string">"xxxxx"</span>);</span><br></pre></td></tr></table></figure></p>
-<p>但是,每一个类都要定义一个TAG,一般TAG等于类名本身,比较繁琐.更重要的是,每次还要带上这个参数.如果打印的信息比较多或者一个类的代码数量比较长时,不太方便查找Log的位置.那么有没有一种方法,解决上面的问题呢?</p>
+          <p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Android-New-Log-Logo.png" alt=""></p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/06/24/Android-New-Log/#more">
               阅读全文 &raquo;
@@ -913,13 +912,7 @@
 
       
         
-          <p>最近在做一个聊天的模块,聊天的模块很简单:</p>
-<blockquote>
-<p>录音-上传-接收-播放</p>
-</blockquote>
-<h2 id="录音">录音</h2><p>录音部分可以采用MediaRecord和AudioRecord两个类进行录音.但是各有优缺点.</p>
-<p>MediaRecord已经封装了很多方法,方便使用.<br>AudioRecord能获取录音的原生数据,以便对录音二次加工.</p>
-<p>在录音过程我采用的是AudioRecord.但是AudioRecord录音数据是PCM格式,数据占用存储空间很大.必须压缩后才能传输.项目中的压缩是项目其他成员写的一个so库进行压缩的,有点不太方便.在网上翻阅了下,其实Android系统内部已经携带有压缩的库文件了.</p>
+          <p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Android-Pcm2Amr-Logo.png" alt=""></p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/06/23/Android-Pcm2Amr/#more">
               阅读全文 &raquo;
