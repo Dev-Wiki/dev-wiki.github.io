@@ -5,7 +5,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.devwiki.net//"/>
-  <updated>2015-07-02T12:47:25.874Z</updated>
+  <updated>2015-07-07T16:28:00.152Z</updated>
   <id>http://www.devwiki.net//</id>
   
   <author>
@@ -16,11 +16,91 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[CleanCode笔记---对象和数据结构]]></title>
+    <link href="http://www.devwiki.net/2015/07/08/CleanCode-Note-Object-Data/"/>
+    <id>http://www.devwiki.net/2015/07/08/CleanCode-Note-Object-Data/</id>
+    <published>2015-07-07T16:24:15.000Z</published>
+    <updated>2015-07-07T16:28:00.152Z</updated>
+    <content type="html"><![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Clean-Code-LOGO.png" alt="CleanCode"></p>
+<a id="more"></a>
+<h2 id="数据抽象">数据抽象</h2><p>先看两段代码,都是表示笛卡尔坐标系的一个点.</p>
+<p>代码一:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Point</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">double</span> x;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">double</span> y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>代码二:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Point</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">getX</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">getY</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setCartesian</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">double</span> y)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">getR</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">getTheta</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setPolar</span><span class="params">(<span class="keyword">double</span> r, <span class="keyword">double</span> theta)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>你觉得哪个代码更好些?是不是代码二?</p>
+<blockquote>
+<p><strong>首先,代码一没有封装!</strong></p>
+</blockquote>
+<p>代码一中的x和y是完全暴露的,任何都可以直接访问和设置新的值.<br>代码二中加了一层封装,你只能通过get方法获取坐标值和set方法设置原子坐标值.</p>
+<blockquote>
+<p><strong>其次,具象与抽象</strong></p>
+</blockquote>
+<p>代码一是具象的一个点,只表示在直角坐标系的一个点.<br>代码二是抽象的一个点,可以表示直角坐标系一个点,也可表示极坐标系中的一个点.</p>
+<blockquote>
+<p><strong>但是,两个都明确了一种数据结构</strong></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>隐藏实现并非是在变量之上添加一个函数层那么简单,隐藏关乎抽象.</p>
+</blockquote>
+<p>比如,我们现在需要知道手机还有多少电量.</p>
+<p>代码三:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Battery</span></span>&#123;</span><br><span class="line">    <span class="comment">//获取以mAh为单位的总电量,</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getTotalInmAh</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="comment">//获取以mAh为单位的剩余电量</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getRemainingInmAh</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>代码四<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Battery</span></span>&#123;</span><br><span class="line">    <span class="comment">//获取剩余电量的百分比</span></span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">getRemainingPrecent</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>以上两端代码,代码四最好.我们不愿意透露更多的细节,更愿意以抽象的形态表述数据.这并不只是用接口和赋值器取值器就能做好的事情.<strong>要以更好的方式呈现对象所包含的数据.</strong></p>
+<h2 id="数据,对象的反对称性">数据,对象的反对称性</h2><p>从学java开始,书上就告诉我们java是面向对象语言.那么什么是面向对象什么是面向过程?</p>
+<p>我们来看看下面的代码:</p>
+<p>我们有正方形,长方形和圆形三种几何图形,最后要求出其面积.</p>
+<p>代码一:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Square</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> Point topLeft;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">double</span> side;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> Point topLeft;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">double</span> width;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">double</span> height;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Circle</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> Point center;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">double</span> radius;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Geometry</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">double</span> PI = <span class="number">3.14159265358</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">area</span><span class="params">(Object shape)</span> <span class="keyword">throws</span> NoSuchShapeException</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(shape <span class="keyword">instanceof</span> Square)&#123;</span><br><span class="line">            Square square = (Square)shape;</span><br><span class="line">            <span class="keyword">return</span> square.side * square.side;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (shape <span class="keyword">instanceof</span> Rectangle)&#123;</span><br><span class="line">            Rectangle rec = (Rectangle)shape;</span><br><span class="line">            <span class="keyword">return</span> rec.width * rec.hight;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (shape <span class="keyword">instanceof</span> Circle)&#123;</span><br><span class="line">            Circle cir = (Circle)shape;</span><br><span class="line">            <span class="keyword">return</span> PI * cir.radius * cir.radius;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> NoSuchShapeException();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>代码二<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Shape</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">area</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Square</span> <span class="keyword">implements</span> <span class="title">Shape</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Point topLeft;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">double</span> side;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">area</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> side*side;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span> <span class="keyword">implements</span> <span class="title">Shape</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Point topLeft;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">double</span> width;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">double</span> height;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">area</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> width * height;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Circle</span> <span class="keyword">implements</span> <span class="title">Shape</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">double</span> PI = <span class="number">3.14159265358</span>; </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> Point topLeft;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">double</span> radius;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">double</span> area&#123;</span><br><span class="line">        <span class="keyword">return</span> PI * radius * radius;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>从上面两端代码中我们可以看出,代码一每一个形状只负责存储数据,不具备行为.具体的计算行为放在了Geometry类中.每一个形状都是如何,形状之间没有任何联系.</p>
+<p>而代码二中的三个类同属于集合图形Shape类,每种图形都有各自的计算面积的方法.这才是符合人类的世界观.</p>
+<p>但是!!!<br>如果在代码一中添加计算周长的函数,每个形状都不会受到任何影响.而代码二中添加计算周长的函数,每一个函数都要有所变动.<br>如果在代码一种添加一个新的形状,既有的形状(数据结构)不会收到影响,但是计算的函数会收到影响.而在代码二中只需要添加一个新类而已,既有的类不会有任何影响.</p>
+<blockquote>
+<p>过程式的代码便于在不改动既有代码数据结构的前提下添加新的函数,而面向对象式的代码便于在不改动既有 函数的前提下添加新类.<br>反过来讲也说的通:过程式的代码难以添加新的数据结构,因为必须修改所有的函数.而面向对象代码难以添加新函数,因为必须修改所有的类.</p>
+</blockquote>
+<p>所以:</p>
+<blockquote>
+<p>面向对象较难的事情,对于过程式代码却叫较容易,反之亦然.</p>
+</blockquote>
+<p>这就是数据和对象的反对称性.</p>
+<h2 id="得墨忒耳定律">得墨忒耳定律</h2><p>著名的得墨忒耳定律认为:<strong>模块不应该了解它所操作对象的内部的情形.</strong></p>
+<p>即类C的方法f只应该调用以下对象的方法:</p>
+<ul>
+<li>C</li>
+<li>由f创建的对象</li>
+<li>作为参数传给f的对象</li>
+<li>有C的实体变量持有的对象</li>
+</ul>
+<blockquote>
+<p>方法不应该调用任何函数返回的对象的方法.换言之,只跟朋友交谈,不与陌生人谈话.</p>
+</blockquote>
+<p>以下代码明显违反了得墨忒耳定律:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> String outputDir = ctxt.getOptions().getScartchDir().getAbsolutePath();</span><br></pre></td></tr></table></figure></p>
+<p>这类代码常被作为火车失事,因为它就像一列火车,一旦出了问题,不知问题出在哪.最好做类如下的切分:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Options opts = ctxt.getOptions();</span><br><span class="line">File scratchDir = opts.getScratchDir();</span><br><span class="line"><span class="keyword">final</span> String outputDir = scratchDir.getAbsolutePath();</span><br></pre></td></tr></table></figure></p>
+<p>以上代码是否违反得墨忒耳定律呢?<br>模块知道ctxt对象包含有多个选项,每个选项都有一个临时目录,而每个临时目录都有一个绝对路径.对于一个函数来讲,这些知识真是太丰富了.<br>这些代码是否违反得墨忒耳定律,就要看ctxt,Options,ScratchDir是对象还是数据结构.如果是对象,就违反了定律.如果是数据结构就没有违反.</p>
+<p>如果是数据结构,就应该这样写代码:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> String outputDir = ctxt.options.scratchDir.absolutePath;</span><br></pre></td></tr></table></figure></p>
+<h2 id="数据传送对象">数据传送对象</h2><p>最精简的数据结构是一个只有公共变量,没有函数的类.这种数据结构有时被称为数据传送对象,或DTO(Data Transfer Objects).DTO是非常有用的结构,尤其是在与数据库通信,或解析套接字传递信息之类的场景之中.在应用程序代码里一系列将原始数据转换为数据的翻译过程中,他们往往是排头兵.</p>
+<p>比如我们也曾写过这样的类:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Address</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String street;</span><br><span class="line">    <span class="keyword">private</span> String city;</span><br><span class="line">    <span class="keyword">private</span> String state;</span><br><span class="line">    <span class="keyword">private</span> String province;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Address</span><span class="params">(String street, String city, String state, String province)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.street = street;</span><br><span class="line">        <span class="keyword">this</span>.city = city;</span><br><span class="line">        <span class="keyword">this</span>.state = state;</span><br><span class="line">        <span class="keyword">this</span>.province = province;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getStreet</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> stree;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getCity</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> city;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getState</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> state;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getProvince</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> province;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>为什么要写这些get方法???为什么不直接将这些变量置为公共的呢?</p>
+<h2 id="小结">小结</h2><p>对象暴露行为,封装数据.便于添加新对象类型而无需修改既有的行为,同时也难以在既有的对象中添加新的行为.<br>数据结构暴露数据,没有明显的行为,便于向既有的数据结构添加新的行为,同时也难以向既有的函数中添加新的数据结构.</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Clean-Code-LOGO.png" alt="CleanCode"></p>]]>
+    
+    </summary>
+    
+      <category term="CleanCode" scheme="http://www.devwiki.net/tags/CleanCode/"/>
+    
+      <category term="代码整洁之道" scheme="http://www.devwiki.net/tags/%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93/"/>
+    
+      <category term="CleanCode-代码整洁之道" scheme="http://www.devwiki.net/categories/CleanCode-%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[HTTP学习笔记---了解Web及网络基础]]></title>
     <link href="http://www.devwiki.net/2015/07/02/Http-Web-Internet-Base/"/>
     <id>http://www.devwiki.net/2015/07/02/Http-Web-Internet-Base/</id>
     <published>2015-07-02T12:47:25.000Z</published>
-    <updated>2015-07-02T12:47:25.874Z</updated>
+    <updated>2015-07-07T16:23:43.314Z</updated>
     <content type="html"><![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Learn-HTTP-With-Image.png" alt="HTTP"></p>
 <a id="more"></a>
 <h2 id="使用HTTP协议访问Web">使用HTTP协议访问Web</h2><p>当我们在浏览器的地址栏输入URL之后,信息会被送到某处,然后从某处返回相应的内容,最后显示在浏览器上.</p>
@@ -140,7 +220,7 @@
     <link href="http://www.devwiki.net/2015/07/01/Agile-Develop-Agile-Feedback/"/>
     <id>http://www.devwiki.net/2015/07/01/Agile-Develop-Agile-Feedback/</id>
     <published>2015-07-01T00:01:12.000Z</published>
-    <updated>2015-07-01T11:52:58.090Z</updated>
+    <updated>2015-07-07T16:23:43.268Z</updated>
     <content type="html"><![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Agile-Develop.png" alt="敏捷开发之道"></p>
 <a id="more"></a>
 <h2 id="守护天使">守护天使</h2><blockquote>
@@ -229,7 +309,7 @@
     <link href="http://www.devwiki.net/2015/06/25/Qiniu-Upload-Tool/"/>
     <id>http://www.devwiki.net/2015/06/25/Qiniu-Upload-Tool/</id>
     <published>2015-06-25T10:24:47.000Z</published>
-    <updated>2015-07-01T11:53:14.334Z</updated>
+    <updated>2015-07-07T16:23:43.314Z</updated>
     <content type="html"><![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/qiniu-logo.png" alt="七牛LOGO"></p>
 <a id="more"></a>
 <p>最近刚弄博客,存放图片是个问题.想到网公司项目用的是七牛云存储,就想为何不把自己的图片也存到七牛云存储呢?</p>
@@ -305,7 +385,7 @@
     <link href="http://www.devwiki.net/2015/06/24/CleanCode-Note-Formatter/"/>
     <id>http://www.devwiki.net/2015/06/24/CleanCode-Note-Formatter/</id>
     <published>2015-06-24T15:46:05.000Z</published>
-    <updated>2015-07-01T11:25:52.315Z</updated>
+    <updated>2015-07-07T16:23:43.299Z</updated>
     <content type="html"><![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Clean-Code-LOGO.png" alt="CleanCode"></p>
 <a id="more"></a>
 <p>我本人算是一个有洁癖的程序猿,喜欢整齐格式的代码.</p>
@@ -360,7 +440,7 @@
     <link href="http://www.devwiki.net/2015/06/24/Android-New-Log/"/>
     <id>http://www.devwiki.net/2015/06/24/Android-New-Log/</id>
     <published>2015-06-24T11:16:22.000Z</published>
-    <updated>2015-06-25T00:32:50.548Z</updated>
+    <updated>2015-06-28T00:13:15.196Z</updated>
     <content type="html"><![CDATA[<p>在Android开发过程中经常使用Log打印一些调试的信息,比如:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Log.d(TAG, <span class="string">"xxxxx"</span>);</span><br></pre></td></tr></table></figure></p>
 <p>但是,每一个类都要定义一个TAG,一般TAG等于类名本身,比较繁琐.更重要的是,每次还要带上这个参数.如果打印的信息比较多或者一个类的代码数量比较长时,不太方便查找Log的位置.那么有没有一种方法,解决上面的问题呢?</p>
 <a id="more"></a>
@@ -402,7 +482,7 @@
     <link href="http://www.devwiki.net/2015/06/24/Http-Status-Code/"/>
     <id>http://www.devwiki.net/2015/06/24/Http-Status-Code/</id>
     <published>2015-06-24T11:06:15.000Z</published>
-    <updated>2015-07-02T12:47:05.417Z</updated>
+    <updated>2015-07-07T16:23:43.314Z</updated>
     <content type="html"><![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Learn-HTTP-With-Image.png" alt="HTTP"></p>
 <a id="more"></a>
 <h2 id="定义">定义</h2><blockquote>
@@ -498,7 +578,7 @@
     <link href="http://www.devwiki.net/2015/06/24/CleanCode-Note-Comments/"/>
     <id>http://www.devwiki.net/2015/06/24/CleanCode-Note-Comments/</id>
     <published>2015-06-24T01:02:25.000Z</published>
-    <updated>2015-07-01T11:25:40.068Z</updated>
+    <updated>2015-07-07T16:23:43.283Z</updated>
     <content type="html"><![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Clean-Code-LOGO.png" alt="CleanCode"></p>
 <a id="more"></a>
 <blockquote>
@@ -561,7 +641,7 @@
     <link href="http://www.devwiki.net/2015/06/24/CleanCode-Note-Function/"/>
     <id>http://www.devwiki.net/2015/06/24/CleanCode-Note-Function/</id>
     <published>2015-06-24T00:47:35.000Z</published>
-    <updated>2015-07-01T11:26:02.323Z</updated>
+    <updated>2015-07-07T16:23:43.299Z</updated>
     <content type="html"><![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Clean-Code-LOGO.png" alt="CleanCode"></p>
 <a id="more"></a>
 <h2 id="函数要短小">函数要短小</h2><p><strong>函数第一原则要短小,第二原则还是要短小</strong></p>
@@ -638,7 +718,7 @@
     <link href="http://www.devwiki.net/2015/06/23/Android-Pcm2Amr/"/>
     <id>http://www.devwiki.net/2015/06/23/Android-Pcm2Amr/</id>
     <published>2015-06-23T09:45:09.000Z</published>
-    <updated>2015-06-24T04:48:50.705Z</updated>
+    <updated>2015-06-24T14:11:45.713Z</updated>
     <content type="html"><![CDATA[<p>最近在做一个聊天的模块,聊天的模块很简单:</p>
 <blockquote>
 <p>录音-上传-接收-播放</p>
@@ -685,7 +765,7 @@
     <link href="http://www.devwiki.net/2015/06/18/Android-View-Custom-Navigation/"/>
     <id>http://www.devwiki.net/2015/06/18/Android-View-Custom-Navigation/</id>
     <published>2015-06-18T13:23:55.000Z</published>
-    <updated>2015-06-25T13:30:22.046Z</updated>
+    <updated>2015-06-28T00:13:15.196Z</updated>
     <content type="html"><![CDATA[<p>最近在做项目的过程中,发现项目中好多界面的导航栏都很类似或者一样,但是每次都要重复写同样的代码,觉得很不爽,所以就简单地自定义了一下导航栏控件.<br>先上图:<br><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Android-View-Custom-Navigation-01.png" alt="导航栏"></p>
 <p>导航栏包括:</p>
 <ul>
@@ -728,7 +808,7 @@
     <link href="http://www.devwiki.net/2015/06/18/Java-Design-Pattern-Principle/"/>
     <id>http://www.devwiki.net/2015/06/18/Java-Design-Pattern-Principle/</id>
     <published>2015-06-18T13:16:42.000Z</published>
-    <updated>2015-06-24T04:48:19.259Z</updated>
+    <updated>2015-06-24T14:11:45.744Z</updated>
     <content type="html"><![CDATA[<p>最近看了Head First 设计模式一书,开篇的故事讲述了设计模式的原则:<strong>封装变化</strong>与<strong>面向接口编程</strong>.</p>
 <h2 id="基本需求">基本需求</h2><p>故事从编写一个模拟鸭子的游戏开始,游戏要求:</p>
 <blockquote>
@@ -808,7 +888,7 @@
     <link href="http://www.devwiki.net/2015/06/18/JDK-Source-String/"/>
     <id>http://www.devwiki.net/2015/06/18/JDK-Source-String/</id>
     <published>2015-06-18T12:55:49.000Z</published>
-    <updated>2015-06-24T04:48:11.642Z</updated>
+    <updated>2015-06-24T14:11:45.744Z</updated>
     <content type="html"><![CDATA[<p>String类是最常用的类之一了.</p>
 <h2 id="定义">定义</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">String</span> <span class="keyword">extends</span> <span class="title">Object</span> <span class="keyword">implements</span> <span class="title">Serializable</span>,</span><br><span class="line">	<span class="title">Comparable</span>&lt;<span class="title">String</span>&gt;, <span class="title">CharSequence</span></span></span><br></pre></td></tr></table></figure>
 <h3 id="关键字">关键字</h3><h4 id="public">public</h4><p>被public修饰的类为全局可访问的类</p>
@@ -896,7 +976,7 @@
     <link href="http://www.devwiki.net/2015/06/18/Android-View-Click-Event/"/>
     <id>http://www.devwiki.net/2015/06/18/Android-View-Click-Event/</id>
     <published>2015-06-18T12:43:48.000Z</published>
-    <updated>2015-06-25T13:28:14.703Z</updated>
+    <updated>2015-06-28T00:13:15.196Z</updated>
     <content type="html"><![CDATA[<h2 id="概述">概述</h2><p>我们都知道一个View有以下三个事件监听方法:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setOnClickListener();</span><br><span class="line">setOnLongClickListener();</span><br><span class="line">setOnTouchListener();</span><br></pre></td></tr></table></figure></p>
 <p>每一个方法代表着用户不同的操作,分别为:短按,长按和触摸操作.</p>
 <a id="more"></a>
@@ -1034,7 +1114,7 @@
     <link href="http://www.devwiki.net/2015/06/18/Agile-Develop-Delivering-What-Users-Want/"/>
     <id>http://www.devwiki.net/2015/06/18/Agile-Develop-Delivering-What-Users-Want/</id>
     <published>2015-06-18T12:42:39.000Z</published>
-    <updated>2015-07-01T10:57:03.623Z</updated>
+    <updated>2015-07-07T16:23:43.283Z</updated>
     <content type="html"><![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Agile-Develop.png" alt="敏捷开发之道"></p>
 <a id="more"></a>
 <h2 id="让用户做决定">让用户做决定</h2><p>在设计方面,做决定的时候必须有开发者参与.</p>
@@ -1217,7 +1297,7 @@
     <link href="http://www.devwiki.net/2015/06/18/Agile-Develop-Feeding-Agility/"/>
     <id>http://www.devwiki.net/2015/06/18/Agile-Develop-Feeding-Agility/</id>
     <published>2015-06-18T12:40:05.000Z</published>
-    <updated>2015-07-01T10:57:26.683Z</updated>
+    <updated>2015-07-07T16:23:43.283Z</updated>
     <content type="html"><![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Agile-Develop.png" alt="敏捷开发之道"></p>
 <a id="more"></a>
 <h2 id="跟踪变化">跟踪变化</h2><blockquote>
@@ -1325,7 +1405,7 @@
     <link href="http://www.devwiki.net/2015/06/18/Agile-Develop-Beginning-Agility/"/>
     <id>http://www.devwiki.net/2015/06/18/Agile-Develop-Beginning-Agility/</id>
     <published>2015-06-18T12:30:43.000Z</published>
-    <updated>2015-07-01T10:56:43.271Z</updated>
+    <updated>2015-07-07T16:23:43.268Z</updated>
     <content type="html"><![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Agile-Develop.png" alt="敏捷开发之道"></p>
 <a id="more"></a>
 <h2 id="做事">做事</h2><blockquote>
@@ -1393,7 +1473,7 @@
     <link href="http://www.devwiki.net/2015/06/18/AndroidStudio-export-aar/"/>
     <id>http://www.devwiki.net/2015/06/18/AndroidStudio-export-aar/</id>
     <published>2015-06-18T11:31:08.000Z</published>
-    <updated>2015-06-24T04:48:47.363Z</updated>
+    <updated>2015-06-24T14:11:45.728Z</updated>
     <content type="html"><![CDATA[<p>最近在看一个项目,里面将一个库项目打包成了aar文件.在项目中引用时如下:</p>
 <p>项目目录如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Demo&#10;    |-app&#10;    |-IMDemo&#10;    |-imkit</span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
@@ -1418,7 +1498,7 @@
     <link href="http://www.devwiki.net/2015/06/18/Java-Design-Pattern-Observer/"/>
     <id>http://www.devwiki.net/2015/06/18/Java-Design-Pattern-Observer/</id>
     <published>2015-06-18T11:27:08.000Z</published>
-    <updated>2015-06-25T13:20:40.776Z</updated>
+    <updated>2015-06-28T00:13:15.211Z</updated>
     <content type="html"><![CDATA[<h2 id="故事概要">故事概要</h2><h3 id="概要">概要</h3><p>故事要从一个业务需求开始:</p>
 <blockquote>
 <p>天气监测站目前可以监测到气温,气压,湿度三种指标,有一个WeatherData类,当前面的三个数据发生变化时,就会调用WeatherData类的setWeatherData()方法,改变天气数据.</p>
@@ -1539,7 +1619,7 @@
     <link href="http://www.devwiki.net/2015/06/18/CleanCode-Note-Name/"/>
     <id>http://www.devwiki.net/2015/06/18/CleanCode-Note-Name/</id>
     <published>2015-06-18T04:45:17.000Z</published>
-    <updated>2015-07-01T11:53:24.002Z</updated>
+    <updated>2015-07-07T16:23:43.299Z</updated>
     <content type="html"><![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Clean-Code-LOGO.png" alt="CleanCode"></p>
 <a id="more"></a>
 <h3 id="1-_命名应该和实际意义相符合">1. 命名应该和实际意义相符合</h3><p><strong>反例:</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> w;</span><br><span class="line"><span class="keyword">int</span> h;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fun</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> w*h;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
