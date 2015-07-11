@@ -101,7 +101,7 @@
   
 
   
-    <ul id="menu" class="menu ">
+    <ul id="menu" class="menu menu-left">
       
         
         <li class="menu-item menu-item-home">
@@ -147,6 +147,24 @@
   
 
   
+    <div class="site-search">
+      
+  
+<form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'NddmkrLTpaggCULS9VLU','2.0.0');
+</script>
+
+<div class="site-search-toggle"></div>
+    </div>
+  
 </div>
 
 
@@ -158,6 +176,84 @@
         <div id="content" class="content">
           
   <div id="posts" class="posts-expand">
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2015/07/08/Android-Best-Practices/">
+                Android 开发最佳实践
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-07-08
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/07/08/Android-Best-Practices/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/08/Android-Best-Practices/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>从<a href="http://www.futurice.com">Futurice</a>公司Android开发者中学到的经验。</p>
+<h3 id="摘要">摘要</h3><ul>
+<li>使用 Gradle 和它推荐的工程结构</li>
+<li>把密码和敏感数据放在gradle.properties</li>
+<li>不要自己写 HTTP 客户端,使用Volley或OkHttp库</li>
+<li>使用Jackson库解析JSON数据</li>
+<li>避免使用Guava同时使用一些类库来避免<em>65k method limit</em>（一个Android程序中最多能执行65536个方法）</li>
+<li>使用 Fragments来呈现UI视图</li>
+<li>使用 Activities 只是为了管理 Fragments
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/07/08/Android-Best-Practices/#more">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
     
       
 
@@ -866,81 +962,11 @@
 
 
     
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2015/06/23/Android-Pcm2Amr/">
-                Android中Pcm文件转Amr文件
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于 2015-06-23
-        </span>
-
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/06/23/Android-Pcm2Amr/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/23/Android-Pcm2Amr/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Android-Pcm2Amr-Logo.png" alt=""></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/06/23/Android-Pcm2Amr/#more">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
   </div>
 
   
   <div class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
   </div>
 
 
@@ -974,7 +1000,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">21</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1045,7 +1071,7 @@
       <div class="footer-inner">
         <div class="copyright">
   
-  &copy; &nbsp; 
+  &copy; &nbsp;  2015.06 - 
   2015
   <span class="with-love">
     <i class="icon-heart"></i>
