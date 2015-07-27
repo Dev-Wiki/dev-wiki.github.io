@@ -22,7 +22,7 @@
 
 
 
-  <meta name="keywords" content="CleanCode,代码整洁之道," />
+  <meta name="keywords" content="Android," />
 
 
 
@@ -57,7 +57,7 @@
 
 
 
-  <title> CleanCode笔记---格式 // DevWiki's Blog </title>
+  <title> Android代码规范参考指南 // DevWiki's Blog </title>
 </head>
 
 <body>
@@ -186,7 +186,7 @@
           
           
             
-              CleanCode笔记---格式
+              Android代码规范参考指南
             
           
         </h1>
@@ -194,28 +194,17 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 2015-06-24
+          发表于 2015-07-27
         </span>
 
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; 分类于
-            
-              <a href="/categories/CleanCode-代码整洁之道/">CleanCode-代码整洁之道</a>
-
-              
-              
-
-            
-          </span>
         
 
         
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/06/24/CleanCode-Note-Formatter/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/24/CleanCode-Note-Formatter/"></span>
+            <a href="/2015/07/27/Android-Code-Pattern/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/27/Android-Code-Pattern/"></span>
             </a>
           </span>
           
@@ -229,41 +218,513 @@
       
 
       
-        <p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Clean-Code-LOGO.png" alt="CleanCode"></p>
+        <p>代码规范对于一个软件项目来说非常重要，当然Android项目也不例外，一个优秀的Android项目不仅需要严谨的业务逻辑和架构设计，更需要一套统一优雅的代码规范标准，才可以让整个项目团队更加高效。</p>
 <a id="more"></a>
-<p>我本人算是一个有洁癖的程序猿,喜欢整齐格式的代码.</p>
-<h2 id="格式的意义">格式的意义</h2><p>让代码能工作不是编程的头等大事,因为代码首先是给人看的,其次才是给计算机看的.</p>
-<p>代码是团队沟通的桥梁,乱糟糟的代码是没有人想看的.</p>
-<h2 id="垂直格式">垂直格式</h2><p>一个Java类文件应该有多长?这是个问题.有人可能说100行,有人可能说1000行.</p>
-<p>但是人们倾向于短的代码文件,所以一个类文件应该越短越好,尽量不要超过1000行.</p>
-<h3 id="向报纸学习">向报纸学习</h3><p>代码排版应该像报纸一样.从上往下读,在顶部应该有个类似标题一样的东西,告诉读者大致内容是什么,再往下是章节,告诉读者代码有哪些部分组成,章节下面是细节,如果读者感兴趣可以了解这部分实现的细节.</p>
-<p>比如:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Button backButton;</span><br><span class="line"><span class="keyword">private</span> TextView titleView;</span><br><span class="line"><span class="keyword">private</span> Button settingButton;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    initUtil();</span><br><span class="line">    initUI();</span><br><span class="line">    initData();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initUtil</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initUI</span><span class="params">()</span></span>&#123;</span><br><span class="line">    initNavigationView();</span><br><span class="line">    </span><br><span class="line">    initContentView();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initNavigationView</span><span class="params">()</span></span>&#123;</span><br><span class="line">    backButton = (Button) findViewById(R.id.btn_back);</span><br><span class="line">    backButton.setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line">    titleView = (TextView) findViewById(R.id.tv_title);</span><br><span class="line">    settingButton = (Button) findViewById(R.id.btn_setting);</span><br><span class="line">    settingButton.setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initNavigationView</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//....</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initContentView</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initData</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h3 id="垂直方向上的分割">垂直方向上的分割</h3><p>几乎所有的代码都是从上往下读,从左往右读.每行展现一个表达式或者一个字句或者一个方法调用,每组代码行展示一条完整的思路.这些思路都是用空白行分隔开来.</p>
-<p>就像上面的initUI()方法:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initUI</span><span class="params">()</span></span>&#123;</span><br><span class="line">    initNavigationView();</span><br><span class="line">    </span><br><span class="line">    initContentView();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>空白行让我们很容易明白初始化界面的步骤:</p>
-<ol>
-<li>初始化导航栏组件</li>
-<li>初始化内容视图</li>
-</ol>
-<h3 id="垂直距离">垂直距离</h3><p>从上面的代码可以看出,关系密切的方法应该靠近;关系不密切的要分隔开来.这样很容易理解系统要做什么,怎么去做,不需要你去记住查找和记住代码碎片在哪里.</p>
-<p>如何做到靠近与分隔呢?</p>
-<ol>
-<li>方法内的局部变量声明放在方法的顶部.</li>
-<li>对象变量的声明放在类的顶部.</li>
-<li>相关的函数应靠近放置.</li>
-<li>概念相近的代码应该放在一起.</li>
-</ol>
-<h3 id="垂直顺序">垂直顺序</h3><p>一般而言,我们都想自上而下展示函数的依赖调用.也就是说被调用的函数在执行函数的下面.</p>
-<h2 id="横向格式">横向格式</h2><p>一般而言,一行代码不应多于100个字符.</p>
-<h3 id="水平方向上的分隔与靠近">水平方向上的分隔与靠近</h3><p>赋值语句的等号左右空一格,可以起到强调的作用.</p>
-<p>多参方法中,参数的逗号后空一格,表明参数的独立性.</p>
-<p>所以水平方向上也应遵循关系密切的靠近,关系交远的分隔.</p>
-<h3 id="水平对齐">水平对齐</h3><p><strong>不需要水平方向上的有意识的对齐</strong>,比如下面:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Button   backButton;</span><br><span class="line"><span class="keyword">private</span> TextView titleView;</span><br><span class="line"><span class="keyword">private</span> Button   settingButton;</span><br></pre></td></tr></table></figure></p>
-<p>如果出现名称更长的类型,所有的变量又得重新对齐.所以不推荐此种方式.</p>
-<h3 id="缩进">缩进</h3><p><strong>缩进表明的代码的影响范围!</strong></p>
-<p>缩进有利于代码的阅读,明确代码之间的等级关系和影响范围.</p>
-<p>切记:单行也要缩进.不要违反缩进规则.</p>
-<p>每个人都有不同的写代码的风格,个人建议按照Google的Java代码风格来编写代码.详情请点击此处查看:<br><a href="http://www.hawstein.com/posts/google-java-style.html" target="_blank" rel="external">Google Java编程风格</a></p>
+<h2 id="包命名规范">包命名规范</h2><p>包（packages）：采用反域名命名规则，全部使用小写字母。一级包名为com，二级包名为xxx（可以是公司域名或者个人命名），三级包名根据应用进行命名，四级包名为模块名或层级名。</p>
+<table>
+<thead>
+<tr>
+<th>包名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>com.xxx.应用名称缩写.activities</td>
+<td>页面用到的Activity类（activities层级用户界面）</td>
+</tr>
+<tr>
+<td>com.xxx.应用名称缩写.fragment</td>
+<td>页面用到的Fragment类</td>
+</tr>
+<tr>
+<td>com.xxx.应用名称缩写.base</td>
+<td>页面中每个Activity类共享的可以写成一个BaseActivity类（基础共享的类）</td>
+</tr>
+<tr>
+<td>com.xxx.应用名称缩写.adapter</td>
+<td>页面用到的Adapter类（适配器的类）</td>
+</tr>
+<tr>
+<td>com.xxx.应用名称缩写.utils</td>
+<td>此包中包含：公共工具方法类（包含日期、网络、存储、日志等工具类）</td>
+</tr>
+<tr>
+<td>com.xxx.应用名称缩写.bean（model/domain均可，个人喜好）</td>
+<td>实体类</td>
+</tr>
+<tr>
+<td>com.xxx.应用名称缩写.db</td>
+<td>数据库操作</td>
+</tr>
+<tr>
+<td>com.xxx.应用名称缩写.view（或者.ui）</td>
+<td>自定义的View类等</td>
+</tr>
+<tr>
+<td>com.xxx.应用名称缩写.service</td>
+<td>Service服务</td>
+</tr>
+<tr>
+<td>com.xxx.应用名称缩写.broadcast</td>
+<td>Broadcast服务</td>
+</tr>
+</tbody>
+</table>
+<h2 id="类命名规范">类命名规范</h2><p>类（classes）：名词，采用大驼峰命名法，尽量避免缩写，除非该缩写是众所周知的，比如HTML，URL,如果类名称包含单词缩写，则单词缩写的每个字母均应大写。</p>
+<table>
+<thead>
+<tr>
+<th>类</th>
+<th>描述</th>
+<th>例如</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Application类</td>
+<td>Application为后缀标识</td>
+<td>XXXApplication</td>
+</tr>
+<tr>
+<td>Activity类</td>
+<td>Activity为后缀标识</td>
+<td>闪屏页面类SplashActivity</td>
+</tr>
+<tr>
+<td>解析类</td>
+<td>Handler为后缀标识</td>
+<td></td>
+</tr>
+<tr>
+<td>公共方法类</td>
+<td>Utils或Manager为后缀标识</td>
+<td>线程池管理类：ThreadPoolManager,日志工具类：LogUtils</td>
+</tr>
+<tr>
+<td>数据库类</td>
+<td>以DBHelper后缀标识</td>
+<td>MySQLiteDBHelper</td>
+</tr>
+<tr>
+<td>Service类</td>
+<td>以Service为后缀标识</td>
+<td>播放服务：PlayService</td>
+</tr>
+<tr>
+<td>BroadcastReceiver类</td>
+<td>以Broadcast为后缀标识</td>
+<td>时间通知：TimeBroadcast</td>
+</tr>
+<tr>
+<td>ContentProvider类</td>
+<td>以Provider为后缀标识</td>
+<td>单词内容提供者：DictProvider</td>
+</tr>
+<tr>
+<td>直接写的共享基础类</td>
+<td>以Base为前缀</td>
+<td>BaseActivity,BaseFragment</td>
+</tr>
+</tbody>
+</table>
+<p>变量命名规范</p>
+<p>变量（variables）采用小驼峰命名法。类中控件名称必须与xml布局id保持一致。</p>
+<p>公开的常量：定义为静态final，名称全部大写。eg: public staticfinal String ACTION_MAIN=”android.intent.action.MAIN”;</p>
+<p>静态变量：名称以s开头 eg：private static long sInstanceCount = 0;</p>
+<p>非静态的私有变量、protected的变量：以m开头，eg：private Intent mItent;</p>
+<p>接口命名规范</p>
+<p>接口（interface）：命名规则与类一样采用大驼峰命名法，多以able或ible结尾，eg：interface Runable; interface Accessible;</p>
+<p>方法命名规范</p>
+<p>方法（methods）：动词或动名词，采用小驼峰命名法，eg：onCreate(),run();</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>initXX()</td>
+<td>初始化相关方法，使用init为前缀标识，如初始化布局initView()</td>
+</tr>
+<tr>
+<td>isXX()    checkXX()</td>
+<td>方法返回值为boolean型的请使用is或check为前缀标识</td>
+</tr>
+<tr>
+<td>getXX()</td>
+<td>返回某个值的方法，使用get为前缀标识</td>
+</tr>
+<tr>
+<td>processXX()</td>
+<td>对数据进行处理的方法，尽量使用process为前缀标识</td>
+</tr>
+<tr>
+<td>displayXX()</td>
+<td>弹出提示框和提示信息，使用display为前缀标识</td>
+</tr>
+<tr>
+<td>saveXX()</td>
+<td>与保存数据相关的，使用save为前缀标识</td>
+</tr>
+<tr>
+<td>resetXX()</td>
+<td>对数据重组的，使用reset前缀标识</td>
+</tr>
+<tr>
+<td>clearXX()</td>
+<td>清除数据相关的</td>
+</tr>
+<tr>
+<td>removeXX()</td>
+<td>清除数据相关的</td>
+</tr>
+<tr>
+<td>drawXXX()</td>
+<td>绘制数据或效果相关的，使用draw前缀标识</td>
+</tr>
+</tbody>
+</table>
+<h2 id="布局文件命名规范">布局文件命名规范</h2><p>全部小写，采用下划线命名法</p>
+<h3 id="contentview">contentview</h3><p>contentview命名, Activity默认布局，以去掉后缀的Activity类进行命名。不加后缀：<br>功能模块.xml<br>eg：main.xml、more.xml、settings.xml</p>
+<p>或者：activity_功能模块.xml<br>eg：activity_main.xml、activity_more.xml</p>
+<h3 id="Dialog">Dialog</h3><p>Dialog命名：dialog_描述.xml<br>eg：dlg_hint.xml</p>
+<h3 id="PopupWindow">PopupWindow</h3><p>PopupWindow命名：ppw_描述.xml<br>eg：ppw_info.xml</p>
+<h3 id="列表项">列表项</h3><p>列表项命名listitem_描述.xml<br>eg：listitem_city.xml</p>
+<h3 id="包含项">包含项</h3><p>包含项：include_模块.xml<br>eg：include_head.xml、include_bottom.xml</p>
+<h3 id="adapter的子布局">adapter的子布局</h3><p>adapter的子布局：功能模块_item.xml<br>eg：main_item.xml、</p>
+<h2 id="资源id命名规范">资源id命名规范</h2><p>命名模式为：view缩写_模块名称_view的逻辑名称</p>
+<p>view的缩写详情如下：</p>
+<table>
+<thead>
+<tr>
+<th>控件</th>
+<th>缩写</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LayoutView</td>
+<td>lv</td>
+</tr>
+<tr>
+<td>RelativeView</td>
+<td>rv</td>
+</tr>
+<tr>
+<td>TextView</td>
+<td>tv</td>
+</tr>
+<tr>
+<td>Button</td>
+<td>btn</td>
+</tr>
+<tr>
+<td>ImageButton</td>
+<td>imgBtn</td>
+</tr>
+<tr>
+<td>ImageView</td>
+<td>iv</td>
+</tr>
+<tr>
+<td>CheckBox</td>
+<td>cb</td>
+</tr>
+<tr>
+<td>RadioButton</td>
+<td>rb</td>
+</tr>
+<tr>
+<td>analogClock</td>
+<td>anaClk</td>
+</tr>
+<tr>
+<td>DigtalClock</td>
+<td>dgtClk</td>
+</tr>
+<tr>
+<td>DatePicker</td>
+<td>dtPk</td>
+</tr>
+<tr>
+<td>EditText</td>
+<td>edtTxt</td>
+</tr>
+<tr>
+<td>TimePicker</td>
+<td>tmPk</td>
+</tr>
+<tr>
+<td>toggleButton</td>
+<td>tglBtn</td>
+</tr>
+<tr>
+<td>ProgressBar</td>
+<td>proBar</td>
+</tr>
+<tr>
+<td>SeekBar</td>
+<td>skBar</td>
+</tr>
+<tr>
+<td>AutoCompleteTextView</td>
+<td>autoTxt</td>
+</tr>
+<tr>
+<td>ZoomControls</td>
+<td>zmCtl</td>
+</tr>
+<tr>
+<td>VideoView</td>
+<td>vdoVi</td>
+</tr>
+<tr>
+<td>WdbView</td>
+<td>webVi</td>
+</tr>
+<tr>
+<td>RantingBar</td>
+<td>ratBar</td>
+</tr>
+<tr>
+<td>Tab</td>
+<td>tab</td>
+</tr>
+<tr>
+<td>Spinner</td>
+<td>spn</td>
+</tr>
+<tr>
+<td>Chronometer</td>
+<td>cmt</td>
+</tr>
+<tr>
+<td>ScollView</td>
+<td>sclVi</td>
+</tr>
+<tr>
+<td>TextSwitch</td>
+<td>txtSwt</td>
+</tr>
+<tr>
+<td>ImageSwitch</td>
+<td>imgSwt</td>
+</tr>
+<tr>
+<td>listView</td>
+<td>lVi 或则lv</td>
+</tr>
+<tr>
+<td>ExpandableList</td>
+<td>epdLt</td>
+</tr>
+<tr>
+<td>MapView</td>
+<td>mapVi</td>
+</tr>
+</tbody>
+</table>
+<h2 id="动画文件命名">动画文件命名</h2><p>动画文件（anim文件夹下）：全部小写，采用下划线命名法，加前缀区分。</p>
+<blockquote>
+<p>前面为动画的类型，后面为方向</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>动画命名例子</th>
+<th>规范写法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fade_in</td>
+<td>淡入</td>
+</tr>
+<tr>
+<td>fade_out</td>
+<td>淡出</td>
+</tr>
+<tr>
+<td>push_down_in</td>
+<td>从下方推入</td>
+</tr>
+<tr>
+<td>push_down_out</td>
+<td>从下方推出</td>
+</tr>
+<tr>
+<td>push_left</td>
+<td>推像左方    </td>
+</tr>
+<tr>
+<td>slide_in_from_top</td>
+<td>从头部滑动进入</td>
+</tr>
+<tr>
+<td>zoom_enter</td>
+<td>变形进入</td>
+</tr>
+<tr>
+<td>slide_in</td>
+<td>滑动进入</td>
+</tr>
+<tr>
+<td>shrink_to_middle</td>
+<td>中间缩小</td>
+</tr>
+</tbody>
+</table>
+<h2 id="图片资源文件命名">图片资源文件命名</h2><table>
+<thead>
+<tr>
+<th>命名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bg_xxx</td>
+<td>这种图片一般那些比较大的图片，比如作为某个Activity的背景等</td>
+</tr>
+<tr>
+<td>btn_xxx</td>
+<td>按钮，一般用于按钮，而且这种按钮没有其他状态</td>
+</tr>
+<tr>
+<td>ic_xxx</td>
+<td>图标，一般用于单个图标，比如启动图片ic_launcher</td>
+</tr>
+<tr>
+<td>bg<em>描述</em>状态1[_状态2]</td>
+<td>用于控件上的不同状态</td>
+</tr>
+<tr>
+<td>btn<em>描述</em>状态1[_状态2]</td>
+<td>用于按钮上的不同状态</td>
+</tr>
+<tr>
+<td>chx<em>描述</em>状态1[_状态2]</td>
+<td>选择框，一般有2态和4态</td>
+</tr>
+</tbody>
+</table>
+<h2 id="一些常见的单词缩写">一些常见的单词缩写</h2><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>缩写</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>icon</td>
+<td>ic （主要用在app的图标）</td>
+</tr>
+<tr>
+<td>color</td>
+<td>cl（主要用于颜色值）</td>
+</tr>
+<tr>
+<td>divider</td>
+<td>di（主要用于分隔线，不仅包括Listview中的divider，还包括普通布局中的线）</td>
+</tr>
+<tr>
+<td>selector</td>
+<td>sl（主要用于某一view多种状态，不仅包括Listview中的selector，还包括按钮的selector）</td>
+</tr>
+<tr>
+<td>average</td>
+<td>avg</td>
+</tr>
+<tr>
+<td>background</td>
+<td>Bg（主要用于布局和子布局的背景）</td>
+</tr>
+<tr>
+<td>buffer</td>
+<td>buf</td>
+</tr>
+<tr>
+<td>control</td>
+<td>ctrl</td>
+</tr>
+<tr>
+<td>delete</td>
+<td>del</td>
+</tr>
+<tr>
+<td>document</td>
+<td>doc</td>
+</tr>
+<tr>
+<td>error</td>
+<td>err</td>
+</tr>
+<tr>
+<td>escape</td>
+<td>esc</td>
+</tr>
+<tr>
+<td>increment</td>
+<td>inc</td>
+</tr>
+<tr>
+<td>infomation</td>
+<td>info</td>
+</tr>
+<tr>
+<td>initial</td>
+<td>init</td>
+</tr>
+<tr>
+<td>image</td>
+<td>img</td>
+</tr>
+<tr>
+<td>Internationalization</td>
+<td>I18N</td>
+</tr>
+<tr>
+<td>length</td>
+<td>len</td>
+</tr>
+<tr>
+<td>library</td>
+<td>lib</td>
+</tr>
+<tr>
+<td>message</td>
+<td>msg</td>
+</tr>
+<tr>
+<td>password</td>
+<td>pwd</td>
+</tr>
+<tr>
+<td>position</td>
+<td>pos</td>
+</tr>
+<tr>
+<td>server</td>
+<td>srv</td>
+</tr>
+<tr>
+<td>string</td>
+<td>str</td>
+</tr>
+<tr>
+<td>temp</td>
+<td>tmp</td>
+</tr>
+<tr>
+<td>window</td>
+<td>wnd(win)</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
@@ -272,9 +733,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/CleanCode/"> #CleanCode </a>
-          
-            <a href="/tags/代码整洁之道/"> #代码整洁之道 </a>
+            <a href="/tags/Android/"> #Android </a>
           
         </div>
       
@@ -283,13 +742,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/06/25/Qiniu-Upload-Tool/">七牛简易上传工具的制作</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/06/24/Android-New-Log/">Android调试Log二次包装</a>
+              <a href="/2015/07/08/Android-Best-Practices/">Android 开发最佳实践</a>
             
           </div>
         </div>
@@ -332,8 +789,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2015/06/24/CleanCode-Note-Formatter/"
-               data-title="CleanCode笔记---格式" data-url="http://www.devwiki.net/2015/06/24/CleanCode-Note-Formatter/">
+          <div class="ds-thread" data-thread-key="2015/07/27/Android-Code-Pattern/"
+               data-title="Android代码规范参考指南" data-url="http://www.devwiki.net/2015/07/27/Android-Code-Pattern/">
           </div>
         
       </div>
@@ -445,7 +902,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#格式的意义"><span class="nav-number">1.</span> <span class="nav-text">格式的意义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#垂直格式"><span class="nav-number">2.</span> <span class="nav-text">垂直格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#向报纸学习"><span class="nav-number">2.1.</span> <span class="nav-text">向报纸学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#垂直方向上的分割"><span class="nav-number">2.2.</span> <span class="nav-text">垂直方向上的分割</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#垂直距离"><span class="nav-number">2.3.</span> <span class="nav-text">垂直距离</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#垂直顺序"><span class="nav-number">2.4.</span> <span class="nav-text">垂直顺序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#横向格式"><span class="nav-number">3.</span> <span class="nav-text">横向格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#水平方向上的分隔与靠近"><span class="nav-number">3.1.</span> <span class="nav-text">水平方向上的分隔与靠近</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#水平对齐"><span class="nav-number">3.2.</span> <span class="nav-text">水平对齐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缩进"><span class="nav-number">3.3.</span> <span class="nav-text">缩进</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#包命名规范"><span class="nav-number">1.</span> <span class="nav-text">包命名规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类命名规范"><span class="nav-number">2.</span> <span class="nav-text">类命名规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#布局文件命名规范"><span class="nav-number">3.</span> <span class="nav-text">布局文件命名规范</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#contentview"><span class="nav-number">3.1.</span> <span class="nav-text">contentview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dialog"><span class="nav-number">3.2.</span> <span class="nav-text">Dialog</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PopupWindow"><span class="nav-number">3.3.</span> <span class="nav-text">PopupWindow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列表项"><span class="nav-number">3.4.</span> <span class="nav-text">列表项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#包含项"><span class="nav-number">3.5.</span> <span class="nav-text">包含项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#adapter的子布局"><span class="nav-number">3.6.</span> <span class="nav-text">adapter的子布局</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#资源id命名规范"><span class="nav-number">4.</span> <span class="nav-text">资源id命名规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动画文件命名"><span class="nav-number">5.</span> <span class="nav-text">动画文件命名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图片资源文件命名"><span class="nav-number">6.</span> <span class="nav-text">图片资源文件命名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些常见的单词缩写"><span class="nav-number">7.</span> <span class="nav-text">一些常见的单词缩写</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
