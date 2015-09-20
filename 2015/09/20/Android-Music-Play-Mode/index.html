@@ -1,0 +1,767 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+  <meta name="google-site-verification" content="NbE9T9ctqaOBpXu_MkSghUCx0o5WkpO80-NyLjiFEOc" />
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+
+
+
+  <meta name="keywords" content="Android,播放模式," />
+
+
+
+  <link rel="alternate" href="/atom.xml" title="DevWiki's Blog" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/devwiki.png?v=0.4.3" />
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    analytics: {
+      google: 'UA-37158281-2'
+    },
+    sidebar: 'post'
+  };
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?f5a1bf8b7591014a8624c8a285456dd0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <title> Android音乐播放模式切换-外放、听筒、耳机 // DevWiki's Blog </title>
+</head>
+
+<body>
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">DevWiki's Blog</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<div class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/">
+            <i class="menu-item-icon icon-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            <i class="menu-item-icon icon-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            <i class="menu-item-icon icon-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            <i class="menu-item-icon icon-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            <i class="menu-item-icon icon-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+<form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'NddmkrLTpaggCULS9VLU','2.0.0');
+</script>
+
+<div class="site-search-toggle"></div>
+    </div>
+  
+</div>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Android音乐播放模式切换-外放、听筒、耳机
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-09-20
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/09/20/Android-Music-Play-Mode/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/20/Android-Music-Play-Mode/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <p>最近比较忙,好久都没有更新博客!</p>
+<p>最近由于项目需求要做音乐播放模式的切换,经过好多次尝试,发现这里面满满的都是坑啊,所以就写一篇日志记录下来,也给大家分享下遇到的坑及解决办法.</p>
+<a id="more"></a>
+<h2 id="场景需求">场景需求</h2><p>在聊天场景中,收到对方语音时,用户可以选择外放播放,也可以选择插入耳机收听.更人性化一点当用户把手机靠近耳朵时屏幕关闭自动切换到听筒中播放,播放完毕后拿开手机屏幕自动点亮.比如微信就是如此.</p>
+<h2 id="需求分析">需求分析</h2><p>从上面场景中我们可以得出我们需要的要点:</p>
+<ol>
+<li>播放模式切换:外放&lt;—-&gt;耳机</li>
+<li>播放模式切换:外放&lt;—-&gt;听筒</li>
+<li>屏幕操作:亮屏&lt;—-&gt;息屏&lt;—-&gt;亮屏</li>
+</ol>
+<h2 id="解决问题">解决问题</h2><p>从需求分析我们可以得出需要代码进行控制的有:</p>
+<ol>
+<li>音乐播放控制</li>
+<li>外放,耳机,听筒之间的切换</li>
+<li>屏幕的息屏与亮屏</li>
+</ol>
+<h3 id="音乐播放控制">音乐播放控制</h3><p>音乐播放控制最简单,直接使用<code>MediaPlayer</code>即可,为了更好地与界面代码分离以及更好控制音乐,这里写了一个控制类:<code>PlayerManager</code>,如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * 音乐播放管理类</span><br><span class="line"> * Created by DevWiki on 2015/8/27 0027.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PlayerManager</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> PlayerManager playerManager;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> MediaPlayer mediaPlayer;</span><br><span class="line">    <span class="keyword">private</span> PlayCallback callback;</span><br><span class="line">    <span class="keyword">private</span> Context context;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> String filePath;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> PlayerManager <span class="title">getManager</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (playerManager == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (PlayerManager.class)&#123;</span><br><span class="line">                playerManager = <span class="keyword">new</span> PlayerManager();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> playerManager;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">PlayerManager</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.context = MyApplication.getContext();</span><br><span class="line">        mediaPlayer = <span class="keyword">new</span> MediaPlayer();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 播放回调接口</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">PlayCallback</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/** 音乐准备完毕 */</span></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">onPrepared</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/** 音乐播放完成 */</span></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">onComplete</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/** 音乐停止播放 */</span></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">onStop</span><span class="params">()</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 播放音乐</span><br><span class="line">     * <span class="doctag">@param</span> path 音乐文件路径</span><br><span class="line">     * <span class="doctag">@param</span> callback 播放回调函数</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">play</span><span class="params">(String path, <span class="keyword">final</span> PlayCallback callback)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.filePath = path;</span><br><span class="line">        <span class="keyword">this</span>.callback = callback;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            mediaPlayer.reset();</span><br><span class="line">            mediaPlayer.setDataSource(context, Uri.parse(path));</span><br><span class="line">            mediaPlayer.prepare();</span><br><span class="line">            mediaPlayer.setOnPreparedListener(<span class="keyword">new</span> MediaPlayer.OnPreparedListener() &#123;</span><br><span class="line">                <span class="annotation">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPrepared</span><span class="params">(MediaPlayer mp)</span> </span>&#123;</span><br><span class="line">                    callback.onPrepared();</span><br><span class="line">                    mediaPlayer.start();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 停止播放</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (isPlaying())&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                mediaPlayer.stop();</span><br><span class="line">                callback.onStop();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IllegalStateException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 是否正在播放</span><br><span class="line">     * <span class="doctag">@return</span> 正在播放返回true,否则返回false</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPlaying</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mediaPlayer != <span class="keyword">null</span> &amp;&amp; mediaPlayer.isPlaying();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为了方便获取<code>Context</code>,覆写了<code>Application</code>类如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * APP的Application</span><br><span class="line"> * Created by DevWiki on 2015/9/16 0016.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyApplication</span> <span class="keyword">extends</span> <span class="title">Application</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Context context;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate();</span><br><span class="line">        context = <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 获取APP的Context方便其他地方调用</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Context <span class="title">getContext</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> context;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="外放,耳机,听筒之间的切换">外放,耳机,听筒之间的切换</h3><p>在Android系统中是用AudioManager来管理播放模式的,通过<code>AudioManager.setMode()</code>方法来实现.</p>
+<p>在<code>setMode()</code>方法中有以下几种对应不同的播放模式:</p>
+<ul>
+<li><code>MODE_NORMAL</code>: 普通模式,既不是铃声模式也不是通话模式</li>
+<li><code>MODE_RINGTONE</code>:铃声模式</li>
+<li><code>MODE_IN_CALL</code>:通话模式</li>
+<li><code>MODE_IN_COMMUNICATION</code>:通信模式,包括音/视频,VoIP通话.(3.0加入的,与通话模式类似)</li>
+</ul>
+<p>其中:</p>
+<p>播放音乐的对应的就是<code>MODE_NORMAL</code>, 如果使用外放播则调用<code>audioManager.setSpeakerphoneOn(true)</code>即可.</p>
+<p>若使用耳机和听筒,则需要先设置模式为<code>MODE_IN_CALL</code>(3.0以前)或<code>MODE_IN_COMMUNICATION</code>(3.0以后).</p>
+<p><strong>注意:</strong></p>
+<p>需要权限<code>android.permission.MODIFY_AUDIO_SETTINGS</code></p>
+<p>为什么在3.0以后设置模式为<code>MODE_IN_COMMUNICATION</code>,而不设置为<code>MODE_IN_CALL</code>?</p>
+<blockquote>
+<p>经验证在华为的某些机型中,设置<code>MODE_IN_CALL</code>根本不起作用.</p>
+</blockquote>
+<p>故在<code>PlayerManager</code>类中持有一个<code>AudioManager</code>变量,并添加如下几个方法:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * 切换到外放</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">changeToSpeaker</span><span class="params">()</span></span>&#123;</span><br><span class="line">    audioManager.setMode(AudioManager.MODE_NORMAL);</span><br><span class="line">    audioManager.setSpeakerphoneOn(<span class="keyword">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * 切换到耳机模式</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">changeToHeadset</span><span class="params">()</span></span>&#123;</span><br><span class="line">    audioManager.setSpeakerphoneOn(<span class="keyword">false</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * 切换到听筒</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">changeToReceiver</span><span class="params">()</span></span>&#123;</span><br><span class="line">    audioManager.setSpeakerphoneOn(<span class="keyword">false</span>);</span><br><span class="line">    <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.HONEYCOMB)&#123;</span><br><span class="line">        audioManager.setMode(AudioManager.MODE_IN_COMMUNICATION);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        audioManager.setMode(AudioManager.MODE_IN_CALL);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如何判断用户是否插入耳机呢?</p>
+<p>在插入或者拔出耳机时系统会发出Action为<code>Intent.ACTION_HEADSET_PLUG</code>的广播,并且该广播<strong>不能使用静态接收器处理</strong>,故写一个广播接收器处理耳机事件即可.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HeadsetReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span> </span>&#123;</span><br><span class="line">        String action = intent.getAction();</span><br><span class="line">        <span class="keyword">switch</span> (action)&#123;</span><br><span class="line">            <span class="comment">//插入和拔出耳机会触发此广播</span></span><br><span class="line">            <span class="keyword">case</span> Intent.ACTION_HEADSET_PLUG:</span><br><span class="line">                <span class="keyword">int</span> state = intent.getIntExtra(<span class="string">"state"</span>, <span class="number">0</span>);</span><br><span class="line">                <span class="keyword">if</span> (state == <span class="number">1</span>)&#123;</span><br><span class="line">                    playerManager.changeToHeadset();</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (state == <span class="number">0</span>)&#123;</span><br><span class="line">                    playerManager.changeToSpeaker();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="屏幕的息屏与亮屏">屏幕的息屏与亮屏</h3><p>屏幕息屏与亮屏有个前提是正确判断用户是否靠近听筒,如何判断?</p>
+<p>现在几乎每个手机都有距离感应器,通过举例感应器可获得距离.距离感应器由<code>SensorManager</code>管理:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);</span><br><span class="line">sensor = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);</span><br><span class="line">sensorManager.registerListener(<span class="keyword">this</span>, sensor, SensorManager.SENSOR_DELAY_NORMAL);</span><br></pre></td></tr></table></figure>
+<p>注册监听的方法的最后一个参数是敏感度,敏感度越高越费电,此处选择一般敏感度即可.此外<code>Activity</code>还需实现<code>SensorEventListener</code>接口,覆写其方法:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSensorChanged</span><span class="params">(SensorEvent event)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">float</span> value = event.values[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (playerManager.isPlaying())&#123;</span><br><span class="line">        <span class="keyword">if</span> (value == sensor.getMaximumRange()) &#123;</span><br><span class="line">            playerManager.changeToSpeaker();</span><br><span class="line">            setScreenOn();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            playerManager.changeToReceiver();</span><br><span class="line">            setScreenOff();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(value == sensor.getMaximumRange())&#123;</span><br><span class="line">            playerManager.changeToSpeaker();</span><br><span class="line">            setScreenOn();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在Android系统中硬件的工作状态的控制由<code>PowerManager</code>与<code>WakeLock</code>掌管.<code>PowerManager</code>通过不同的<code>WakeLock</code>来控制CPU,屏幕,键盘等硬件的工作状态.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">powerManager = (PowerManager) getSystemService(POWER_SERVICE);</span><br><span class="line">wakeLock = powerManager.newWakeLock(PowerManager.PROXIMITY_SCREEN_OFF_WAKE_LOCK, TAG);</span><br></pre></td></tr></table></figure>
+<p>注意:需要权限<code>android.Manifest.permission.DEVICE_POWER</code>和<code>android.permission.WAKE_LOCK</code></p>
+<p>其中第一个参数代表控制级别,可选值有:</p>
+<ul>
+<li>PARTIAL_WAKE_LOCK : CPU运行,屏幕和键盘可能关闭</li>
+<li>SCREEN_DIM_WAKE_LOCK :　屏幕亮,键盘灯可能关闭</li>
+<li>SCREEN_BRIGHT_WAKE_LOCK : 屏幕全亮,键盘灯可能关闭</li>
+<li>FULL_WAKE_LOCK : 屏幕和键盘灯全亮</li>
+<li>PROXIMITY_SCREEN_OFF_WAKE_LOCK : 屏幕关闭,键盘灯关闭,CPU运行</li>
+<li>DOZE_WAKE_LOCK : 屏幕灰显,CPU延缓工作</li>
+</ul>
+<p>此处我们选取<code>PROXIMITY_SCREEN_OFF_WAKE_LOCK</code>.<code>WakeLock</code>通过<code>acquire()</code>和<code>release()</code>方法上锁和解锁.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setScreenOff</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (wakeLock == <span class="keyword">null</span>)&#123;</span><br><span class="line">        wakeLock = powerManager.newWakeLock(PowerManager.PROXIMITY_SCREEN_OFF_WAKE_LOCK, TAG);</span><br><span class="line">    &#125;</span><br><span class="line">    wakeLock.acquire();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setScreenOn</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (wakeLock != <span class="keyword">null</span>)&#123;</span><br><span class="line">        wakeLock.setReferenceCounted(<span class="keyword">false</span>);</span><br><span class="line">        wakeLock.release();</span><br><span class="line">        wakeLock = <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="开始验证">开始验证</h2><p>通过以上三个解决方案,然后运行程序可知基本满足功能需求.但是有以下几个问题:</p>
+<ol>
+<li>耳机模式下用手遮挡距离感应器会切换到听筒</li>
+<li>三星Note,华为P,华为Mate系列会出现外放切换到听筒,听筒切换到外放出现卡顿现象</li>
+<li>耳机切换到外放会出现丢失语音</li>
+<li>三星,华为手机在熄灭屏幕是会调用<code>Activity</code>的<code>onPause(),onStop()</code>方法!!</li>
+</ol>
+<h2 id="解决新问题">解决新问题</h2><h3 id="耳机模式用手遮挡距离感应器问题">耳机模式用手遮挡距离感应器问题</h3><p>此问题只需在耳机模式下对距离感应器不做响应即可,在<code>PlayerManager</code>中添加:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * 耳机是否插入</span><br><span class="line"> * <span class="doctag">@return</span> 插入耳机返回true,否则返回false</span><br><span class="line"> */</span></span><br><span class="line"><span class="annotation">@SuppressWarnings</span>(<span class="string">"deprecation"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isWiredHeadsetOn</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> audioManager.isWiredHeadsetOn();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后修改距离感应器回调方法为:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSensorChanged</span><span class="params">(SensorEvent event)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">float</span> value = event.values[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (playerManager.isWiredHeadsetOn())&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (playerManager.isPlaying())&#123;</span><br><span class="line">        <span class="keyword">if</span> (value == sensor.getMaximumRange()) &#123;</span><br><span class="line">            playerManager.changeToSpeaker();</span><br><span class="line">            setScreenOn();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            playerManager.changeToReceiver();</span><br><span class="line">            setScreenOff();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(value == sensor.getMaximumRange())&#123;</span><br><span class="line">            playerManager.changeToSpeaker();</span><br><span class="line">            setScreenOn();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="三星,华为听筒外放切换卡顿">三星,华为听筒外放切换卡顿</h3><p>这个问题只能采用折中的办法:重新播放</p>
+<p>为何采用此方法?</p>
+<blockquote>
+<ol>
+<li>短的语音本来就短,切换重播几乎不受影响</li>
+<li>长得音乐一般不会用听筒听</li>
+<li>不是所有的手机都会出现卡顿</li>
+</ol>
+</blockquote>
+<p>故在<code>PlayerManager</code>中修改方法:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * 切换到听筒</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">changeToReceiver</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (isPlaying())&#123;</span><br><span class="line">        stop();</span><br><span class="line">        changeToReceiverNoStop();</span><br><span class="line">        play(filePath, callback);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        changeToReceiverNoStop();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * 切换到外放</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">changeToSpeaker</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (PhoneModelUtil.isSamsungPhone() || PhoneModelUtil.isHuaweiPhone())&#123;</span><br><span class="line">        stop();</span><br><span class="line">        changeToSpeakerNoStop();</span><br><span class="line">        play(filePath, callback);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        changeToSpeakerNoStop();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">changeToSpeakerNoStop</span><span class="params">()</span></span>&#123;</span><br><span class="line">    audioManager.setMode(AudioManager.MODE_NORMAL);</span><br><span class="line">    audioManager.setSpeakerphoneOn(<span class="keyword">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="耳机切换到外放会出现丢失语音">耳机切换到外放会出现丢失语音</h3><p>此问题由于耳机切换到外放需要一段时间导致,故解决此问题的方法是先暂停再续播.那么什么时候暂停什么时候续播呢?</p>
+<p>查资料得知,在耳机拔出时系统还会发出Action为<code>AudioManager.ACTION_AUDIO_BECOMING_NOISY</code>的广播,且此广播比<code>Intent.ACTION_HEADSET_PLUG</code>要早,所以解决方案也出来了:</p>
+<blockquote>
+<p>收到<code>AudioManager.ACTION_AUDIO_BECOMING_NOISY</code>时暂停播放,收到<code>Intent.ACTION_HEADSET_PLUG</code>并且附带的state=1时续播</p>
+</blockquote>
+<h3 id="三星,华为手机在熄灭屏幕是会调用Activity的onPause(),onStop()方法">三星,华为手机在熄灭屏幕是会调用<code>Activity</code>的<code>onPause(),onStop()</code>方法</h3><p>这个问题嘛,其实也不算问题,但是值得注意.如果你在onStop()中做了某些释放资源的操作,那么在onStart()中就要重新获取,防止出现其他问题.</p>
+<h2 id="后记">后记</h2><p>项目代码请点击此处:<a href="https://coding.net/u/devwiki/p/PlayMode/git" target="_blank" rel="external">PlayMode</a></p>
+<p>我的更多信息:<a href="http://www.devwiki.net/about/">DevWiki</a></p>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/"> #Android </a>
+          
+            <a href="/tags/播放模式/"> #播放模式 </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/08/05/Java-Simple-Log/">Java简易Log</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="post-spread">
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      </div>
+    
+
+    
+      <div class="comments" id="comments">
+        
+          <div class="ds-thread" data-thread-key="2015/09/20/Android-Music-Play-Mode/"
+               data-title="Android音乐播放模式切换-外放、听筒、耳机" data-url="http://www.devwiki.net/2015/09/20/Android-Music-Play-Mode/">
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+
+        
+      </div>
+
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/favicon.ico" alt="DevWiki" />
+          <p class="site-author-name">DevWiki</p>
+        </div>
+        <p class="site-description motion-element"></p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="http://github.com/dev-wiki" target="_blank">GitHub</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://weibo.com/devwiki" target="_blank">Weibo</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.zhihu.com/people/devwiki" target="_blank">ZhiHu</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#场景需求"><span class="nav-number">1.</span> <span class="nav-text">场景需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#需求分析"><span class="nav-number">2.</span> <span class="nav-text">需求分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决问题"><span class="nav-number">3.</span> <span class="nav-text">解决问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#音乐播放控制"><span class="nav-number">3.1.</span> <span class="nav-text">音乐播放控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#外放,耳机,听筒之间的切换"><span class="nav-number">3.2.</span> <span class="nav-text">外放,耳机,听筒之间的切换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#屏幕的息屏与亮屏"><span class="nav-number">3.3.</span> <span class="nav-text">屏幕的息屏与亮屏</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始验证"><span class="nav-number">4.</span> <span class="nav-text">开始验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决新问题"><span class="nav-number">5.</span> <span class="nav-text">解决新问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#耳机模式用手遮挡距离感应器问题"><span class="nav-number">5.1.</span> <span class="nav-text">耳机模式用手遮挡距离感应器问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三星,华为听筒外放切换卡顿"><span class="nav-number">5.2.</span> <span class="nav-text">三星,华为听筒外放切换卡顿</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#耳机切换到外放会出现丢失语音"><span class="nav-number">5.3.</span> <span class="nav-text">耳机切换到外放会出现丢失语音</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三星,华为手机在熄灭屏幕是会调用Activity的onPause(),onStop()方法"><span class="nav-number">5.4.</span> <span class="nav-text">三星,华为手机在熄灭屏幕是会调用Activity的onPause(),onStop()方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">6.</span> <span class="nav-text">后记</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp;  2015.06 - 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">DevWiki</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<span id="busuanzi_container_site_uv" style='display:none'>
+         |   您是本站第 <span id="busuanzi_value_site_uv" font style="color:black"></span> 个访客
+</span>
+
+<span id="busuanzi_container_site_pv" style='display:none'>
+    , 本站总访问量 : <span id="busuanzi_value_site_pv"></span>次
+</span>
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
+
+
+
+  <script type="text/javascript" src="/js/search-toggle.js"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.3" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if (isDesktop() && CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    });
+  </script>
+
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"devwiki"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/js/analytics_google-analytics.js?v=0.4.3"></script>
+
+
+</body>
+</html>

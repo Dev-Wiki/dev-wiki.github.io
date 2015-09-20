@@ -228,10 +228,14 @@
 <p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Qiniu-Upload-Tool-00.png" alt="项目代码界面"></p>
 <h2 id="依赖包">依赖包</h2><p>项目依赖的包有:</p>
 <ol>
-<li><a href="http://search.maven.org/remotecontent?filepath=com/qiniu/qiniu-java-sdk/7.0.3/qiniu-java-sdk-7.0.3.jar" target="_blank" rel="external">qiniu-java-sdk-7</a></li>
-<li><a href="http://search.maven.org/remotecontent?filepath=com/google/code/gson/gson/2.3.1/gson-2.3.1.jar" target="_blank" rel="external">Google Gson</a></li>
-<li><a href="http://search.maven.org/remotecontent?filepath=com/squareup/okhttp/okhttp/2.4.0/okhttp-2.4.0.jar" target="_blank" rel="external">okhttp (JDK1.7 及以上)</a></li>
-<li><a href="http://search.maven.org/remotecontent?filepath=com/squareup/okio/okio/1.5.0/okio-1.5.0.jar" target="_blank" rel="external">okio (JDK1.7 及以上)</a></li>
+<li><p><a href="http://search.maven.org/remotecontent?filepath=com/qiniu/qiniu-java-sdk/7.0.3/qiniu-java-sdk-7.0.3.jar" target="_blank" rel="external">qiniu-java-sdk-7</a></p>
+</li>
+<li><p><a href="http://search.maven.org/remotecontent?filepath=com/google/code/gson/gson/2.3.1/gson-2.3.1.jar" target="_blank" rel="external">Google Gson</a></p>
+</li>
+<li><p><a href="http://search.maven.org/remotecontent?filepath=com/squareup/okhttp/okhttp/2.4.0/okhttp-2.4.0.jar" target="_blank" rel="external">okhttp (JDK1.7 及以上)</a></p>
+</li>
+<li><p><a href="http://search.maven.org/remotecontent?filepath=com/squareup/okio/okio/1.5.0/okio-1.5.0.jar" target="_blank" rel="external">okio (JDK1.7 及以上)</a></p>
+</li>
 </ol>
 <h2 id="配置">配置</h2><p>因为急着使用,所以就把配置写死在代码里了,等增加功能时在改为动态.配置代码如下:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Config</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">Config</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String ACCESS_KEY = <span class="string">"你的AccessKey"</span>;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String SECRET_KEY = <span class="string">"你的SecretKey"</span>;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String BUCKET = <span class="string">"你的Bucket名称"</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String URL = <span class="string">"你的外链前缀"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="上传">上传</h2><p>上传部分目前采用官方的简易上传,key值为文件名称.以后再增加其他上传功能.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UploadHelper</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	Auth auth = Auth.create(Config.ACCESS_KEY, Config.SECRET_KEY);</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">uploadFile</span><span class="params">(String filePath, String key)</span></span>&#123;</span><br><span class="line">		UploadManager uploadManager = <span class="keyword">new</span> UploadManager();</span><br><span class="line">	    String token = auth.uploadToken(Config.BUCKET);</span><br><span class="line">	    <span class="keyword">try</span> &#123;</span><br><span class="line">			Response response = uploadManager.put(filePath, key, token);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (QiniuException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -392,7 +396,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">24</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -406,7 +410,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
