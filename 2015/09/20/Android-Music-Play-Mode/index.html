@@ -8,7 +8,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
   <meta name="google-site-verification" content="NbE9T9ctqaOBpXu_MkSghUCx0o5WkpO80-NyLjiFEOc" />
+
+
 
 
 
@@ -17,12 +23,14 @@
   <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
 
 
+
+
 <link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
 
 
 
 
-  <meta name="keywords" content="Android,播放模式," />
+  <meta name="keywords" content="Android, 听筒模式, 播放模式, 耳机模式, 微信听筒模式, 语音听筒模式, DevWiki" />
 
 
 
@@ -33,15 +41,50 @@
   <link rel="shorticon icon" type="image/x-icon" href="/devwiki.png?v=0.4.3" />
 
 
+<meta name="description" content="最近比较忙,好久都没有更新博客!
+最近由于项目需求要做音乐播放模式的切换,经过好多次尝试,发现这里面满满的都是坑啊,所以就写一篇日志记录下来,也给大家分享下遇到的坑及解决办法.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android音乐播放模式切换-外放、听筒、耳机">
+<meta property="og:url" content="http://www.devwiki.net/2015/09/20/Android-Music-Play-Mode/index.html">
+<meta property="og:site_name" content="DevWiki's Blog">
+<meta property="og:description" content="最近比较忙,好久都没有更新博客!
+最近由于项目需求要做音乐播放模式的切换,经过好多次尝试,发现这里面满满的都是坑啊,所以就写一篇日志记录下来,也给大家分享下遇到的坑及解决办法.">
+<meta property="og:updated_time" content="2015-09-20T08:42:22.940Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android音乐播放模式切换-外放、听筒、耳机">
+<meta name="twitter:description" content="最近比较忙,好久都没有更新博客!
+最近由于项目需求要做音乐播放模式的切换,经过好多次尝试,发现这里面满满的都是坑啊,所以就写一篇日志记录下来,也给大家分享下遇到的坑及解决办法.">
+
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
     scheme: 'Mist',
-    analytics: {
-      google: 'UA-37158281-2'
-    },
     sidebar: 'post'
   };
+</script>
+
+  <title> Android音乐播放模式切换-外放、听筒、耳机 | DevWiki's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-37158281-2', 'auto');
+  ga('send', 'pageview');
 </script>
 
 
@@ -57,30 +100,15 @@
 
 
 
-  <title> Android音乐播放模式切换-外放、听筒、耳机 // DevWiki's Blog </title>
-</head>
-
-<body>
-  <!--[if lte IE 8]>
-  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
-    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
-           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
-           style='margin-left:auto;margin-right:auto;display: block;'/>
-    </a>
-  </div>
-<![endif]-->
-
   <div class="container one-column page-post-detail">
     <div class="headband"></div>
 
-    <div id="header" class="header">
-      <div class="header-inner">
-        <h1 class="site-meta">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
   <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand">
+  <a href="/" class="brand" rel="start">
       <span class="logo">
-        <i class="icon-logo"></i>
+        <i class="icon-next-logo"></i>
       </span>
       <span class="site-title">DevWiki's Blog</span>
   </a>
@@ -95,7 +123,7 @@
   </button>
 </div>
 
-<div class="site-nav">
+<nav class="site-nav">
   
 
   
@@ -103,43 +131,46 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/">
-            <i class="menu-item-icon icon-home"></i> <br />
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
             首页
           </a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives">
-            <i class="menu-item-icon icon-archives"></i> <br />
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
             归档
           </a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags">
-            <i class="menu-item-icon icon-tags"></i> <br />
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
             标签
           </a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories">
-            <i class="menu-item-icon icon-categories"></i> <br />
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
             分类
           </a>
         </li>
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about">
-            <i class="menu-item-icon icon-about"></i> <br />
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
             关于
           </a>
         </li>
+      
+
+      
       
     </ul>
   
@@ -148,9 +179,11 @@
     <div class="site-search">
       
   
-<form class="site-search-form">
-  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
-</form>
+  <form class="site-search-form">
+    <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+  </form>
+
+
 <script type="text/javascript">
   (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
@@ -160,29 +193,28 @@
   _st('install', 'NddmkrLTpaggCULS9VLU','2.0.0');
 </script>
 
-<div class="site-search-toggle"></div>
+
+
     </div>
   
-</div>
+</nav>
 
+ </div>
+    </header>
 
-      </div>
-    </div>
-
-    <div id="main" class="main">
+    <main id="main" class="main">
       <div class="main-inner">
-        <div id="content" class="content">
-          
+        <div id="content" class="content"> 
 
   <div id="posts" class="posts-expand">
     
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
@@ -194,7 +226,10 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 2015-09-20
+          发表于
+          <time itemprop="dateCreated" datetime="2015-09-20T16:30:28+08:00" content="2015-09-20">
+            2015-09-20
+          </time>
         </span>
 
         
@@ -202,15 +237,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/09/20/Android-Music-Play-Mode/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/20/Android-Music-Play-Mode/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2015/09/20/Android-Music-Play-Mode/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/20/Android-Music-Play-Mode/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -218,7 +253,7 @@
       
 
       
-        <p>最近比较忙,好久都没有更新博客!</p>
+        <span itemprop="articleBody"><p>最近比较忙,好久都没有更新博客!</p>
 <p>最近由于项目需求要做音乐播放模式的切换,经过好多次尝试,发现这里面满满的都是坑啊,所以就写一篇日志记录下来,也给大家分享下遇到的坑及解决办法.</p>
 <a id="more"></a>
 <h2 id="场景需求">场景需求</h2><p>在聊天场景中,收到对方语音时,用户可以选择外放播放,也可以选择插入耳机收听.更人性化一点当用户把手机靠近耳朵时屏幕关闭自动切换到听筒中播放,播放完毕后拿开手机屏幕自动点亮.比如微信就是如此.</p>
@@ -309,17 +344,17 @@
 <h3 id="三星,华为手机在熄灭屏幕是会调用Activity的onPause(),onStop()方法">三星,华为手机在熄灭屏幕是会调用<code>Activity</code>的<code>onPause(),onStop()</code>方法</h3><p>这个问题嘛,其实也不算问题,但是值得注意.如果你在onStop()中做了某些释放资源的操作,那么在onStart()中就要重新获取,防止出现其他问题.</p>
 <h2 id="后记">后记</h2><p>项目代码请点击此处:<a href="https://coding.net/u/devwiki/p/PlayMode/git" target="_blank" rel="external">PlayMode</a></p>
 <p>我的更多信息:<a href="http://www.devwiki.net/about/">DevWiki</a></p>
-
+</span>
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
         <div class="post-tags">
           
-            <a href="/tags/Android/"> #Android </a>
+            <a href="/tags/Android/" rel="tag">#Android</a>
           
-            <a href="/tags/播放模式/"> #播放模式 </a>
+            <a href="/tags/播放模式/" rel="tag">#播放模式</a>
           
         </div>
       
@@ -328,11 +363,13 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2015/10/07/Android-TextWatcher-Add-Space-To-Phone_Number/" rel="prev">Android实现输入手机号时自动添加空格</a>
+            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/08/05/Java-Simple-Log/">Java简易Log</a>
+              <a href="/2015/08/05/Java-Simple-Log/" rel="next">Java简易Log</a>
             
           </div>
         </div>
@@ -340,13 +377,13 @@
 
       
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
 
-    
-      <div class="post-spread">
+    <div class="post-spread">
+      
         <!-- JiaThis Button BEGIN -->
 <div class="jiathis_style">
   <a class="jiathis_button_tsina"></a>
@@ -369,26 +406,24 @@
 <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
 <!-- JiaThis Button END -->
 
-      </div>
-    
+      
+    </div>
+  </div>
 
-    
-      <div class="comments" id="comments">
+ </div>
+
         
-          <div class="ds-thread" data-thread-key="2015/09/20/Android-Music-Play-Mode/"
-               data-title="Android音乐播放模式切换-外放、听筒、耳机" data-url="http://www.devwiki.net/2015/09/20/Android-Music-Play-Mode/">
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2015/09/20/Android-Music-Play-Mode/"
+                   data-title="Android音乐播放模式切换-外放、听筒、耳机" data-url="http://www.devwiki.net/2015/09/20/Android-Music-Play-Mode/">
+              </div>
+            
           </div>
         
       </div>
-    
-  </div>
-
-
-        </div>
-
-        
-      </div>
-
 
       
   
@@ -400,12 +435,12 @@
     </div>
   </div>
 
-  <div id="sidebar" class="sidebar">
+  <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -414,16 +449,16 @@
         </ul>
       
 
-      <div class="site-overview">
-        <div class="site-author motion-element">
-          <img class="site-author-image" src="/favicon.ico" alt="DevWiki" />
-          <p class="site-author-name">DevWiki</p>
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/favicon.ico" alt="DevWiki" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">DevWiki</p>
         </div>
-        <p class="site-description motion-element"></p>
-        <div class="site-state motion-element">
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -437,17 +472,17 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">24</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
 
-        </div>
+        </nav>
 
         
           <div class="feed-link motion-element">
-            <a href="/atom.xml">
-              <i class="menu-item-icon icon-feed"></i>
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
               RSS
             </a>
           </div>
@@ -457,33 +492,37 @@
           
             
               <span class="links-of-author-item">
-              <a href="http://github.com/dev-wiki" target="_blank">GitHub</a>
-            </span>
+                <a href="http://github.com/dev-wiki" target="_blank">GitHub</a>
+              </span>
             
               <span class="links-of-author-item">
-              <a href="http://weibo.com/devwiki" target="_blank">Weibo</a>
-            </span>
+                <a href="http://weibo.com/devwiki" target="_blank">Weibo</a>
+              </span>
             
               <span class="links-of-author-item">
-              <a href="http://www.zhihu.com/people/devwiki" target="_blank">ZhiHu</a>
-            </span>
+                <a href="http://www.zhihu.com/people/devwiki" target="_blank">ZhiHu</a>
+              </span>
             
           
         </div>
 
         
         
-          <div class="cc-license motion-element">
+          <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
               <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
             </a>
           </div>
         
 
-      </div>
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
 
       
-        <div class="post-toc-wrap sidebar-panel-active">
+        <section class="post-toc-wrap sidebar-panel-active">
           <div class="post-toc-indicator-top post-toc-indicator"></div>
           <div class="post-toc">
             
@@ -492,18 +531,17 @@
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
-        </div>
+        </section>
       
 
     </div>
-  </div>
+  </aside>
 
 
-    </div>
+    </main>
 
-    <div id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright">
   
   &copy; &nbsp;  2015.06 - 
   2015
@@ -536,8 +574,8 @@
 </span>
 
 
-      </div>
-    </div>
+ </div>
+    </footer>
 
     <div class="back-to-top"></div>
   </div>
@@ -546,7 +584,27 @@
 
   
   
+  
+    
 
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"devwiki"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+    
+  
   
   <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
   <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
@@ -562,7 +620,9 @@
 
 
 
-  <script type="text/javascript" src="/js/search-toggle.js"></script>
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.3"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
   
@@ -599,7 +659,6 @@
     }
 
     function getTOCMaxHeight () {
-      var $sidebarInner = $('.sidebar-inner');
       var height = $('.sidebar').height() -
                    $tocSelector.position().top -
                    $('.post-toc-indicator-bottom').height();
@@ -621,7 +680,7 @@
       )
     }
 
-    $(document).on('sidebar.didShow', function () {
+    $(document).on('sidebar.motion.complete', function () {
       processTOC();
     });
 
@@ -638,7 +697,6 @@
       element.on('mousewheel DOMMouseScroll', function (event) {
           var oe = event.originalEvent;
           var delta = oe.wheelDelta || -oe.detail;
-          var self = this;
 
           this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
           event.preventDefault();
@@ -648,60 +706,82 @@
     }
 
     function tocOverflowIndicator (indicator, action) {
-      $(indicator).velocity('stop').velocity({
-        opacity: action === 'show' ? 0.4 : 0
-      }, { duration: 100 });
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
     }
 
   });
 </script>
 
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
 
-  <script type="text/javascript" id="sidebar.nav">
-    $(document).ready(function () {
-      var html = $('html');
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
 
-      $('.sidebar-nav li').on('click', function () {
-        var item = $(this);
-        var activeTabClassName = 'sidebar-nav-active';
-        var activePanelClassName = 'sidebar-panel-active';
-        if (item.hasClass(activeTabClassName)) {
-          return;
-        }
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
 
-        var currentTarget = $('.' + activePanelClassName);
-        var target = $('.' + item.data('target'));
-
-        currentTarget.velocity('transition.slideUpOut', 200, function () {
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
           target
             .velocity('stop')
-            .velocity('transition.slideDownIn', 200)
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
             .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
         });
 
-        item.siblings().removeClass(activeTabClassName);
-        item.addClass(activeTabClassName);
-      });
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
 
-      $('.post-toc a').on('click', function (e) {
-        e.preventDefault();
-        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
         html.velocity('stop').velocity('scroll', {
           offset: offset  + 'px',
           mobileHA: false
-        });
-      });
-
-      // Expand sidebar on post detail page by default, when post has a toc.
-      var $tocContent = $('.post-toc-content');
-      if (isDesktop() && CONFIG.sidebar === 'post') {
-        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
-          displaySidebar();
-        }
-      }
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
     });
-  </script>
 
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
 
 
 
@@ -709,6 +789,9 @@
     $(document).ready(function () {
       if (CONFIG.sidebar === 'always') {
         displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
       }
     });
   </script>
@@ -740,28 +823,14 @@
   
 
   
-    
-  
-
+  <script type="text/javascript" src="/js/lazyload.js"></script>
   <script type="text/javascript">
-    var duoshuoQuery = {short_name:"devwiki"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
   </script>
-
-  
-
-
-  
-  
-  <script type="text/javascript" src="/js/analytics_google-analytics.js?v=0.4.3"></script>
-
-
 </body>
 </html>

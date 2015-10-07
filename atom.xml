@@ -5,7 +5,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.devwiki.net//"/>
-  <updated>2015-09-20T08:42:22.940Z</updated>
+  <updated>2015-10-07T02:19:49.144Z</updated>
   <id>http://www.devwiki.net//</id>
   
   <author>
@@ -14,6 +14,76 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Android实现输入手机号时自动添加空格]]></title>
+    <link href="http://www.devwiki.net/2015/10/07/Android-TextWatcher-Add-Space-To-Phone_Number/"/>
+    <id>http://www.devwiki.net/2015/10/07/Android-TextWatcher-Add-Space-To-Phone_Number/</id>
+    <published>2015-10-07T02:13:14.000Z</published>
+    <updated>2015-10-07T02:19:49.144Z</updated>
+    <content type="html"><![CDATA[<h2 id="背景">背景</h2><p>为了优化用户体验,我们往往会在让用户输入手机号码时添加空格,比如:<code>133 1234 5678</code>.那么在Android中如何实现呢?</p>
+<a id="more"></a>
+<h2 id="实现方法">实现方法</h2><p>Android中的输入框EditText有个方法<code>addTextChangedListener()</code>,该方法实现输入框文字变动时的监听.该方法需要传入一个<code>TextWatcher</code>接口的实现.</p>
+<p><code>TextWatcher</code>接口如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">TextWatcher</span> <span class="keyword">extends</span> <span class="title">NoCopySpan</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">beforeTextChanged</span><span class="params">(CharSequence s, <span class="keyword">int</span> start, <span class="keyword">int</span> count, <span class="keyword">int</span> after)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onTextChanged</span><span class="params">(CharSequence s, <span class="keyword">int</span> start, <span class="keyword">int</span> before, <span class="keyword">int</span> count)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterTextChanged</span><span class="params">(Editable s)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该接口有三个回调函数,其含义如下:</p>
+<p><code>public abstract void beforeTextChanged (CharSequence s, int start, int count, int after)</code>:</p>
+<blockquote>
+<p>This method is called to notify you that, within s, the count characters beginning at start are about to be replaced by new text with length after. It is an error to attempt to make changes to s from this callback.<br>在字符串s内,从索引为start(包含)的字符开始的count个字符将被长度为after的新文本代替</p>
+</blockquote>
+<p><code>public abstract void onTextChanged (CharSequence s, int start, int before, int count)</code></p>
+<blockquote>
+<p>This method is called to notify you that, within s, the count characters beginning at start have just replaced old text that had length before. It is an error to attempt to make changes to s from this callback.<br>在字符串s内,从索引为start(包含)的字符开始count个字符刚刚替换了长度为before的旧字符.;</p>
+</blockquote>
+<p><code>public abstract void afterTextChanged (Editable s)</code></p>
+<blockquote>
+<p>This method is called to notify you that, somewhere within s, the text has been changed. It is legitimate to make further changes to s from this callback, but be careful not to get yourself into an infinite loop, because any changes you make will cause this method to be called again recursively. (You are not told where the change took place because other afterTextChanged() methods may already have made other changes and invalidated the offsets. But if you need to know here, you can use setSpan(Object, int, int, int) in onTextChanged(CharSequence, int, int, int) to mark your place and then look up from here where the span ended up.<br>字符串s内容已经发生了变化.可以在这一步对s进行合理的变更,但是要注意不要进入无限循环,因为字符串的任何变化都会再次递归调用此回调方法.在这个方法中不会告诉你字符串哪些内容发生了变化,因为其他针对字符串的改变已经调用了<code>afterTextChanged()</code>.如果你想知道哪些发生了变化,可以在<code>onTextChanged(CharSequence, int, int, int)</code>使用<code>setSpan(Object, int, int, int)</code>做标记.</p>
+</blockquote>
+<p>看上面的解释,是不是还是有点糊涂呢?下面就用实例来解释一下吧.</p>
+<h2 id="实例代码">实例代码</h2><p>代码很简单,只有一个输入框<code>EditText</code>,然后添加一个<code>TextWatcher</code>实现,将回调中的结果输出.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> EditText editText;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        editText = (EditText) findViewById(R.id.edit_text);</span><br><span class="line">        editText.addTextChangedListener(textWatcher);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> TextWatcher textWatcher = <span class="keyword">new</span> TextWatcher() &#123;</span><br><span class="line">        <span class="annotation">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">beforeTextChanged</span><span class="params">(CharSequence s, <span class="keyword">int</span> start, <span class="keyword">int</span> count, <span class="keyword">int</span> after)</span> </span>&#123;</span><br><span class="line">            DLog.d(<span class="string">"----------beforeTextChanged----------\n"</span>);</span><br><span class="line">            DLog.d(<span class="string">"s:"</span> + s + <span class="string">"\n"</span>);</span><br><span class="line">            DLog.d(<span class="string">"start:"</span> + start + <span class="string">"\n"</span>);</span><br><span class="line">            DLog.d(<span class="string">"count:"</span> + count + <span class="string">"\n"</span>);</span><br><span class="line">            DLog.d(<span class="string">"after:"</span> + after + <span class="string">"\n"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="annotation">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onTextChanged</span><span class="params">(CharSequence s, <span class="keyword">int</span> start, <span class="keyword">int</span> before, <span class="keyword">int</span> count)</span> </span>&#123;</span><br><span class="line">            DLog.d(<span class="string">"----------onTextChanged----------\n"</span>);</span><br><span class="line">            DLog.d(<span class="string">"s:"</span> + s + <span class="string">"\n"</span>);</span><br><span class="line">            DLog.d(<span class="string">"start:"</span> + start + <span class="string">"\n"</span>);</span><br><span class="line">            DLog.d(<span class="string">"before:"</span> + before + <span class="string">"\n"</span>);</span><br><span class="line">            DLog.d(<span class="string">"count:"</span> + count + <span class="string">"\n"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="annotation">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterTextChanged</span><span class="params">(Editable s)</span> </span>&#123;</span><br><span class="line">            DLog.d(<span class="string">"----------afterTextChanged----------\n"</span>);</span><br><span class="line">            DLog.d(<span class="string">"s:"</span> + s + <span class="string">"\n"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中<code>Dlog</code>类参见此处:<a href="http://www.devwiki.net/2015/06/24/Android-New-Log/">Android调试Log二次包装</a></p>
+<h2 id="输出结果">输出结果</h2><blockquote>
+<p>默认输入框没有任何内容,以下操作在上一步之后进行.</p>
+</blockquote>
+<h3 id="输入一个字符">输入一个字符</h3><p>在输入框输入字符:<strong>1</strong>,各回调方法输出的信息如下(注释为作者后来添加):</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">----------beforeTextChanged----------</span><br><span class="line">s:</span><br><span class="line">start:<span class="number">0</span></span><br><span class="line">count:<span class="number">0</span></span><br><span class="line">after:<span class="number">1</span></span><br><span class="line"><span class="comment">//注释:在字符串""从索引0处开始的0个字符将被长度为1的新字符串代替</span></span><br><span class="line"><span class="comment">//即""将被1代替</span></span><br><span class="line">----------onTextChanged----------</span><br><span class="line">s:<span class="number">1</span></span><br><span class="line">start:<span class="number">0</span></span><br><span class="line">before:<span class="number">0</span></span><br><span class="line">count:<span class="number">1</span></span><br><span class="line"><span class="comment">//注释:字符串"1"从索引0处开始的1个字符刚刚替换了长度为0的旧字符串</span></span><br><span class="line"><span class="comment">//即1刚刚代替了""</span></span><br><span class="line">----------afterTextChanged----------</span><br><span class="line">s:<span class="number">1</span></span><br><span class="line"><span class="comment">//注释:发生变化后的字符串为:"1"</span></span><br></pre></td></tr></table></figure>
+<h3 id="输入两个字符">输入两个字符</h3><p>在输入框一次性输入字符(即粘贴):<strong>23</strong>,各回调方法输出的信息如下(注释为作者后来添加):</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">----------beforeTextChanged----------</span><br><span class="line">s:<span class="number">1</span></span><br><span class="line">start:<span class="number">1</span></span><br><span class="line">count:<span class="number">0</span></span><br><span class="line">after:<span class="number">2</span></span><br><span class="line"><span class="comment">//注释:在字符串"1"从索引1开始的0个字符将被长度为2的新字符串代替</span></span><br><span class="line"><span class="comment">//即""将被23代替</span></span><br><span class="line">----------onTextChanged----------</span><br><span class="line">s:<span class="number">123</span></span><br><span class="line">start:<span class="number">1</span></span><br><span class="line">before:<span class="number">0</span></span><br><span class="line">count:<span class="number">2</span></span><br><span class="line"><span class="comment">//注释:字符串"123"从索引1开始的2个字符刚刚替换了长度为0的旧字符串</span></span><br><span class="line"><span class="comment">//即23刚刚代替了""</span></span><br><span class="line">----------afterTextChanged----------</span><br><span class="line">s:<span class="number">123</span></span><br><span class="line"><span class="comment">//注释:发生变化后的字符串为:"123"</span></span><br></pre></td></tr></table></figure>
+<h3 id="输入三个字符">输入三个字符</h3><p>在输入框一次性输入字符(即粘贴):<strong>456</strong>,各回调方法输出的信息如下(注释为作者后来添加):</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">----------beforeTextChanged----------</span><br><span class="line">s:<span class="number">123</span></span><br><span class="line">start:<span class="number">3</span></span><br><span class="line">count:<span class="number">0</span></span><br><span class="line">after:<span class="number">3</span></span><br><span class="line"><span class="comment">//注释:在字符串"123"从索引3开始的0个字符将被长度为3的新字符串代替</span></span><br><span class="line"><span class="comment">//即""将被456代替</span></span><br><span class="line">----------onTextChanged----------</span><br><span class="line">s:<span class="number">123456</span></span><br><span class="line">start:<span class="number">3</span></span><br><span class="line">before:<span class="number">0</span></span><br><span class="line">count:<span class="number">3</span></span><br><span class="line"><span class="comment">//注释:字符串"123456"从索引3开始的3个字符刚刚替换了长度为0的旧字符串</span></span><br><span class="line"><span class="comment">//即456刚刚代替了""</span></span><br><span class="line">----------afterTextChanged----------</span><br><span class="line">s:<span class="number">123456</span></span><br><span class="line"><span class="comment">//注释:发生变化后的字符串为:"123456"</span></span><br></pre></td></tr></table></figure>
+<h3 id="删除一个字符">删除一个字符</h3><p>在输入框删除字符:<strong>6</strong>,各回调方法输出的信息如下(注释为作者后来添加):</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">----------beforeTextChanged----------</span><br><span class="line">s:<span class="number">123456</span></span><br><span class="line">start:<span class="number">5</span></span><br><span class="line">count:<span class="number">1</span></span><br><span class="line">after:<span class="number">0</span></span><br><span class="line"><span class="comment">//注释:在字符串"123456"从索引5开始的1个字符将被长度为0的新字符串代替</span></span><br><span class="line"><span class="comment">//即6将被""代替</span></span><br><span class="line">----------onTextChanged----------</span><br><span class="line">s:<span class="number">12345</span></span><br><span class="line">start:<span class="number">5</span></span><br><span class="line">before:<span class="number">1</span></span><br><span class="line">count:<span class="number">0</span></span><br><span class="line"><span class="comment">//注释:字符串"12345"从索引5开始的0个字符刚刚替换了长度为1的旧字符串</span></span><br><span class="line"><span class="comment">//即""刚刚代替了6</span></span><br><span class="line">----------afterTextChanged----------</span><br><span class="line">s:<span class="number">12345</span></span><br><span class="line"><span class="comment">//注释:发生变化后的字符串为:"12345"</span></span><br></pre></td></tr></table></figure>
+<h3 id="删除两个字符">删除两个字符</h3><p>在输入框一次性删除字符:<strong>45</strong>,各回调方法输出的信息如下(注释为作者后来添加):</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">----------beforeTextChanged----------</span><br><span class="line">s:<span class="number">12345</span></span><br><span class="line">start:<span class="number">3</span></span><br><span class="line">count:<span class="number">2</span></span><br><span class="line">after:<span class="number">0</span></span><br><span class="line"><span class="comment">//注释:在字符串"12345"从索引3开始的2个字符将被长度为0的新字符串代替</span></span><br><span class="line"><span class="comment">//即45将被""代替</span></span><br><span class="line">----------onTextChanged----------</span><br><span class="line">s:<span class="number">123</span></span><br><span class="line">start:<span class="number">3</span></span><br><span class="line">before:<span class="number">2</span></span><br><span class="line">count:<span class="number">0</span></span><br><span class="line"><span class="comment">//注释:字符串"123"从索引3开始的0个字符刚刚替换了长度为2的旧字符串</span></span><br><span class="line"><span class="comment">//即""刚刚代替了45</span></span><br><span class="line">----------afterTextChanged----------</span><br><span class="line">s:<span class="number">123</span></span><br><span class="line"><span class="comment">//注释:发生变化后的字符串为:"123"</span></span><br></pre></td></tr></table></figure>
+<h3 id="将一个字符替换为两个字符">将一个字符替换为两个字符</h3><p>在输入框选中<strong>3</strong>粘贴为<strong>ab</strong>,各回调方法输出的信息如下(注释为作者后来添加):</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">----------beforeTextChanged----------</span><br><span class="line">s:<span class="number">123</span></span><br><span class="line">start:<span class="number">2</span></span><br><span class="line">count:<span class="number">1</span></span><br><span class="line">after:<span class="number">2</span></span><br><span class="line"><span class="comment">//注释:在字符串"123"从索引2开始的1个字符将被长度为2的新字符串代替</span></span><br><span class="line"><span class="comment">//即3将被ab代替</span></span><br><span class="line">----------onTextChanged----------</span><br><span class="line">s:<span class="number">12</span>ab</span><br><span class="line">start:<span class="number">2</span></span><br><span class="line">before:<span class="number">1</span></span><br><span class="line">count:<span class="number">2</span></span><br><span class="line"><span class="comment">//注释:字符串"12ab"从索引2开始的2个字符刚刚替换了长度为1的旧字符串</span></span><br><span class="line"><span class="comment">//即ab刚刚代替了3</span></span><br><span class="line">----------afterTextChanged----------</span><br><span class="line">s:<span class="number">12</span>ab</span><br><span class="line"><span class="comment">//注释:发生变化后的字符串为:"12ab"</span></span><br></pre></td></tr></table></figure>
+<h3 id="将两个字符替换为一个字符">将两个字符替换为一个字符</h3><p>在输入框选中<strong>ab</strong>粘贴为<strong>3</strong>,各回调方法输出的信息如下(注释为作者后来添加):</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">----------beforeTextChanged----------</span><br><span class="line">s:<span class="number">12</span>ab</span><br><span class="line">start:<span class="number">2</span></span><br><span class="line">count:<span class="number">2</span></span><br><span class="line">after:<span class="number">1</span></span><br><span class="line"><span class="comment">//注释:在字符串"12ab"从索引2开始的2个字符将被长度为1的新字符串代替</span></span><br><span class="line"><span class="comment">//即ab将被3代替</span></span><br><span class="line">----------onTextChanged----------</span><br><span class="line">s:<span class="number">123</span></span><br><span class="line">start:<span class="number">2</span></span><br><span class="line">before:<span class="number">2</span></span><br><span class="line">count:<span class="number">1</span></span><br><span class="line"><span class="comment">//注释:字符串"123"从索引2开始的1个字符刚刚替换了长度为2的旧字符串</span></span><br><span class="line"><span class="comment">//即3刚刚代替了ab</span></span><br><span class="line">----------afterTextChanged----------</span><br><span class="line">s:<span class="number">123</span></span><br><span class="line"><span class="comment">//注释:发生变化后的字符串为:"123"</span></span><br></pre></td></tr></table></figure>
+<h3 id="任意位置插入一个字符串">任意位置插入一个字符串</h3><p>在输入框中<strong>2</strong>的后面输入<strong>5</strong>,各回调方法输出的信息如下(注释为作者后来添加):</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">----------beforeTextChanged----------</span><br><span class="line">s:<span class="number">123</span></span><br><span class="line">start:<span class="number">2</span></span><br><span class="line">count:<span class="number">0</span></span><br><span class="line">after:<span class="number">1</span></span><br><span class="line"><span class="comment">//注释:在字符串"123"从索引2开始的0个字符将被长度为1的新字符串代替</span></span><br><span class="line"><span class="comment">//即""将被5代替</span></span><br><span class="line">----------onTextChanged----------</span><br><span class="line">s:<span class="number">1253</span></span><br><span class="line">start:<span class="number">2</span></span><br><span class="line">before:<span class="number">0</span></span><br><span class="line">count:<span class="number">1</span></span><br><span class="line"><span class="comment">//注释:字符串"1253"从索引2开始的1个字符刚刚替换了长度为0的旧字符串</span></span><br><span class="line"><span class="comment">//5刚刚代替了""</span></span><br><span class="line">----------afterTextChanged----------</span><br><span class="line">s:<span class="number">1253</span></span><br><span class="line"><span class="comment">//注释:发生变化后的字符串为:"1253"</span></span><br></pre></td></tr></table></figure>
+<h2 id="解决需求">解决需求</h2><p>从上面我们可以看出,在<code>onTextChanged</code>方法中字符串已经发生变化,我们可以在此对用户输入的字符串追加空格.<br>用户是一个数字一个数字的输入到输入框中,那么条件为:</p>
+<blockquote>
+<p>字符串s从索引start开始的1个字符刚刚替换了””</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onTextChanged</span><span class="params">(CharSequence s, <span class="keyword">int</span> start, <span class="keyword">int</span> before, <span class="keyword">int</span> count)</span> </span>&#123;</span><br><span class="line">    DLog.d(<span class="string">"----------onTextChanged----------\n"</span>);</span><br><span class="line">    DLog.d(<span class="string">"s:"</span> + s + <span class="string">"\n"</span>);</span><br><span class="line">    DLog.d(<span class="string">"start:"</span> + start + <span class="string">"\n"</span>);</span><br><span class="line">    DLog.d(<span class="string">"before:"</span> + before + <span class="string">"\n"</span>);</span><br><span class="line">    DLog.d(<span class="string">"count:"</span> + count + <span class="string">"\n"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (count == <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">int</span> length = s.toString().length();</span><br><span class="line">        <span class="keyword">if</span> (length == <span class="number">3</span> || length == <span class="number">8</span>)&#123;</span><br><span class="line">            editText.setText(s + <span class="string">" "</span>);</span><br><span class="line">            editText.setSelection(editText.getText().toString().length());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当长度为3和8时分别加上空格.</p>
+<h2 id="验证需求">验证需求</h2><p>运行程序得到结果如下:</p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Android-TextWatcher-Add-Space-To-Phone-Number.png" alt=""></p>
+<p>更多文章请移步我的博客:<a href="http://www.devwiki.net">DevWiki’s Bolg</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="背景">背景</h2><p>为了优化用户体验,我们往往会在让用户输入手机号码时添加空格,比如:<code>133 1234 5678</code>.那么在Android中如何实现呢?</p>]]>
+    
+    </summary>
+    
+      <category term="Android" scheme="http://www.devwiki.net/tags/Android/"/>
+    
+      <category term="EditText" scheme="http://www.devwiki.net/tags/EditText/"/>
+    
+      <category term="TextWatcher" scheme="http://www.devwiki.net/tags/TextWatcher/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Android音乐播放模式切换-外放、听筒、耳机]]></title>
@@ -2115,114 +2185,6 @@
 <li>如果你别无选择,你不得不提供一个固定的价格,那么你需要学到真正好的评估.</li>
 <li>也许你会考虑在合同中确定每一个迭代的固定的价格,但迭代的数量是可以商量的,它可以根据当前的工作状况进行调整.</li>
 </ol>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Agile-Develop.png" alt="敏捷开发之道"></p>]]>
-    
-    </summary>
-    
-      <category term="敏捷开发" scheme="http://www.devwiki.net/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/"/>
-    
-      <category term="高效程序员" scheme="http://www.devwiki.net/tags/%E9%AB%98%E6%95%88%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
-    
-      <category term="高效程序员的45个习惯" scheme="http://www.devwiki.net/categories/%E9%AB%98%E6%95%88%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%8445%E4%B8%AA%E4%B9%A0%E6%83%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[学无止境---高效程序员的45个习惯读书笔记]]></title>
-    <link href="http://www.devwiki.net/2015/06/18/Agile-Develop-Feeding-Agility/"/>
-    <id>http://www.devwiki.net/2015/06/18/Agile-Develop-Feeding-Agility/</id>
-    <published>2015-06-18T12:40:05.000Z</published>
-    <updated>2015-07-01T10:57:26.896Z</updated>
-    <content type="html"><![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Agile-Develop.png" alt="敏捷开发之道"></p>
-<a id="more"></a>
-<h2 id="跟踪变化">跟踪变化</h2><blockquote>
-<p>你不需要精通所有技术,但需要清除知道行业的动向,从而规划你的项目和职业生涯.</p>
-</blockquote>
-<p>如何才能跟上技术变化的步伐?</p>
-<blockquote>
-<ol>
-<li>迭代和增量式的学习</li>
-<li>了解最新行情</li>
-<li>参加本地的用户组活动</li>
-<li>参加研讨会议</li>
-<li>如饥似渴地阅读</li>
-</ol>
-</blockquote>
-<p>平衡的艺术</p>
-<blockquote>
-<ol>
-<li>许多新想法从未变的羽翼丰满,成为有用的技术.</li>
-<li>你不可能精通每一样技术,没有必要去尝试.</li>
-<li>你要明白为什么需要一项新技术—-它试图解决什么样的问题?</li>
-<li>避免在一时冲动的情况下,只是因为想学习而将应用切换到新的技术,框架或开发语言.</li>
-</ol>
-</blockquote>
-<h2 id="对团队投资">对团队投资</h2><ol>
-<li><p>在一个团队中,如果只是你个人技术很好远远不够.</p>
-</li>
-<li><p>一个学习型的团队才是较好的团队.</p>
-</li>
-<li><p>所学的知识不用,往往会忘记.</p>
-</li>
-<li><p>你需要和团队的其他成员分享所学的知识,把这些知识引入团队中.</p>
-</li>
-</ol>
-<blockquote>
-<p>“午餐会议”是团队中分享知识的非常好的方式.</p>
-</blockquote>
-<p>平衡的艺术</p>
-<blockquote>
-<ol>
-<li>读书小组逐章一起阅读一本书,会非常有用,但是要选好书.</li>
-<li>不是所有的讲座都能引人入胜,有些甚是显得不合时宜.</li>
-<li>尽量让讲座走入团队中.</li>
-<li>坚持有计划有规律地举行讲座.</li>
-<li>不要局限纯技术的图书和主题,相关的非技术主题也会对团队有帮助!</li>
-<li>午餐会议不是设计会议.</li>
-</ol>
-</blockquote>
-<h2 id="懂得丢弃">懂得丢弃</h2><blockquote>
-<p>根深蒂固的习惯不可轻易地就丢弃掉!Expensive  mental models aren’t discarded lightly.</p>
-</blockquote>
-<ol>
-<li><p>敏捷的根本之一就是拥抱变化.</p>
-</li>
-<li><p>开发者的时间才是紧缺和昂贵的资源.</p>
-</li>
-<li><p>在学习一门新技术的时候,多问问自己,是否把太多的旧的态度和方法用在了新的技术上.</p>
-</li>
-</ol>
-<blockquote>
-<p>打破旧习惯很难,更难的是自己还没意识到这个问题.</p>
-</blockquote>
-<p>应该力求尽可能地完全转入新的开发环境.</p>
-<p>平衡的艺术</p>
-<blockquote>
-<p>要果断丢弃旧的习惯,一味地遵循过时的旧习惯会危害你的职业生涯.<br>不是完全忘记旧习惯,而是只在使用适当的技术时才使用它.<br>对于所使用的语言,要总结熟悉的语言特性,并且比较这些特性在新语言或新版本中的变化.</p>
-</blockquote>
-<h2 id="打破沙锅问到底">打破沙锅问到底</h2><blockquote>
-<p>不能只满足于别人告诉你的表面现象,要不停地提问直到你明白问题的根源.</p>
-</blockquote>
-<ol>
-<li>为了解决问题,你需要很好地了解系统的全局.</li>
-<li>问”为什么”,但是要问到点子上.</li>
-<li>当你问为什么的时候,也许你会被反问为什么你问这个问题,在提问之前,想好你问的理由,这会有助于你问出巧当的问题.</li>
-<li>“这个,我不知道.”是一个好的起点,应该由此进行更进一步的调查,而不是在此戛然而止.</li>
-</ol>
-<h2 id="把握开发的节奏">把握开发的节奏</h2><blockquote>
-<p>项目开打需要有一致和稳定的节奏.</p>
-</blockquote>
-<p>敏捷项目会有一个节奏和循环,让开发更加轻松.</p>
-<p>设定一个短时的期限,为任务设定不能延长的最终期限.</p>
-<blockquote>
-<p>解决问题,在事情变得一团糟之前.</p>
-</blockquote>
-<p>平衡的艺术</p>
-<blockquote>
-<p>在每天结束的时候,测试代码,提交代码,没有残留任何代码.<br>不要搞的经常加班.<br>以固定,有规律的长度运行迭代.<br>如果开发节奏过于密集,你会精疲力尽的.<br>有规律的开发节奏会暴露很多问题,让你有更多的鼓起勇气的接口.<br>就像减肥一样,一点点的成功也是一个很大的激励.</p>
-</blockquote>
 ]]></content>
     <summary type="html">
     <![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Agile-Develop.png" alt="敏捷开发之道"></p>]]>

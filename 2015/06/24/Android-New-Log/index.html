@@ -8,7 +8,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
   <meta name="google-site-verification" content="NbE9T9ctqaOBpXu_MkSghUCx0o5WkpO80-NyLjiFEOc" />
+
+
 
 
 
@@ -17,12 +23,14 @@
   <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
 
 
+
+
 <link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
 
 
 
 
-  <meta name="keywords" content="Android,Log," />
+  <meta name="keywords" content="Android, Log, 调试, DevWiki" />
 
 
 
@@ -33,15 +41,49 @@
   <link rel="shorticon icon" type="image/x-icon" href="/devwiki.png?v=0.4.3" />
 
 
+<meta name="description">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android调试Log二次包装">
+<meta property="og:url" content="http://www.devwiki.net/2015/06/24/Android-New-Log/index.html">
+<meta property="og:site_name" content="DevWiki's Blog">
+<meta property="og:description">
+<meta property="og:image" content="http://7xjhi6.com1.z0.glb.clouddn.com/Android-New-Log-Logo.png">
+<meta property="og:image" content="http://7xjhi6.com1.z0.glb.clouddn.com/Android-New-Log-Pic01.png">
+<meta property="og:updated_time" content="2015-07-08T04:41:21.633Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android调试Log二次包装">
+<meta name="twitter:description">
+
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
     scheme: 'Mist',
-    analytics: {
-      google: 'UA-37158281-2'
-    },
     sidebar: 'post'
   };
+</script>
+
+  <title> Android调试Log二次包装 | DevWiki's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-37158281-2', 'auto');
+  ga('send', 'pageview');
 </script>
 
 
@@ -57,30 +99,15 @@
 
 
 
-  <title> Android调试Log二次包装 // DevWiki's Blog </title>
-</head>
-
-<body>
-  <!--[if lte IE 8]>
-  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
-    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
-           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
-           style='margin-left:auto;margin-right:auto;display: block;'/>
-    </a>
-  </div>
-<![endif]-->
-
   <div class="container one-column page-post-detail">
     <div class="headband"></div>
 
-    <div id="header" class="header">
-      <div class="header-inner">
-        <h1 class="site-meta">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
   <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand">
+  <a href="/" class="brand" rel="start">
       <span class="logo">
-        <i class="icon-logo"></i>
+        <i class="icon-next-logo"></i>
       </span>
       <span class="site-title">DevWiki's Blog</span>
   </a>
@@ -95,7 +122,7 @@
   </button>
 </div>
 
-<div class="site-nav">
+<nav class="site-nav">
   
 
   
@@ -103,43 +130,46 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/">
-            <i class="menu-item-icon icon-home"></i> <br />
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
             首页
           </a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives">
-            <i class="menu-item-icon icon-archives"></i> <br />
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
             归档
           </a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags">
-            <i class="menu-item-icon icon-tags"></i> <br />
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
             标签
           </a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories">
-            <i class="menu-item-icon icon-categories"></i> <br />
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
             分类
           </a>
         </li>
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about">
-            <i class="menu-item-icon icon-about"></i> <br />
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
             关于
           </a>
         </li>
+      
+
+      
       
     </ul>
   
@@ -148,9 +178,11 @@
     <div class="site-search">
       
   
-<form class="site-search-form">
-  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
-</form>
+  <form class="site-search-form">
+    <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+  </form>
+
+
 <script type="text/javascript">
   (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
@@ -160,29 +192,28 @@
   _st('install', 'NddmkrLTpaggCULS9VLU','2.0.0');
 </script>
 
-<div class="site-search-toggle"></div>
+
+
     </div>
   
-</div>
+</nav>
 
+ </div>
+    </header>
 
-      </div>
-    </div>
-
-    <div id="main" class="main">
+    <main id="main" class="main">
       <div class="main-inner">
-        <div id="content" class="content">
-          
+        <div id="content" class="content"> 
 
   <div id="posts" class="posts-expand">
     
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
@@ -194,7 +225,10 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 2015-06-24
+          发表于
+          <time itemprop="dateCreated" datetime="2015-06-24T19:16:22+08:00" content="2015-06-24">
+            2015-06-24
+          </time>
         </span>
 
         
@@ -202,15 +236,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/06/24/Android-New-Log/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/24/Android-New-Log/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2015/06/24/Android-New-Log/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/24/Android-New-Log/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -218,7 +252,7 @@
       
 
       
-        <p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Android-New-Log-Logo.png" alt=""></p>
+        <span itemprop="articleBody"><p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Android-New-Log-Logo.png" alt=""></p>
 <a id="more"></a>
 <p>在Android开发过程中经常使用Log打印一些调试的信息,比如:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Log.d(TAG, <span class="string">"xxxxx"</span>);</span><br></pre></td></tr></table></figure></p>
 <p>但是,每一个类都要定义一个TAG,一般TAG等于类名本身,比较繁琐.更重要的是,每次还要带上这个参数.如果打印的信息比较多或者一个类的代码数量比较长时,不太方便查找Log的位置.那么有没有一种方法,解决上面的问题呢?</p>
@@ -242,17 +276,17 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * 包装后的Log输出,可控制显示哪些级别的LOG</span><br><span class="line"> * <span class="doctag">@author</span> Administrator</span><br><span class="line"> *</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DLog</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> String className;			<span class="comment">//所在的类名</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> String methodName;			<span class="comment">//所在的方法名</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> lineNumber;				<span class="comment">//所在行号</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> VERBOSE = <span class="number">1</span>;		  <span class="comment">//显示Verbose及以上的Log</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEBUG = <span class="number">2</span>;			<span class="comment">//显示Debug及以上的Log</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> INFO = <span class="number">3</span>;			<span class="comment">//显示Info及以上的Log</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> WARN = <span class="number">4</span>;			<span class="comment">//显示Warn及以上的Log</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> ERROR = <span class="number">5</span>;			<span class="comment">//显示Error及以上的Log</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> NOTHING = <span class="number">6</span>;		<span class="comment">//全部不显示</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> LEVEL = VERBOSE;	<span class="comment">//控制显示的级别</span></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">DLog</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isDebuggable</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> BuildConfig.DEBUG;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">createLog</span><span class="params">(String log)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		StringBuffer buffer = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">		buffer.append(<span class="string">"["</span>);</span><br><span class="line">		buffer.append(methodName);</span><br><span class="line">		buffer.append(<span class="string">":"</span>);</span><br><span class="line">		buffer.append(lineNumber);</span><br><span class="line">		buffer.append(<span class="string">"]"</span>);</span><br><span class="line">		buffer.append(log);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> buffer.toString();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">getMethodNames</span><span class="params">(StackTraceElement[] sElements)</span> </span>&#123;</span><br><span class="line">		className = sElements[<span class="number">1</span>].getFileName();</span><br><span class="line">		methodName = sElements[<span class="number">1</span>].getMethodName();</span><br><span class="line">		lineNumber = sElements[<span class="number">1</span>].getLineNumber();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">v</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (!isDebuggable()) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (LEVEL &lt;= VERBOSE) &#123;</span><br><span class="line">			getMethodNames(<span class="keyword">new</span> Throwable().getStackTrace());</span><br><span class="line">			Log.v(className, createLog(message));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">d</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (!isDebuggable()) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (LEVEL &lt;= DEBUG) &#123;</span><br><span class="line">			getMethodNames(<span class="keyword">new</span> Throwable().getStackTrace());</span><br><span class="line">			Log.d(className, createLog(message));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">i</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (!isDebuggable()) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (LEVEL &lt;= INFO) &#123;</span><br><span class="line">			getMethodNames(<span class="keyword">new</span> Throwable().getStackTrace());</span><br><span class="line">			Log.i(className, createLog(message));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">w</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (!isDebuggable()) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (LEVEL &lt;= WARN) &#123;</span><br><span class="line">			getMethodNames(<span class="keyword">new</span> Throwable().getStackTrace());</span><br><span class="line">			Log.w(className, createLog(message));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">e</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (!isDebuggable()) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (LEVEL &lt;= ERROR) &#123;</span><br><span class="line">			getMethodNames(<span class="keyword">new</span> Throwable().getStackTrace());</span><br><span class="line">			Log.e(className, createLog(message));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="使用方法">使用方法</h2><p>Dlog和Android自带的Log类一样,直接打印信息.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Dlog.d(<span class="string">"Test Dlog"</span>);</span><br><span class="line">Dlog.e(<span class="string">"Test Dlog"</span>);</span><br><span class="line">Dlog.v(<span class="string">"Test Dlog"</span>);</span><br><span class="line">Dlog.i(<span class="string">"Test Dlog"</span>);</span><br><span class="line">Dlog.w(<span class="string">"Test Dlog"</span>);</span><br></pre></td></tr></table></figure></p>
 <p>显示效果如下:<br><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Android-New-Log-Pic01.png" alt="打印效果"></p>
-
+</span>
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
         <div class="post-tags">
           
-            <a href="/tags/Android/"> #Android </a>
+            <a href="/tags/Android/" rel="tag">#Android</a>
           
-            <a href="/tags/Log/"> #Log </a>
+            <a href="/tags/Log/" rel="tag">#Log</a>
           
         </div>
       
@@ -261,13 +295,13 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/06/24/CleanCode-Note-Formatter/">CleanCode笔记---格式</a>
+              <a href="/2015/06/24/CleanCode-Note-Formatter/" rel="prev">CleanCode笔记---格式</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/06/24/Http-Status-Code/">HTTP学习笔记---状态码</a>
+              <a href="/2015/06/24/Http-Status-Code/" rel="next">HTTP学习笔记---状态码</a>
             
           </div>
         </div>
@@ -275,13 +309,13 @@
 
       
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
 
-    
-      <div class="post-spread">
+    <div class="post-spread">
+      
         <!-- JiaThis Button BEGIN -->
 <div class="jiathis_style">
   <a class="jiathis_button_tsina"></a>
@@ -304,26 +338,24 @@
 <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
 <!-- JiaThis Button END -->
 
-      </div>
-    
+      
+    </div>
+  </div>
 
-    
-      <div class="comments" id="comments">
+ </div>
+
         
-          <div class="ds-thread" data-thread-key="2015/06/24/Android-New-Log/"
-               data-title="Android调试Log二次包装" data-url="http://www.devwiki.net/2015/06/24/Android-New-Log/">
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2015/06/24/Android-New-Log/"
+                   data-title="Android调试Log二次包装" data-url="http://www.devwiki.net/2015/06/24/Android-New-Log/">
+              </div>
+            
           </div>
         
       </div>
-    
-  </div>
-
-
-        </div>
-
-        
-      </div>
-
 
       
   
@@ -335,12 +367,12 @@
     </div>
   </div>
 
-  <div id="sidebar" class="sidebar">
+  <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -349,16 +381,16 @@
         </ul>
       
 
-      <div class="site-overview">
-        <div class="site-author motion-element">
-          <img class="site-author-image" src="/favicon.ico" alt="DevWiki" />
-          <p class="site-author-name">DevWiki</p>
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/favicon.ico" alt="DevWiki" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">DevWiki</p>
         </div>
-        <p class="site-description motion-element"></p>
-        <div class="site-state motion-element">
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -372,17 +404,17 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">24</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
 
-        </div>
+        </nav>
 
         
           <div class="feed-link motion-element">
-            <a href="/atom.xml">
-              <i class="menu-item-icon icon-feed"></i>
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
               RSS
             </a>
           </div>
@@ -392,33 +424,37 @@
           
             
               <span class="links-of-author-item">
-              <a href="http://github.com/dev-wiki" target="_blank">GitHub</a>
-            </span>
+                <a href="http://github.com/dev-wiki" target="_blank">GitHub</a>
+              </span>
             
               <span class="links-of-author-item">
-              <a href="http://weibo.com/devwiki" target="_blank">Weibo</a>
-            </span>
+                <a href="http://weibo.com/devwiki" target="_blank">Weibo</a>
+              </span>
             
               <span class="links-of-author-item">
-              <a href="http://www.zhihu.com/people/devwiki" target="_blank">ZhiHu</a>
-            </span>
+                <a href="http://www.zhihu.com/people/devwiki" target="_blank">ZhiHu</a>
+              </span>
             
           
         </div>
 
         
         
-          <div class="cc-license motion-element">
+          <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
               <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
             </a>
           </div>
         
 
-      </div>
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
 
       
-        <div class="post-toc-wrap sidebar-panel-active">
+        <section class="post-toc-wrap sidebar-panel-active">
           <div class="post-toc-indicator-top post-toc-indicator"></div>
           <div class="post-toc">
             
@@ -427,18 +463,17 @@
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
-        </div>
+        </section>
       
 
     </div>
-  </div>
+  </aside>
 
 
-    </div>
+    </main>
 
-    <div id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright">
   
   &copy; &nbsp;  2015.06 - 
   2015
@@ -471,8 +506,8 @@
 </span>
 
 
-      </div>
-    </div>
+ </div>
+    </footer>
 
     <div class="back-to-top"></div>
   </div>
@@ -481,7 +516,27 @@
 
   
   
+  
+    
 
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"devwiki"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+    
+  
   
   <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
   <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
@@ -497,7 +552,9 @@
 
 
 
-  <script type="text/javascript" src="/js/search-toggle.js"></script>
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.3"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
   
@@ -534,7 +591,6 @@
     }
 
     function getTOCMaxHeight () {
-      var $sidebarInner = $('.sidebar-inner');
       var height = $('.sidebar').height() -
                    $tocSelector.position().top -
                    $('.post-toc-indicator-bottom').height();
@@ -556,7 +612,7 @@
       )
     }
 
-    $(document).on('sidebar.didShow', function () {
+    $(document).on('sidebar.motion.complete', function () {
       processTOC();
     });
 
@@ -573,7 +629,6 @@
       element.on('mousewheel DOMMouseScroll', function (event) {
           var oe = event.originalEvent;
           var delta = oe.wheelDelta || -oe.detail;
-          var self = this;
 
           this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
           event.preventDefault();
@@ -583,60 +638,82 @@
     }
 
     function tocOverflowIndicator (indicator, action) {
-      $(indicator).velocity('stop').velocity({
-        opacity: action === 'show' ? 0.4 : 0
-      }, { duration: 100 });
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
     }
 
   });
 </script>
 
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
 
-  <script type="text/javascript" id="sidebar.nav">
-    $(document).ready(function () {
-      var html = $('html');
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
 
-      $('.sidebar-nav li').on('click', function () {
-        var item = $(this);
-        var activeTabClassName = 'sidebar-nav-active';
-        var activePanelClassName = 'sidebar-panel-active';
-        if (item.hasClass(activeTabClassName)) {
-          return;
-        }
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
 
-        var currentTarget = $('.' + activePanelClassName);
-        var target = $('.' + item.data('target'));
-
-        currentTarget.velocity('transition.slideUpOut', 200, function () {
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
           target
             .velocity('stop')
-            .velocity('transition.slideDownIn', 200)
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
             .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
         });
 
-        item.siblings().removeClass(activeTabClassName);
-        item.addClass(activeTabClassName);
-      });
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
 
-      $('.post-toc a').on('click', function (e) {
-        e.preventDefault();
-        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
         html.velocity('stop').velocity('scroll', {
           offset: offset  + 'px',
           mobileHA: false
-        });
-      });
-
-      // Expand sidebar on post detail page by default, when post has a toc.
-      var $tocContent = $('.post-toc-content');
-      if (isDesktop() && CONFIG.sidebar === 'post') {
-        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
-          displaySidebar();
-        }
-      }
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
     });
-  </script>
 
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
 
 
 
@@ -644,6 +721,9 @@
     $(document).ready(function () {
       if (CONFIG.sidebar === 'always') {
         displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
       }
     });
   </script>
@@ -675,28 +755,14 @@
   
 
   
-    
-  
-
+  <script type="text/javascript" src="/js/lazyload.js"></script>
   <script type="text/javascript">
-    var duoshuoQuery = {short_name:"devwiki"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
   </script>
-
-  
-
-
-  
-  
-  <script type="text/javascript" src="/js/analytics_google-analytics.js?v=0.4.3"></script>
-
-
 </body>
 </html>

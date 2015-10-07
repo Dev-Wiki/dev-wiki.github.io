@@ -8,13 +8,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
   <meta name="google-site-verification" content="NbE9T9ctqaOBpXu_MkSghUCx0o5WkpO80-NyLjiFEOc" />
 
 
 
 
 
+
+
   <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
 
 
 <link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
@@ -33,15 +41,46 @@
   <link rel="shorticon icon" type="image/x-icon" href="/devwiki.png?v=0.4.3" />
 
 
+<meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DevWiki's Blog">
+<meta property="og:url" content="http://www.devwiki.net/index.html">
+<meta property="og:site_name" content="DevWiki's Blog">
+<meta property="og:description">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DevWiki's Blog">
+<meta name="twitter:description">
+
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
     scheme: 'Mist',
-    analytics: {
-      google: 'UA-37158281-2'
-    },
     sidebar: 'post'
   };
+</script>
+
+  <title> DevWiki's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-37158281-2', 'auto');
+  ga('send', 'pageview');
 </script>
 
 
@@ -57,32 +96,17 @@
 
 
 
-  <title> DevWiki's Blog </title>
-</head>
-
-<body>
-  <!--[if lte IE 8]>
-  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
-    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
-           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
-           style='margin-left:auto;margin-right:auto;display: block;'/>
-    </a>
-  </div>
-<![endif]-->
-
   <div class="container one-column 
    page-home 
 ">
     <div class="headband"></div>
 
-    <div id="header" class="header">
-      <div class="header-inner">
-        <h1 class="site-meta">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
   <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand">
+  <a href="/" class="brand" rel="start">
       <span class="logo">
-        <i class="icon-logo"></i>
+        <i class="icon-next-logo"></i>
       </span>
       <span class="site-title">DevWiki's Blog</span>
   </a>
@@ -97,7 +121,7 @@
   </button>
 </div>
 
-<div class="site-nav">
+<nav class="site-nav">
   
 
   
@@ -105,43 +129,46 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/">
-            <i class="menu-item-icon icon-home"></i> <br />
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
             首页
           </a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives">
-            <i class="menu-item-icon icon-archives"></i> <br />
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
             归档
           </a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags">
-            <i class="menu-item-icon icon-tags"></i> <br />
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
             标签
           </a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories">
-            <i class="menu-item-icon icon-categories"></i> <br />
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
             分类
           </a>
         </li>
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about">
-            <i class="menu-item-icon icon-about"></i> <br />
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
             关于
           </a>
         </li>
+      
+
+      
       
     </ul>
   
@@ -150,9 +177,11 @@
     <div class="site-search">
       
   
-<form class="site-search-form">
-  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
-</form>
+  <form class="site-search-form">
+    <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+  </form>
+
+
 <script type="text/javascript">
   (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
     (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
@@ -162,33 +191,105 @@
   _st('install', 'NddmkrLTpaggCULS9VLU','2.0.0');
 </script>
 
-<div class="site-search-toggle"></div>
+
+
     </div>
   
-</div>
+</nav>
 
+ </div>
+    </header>
 
-      </div>
-    </div>
-
-    <div id="main" class="main">
+    <main id="main" class="main">
       <div class="main-inner">
-        <div id="content" class="content">
-          
-  <div id="posts" class="posts-expand">
+        <div id="content" class="content"> 
+  <section id="posts" class="posts-expand">
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2015/09/20/Android-Music-Play-Mode/">
+              <a class="post-title-link" href="/2015/10/07/Android-TextWatcher-Add-Space-To-Phone_Number/" itemprop="url">
+                Android实现输入手机号时自动添加空格
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-10-07T10:13:14+08:00" content="2015-10-07">
+            2015-10-07
+          </time>
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/10/07/Android-TextWatcher-Add-Space-To-Phone_Number/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/07/Android-TextWatcher-Add-Space-To-Phone_Number/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <h2 id="背景">背景</h2><p>为了优化用户体验,我们往往会在让用户输入手机号码时添加空格,比如:<code>133 1234 5678</code>.那么在Android中如何实现呢?</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/10/07/Android-TextWatcher-Add-Space-To-Phone_Number/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/09/20/Android-Music-Play-Mode/" itemprop="url">
                 Android音乐播放模式切换-外放、听筒、耳机
               </a>
             
@@ -198,7 +299,10 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 2015-09-20
+          发表于
+          <time itemprop="dateCreated" datetime="2015-09-20T16:30:28+08:00" content="2015-09-20">
+            2015-09-20
+          </time>
         </span>
 
         
@@ -206,15 +310,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/09/20/Android-Music-Play-Mode/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/20/Android-Music-Play-Mode/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2015/09/20/Android-Music-Play-Mode/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/20/Android-Music-Play-Mode/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -226,7 +330,7 @@
           <p>最近比较忙,好久都没有更新博客!</p>
 <p>最近由于项目需求要做音乐播放模式的切换,经过好多次尝试,发现这里面满满的都是坑啊,所以就写一篇日志记录下来,也给大家分享下遇到的坑及解决办法.</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/20/Android-Music-Play-Mode/#more">
+            <a class="btn" href="/2015/09/20/Android-Music-Play-Mode/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -234,7 +338,7 @@
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -243,23 +347,23 @@
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2015/08/05/Java-Simple-Log/">
+              <a class="post-title-link" href="/2015/08/05/Java-Simple-Log/" itemprop="url">
                 Java简易Log
               </a>
             
@@ -269,7 +373,10 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 2015-08-05
+          发表于
+          <time itemprop="dateCreated" datetime="2015-08-05T20:23:03+08:00" content="2015-08-05">
+            2015-08-05
+          </time>
         </span>
 
         
@@ -277,15 +384,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/08/05/Java-Simple-Log/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/05/Java-Simple-Log/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2015/08/05/Java-Simple-Log/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/05/Java-Simple-Log/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -296,7 +403,7 @@
         
           <p>在写代码时,经常打印一些信息用于调试,我经常使用<code>System.out.println()</code>打印,但是有一个问题,打印的信息多的时候就很难找到输出的位置,为了方便找到打印的位置,写了个简易的Log类,以后有机会在添加功能.</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/05/Java-Simple-Log/#more">
+            <a class="btn" href="/2015/08/05/Java-Simple-Log/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -304,7 +411,7 @@
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -313,23 +420,23 @@
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2015/07/27/Android-Code-Pattern/">
+              <a class="post-title-link" href="/2015/07/27/Android-Code-Pattern/" itemprop="url">
                 Android代码规范参考指南
               </a>
             
@@ -339,7 +446,10 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 2015-07-27
+          发表于
+          <time itemprop="dateCreated" datetime="2015-07-27T12:25:16+08:00" content="2015-07-27">
+            2015-07-27
+          </time>
         </span>
 
         
@@ -347,15 +457,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/07/27/Android-Code-Pattern/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/27/Android-Code-Pattern/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2015/07/27/Android-Code-Pattern/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/27/Android-Code-Pattern/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -366,7 +476,7 @@
         
           <p>代码规范对于一个软件项目来说非常重要，当然Android项目也不例外，一个优秀的Android项目不仅需要严谨的业务逻辑和架构设计，更需要一套统一优雅的代码规范标准，才可以让整个项目团队更加高效。</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/27/Android-Code-Pattern/#more">
+            <a class="btn" href="/2015/07/27/Android-Code-Pattern/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -374,7 +484,7 @@
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -383,23 +493,23 @@
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2015/07/08/Android-Best-Practices/">
+              <a class="post-title-link" href="/2015/07/08/Android-Best-Practices/" itemprop="url">
                 Android 开发最佳实践
               </a>
             
@@ -409,7 +519,10 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 2015-07-08
+          发表于
+          <time itemprop="dateCreated" datetime="2015-07-08T12:45:07+08:00" content="2015-07-08">
+            2015-07-08
+          </time>
         </span>
 
         
@@ -417,15 +530,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/07/08/Android-Best-Practices/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/08/Android-Best-Practices/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2015/07/08/Android-Best-Practices/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/08/Android-Best-Practices/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -444,7 +557,7 @@
 <li>使用 Fragments来呈现UI视图</li>
 <li>使用 Activities 只是为了管理 Fragments
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/08/Android-Best-Practices/#more">
+            <a class="btn" href="/2015/07/08/Android-Best-Practices/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -452,7 +565,7 @@
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -461,23 +574,23 @@
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2015/07/08/CleanCode-Note-Object-Data/">
+              <a class="post-title-link" href="/2015/07/08/CleanCode-Note-Object-Data/" itemprop="url">
                 CleanCode笔记---对象和数据结构
               </a>
             
@@ -487,14 +600,21 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 2015-07-08
+          发表于
+          <time itemprop="dateCreated" datetime="2015-07-08T00:24:15+08:00" content="2015-07-08">
+            2015-07-08
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分类于
             
-              <a href="/categories/CleanCode-代码整洁之道/">CleanCode-代码整洁之道</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/CleanCode-代码整洁之道/" itemprop="url" rel="index">
+                  <span itemprop="name">CleanCode-代码整洁之道</span>
+                </a>
+              </span>
 
               
               
@@ -506,15 +626,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/07/08/CleanCode-Note-Object-Data/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/08/CleanCode-Note-Object-Data/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2015/07/08/CleanCode-Note-Object-Data/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/08/CleanCode-Note-Object-Data/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -525,7 +645,7 @@
         
           <p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Clean-Code-LOGO.png" alt="CleanCode"></p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/08/CleanCode-Note-Object-Data/#more">
+            <a class="btn" href="/2015/07/08/CleanCode-Note-Object-Data/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -533,7 +653,7 @@
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -542,23 +662,23 @@
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2015/07/02/Http-Web-Internet-Base/">
+              <a class="post-title-link" href="/2015/07/02/Http-Web-Internet-Base/" itemprop="url">
                 HTTP学习笔记---了解Web及网络基础
               </a>
             
@@ -568,14 +688,21 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 2015-07-02
+          发表于
+          <time itemprop="dateCreated" datetime="2015-07-02T20:47:25+08:00" content="2015-07-02">
+            2015-07-02
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分类于
             
-              <a href="/categories/HTTP学习笔记/">HTTP学习笔记</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/HTTP学习笔记/" itemprop="url" rel="index">
+                  <span itemprop="name">HTTP学习笔记</span>
+                </a>
+              </span>
 
               
               
@@ -587,15 +714,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/07/02/Http-Web-Internet-Base/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/02/Http-Web-Internet-Base/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2015/07/02/Http-Web-Internet-Base/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/02/Http-Web-Internet-Base/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -606,7 +733,7 @@
         
           <p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Learn-HTTP-With-Image.png" alt="HTTP"></p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/02/Http-Web-Internet-Base/#more">
+            <a class="btn" href="/2015/07/02/Http-Web-Internet-Base/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -614,7 +741,7 @@
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -623,23 +750,23 @@
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2015/07/01/Agile-Develop-Agile-Feedback/">
+              <a class="post-title-link" href="/2015/07/01/Agile-Develop-Agile-Feedback/" itemprop="url">
                 敏捷反馈---高效程序员的45个习惯读书笔记
               </a>
             
@@ -649,14 +776,21 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 2015-07-01
+          发表于
+          <time itemprop="dateCreated" datetime="2015-07-01T08:01:12+08:00" content="2015-07-01">
+            2015-07-01
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分类于
             
-              <a href="/categories/高效程序员的45个习惯/">高效程序员的45个习惯</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/高效程序员的45个习惯/" itemprop="url" rel="index">
+                  <span itemprop="name">高效程序员的45个习惯</span>
+                </a>
+              </span>
 
               
               
@@ -668,15 +802,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/07/01/Agile-Develop-Agile-Feedback/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/01/Agile-Develop-Agile-Feedback/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2015/07/01/Agile-Develop-Agile-Feedback/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/01/Agile-Develop-Agile-Feedback/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -687,7 +821,7 @@
         
           <p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Agile-Develop.png" alt="敏捷开发之道"></p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/01/Agile-Develop-Agile-Feedback/#more">
+            <a class="btn" href="/2015/07/01/Agile-Develop-Agile-Feedback/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -695,7 +829,7 @@
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -704,23 +838,23 @@
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2015/06/25/Qiniu-Upload-Tool/">
+              <a class="post-title-link" href="/2015/06/25/Qiniu-Upload-Tool/" itemprop="url">
                 七牛简易上传工具的制作
               </a>
             
@@ -730,7 +864,10 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 2015-06-25
+          发表于
+          <time itemprop="dateCreated" datetime="2015-06-25T18:24:47+08:00" content="2015-06-25">
+            2015-06-25
+          </time>
         </span>
 
         
@@ -738,15 +875,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/06/25/Qiniu-Upload-Tool/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/25/Qiniu-Upload-Tool/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2015/06/25/Qiniu-Upload-Tool/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/25/Qiniu-Upload-Tool/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -757,7 +894,7 @@
         
           <p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/qiniu-logo.png" alt="七牛LOGO"></p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/06/25/Qiniu-Upload-Tool/#more">
+            <a class="btn" href="/2015/06/25/Qiniu-Upload-Tool/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -765,7 +902,7 @@
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -774,23 +911,23 @@
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2015/06/24/CleanCode-Note-Formatter/">
+              <a class="post-title-link" href="/2015/06/24/CleanCode-Note-Formatter/" itemprop="url">
                 CleanCode笔记---格式
               </a>
             
@@ -800,14 +937,21 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 2015-06-24
+          发表于
+          <time itemprop="dateCreated" datetime="2015-06-24T23:46:05+08:00" content="2015-06-24">
+            2015-06-24
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分类于
             
-              <a href="/categories/CleanCode-代码整洁之道/">CleanCode-代码整洁之道</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/CleanCode-代码整洁之道/" itemprop="url" rel="index">
+                  <span itemprop="name">CleanCode-代码整洁之道</span>
+                </a>
+              </span>
 
               
               
@@ -819,15 +963,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/06/24/CleanCode-Note-Formatter/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/24/CleanCode-Note-Formatter/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2015/06/24/CleanCode-Note-Formatter/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/24/CleanCode-Note-Formatter/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -838,7 +982,7 @@
         
           <p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Clean-Code-LOGO.png" alt="CleanCode"></p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/06/24/CleanCode-Note-Formatter/#more">
+            <a class="btn" href="/2015/06/24/CleanCode-Note-Formatter/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -846,7 +990,7 @@
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -855,94 +999,24 @@
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2015/06/24/Android-New-Log/">
-                Android调试Log二次包装
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于 2015-06-24
-        </span>
-
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/06/24/Android-New-Log/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/24/Android-New-Log/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Android-New-Log-Logo.png" alt=""></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/06/24/Android-New-Log/#more">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
-  </div>
+  </section>
 
   
-  <div class="pagination">
+  <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
-  </div>
+  </nav>
 
+ </div>
 
-        </div>
+        
 
         
       </div>
-
 
       
   
@@ -954,21 +1028,21 @@
     </div>
   </div>
 
-  <div id="sidebar" class="sidebar">
+  <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
       
 
-      <div class="site-overview">
-        <div class="site-author motion-element">
-          <img class="site-author-image" src="/favicon.ico" alt="DevWiki" />
-          <p class="site-author-name">DevWiki</p>
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/favicon.ico" alt="DevWiki" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">DevWiki</p>
         </div>
-        <p class="site-description motion-element"></p>
-        <div class="site-state motion-element">
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -982,17 +1056,17 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">24</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
 
-        </div>
+        </nav>
 
         
           <div class="feed-link motion-element">
-            <a href="/atom.xml">
-              <i class="menu-item-icon icon-feed"></i>
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
               RSS
             </a>
           </div>
@@ -1002,42 +1076,45 @@
           
             
               <span class="links-of-author-item">
-              <a href="http://github.com/dev-wiki" target="_blank">GitHub</a>
-            </span>
+                <a href="http://github.com/dev-wiki" target="_blank">GitHub</a>
+              </span>
             
               <span class="links-of-author-item">
-              <a href="http://weibo.com/devwiki" target="_blank">Weibo</a>
-            </span>
+                <a href="http://weibo.com/devwiki" target="_blank">Weibo</a>
+              </span>
             
               <span class="links-of-author-item">
-              <a href="http://www.zhihu.com/people/devwiki" target="_blank">ZhiHu</a>
-            </span>
+                <a href="http://www.zhihu.com/people/devwiki" target="_blank">ZhiHu</a>
+              </span>
             
           
         </div>
 
         
         
-          <div class="cc-license motion-element">
+          <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
               <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
             </a>
           </div>
         
 
-      </div>
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
 
       
 
     </div>
-  </div>
+  </aside>
 
 
-    </div>
+    </main>
 
-    <div id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright">
   
   &copy; &nbsp;  2015.06 - 
   2015
@@ -1070,8 +1147,8 @@
 </span>
 
 
-      </div>
-    </div>
+ </div>
+    </footer>
 
     <div class="back-to-top"></div>
   </div>
@@ -1080,7 +1157,27 @@
 
   
   
+  
+    
 
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"devwiki"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+    
+  
   
   <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
   <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
@@ -1096,7 +1193,9 @@
 
 
 
-  <script type="text/javascript" src="/js/search-toggle.js"></script>
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.3"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
 
@@ -1104,6 +1203,9 @@
     $(document).ready(function () {
       if (CONFIG.sidebar === 'always') {
         displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
       }
     });
   </script>
@@ -1135,28 +1237,14 @@
   
 
   
-    
-  
-
+  <script type="text/javascript" src="/js/lazyload.js"></script>
   <script type="text/javascript">
-    var duoshuoQuery = {short_name:"devwiki"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
   </script>
-
-  
-
-
-  
-  
-  <script type="text/javascript" src="/js/analytics_google-analytics.js?v=0.4.3"></script>
-
-
 </body>
 </html>
