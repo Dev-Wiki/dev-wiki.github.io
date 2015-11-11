@@ -5,7 +5,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.devwiki.net//"/>
-  <updated>2015-10-07T02:19:49.144Z</updated>
+  <updated>2015-11-11T15:02:09.366Z</updated>
   <id>http://www.devwiki.net//</id>
   
   <author>
@@ -16,11 +16,59 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[Android实现微信录制小视频的计时动画]]></title>
+    <link href="http://www.devwiki.net/2015/11/11/Android-WeiXin-Line-Timer-View/"/>
+    <id>http://www.devwiki.net/2015/11/11/Android-WeiXin-Line-Timer-View/</id>
+    <published>2015-11-11T14:54:43.000Z</published>
+    <updated>2015-11-11T15:02:09.366Z</updated>
+    <content type="html"><![CDATA[<p>使用微信录制小视频时会有一个倒计时的横线,如下图:</p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Android-WeiXin-TimeLine.jpg" alt=""></p>
+<p>这个横线怎么实现呢?</p>
+<a id="more"></a>
+<p>尝试了以下几种方法:</p>
+<ul>
+<li>ProgressBar</li>
+<li>自定义View + 定时器 + 重绘</li>
+<li>TextView动态改变宽度</li>
+</ul>
+<p>第一种方式使用ProgressBar,但是暂时不知道如何实现.<br>第二种方式在绘制过程中出现卡顿,没有更好的解决办法,相对较麻烦.<br>第三种方式定时器动态改变宽度仍旧会出现卡顿现象.</p>
+<p><strong>卡顿!</strong> <strong>卡顿!!</strong> <strong>卡顿!!!</strong></p>
+<p>用什么解决卡顿呢?</p>
+<p>用动画,对了,使用Animator.动画来解决卡顿,动态改变View的宽度.</p>
+<p>于是自定义了一个<code>LineView</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LineView</span> <span class="keyword">extends</span> <span class="title">View</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LineView</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LineView</span><span class="params">(Context context, AttributeSet attrs)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, attrs);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setLayoutWidth</span><span class="params">(<span class="keyword">int</span> width)</span></span>&#123;</span><br><span class="line">        ViewGroup.LayoutParams params = getLayoutParams();</span><br><span class="line">        params.width = width;</span><br><span class="line">        setLayoutParams(params);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>和普通的view相比,就多了一个方法:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setLayoutWidth</span><span class="params">(<span class="keyword">int</span> width)</span></span>&#123;</span><br><span class="line">    ViewGroup.LayoutParams params = getLayoutParams();</span><br><span class="line">    params.width = width;</span><br><span class="line">    setLayoutParams(params);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>为什么加一个这个方法呢?这个方法的其实就是设置View的布局宽度,但是在ObjectAnimator里面,需要一个可以使用的属性来改变,为此我创造一个属性<code>layoutWidth</code>,于是动画就可以这样写:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">animator = ObjectAnimator.ofInt(lineView, <span class="string">"layoutWidth"</span>, width, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<p>布局文件很简单,就放一个LineView,一个Button.<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">LinearLayout</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attribute">xmlns:tools</span>=<span class="value">"http://schemas.android.com/tools"</span></span><br><span class="line">    <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:orientation</span>=<span class="value">"vertical"</span></span><br><span class="line">    <span class="attribute">tools:context</span>=<span class="value">".MainActivity"</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="title">net.devwiki.lineview.LineView</span></span><br><span class="line">        <span class="attribute">android:id</span>=<span class="value">"@+id/lineView"</span></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"1dp"</span></span><br><span class="line">        <span class="attribute">android:layout_gravity</span>=<span class="value">"center_horizontal"</span></span><br><span class="line">        <span class="attribute">android:layout_marginTop</span>=<span class="value">"100dp"</span></span><br><span class="line">        <span class="attribute">android:background</span>=<span class="value">"@color/colorPrimary"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">Button</span></span><br><span class="line">        <span class="attribute">android:id</span>=<span class="value">"@+id/button"</span></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span></span><br><span class="line">        <span class="attribute">android:layout_gravity</span>=<span class="value">"bottom"</span></span><br><span class="line">        <span class="attribute">android:layout_marginTop</span>=<span class="value">"100dp"</span></span><br><span class="line">        <span class="attribute">android:text</span>=<span class="value">"START"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>在这把MainActivity也贴出来,如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Animator animator;</span><br><span class="line">    <span class="keyword">private</span> LineView lineView;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> width;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        Button button = (Button) findViewById(R.id.button);</span><br><span class="line">        button.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                startAnimator();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        lineView = (LineView) findViewById(R.id.lineView);</span><br><span class="line">        ViewTreeObserver observer = lineView.getViewTreeObserver();</span><br><span class="line">        observer.addOnPreDrawListener(<span class="keyword">new</span> ViewTreeObserver.OnPreDrawListener() &#123;</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onPreDraw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                width = lineView.getMeasuredWidth();</span><br><span class="line">                Log.d(<span class="string">"-----"</span>, <span class="string">"width:"</span> + width);</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">startAnimator</span><span class="params">()</span></span>&#123;</span><br><span class="line">        animator = ObjectAnimator.ofInt(lineView, <span class="string">"layoutWidth"</span>, width, <span class="number">0</span>);</span><br><span class="line">        animator.setDuration(<span class="number">6000</span>);</span><br><span class="line">        animator.setInterpolator(<span class="keyword">new</span> LinearInterpolator());</span><br><span class="line">        animator.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>噔噔噔噔,大功告成,看一下效果吧:</p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Android-LineView.gif" alt=""></p>
+<p>如果有好的方法,请留言或者联系我哦.<a href="http://www.devwiki.net/about/">点此查看联系方式</a></p>
+<p>更多文章请移步我的博客:<a href="http://www.devwiki.net">DevWiki’s Bolg</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>使用微信录制小视频时会有一个倒计时的横线,如下图:</p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Android-WeiXin-TimeLine.jpg" alt=""></p>
+<p>这个横线怎么实现呢?</p>]]>
+    
+    </summary>
+    
+      <category term="Android" scheme="http://www.devwiki.net/tags/Android/"/>
+    
+      <category term="LineView" scheme="http://www.devwiki.net/tags/LineView/"/>
+    
+      <category term="进度条" scheme="http://www.devwiki.net/tags/%E8%BF%9B%E5%BA%A6%E6%9D%A1/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[Android实现输入手机号时自动添加空格]]></title>
     <link href="http://www.devwiki.net/2015/10/07/Android-TextWatcher-Add-Space-To-Phone_Number/"/>
     <id>http://www.devwiki.net/2015/10/07/Android-TextWatcher-Add-Space-To-Phone_Number/</id>
     <published>2015-10-07T02:13:14.000Z</published>
-    <updated>2015-10-07T02:19:49.144Z</updated>
+    <updated>2015-11-11T14:55:59.039Z</updated>
     <content type="html"><![CDATA[<h2 id="背景">背景</h2><p>为了优化用户体验,我们往往会在让用户输入手机号码时添加空格,比如:<code>133 1234 5678</code>.那么在Android中如何实现呢?</p>
 <a id="more"></a>
 <h2 id="实现方法">实现方法</h2><p>Android中的输入框EditText有个方法<code>addTextChangedListener()</code>,该方法实现输入框文字变动时的监听.该方法需要传入一个<code>TextWatcher</code>接口的实现.</p>
@@ -90,7 +138,7 @@
     <link href="http://www.devwiki.net/2015/09/20/Android-Music-Play-Mode/"/>
     <id>http://www.devwiki.net/2015/09/20/Android-Music-Play-Mode/</id>
     <published>2015-09-20T08:30:28.000Z</published>
-    <updated>2015-09-20T08:42:22.940Z</updated>
+    <updated>2015-11-11T14:52:50.318Z</updated>
     <content type="html"><![CDATA[<p>最近比较忙,好久都没有更新博客!</p>
 <p>最近由于项目需求要做音乐播放模式的切换,经过好多次尝试,发现这里面满满的都是坑啊,所以就写一篇日志记录下来,也给大家分享下遇到的坑及解决办法.</p>
 <a id="more"></a>
@@ -200,7 +248,7 @@
     <link href="http://www.devwiki.net/2015/08/05/Java-Simple-Log/"/>
     <id>http://www.devwiki.net/2015/08/05/Java-Simple-Log/</id>
     <published>2015-08-05T12:23:03.000Z</published>
-    <updated>2015-08-05T12:29:19.100Z</updated>
+    <updated>2015-11-11T14:52:50.334Z</updated>
     <content type="html"><![CDATA[<p>在写代码时,经常打印一些信息用于调试,我经常使用<code>System.out.println()</code>打印,但是有一个问题,打印的信息多的时候就很难找到输出的位置,为了方便找到打印的位置,写了个简易的Log类,以后有机会在添加功能.</p>
 <a id="more"></a>
 <p>Java简易的Log类如下:</p>
@@ -228,7 +276,7 @@
     <link href="http://www.devwiki.net/2015/07/27/Android-Code-Pattern/"/>
     <id>http://www.devwiki.net/2015/07/27/Android-Code-Pattern/</id>
     <published>2015-07-27T04:25:16.000Z</published>
-    <updated>2015-07-27T04:28:42.818Z</updated>
+    <updated>2015-11-11T14:52:50.318Z</updated>
     <content type="html"><![CDATA[<p>代码规范对于一个软件项目来说非常重要，当然Android项目也不例外，一个优秀的Android项目不仅需要严谨的业务逻辑和架构设计，更需要一套统一优雅的代码规范标准，才可以让整个项目团队更加高效。</p>
 <a id="more"></a>
 <h2 id="包命名规范">包命名规范</h2><p>包（packages）：采用反域名命名规则，全部使用小写字母。一级包名为com，二级包名为xxx（可以是公司域名或者个人命名），三级包名根据应用进行命名，四级包名为模块名或层级名。</p>
@@ -751,7 +799,7 @@
     <link href="http://www.devwiki.net/2015/07/08/Android-Best-Practices/"/>
     <id>http://www.devwiki.net/2015/07/08/Android-Best-Practices/</id>
     <published>2015-07-08T04:45:07.000Z</published>
-    <updated>2015-07-08T04:48:20.261Z</updated>
+    <updated>2015-11-11T14:52:50.318Z</updated>
     <content type="html"><![CDATA[<p>从<a href="http://www.futurice.com" target="_blank" rel="external">Futurice</a>公司Android开发者中学到的经验。</p>
 <h3 id="摘要">摘要</h3><ul>
 <li>使用 Gradle 和它推荐的工程结构</li>
@@ -931,7 +979,7 @@
     <link href="http://www.devwiki.net/2015/07/08/CleanCode-Note-Object-Data/"/>
     <id>http://www.devwiki.net/2015/07/08/CleanCode-Note-Object-Data/</id>
     <published>2015-07-07T16:24:15.000Z</published>
-    <updated>2015-07-08T04:41:21.649Z</updated>
+    <updated>2015-07-07T16:28:00.152Z</updated>
     <content type="html"><![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Clean-Code-LOGO.png" alt="CleanCode"></p>
 <a id="more"></a>
 <h2 id="数据抽象">数据抽象</h2><p>先看两段代码,都是表示笛卡尔坐标系的一个点.</p>
@@ -1011,7 +1059,7 @@
     <link href="http://www.devwiki.net/2015/07/02/Http-Web-Internet-Base/"/>
     <id>http://www.devwiki.net/2015/07/02/Http-Web-Internet-Base/</id>
     <published>2015-07-02T12:47:25.000Z</published>
-    <updated>2015-07-02T12:47:25.874Z</updated>
+    <updated>2015-07-07T16:23:43.314Z</updated>
     <content type="html"><![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Learn-HTTP-With-Image.png" alt="HTTP"></p>
 <a id="more"></a>
 <h2 id="使用HTTP协议访问Web">使用HTTP协议访问Web</h2><p>当我们在浏览器的地址栏输入URL之后,信息会被送到某处,然后从某处返回相应的内容,最后显示在浏览器上.</p>
@@ -1131,7 +1179,7 @@
     <link href="http://www.devwiki.net/2015/07/01/Agile-Develop-Agile-Feedback/"/>
     <id>http://www.devwiki.net/2015/07/01/Agile-Develop-Agile-Feedback/</id>
     <published>2015-07-01T00:01:12.000Z</published>
-    <updated>2015-07-01T11:52:58.090Z</updated>
+    <updated>2015-07-07T16:23:43.268Z</updated>
     <content type="html"><![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Agile-Develop.png" alt="敏捷开发之道"></p>
 <a id="more"></a>
 <h2 id="守护天使">守护天使</h2><blockquote>
@@ -1220,7 +1268,7 @@
     <link href="http://www.devwiki.net/2015/06/25/Qiniu-Upload-Tool/"/>
     <id>http://www.devwiki.net/2015/06/25/Qiniu-Upload-Tool/</id>
     <published>2015-06-25T10:24:47.000Z</published>
-    <updated>2015-08-05T12:17:50.272Z</updated>
+    <updated>2015-11-11T14:52:50.335Z</updated>
     <content type="html"><![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/qiniu-logo.png" alt="七牛LOGO"></p>
 <a id="more"></a>
 <p>最近刚弄博客,存放图片是个问题.想到网公司项目用的是七牛云存储,就想为何不把自己的图片也存到七牛云存储呢?</p>
@@ -1300,7 +1348,7 @@
     <link href="http://www.devwiki.net/2015/06/24/CleanCode-Note-Formatter/"/>
     <id>http://www.devwiki.net/2015/06/24/CleanCode-Note-Formatter/</id>
     <published>2015-06-24T15:46:05.000Z</published>
-    <updated>2015-07-06T04:56:02.497Z</updated>
+    <updated>2015-07-07T16:23:43.299Z</updated>
     <content type="html"><![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Clean-Code-LOGO.png" alt="CleanCode"></p>
 <a id="more"></a>
 <p>我本人算是一个有洁癖的程序猿,喜欢整齐格式的代码.</p>
@@ -1355,7 +1403,7 @@
     <link href="http://www.devwiki.net/2015/06/24/Android-New-Log/"/>
     <id>http://www.devwiki.net/2015/06/24/Android-New-Log/</id>
     <published>2015-06-24T11:16:22.000Z</published>
-    <updated>2015-07-08T04:41:21.633Z</updated>
+    <updated>2015-07-07T17:08:06.978Z</updated>
     <content type="html"><![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Android-New-Log-Logo.png" alt=""></p>
 <a id="more"></a>
 <p>在Android开发过程中经常使用Log打印一些调试的信息,比如:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Log.d(TAG, <span class="string">"xxxxx"</span>);</span><br></pre></td></tr></table></figure></p>
@@ -1397,7 +1445,7 @@
     <link href="http://www.devwiki.net/2015/06/24/Http-Status-Code/"/>
     <id>http://www.devwiki.net/2015/06/24/Http-Status-Code/</id>
     <published>2015-06-24T11:06:15.000Z</published>
-    <updated>2015-07-02T12:47:05.417Z</updated>
+    <updated>2015-07-07T16:23:43.314Z</updated>
     <content type="html"><![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Learn-HTTP-With-Image.png" alt="HTTP"></p>
 <a id="more"></a>
 <h2 id="定义">定义</h2><blockquote>
@@ -1493,7 +1541,7 @@
     <link href="http://www.devwiki.net/2015/06/24/CleanCode-Note-Comments/"/>
     <id>http://www.devwiki.net/2015/06/24/CleanCode-Note-Comments/</id>
     <published>2015-06-24T01:02:25.000Z</published>
-    <updated>2015-07-06T04:55:48.014Z</updated>
+    <updated>2015-07-07T16:23:43.283Z</updated>
     <content type="html"><![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Clean-Code-LOGO.png" alt="CleanCode"></p>
 <a id="more"></a>
 <blockquote>
@@ -1556,7 +1604,7 @@
     <link href="http://www.devwiki.net/2015/06/24/CleanCode-Note-Function/"/>
     <id>http://www.devwiki.net/2015/06/24/CleanCode-Note-Function/</id>
     <published>2015-06-24T00:47:35.000Z</published>
-    <updated>2015-07-06T04:56:02.495Z</updated>
+    <updated>2015-07-07T16:23:43.299Z</updated>
     <content type="html"><![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Clean-Code-LOGO.png" alt="CleanCode"></p>
 <a id="more"></a>
 <h2 id="函数要短小">函数要短小</h2><p><strong>函数第一原则要短小,第二原则还是要短小</strong></p>
@@ -1633,7 +1681,7 @@
     <link href="http://www.devwiki.net/2015/06/23/Android-Pcm2Amr/"/>
     <id>http://www.devwiki.net/2015/06/23/Android-Pcm2Amr/</id>
     <published>2015-06-23T09:45:09.000Z</published>
-    <updated>2015-07-08T04:41:21.649Z</updated>
+    <updated>2015-07-07T16:50:31.046Z</updated>
     <content type="html"><![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Android-Pcm2Amr-Logo.png" alt=""></p>
 <a id="more"></a>
 <p>最近在做一个聊天的模块,聊天的模块很简单:</p>
@@ -1675,7 +1723,7 @@
     <link href="http://www.devwiki.net/2015/06/18/Android-View-Custom-Navigation/"/>
     <id>http://www.devwiki.net/2015/06/18/Android-View-Custom-Navigation/</id>
     <published>2015-06-18T13:23:55.000Z</published>
-    <updated>2015-06-25T13:30:22.046Z</updated>
+    <updated>2015-06-28T00:13:15.196Z</updated>
     <content type="html"><![CDATA[<p>最近在做项目的过程中,发现项目中好多界面的导航栏都很类似或者一样,但是每次都要重复写同样的代码,觉得很不爽,所以就简单地自定义了一下导航栏控件.<br>先上图:<br><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Android-View-Custom-Navigation-01.png" alt="导航栏"></p>
 <p>导航栏包括:</p>
 <ul>
@@ -1718,7 +1766,7 @@
     <link href="http://www.devwiki.net/2015/06/18/Java-Design-Pattern-Principle/"/>
     <id>http://www.devwiki.net/2015/06/18/Java-Design-Pattern-Principle/</id>
     <published>2015-06-18T13:16:42.000Z</published>
-    <updated>2015-07-08T04:41:21.649Z</updated>
+    <updated>2015-07-07T17:14:31.630Z</updated>
     <content type="html"><![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Java-Design-Patterns-Logo.png" alt=""></p>
 <a id="more"></a>
 <p>最近看了Head First 设计模式一书,开篇的故事讲述了设计模式的原则:<strong>封装变化</strong>与<strong>面向接口编程</strong>.</p>
@@ -1795,7 +1843,7 @@
     <link href="http://www.devwiki.net/2015/06/18/JDK-Source-String/"/>
     <id>http://www.devwiki.net/2015/06/18/JDK-Source-String/</id>
     <published>2015-06-18T12:55:49.000Z</published>
-    <updated>2015-06-24T04:48:11.642Z</updated>
+    <updated>2015-06-24T14:11:45.744Z</updated>
     <content type="html"><![CDATA[<p>String类是最常用的类之一了.</p>
 <h2 id="定义">定义</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">String</span> <span class="keyword">extends</span> <span class="title">Object</span> <span class="keyword">implements</span> <span class="title">Serializable</span>,</span><br><span class="line">	<span class="title">Comparable</span>&lt;<span class="title">String</span>&gt;, <span class="title">CharSequence</span></span></span><br></pre></td></tr></table></figure>
 <h3 id="关键字">关键字</h3><h4 id="public">public</h4><p>被public修饰的类为全局可访问的类</p>
@@ -1883,7 +1931,7 @@
     <link href="http://www.devwiki.net/2015/06/18/Android-View-Click-Event/"/>
     <id>http://www.devwiki.net/2015/06/18/Android-View-Click-Event/</id>
     <published>2015-06-18T12:43:48.000Z</published>
-    <updated>2015-06-25T13:28:14.703Z</updated>
+    <updated>2015-06-28T00:13:15.196Z</updated>
     <content type="html"><![CDATA[<h2 id="概述">概述</h2><p>我们都知道一个View有以下三个事件监听方法:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setOnClickListener();</span><br><span class="line">setOnLongClickListener();</span><br><span class="line">setOnTouchListener();</span><br></pre></td></tr></table></figure></p>
 <p>每一个方法代表着用户不同的操作,分别为:短按,长按和触摸操作.</p>
 <a id="more"></a>
@@ -2013,189 +2061,6 @@
       <category term="Android" scheme="http://www.devwiki.net/tags/Android/"/>
     
       <category term="View" scheme="http://www.devwiki.net/tags/View/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[交付用户想要的软件---高效程序员的45个习惯读书笔记]]></title>
-    <link href="http://www.devwiki.net/2015/06/18/Agile-Develop-Delivering-What-Users-Want/"/>
-    <id>http://www.devwiki.net/2015/06/18/Agile-Develop-Delivering-What-Users-Want/</id>
-    <published>2015-06-18T12:42:39.000Z</published>
-    <updated>2015-07-01T10:57:03.623Z</updated>
-    <content type="html"><![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Agile-Develop.png" alt="敏捷开发之道"></p>
-<a id="more"></a>
-<h2 id="让用户做决定">让用户做决定</h2><p>在设计方面,做决定的时候必须有开发者参与.</p>
-<p>在一个项目中,开发者不应该做所有的决定,特别是业务方面的决定.</p>
-<blockquote>
-<p>决定什么不该决定.<br>让客户做决定.开发者,经理或者业务分析师不应该做业务方面的决定.</p>
-</blockquote>
-<p>业务应用需要开发者和业务负责人互相配合来开发.</p>
-<p>平衡的艺术</p>
-<blockquote>
-<p>记录客户做出的决定.<br>不要用过于具体和没有价值的问题打扰繁忙的业务人员.<br>不要假设具体的问题不会影响业务人员的业务.<br>如果业务负责人回答”我不知道”,这也是一个称心如意的答案.</p>
-</blockquote>
-<h2 id="让设计指导而不是操纵开发">让设计指导而不是操纵开发</h2><blockquote>
-<p>设计是软件开发过程不可缺少的步骤.</p>
-</blockquote>
-<p>开发之前画关键工作图是必不可少的,在做设计时你需要花时间去考虑各种不同选择的缺陷和溢出,以及如何权衡.然后下一步才考虑开始编码.</p>
-<p>严格的需求-设计-代码-测试开发流程源于理想化的<strong>瀑布式</strong>开发方法,它导致在前面进行了过度的设计.</p>
-<p>设计可以分为两层:<strong>战略</strong>和<strong>战术</strong>.</p>
-<ol>
-<li>前期的设计属于战略,通常只有在么有深入理解需求的时候需要这样设计.</li>
-<li>战术设计重点是集中在单个的方法或数据类型上.这时更合适讨论如何设计类的职责.</li>
-</ol>
-<blockquote>
-<p>CRC(类-职责-协作)卡片的设计方法就是用来做这个事情的.</p>
-<ul>
-<li>类名</li>
-<li>职责:它应该做什么?</li>
-<li>协作者:要完成工作它需要与其他的什么对象一起工作?</li>
-</ul>
-</blockquote>
-<p>什么是好的设计?</p>
-<blockquote>
-<p>如果需求有了小变化,它仍能容易去实现,那么它就是好的设计.</p>
-</blockquote>
-<p>好的设计应该是正确的而不是精确的.</p>
-<p>平衡的艺术</p>
-<ul>
-<li>不要在前期做大量的设计,并不是说不要设计.</li>
-<li>计时初始的设计到后期不在管用,你仍需设计.</li>
-<li>白板,草图,便利贴都是非常好的设计工具.</li>
-</ul>
-<h2 id="合理地使用技术">合理地使用技术</h2><blockquote>
-<p>根据需要选择技术.</p>
-</blockquote>
-<p>在考虑使用新技术之前,先要把你需要解决的问题找出来.找到了需要解决的问题,接下来就要考虑:</p>
-<ol>
-<li>这个技术框架真能解决这个问题吗?</li>
-<li>你将会被他拴住吗?</li>
-<li>维护成本是多少?</li>
-</ol>
-<blockquote>
-<p><strong>不要开发你能容易下载到的东西</strong></p>
-</blockquote>
-<p><strong>写的代码越少,需要维护的东西就越少!</strong></p>
-<blockquote>
-<p>新技术就应该像是新工具,可以帮助你更好地工作,它自己不应该成为你的工作.</p>
-</blockquote>
-<p>平衡的艺术</p>
-<ol>
-<li>也许在项目中真正评估技术方案还为时太早.</li>
-<li>每一门技术都会有有点和缺点.</li>
-</ol>
-<h2 id="保持可以发布">保持可以发布</h2><blockquote>
-<p>已经提交的代码应该随时可以行动.</p>
-</blockquote>
-<p>任何时候只要你没有准备好,就是敌人进攻你最佳的时机.</p>
-<p>在团队工作中,修改一些东西的时候必须很谨慎.</p>
-<p>如何防止你提交的代码破坏系统的代码?</p>
-<ol>
-<li>在本地测试运行.</li>
-<li>检出最新的代码</li>
-<li>提交代码</li>
-</ol>
-<p><strong>保持你的项目时刻可以发布.</strong>保证你的系统随时可以编译,运行,测试并立即部署.</p>
-<p>平衡的艺术</p>
-<ol>
-<li>有时候,做一些大的改动后,你无法花费太多的时间和精力去保证系统一直可以发布.但是这只是例外,不能养成习惯.</li>
-<li>如果你不得不让系统长期不可发布,那就做一个分支版本,你可以继续进行自己的试验.如果不行,还可以撤销,从头再来.</li>
-<li>千万不能让系统既不可以发布,有不可以插销.</li>
-</ol>
-<h2 id="提早集成,频繁集成">提早集成,频繁集成</h2><p>在产品的开发过程中,集成是一个主要的<strong>风险区域</strong>.</p>
-<p><strong>独立开发</strong>和<strong>早期集成</strong>之间是具有张力的.</p>
-<blockquote>
-<p>当你独立开发时,会发现开发速度更快,生产效率更高,你可以有效地解决出现的问题.<br>但并不意味着你避免或者延迟集成.一般需要每天集成几次,最好不要2~3天集成一次.</p>
-</blockquote>
-<p><strong>绝不要做大爆发式的集成.</strong></p>
-<p>平衡的艺术</p>
-<ol>
-<li>成功的集成就意味着所有的单元测试不停地通过.</li>
-<li>每天要和团队其他成员一起集成好几次.</li>
-<li>如果你集成的不频繁,也许救会发现整天在解决代码集成带来的问题,而不是专心写代码.</li>
-<li>独立开发很好,但是不能独立开发太久,一旦你有了经验就要快速地开始集成.</li>
-</ol>
-<h2 id="提早实现自动化部署">提早实现自动化部署</h2><blockquote>
-<p>如果现在你还是在手工帮助质量保证人员安装应用,花些时间,考虑如何将安装过程自动化.</p>
-</blockquote>
-<p>质量保证人员应该<strong>测试部署过程</strong></p>
-<blockquote>
-<p>在项目一开始就应该实现<strong>自动化部署</strong>.</p>
-</blockquote>
-<p>平衡的艺术</p>
-<ol>
-<li>一般产品在安装的时候,都需要有相应的软硬件环境.这些环境的不同可能会导致很多问题,所以检查依赖关系,也是安装过程的一部分.</li>
-<li>在没有征得用户的统一之前,安装程序绝不能删除用户的数据.</li>
-<li>部署一个紧急修复的bug应该很简单,特别是在生产服务器的环境中.</li>
-<li>用户应该可以安全且完整地卸载安装程序.</li>
-<li>如果维护安装脚本变得很困难,那可能是一个早起警告.</li>
-</ol>
-<h2 id="使用演示获得频繁的反馈">使用演示获得频繁的反馈</h2><blockquote>
-<p>需求就像流动的油墨.</p>
-</blockquote>
-<p>你无法冻结需求,正如你无法冻结市场,竞争,知识,进化或者成长一样.</p>
-<p>没有人的思想和观点可以及时冻结,特别是项目的客户.</p>
-<blockquote>
-<p>不管是什么事情,我们都能做好,不过是以缓慢而逐步的方式.</p>
-</blockquote>
-<p>软件开发的成功就在于最后你离客户的期望有多远.</p>
-<p>应该定期的每隔一段时间,与客户进行演示反馈.</p>
-<p>如果你能频繁地和用户协商,根据他们的反馈,每个人都可以从中收益.</p>
-<blockquote>
-<p>不一致的术语是导致需求误解的一个主要原因.所以需要维护一个项目术语表.</p>
-</blockquote>
-<p>项目开发应该是清晰可见的开发.</p>
-<p>平衡的艺术</p>
-<p><strong>演示是用来让客户提出反馈,有助于驾驭项目的方向.</strong></p>
-<h2 id="使用段迭代,增量发布">使用段迭代,增量发布</h2><blockquote>
-<p><strong>统一过程和敏捷开发都使用迭代和增量开发.</strong></p>
-</blockquote>
-<p>迭代开发是<em>你在小且重复的周期里完成各种开发任务.</em></p>
-<blockquote>
-<p>对付大项目,最理想的办法就是小步前进,这也是敏捷开发的核心.</p>
-</blockquote>
-<p>大部分用户都是希望现在就有一个够用的软件,而不是在一年之后得到一个超级软件.</p>
-<blockquote>
-<p>询问用户哪些是产品的可用且不可少的核心功能.<br>不要为所有可能需要华丽功能而分心,不要沉迷于你的想象,而去做那些华而不实的界面.<br>尽快发布你的应用,迟了也许它就没有作用了.<br>使用段迭代和增量开发,可以让开发者更加专注于自己的工作.</p>
-</blockquote>
-<p><strong>段迭代让人感觉非常专注且具效率</strong></p>
-<p>平衡的艺术</p>
-<ol>
-<li>如果每个迭代的时间都不够用,要么任务太大,要么因为迭代时间太短,把握好自己的开发节奏.</li>
-<li>如果发布的功能背离了用户的需求,多半是因为迭代的周期太长了.</li>
-<li>增量的发布必须是可用的,并且能为用户提供价值.</li>
-</ol>
-<h2 id="固定的价格就意味着背叛承诺">固定的价格就意味着背叛承诺</h2><blockquote>
-<p>软件项目天生就是变化无常的,不可能重复.</p>
-</blockquote>
-<p> 开发项目时如何与客户交流?</p>
-<ol>
-<li>主动提议先构建系统最小,小的和有用的部分.</li>
-<li>第一个迭代结束时客户有两个选择:可以选择一系列新的功能,继承进入下一个迭代.或者可以取消合同.</li>
-<li>如果他们选择继续前进,那么这时候,应该就能很好地预测下一个迭代工作.</li>
-</ol>
-<blockquote>
-<p>基于真实工作的评估.</p>
-</blockquote>
-<p>平衡的艺术</p>
-<ol>
-<li>如果你对答案不满意,那么看看你是否可以改变问题.</li>
-<li>如果你在完成第一个迭代开发之前,拒绝做任何评估,也许你会失去这个合同.</li>
-<li>敏捷不是意味着开始编码,我们最终会知道合适可以完成.你需要根据当前的知识和猜想,做一个大致的评估.</li>
-<li>如果你别无选择,你不得不提供一个固定的价格,那么你需要学到真正好的评估.</li>
-<li>也许你会考虑在合同中确定每一个迭代的固定的价格,但迭代的数量是可以商量的,它可以根据当前的工作状况进行调整.</li>
-</ol>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Agile-Develop.png" alt="敏捷开发之道"></p>]]>
-    
-    </summary>
-    
-      <category term="敏捷开发" scheme="http://www.devwiki.net/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/"/>
-    
-      <category term="高效程序员" scheme="http://www.devwiki.net/tags/%E9%AB%98%E6%95%88%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
-    
-      <category term="高效程序员的45个习惯" scheme="http://www.devwiki.net/categories/%E9%AB%98%E6%95%88%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%8445%E4%B8%AA%E4%B9%A0%E6%83%AF/"/>
     
   </entry>
   
