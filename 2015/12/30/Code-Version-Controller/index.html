@@ -30,7 +30,7 @@
 
 
 
-  <meta name="keywords" content="Clean Code, CleanCode, Java, 代码整洁之道, DevWiki" />
+  <meta name="keywords" content="敏捷开发, 快速迭代, 版本控制, SVN, Git, Jenkins, DevWiki" />
 
 
 
@@ -41,17 +41,34 @@
   <link rel="shorticon icon" type="image/x-icon" href="/devwiki.png?v=0.4.3" />
 
 
-<meta name="description">
+<meta name="description" content="作为一个程序员,一定要会使用版本控制.当代码出现问题时才知道版本控制的好处.
+工具常用的版本控制工具有:
+
+SVN
+Git
+
+在这里我不叙述怎样使用版本控制工具,只是想总结一下自己在项目中关于版本控制的经验.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CleanCode笔记---注释">
-<meta property="og:url" content="http://www.devwiki.net/2015/06/24/CleanCode-Note-Comments/index.html">
+<meta property="og:title" content="版本控制总结">
+<meta property="og:url" content="http://www.devwiki.net/2015/12/30/Code-Version-Controller/index.html">
 <meta property="og:site_name" content="DevWiki Blog">
-<meta property="og:description">
-<meta property="og:image" content="http://7xjhi6.com1.z0.glb.clouddn.com/Clean-Code-LOGO.png">
-<meta property="og:updated_time" content="2015-07-07T16:23:43.283Z">
+<meta property="og:description" content="作为一个程序员,一定要会使用版本控制.当代码出现问题时才知道版本控制的好处.
+工具常用的版本控制工具有:
+
+SVN
+Git
+
+在这里我不叙述怎样使用版本控制工具,只是想总结一下自己在项目中关于版本控制的经验.">
+<meta property="og:updated_time" content="2015-12-30T15:45:15.642Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CleanCode笔记---注释">
-<meta name="twitter:description">
+<meta name="twitter:title" content="版本控制总结">
+<meta name="twitter:description" content="作为一个程序员,一定要会使用版本控制.当代码出现问题时才知道版本控制的好处.
+工具常用的版本控制工具有:
+
+SVN
+Git
+
+在这里我不叙述怎样使用版本控制工具,只是想总结一下自己在项目中关于版本控制的经验.">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -61,7 +78,7 @@
   };
 </script>
 
-  <title> CleanCode笔记---注释 | DevWiki Blog </title>
+  <title> 版本控制总结 | DevWiki Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -216,7 +233,7 @@
           
           
             
-              CleanCode笔记---注释
+              版本控制总结
             
           
         </h1>
@@ -225,34 +242,19 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-06-24T09:02:25+08:00" content="2015-06-24">
-            2015-06-24
+          <time itemprop="dateCreated" datetime="2015-12-30T23:40:29+08:00" content="2015-12-30">
+            2015-12-30
           </time>
         </span>
 
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/CleanCode-代码整洁之道/" itemprop="url" rel="index">
-                  <span itemprop="name">CleanCode-代码整洁之道</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
         
 
         
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/06/24/CleanCode-Note-Comments/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/24/CleanCode-Note-Comments/" itemprop="commentsCount"></span>
+              <a href="/2015/12/30/Code-Version-Controller/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/30/Code-Version-Controller/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -266,49 +268,73 @@
       
 
       
-        <span itemprop="articleBody"><p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Clean-Code-LOGO.png" alt="CleanCode"></p>
+        <span itemprop="articleBody"><p>作为一个程序员,一定要会使用版本控制.当代码出现问题时才知道版本控制的好处.</p>
+<h2 id="工具">工具</h2><p>常用的版本控制工具有:</p>
+<ul>
+<li>SVN</li>
+<li>Git</li>
+</ul>
+<p>在这里我不叙述怎样使用版本控制工具,只是想总结一下自己在项目中关于版本控制的经验.</p>
 <a id="more"></a>
+<h2 id="过程">过程</h2><p>实际项目中,代码的版本控制大概如下:</p>
+<ol>
+<li>创建项目</li>
+<li>开发功能</li>
+<li>第一个内测版本</li>
+<li>第N个内测版本</li>
+<li>第一个公测版本</li>
+<li>第N个公测版本</li>
+<li>第一个正式版本</li>
+<li>修复稳定版bug</li>
+<li>开发新功能</li>
+</ol>
+<p>其中3 ~ 7可能会有很多,也可能很少,视公司情况而定.</p>
+<p>以下以SVN为例,来说明这一功能.</p>
+<p><strong>前提</strong></p>
+<p>项目名称:Chat<br>三端:Android,IOS,Server</p>
+<h3 id="创建根目录">创建根目录</h3><p>源码根目录如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">|-Chat&#10;    |-trunk&#10;        |-Android&#10;        |-IOS&#10;        |-Server&#10;    |-branches&#10;    |-tag</span><br></pre></td></tr></table></figure>
+<h3 id="开发">开发</h3><p>各端在各自的Trunk分支下进行开发,直到第一个稳定的内测版本.</p>
+<h3 id="内测">内测</h3><p>当发布第一个内测版本时,此时应在tag分支下添加tag,如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">|-Chat&#10;    |-trunk&#10;        |-Android&#10;        |-IOS&#10;        |-Server&#10;    |-branches&#10;    |-tag&#10;        |-Android&#10;            |-inner_test_1.0.0&#10;        |-IOS&#10;            |-inner_test_1.0.0&#10;        |-Server&#10;            |-inner_test_1.0.0</span><br></pre></td></tr></table></figure>
+<p>无论哪个端发布版本都应在tag分支下添加tag.</p>
+<h3 id="公测">公测</h3><p>内测几版之后,可以进行公测,测试继续在Trunk分支下开发,然后在发布公测版本时在tag分支下添加tag.如下所示:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">|-Chat&#10;    |-trunk&#10;        |-Android&#10;        |-IOS&#10;        |-Server&#10;    |-branches&#10;    |-tag&#10;        |-Android&#10;            |-inner_test_1.0.0&#10;            |-inner_test_1.0.1&#10;            |-inner_test_1.0.2&#10;            |-public_test_1.0.3&#10;            |-public_test_1.0.4&#10;        |-IOS&#10;            |-inner_test_1.0.0&#10;        |-Server&#10;            |-inner_test_1.0.0</span><br></pre></td></tr></table></figure>
+<h3 id="正式版">正式版</h3><p>当发布正式版之后,要做的有:</p>
+<ol>
+<li>在tag分支下添加tag</li>
+<li>在branches分支添加开发版分支</li>
+</ol>
+<p>如下所示:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">|-Chat&#10;    |-trunk&#10;        |-Android&#10;        |-IOS&#10;        |-Server&#10;    |-branches&#10;        |-Android&#10;            |-BaseDev&#10;    |-tag&#10;        |-Android&#10;            |-inner_test_1.0.0&#10;            |-inner_test_1.0.1&#10;            |-inner_test_1.0.2&#10;            |-public_test_1.0.3&#10;            |-public_test_1.0.4&#10;            |-release_1.0.5&#10;        |-IOS&#10;            |-inner_test_1.0.0&#10;        |-Server&#10;            |-inner_test_1.0.0</span><br></pre></td></tr></table></figure>
+<p>BaseDev分支的意义在于:在此版本上只做针对上一稳定版的bug修复以及短期迭代的任务.</p>
+<h3 id="迭代">迭代</h3><p>迭代分为:快速迭代和长周期迭代.</p>
+<p><strong>快速迭代</strong>可能是:</p>
+<ol>
+<li>针对上一版本的bug修复</li>
+<li>针对已有功能细节上的优化</li>
+<li>添加可以快速完成的功能</li>
+</ol>
+<p><strong>长周期迭代</strong>可能是:<br>1.某一功能在短期内无法完成,需要切分多个快速迭代版本</p>
+<p>对于快速迭代,可以在BaseDev分支下开发,等到迭代完毕后将BaseDev更新至Trunk分支.</p>
 <blockquote>
-<p>什么也比不上放置良好的注释来的有用,什么也不会比乱七八糟的注释更有本事搞乱一个模块!</p>
+<p>何时需要建立新的分支?</p>
 </blockquote>
-<p>如果我们擅长用开发语言来表达意图,就不那么需要注释,甚至根本不需要!</p>
-<p>注释的巧当用法是弥补我们在代码表达意图时遭遇失败.</p>
-<p>如果你发现自己需要写注释,在想想看是否有办法不写注释.</p>
-<p>程序员应当负责将注释保持在可维护,有关联,精确的高度.</p>
-<h2 id="注释不能美化代码">注释不能美化代码</h2><p>写注释的常见动机之一是糟糕代码的存在.与其花时间编写注释不如花时间清洁糟糕的代码.</p>
-<h2 id="用代码来阐述">用代码来阐述</h2><p>比如以下代码:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//check to see if the employee is eligible for full benfits</span></span><br><span class="line"><span class="keyword">if</span>((employee.flag &amp; HOURLY_FLAG) &amp;&amp; (employee.age &gt; <span class="number">65</span>))</span><br></pre></td></tr></table></figure></p>
-<p>为何不改为:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(employee.isEligibleForFullBenefits())</span><br></pre></td></tr></table></figure></p>
-<p>只需要几秒钟,就能用代码解释大部分的意图.</p>
-<h2 id="好注释">好注释</h2><p>好注释有以下几项:</p>
 <ol>
-<li>法律信息</li>
-<li>提供信息的注释</li>
-<li>对意图的解释</li>
-<li>阐释</li>
-<li>警示</li>
-<li>TODO注释</li>
-<li>放大</li>
-<li>公共API中的javadoc</li>
+<li>新功能暂时无法确定是否在下一版本发布</li>
+<li>新功能开发周期长,分拆为多个版本后但体验不佳,不能独立发布</li>
 </ol>
-<h2 id="坏注释">坏注释</h2><p>坏注释包括以下:</p>
+<p>比如Chat项目新添加功能空间(Space),该功能无法在快速迭代中完成,开发周期可能较长.此时就需要在branches下添加分支.如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">|-Chat&#10;    |-trunk&#10;        |-Android&#10;        |-IOS&#10;        |-Server&#10;    |-branches&#10;        |-Android&#10;            |-BaseDev&#10;            |-Space&#10;    |-tag&#10;        |-Android&#10;            |-inner_test_1.0.0&#10;            |-inner_test_1.0.1&#10;            |-inner_test_1.0.2&#10;            |-public_test_1.0.3&#10;            |-public_test_1.0.4&#10;            |-release_1.0.5&#10;        |-IOS&#10;            |-inner_test_1.0.0&#10;        |-Server&#10;            |-inner_test_1.0.0</span><br></pre></td></tr></table></figure>
+<h2 id="写在最后">写在最后</h2><p><strong>要尽可能地少建立分支,因为合并代码的代价太高!!!</strong></p>
+<p><strong>要尽可能地少建立分支,因为合并代码的代价太高!!!</strong></p>
+<p><strong>要尽可能地少建立分支,因为合并代码的代价太高!!!</strong></p>
 <ol>
-<li>呐呐自语</li>
-<li>多余的注释</li>
-<li>误导性注释</li>
-<li>循规式注释</li>
-<li>日志式注释</li>
-<li>位置标记</li>
-<li>括号后的注释</li>
-<li>归属与署名</li>
-<li>注释掉的代码</li>
-<li>HTML注释</li>
-<li>非本地信息</li>
-<li>信息过多</li>
-<li>不明显的联系</li>
-<li>函数头</li>
-<li>非公共代码中的javadoc</li>
+<li>尽可能拆分迭代任务,使之为一个可以快速迭代的任务.</li>
+<li>对于代码的编译最好使用自动编译,来控制安装包的版本.比如: Jenkins</li>
 </ol>
-<p>切记<strong>能用函数或变量就别用注释</strong></p>
+<p>如果有好的方法,请留言或者联系我哦.<a href="http://www.devwiki.net/about/">点此查看联系方式</a></p>
+<p>更多文章请移步我的博客:<a href="http://www.devwiki.net">DevWiki Bolg</a></p>
 </span>
       
     </div>
@@ -317,9 +343,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/CleanCode/" rel="tag">#CleanCode</a>
-          
-            <a href="/tags/代码整洁之道/" rel="tag">#代码整洁之道</a>
+            <a href="/tags/版本控制/" rel="tag">#版本控制</a>
           
         </div>
       
@@ -328,13 +352,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/06/24/Http-Status-Code/" rel="prev">HTTP学习笔记---状态码</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/06/24/CleanCode-Note-Function/" rel="next">CleanCode笔记---函数</a>
+              <a href="/2015/11/18/Android-Device-Code/" rel="next">Android设备获取唯一识别码(转)</a>
             
           </div>
         </div>
@@ -382,8 +404,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/06/24/CleanCode-Note-Comments/"
-                   data-title="CleanCode笔记---注释" data-url="http://www.devwiki.net/2015/06/24/CleanCode-Note-Comments/">
+              <div class="ds-thread" data-thread-key="2015/12/30/Code-Version-Controller/"
+                   data-title="版本控制总结" data-url="http://www.devwiki.net/2015/12/30/Code-Version-Controller/">
               </div>
             
           </div>
@@ -496,7 +518,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#注释不能美化代码"><span class="nav-number">1.</span> <span class="nav-text">注释不能美化代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用代码来阐述"><span class="nav-number">2.</span> <span class="nav-text">用代码来阐述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#好注释"><span class="nav-number">3.</span> <span class="nav-text">好注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#坏注释"><span class="nav-number">4.</span> <span class="nav-text">坏注释</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#工具"><span class="nav-number">1.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过程"><span class="nav-number">2.</span> <span class="nav-text">过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建根目录"><span class="nav-number">2.1.</span> <span class="nav-text">创建根目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开发"><span class="nav-number">2.2.</span> <span class="nav-text">开发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内测"><span class="nav-number">2.3.</span> <span class="nav-text">内测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#公测"><span class="nav-number">2.4.</span> <span class="nav-text">公测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正式版"><span class="nav-number">2.5.</span> <span class="nav-text">正式版</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#迭代"><span class="nav-number">2.6.</span> <span class="nav-text">迭代</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写在最后"><span class="nav-number">3.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
