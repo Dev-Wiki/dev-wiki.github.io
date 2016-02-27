@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next pisces use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -61,25 +61,28 @@
 
 
 
-<meta name="description">
+<meta name="description" content="单例模式的几种实现方法,具体如下:
+懒汉模式12345678910111213public class Singleton&amp;#123;    private static Singleton instance;    private Singleton()&amp;#123;    &amp;#125;    public static Singleton getInstance()&amp;#123;        i">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java设计模式---单例模式">
 <meta property="og:url" content="http://www.devwiki.net/2016/02/27/Java-Design-Pattern-Singleton/index.html">
 <meta property="og:site_name" content="DevWiki Blog">
-<meta property="og:description">
+<meta property="og:description" content="单例模式的几种实现方法,具体如下:
+懒汉模式12345678910111213public class Singleton&amp;#123;    private static Singleton instance;    private Singleton()&amp;#123;    &amp;#125;    public static Singleton getInstance()&amp;#123;        i">
 <meta property="og:image" content="http://7xjhi6.com1.z0.glb.clouddn.com/Java-Design-Patterns-Logo.png">
-<meta property="og:updated_time" content="2016-02-27T10:45:59.127Z">
+<meta property="og:updated_time" content="2016-02-27T11:27:06.055Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java设计模式---单例模式">
-<meta name="twitter:description">
+<meta name="twitter:description" content="单例模式的几种实现方法,具体如下:
+懒汉模式12345678910111213public class Singleton&amp;#123;    private static Singleton instance;    private Singleton()&amp;#123;    &amp;#125;    public static Singleton getInstance()&amp;#123;        i">
 
 
 
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"always"},
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"remove"},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -212,6 +215,15 @@
       
       
       
+        <li class="menu-item menu-item-search">
+          <a href="#" class="st-search-show-outputs">
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
@@ -313,9 +325,9 @@
 
       
         <p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Java-Design-Patterns-Logo.png" alt=""></p>
-<a id="more"></a>
 <p>单例模式的几种实现方法,具体如下:</p>
 <h2 id="懒汉模式">懒汉模式</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(instance == <span class="keyword">null</span>)&#123;</span><br><span class="line">            instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <p><strong>优点</strong></p>
 <ul>
 <li>可以延迟加载</li>
@@ -622,7 +634,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Pisces
   </a>
 </div>
 
@@ -676,6 +688,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
 
   
   

@@ -5,7 +5,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.devwiki.net//"/>
-  <updated>2016-02-27T10:45:59.127Z</updated>
+  <updated>2016-02-27T11:27:06.055Z</updated>
   <id>http://www.devwiki.net//</id>
   
   <author>
@@ -20,11 +20,11 @@
     <link href="http://www.devwiki.net/2016/02/27/Java-Design-Pattern-Singleton/"/>
     <id>http://www.devwiki.net/2016/02/27/Java-Design-Pattern-Singleton/</id>
     <published>2016-02-27T10:38:57.000Z</published>
-    <updated>2016-02-27T10:45:59.127Z</updated>
+    <updated>2016-02-27T11:27:06.055Z</updated>
     <content type="html"><![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Java-Design-Patterns-Logo.png" alt=""></p>
-<a id="more"></a>
 <p>单例模式的几种实现方法,具体如下:</p>
 <h2 id="懒汉模式">懒汉模式</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(instance == <span class="keyword">null</span>)&#123;</span><br><span class="line">            instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <p><strong>优点</strong></p>
 <ul>
 <li>可以延迟加载</li>
@@ -80,7 +80,9 @@
 <p>更多文章请移步我的博客:<a href="http://www.devwiki.net">DevWiki Bolg</a></p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Java-Design-Patterns-Logo.png" alt=""></p>]]>
+    <![CDATA[<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Java-Design-Patterns-Logo.png" alt=""></p>
+<p>单例模式的几种实现方法,具体如下:</p>
+<h2 id="懒汉模式">懒汉模式</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(instance == <span class="keyword">null</span>)&#123;</span><br><span class="line">            instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]>
     
     </summary>
     
