@@ -71,7 +71,7 @@ DEVICE_ID假设我们确实需要用到真实设备的标识，可能就需要�
 <meta property="og:description" content="本文转载自此处
 Android系统以及设备都有很多的“标识”号，比如常见的IMEI，SerizalNumber，UUID等概念，但是这些都存在一定程度上的不可靠性，到底如何标记一台Android设备？
 DEVICE_ID假设我们确实需要用到真实设备的标识，可能就需要用到DEVICE_ID。在以前，我们的Android设备是手机，这个DEVICE_ID可以同通过TelephonyManager.ge">
-<meta property="og:updated_time" content="2015-11-18T04:30:47.989Z">
+<meta property="og:updated_time" content="2016-03-02T15:00:20.912Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android设备获取唯一识别码(转)">
 <meta name="twitter:description" content="本文转载自此处
@@ -328,7 +328,7 @@ DEVICE_ID假设我们确实需要用到真实设备的标识，可能就需要�
       
         <p>本文转载自<a href="http://www.cnblogs.com/lqminn/p/4204855.html" target="_blank" rel="external">此处</a></p>
 <p>Android系统以及设备都有很多的“标识”号，比如常见的IMEI，SerizalNumber，UUID等概念，但是这些都存在一定程度上的不可靠性，到底如何标记一台Android设备？</p>
-<h2 id="DEVICE_ID">DEVICE_ID</h2><p>假设我们确实需要用到真实设备的标识，可能就需要用到DEVICE_ID。在以前，我们的Android设备是手机，这个DEVICE_ID可以同通过TelephonyManager.getDeviceId()获取，它根据不同的手机设备返回IMEI，MEID或者ESN码，但它在使用的过程中会遇到很多问题：</p>
+<h2 id="DEVICE-ID"><a href="#DEVICE-ID" class="headerlink" title="DEVICE_ID"></a>DEVICE_ID</h2><p>假设我们确实需要用到真实设备的标识，可能就需要用到DEVICE_ID。在以前，我们的Android设备是手机，这个DEVICE_ID可以同通过TelephonyManager.getDeviceId()获取，它根据不同的手机设备返回IMEI，MEID或者ESN码，但它在使用的过程中会遇到很多问题：</p>
 <a id="more"></a>
 <ul>
 <li><p>非手机设备： 如果只带有Wifi的设备或者音乐播放器没有通话的硬件功能的话就没有这个DEVICE_ID</p>
@@ -338,13 +338,13 @@ DEVICE_ID假设我们确实需要用到真实设备的标识，可能就需要�
 <li><p>bug：在少数的一些手机设备上，该实现有漏洞，会返回垃圾，如:zeros(全是0)或者asterisks(星号)的产品</p>
 </li>
 </ul>
-<h2 id="MAC_ADDRESS">MAC ADDRESS</h2><p>我们也可以通过手机的Wifi或者蓝牙设备获取MAC ADDRESS作为DEVICE ID，但是并不建议这么做，因为:</p>
+<h2 id="MAC-ADDRESS"><a href="#MAC-ADDRESS" class="headerlink" title="MAC ADDRESS"></a>MAC ADDRESS</h2><p>我们也可以通过手机的Wifi或者蓝牙设备获取MAC ADDRESS作为DEVICE ID，但是并不建议这么做，因为:</p>
 <ol>
 <li>硬件限制：并不是所有的设备都有Wifi和蓝牙硬件，硬件不存在自然也就得不到这一信息。</li>
 <li>获取的限制：如果Wifi没有打开过，是无法获取其Mac地址的；而蓝牙是只有在打开的时候才能获取到其Mac地址。</li>
 </ol>
-<h2 id="Serial_Number">Serial Number</h2><p>在Android 2.3可以通过android.os.Build.SERIAL获取，非手机设备可以通过该接口获取。没有电话功能的设备被要求必须提供这样一个序列号。</p>
-<h2 id="ANDROID_ID">ANDROID_ID</h2><p>ANDROID_ID是设备第一次启动时产生和存储的64bit的一个数，当设备被wipe后该数重置ANDROID_ID似乎是获取Device ID的一个好选择，但它也有缺陷：</p>
+<h2 id="Serial-Number"><a href="#Serial-Number" class="headerlink" title="Serial Number"></a>Serial Number</h2><p>在Android 2.3可以通过android.os.Build.SERIAL获取，非手机设备可以通过该接口获取。没有电话功能的设备被要求必须提供这样一个序列号。</p>
+<h2 id="ANDROID-ID"><a href="#ANDROID-ID" class="headerlink" title="ANDROID_ID"></a>ANDROID_ID</h2><p>ANDROID_ID是设备第一次启动时产生和存储的64bit的一个数，当设备被wipe后该数重置ANDROID_ID似乎是获取Device ID的一个好选择，但它也有缺陷：</p>
 <ol>
 <li><p>它在Android &lt;=2.1 or Android &gt;=2.3的版本是可靠、稳定的，但在2.2的版本并不是100%可靠的</p>
 </li>
@@ -355,7 +355,7 @@ DEVICE_ID假设我们确实需要用到真实设备的标识，可能就需要�
 <li><p>设备差异：对于CDMA设备，ANDROID_ID和TelephonyManager.getDeviceId() 返回相同的值。</p>
 </li>
 </ol>
-<h2 id="Installtion_ID_:_UUID">Installtion ID : UUID</h2><p>以上四种方式都有或多或少存在的一定的局限性或者bug，在这里，有另外一种方式解决，就是使用UUID，该方法无需访问设备的资源，也跟设备类型无关。</p>
+<h2 id="Installtion-ID-UUID"><a href="#Installtion-ID-UUID" class="headerlink" title="Installtion ID : UUID"></a>Installtion ID : UUID</h2><p>以上四种方式都有或多或少存在的一定的局限性或者bug，在这里，有另外一种方式解决，就是使用UUID，该方法无需访问设备的资源，也跟设备类型无关。</p>
 <p>这种方式是通过在程序安装后第一次运行后生成一个ID实现的（注意：是自己生成，而非系统主动生成的！），但该方式跟设备唯一标识不一样，它会因为不同的应用程序而产生不同的ID，而不是设备唯一ID。因此经常用来标识在某个应用中的唯一ID（即Installtion ID），或者跟踪应用的安装数量。很幸运的，Google Developer Blog提供了这样的一个框架：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Installation</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String sID = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String INSTALLATION = <span class="string">"INSTALLATION"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">static</span> String <span class="title">id</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (sID == <span class="keyword">null</span>) &#123;</span><br><span class="line">            File installation = <span class="keyword">new</span> File(context.getFilesDir(), INSTALLATION);</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (!installation.exists())</span><br><span class="line">                writeInstallationFile(installation);</span><br><span class="line">                sID = readInstallationFile(installation);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sID;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">readInstallationFile</span><span class="params">(File installation)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        RandomAccessFile f = <span class="keyword">new</span> RandomAccessFile(installation, <span class="string">"r"</span>);</span><br><span class="line">        <span class="keyword">byte</span>[] bytes = <span class="keyword">new</span> <span class="keyword">byte</span>[(<span class="keyword">int</span>) f.length()];</span><br><span class="line">        f.readFully(bytes);</span><br><span class="line">        f.close();</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> String(bytes);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">writeInstallationFile</span><span class="params">(File installation)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        FileOutputStream out = <span class="keyword">new</span> FileOutputStream(installation);</span><br><span class="line">        String id = UUID.randomUUID().toString();</span><br><span class="line">        out.write(id.getBytes());</span><br><span class="line">        out.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>综合以上所述，为了实现在设备上更通用的获取设备唯一标识，我们可以实现这样的一个类，为每个设备产生唯一的UUID，以ANDROID_ID为基础，在获取失败时以TelephonyManager.getDeviceId()为备选方法，如果再失败，使用UUID的生成策略。</p>
@@ -506,7 +506,7 @@ DEVICE_ID假设我们确实需要用到真实设备的标识，可能就需要�
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -523,7 +523,7 @@ DEVICE_ID假设我们确实需要用到真实设备的标识，可能就需要�
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-count">31</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -603,7 +603,7 @@ DEVICE_ID假设我们确实需要用到真实设备的标识，可能就需要�
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#DEVICE_ID"><span class="nav-number">1.</span> <span class="nav-text">DEVICE_ID</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MAC_ADDRESS"><span class="nav-number">2.</span> <span class="nav-text">MAC ADDRESS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Serial_Number"><span class="nav-number">3.</span> <span class="nav-text">Serial Number</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ANDROID_ID"><span class="nav-number">4.</span> <span class="nav-text">ANDROID_ID</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Installtion_ID_:_UUID"><span class="nav-number">5.</span> <span class="nav-text">Installtion ID : UUID</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#DEVICE-ID"><span class="nav-number">1.</span> <span class="nav-text">DEVICE_ID</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MAC-ADDRESS"><span class="nav-number">2.</span> <span class="nav-text">MAC ADDRESS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Serial-Number"><span class="nav-number">3.</span> <span class="nav-text">Serial Number</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ANDROID-ID"><span class="nav-number">4.</span> <span class="nav-text">ANDROID_ID</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Installtion-ID-UUID"><span class="nav-number">5.</span> <span class="nav-text">Installtion ID : UUID</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

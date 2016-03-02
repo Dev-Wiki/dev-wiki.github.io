@@ -67,7 +67,7 @@
 <meta property="og:url" content="http://www.devwiki.net/2015/07/27/Android-Code-Pattern/index.html">
 <meta property="og:site_name" content="DevWiki Blog">
 <meta property="og:description" content="代码规范对于一个软件项目来说非常重要，当然Android项目也不例外，一个优秀的Android项目不仅需要严谨的业务逻辑和架构设计，更需要一套统一优雅的代码规范标准，才可以让整个项目团队更加高效。">
-<meta property="og:updated_time" content="2015-07-27T04:28:42.818Z">
+<meta property="og:updated_time" content="2016-03-02T15:00:45.699Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android代码规范参考指南">
 <meta name="twitter:description" content="代码规范对于一个软件项目来说非常重要，当然Android项目也不例外，一个优秀的Android项目不仅需要严谨的业务逻辑和架构设计，更需要一套统一优雅的代码规范标准，才可以让整个项目团队更加高效。">
@@ -322,7 +322,7 @@
       
         <p>代码规范对于一个软件项目来说非常重要，当然Android项目也不例外，一个优秀的Android项目不仅需要严谨的业务逻辑和架构设计，更需要一套统一优雅的代码规范标准，才可以让整个项目团队更加高效。</p>
 <a id="more"></a>
-<h2 id="包命名规范">包命名规范</h2><p>包（packages）：采用反域名命名规则，全部使用小写字母。一级包名为com，二级包名为xxx（可以是公司域名或者个人命名），三级包名根据应用进行命名，四级包名为模块名或层级名。</p>
+<h2 id="包命名规范"><a href="#包命名规范" class="headerlink" title="包命名规范"></a>包命名规范</h2><p>包（packages）：采用反域名命名规则，全部使用小写字母。一级包名为com，二级包名为xxx（可以是公司域名或者个人命名），三级包名根据应用进行命名，四级包名为模块名或层级名。</p>
 <table>
 <thead>
 <tr>
@@ -373,7 +373,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="类命名规范">类命名规范</h2><p>类（classes）：名词，采用大驼峰命名法，尽量避免缩写，除非该缩写是众所周知的，比如HTML，URL,如果类名称包含单词缩写，则单词缩写的每个字母均应大写。</p>
+<h2 id="类命名规范"><a href="#类命名规范" class="headerlink" title="类命名规范"></a>类命名规范</h2><p>类（classes）：名词，采用大驼峰命名法，尽量避免缩写，除非该缩写是众所周知的，比如HTML，URL,如果类名称包含单词缩写，则单词缩写的每个字母均应大写。</p>
 <table>
 <thead>
 <tr>
@@ -489,15 +489,15 @@
 </tr>
 </tbody>
 </table>
-<h2 id="布局文件命名规范">布局文件命名规范</h2><p>全部小写，采用下划线命名法</p>
-<h3 id="contentview">contentview</h3><p>contentview命名, Activity默认布局，以去掉后缀的Activity类进行命名。不加后缀：<br>功能模块.xml<br>eg：main.xml、more.xml、settings.xml</p>
+<h2 id="布局文件命名规范"><a href="#布局文件命名规范" class="headerlink" title="布局文件命名规范"></a>布局文件命名规范</h2><p>全部小写，采用下划线命名法</p>
+<h3 id="contentview"><a href="#contentview" class="headerlink" title="contentview"></a>contentview</h3><p>contentview命名, Activity默认布局，以去掉后缀的Activity类进行命名。不加后缀：<br>功能模块.xml<br>eg：main.xml、more.xml、settings.xml</p>
 <p>或者：activity_功能模块.xml<br>eg：activity_main.xml、activity_more.xml</p>
-<h3 id="Dialog">Dialog</h3><p>Dialog命名：dialog_描述.xml<br>eg：dlg_hint.xml</p>
-<h3 id="PopupWindow">PopupWindow</h3><p>PopupWindow命名：ppw_描述.xml<br>eg：ppw_info.xml</p>
-<h3 id="列表项">列表项</h3><p>列表项命名listitem_描述.xml<br>eg：listitem_city.xml</p>
-<h3 id="包含项">包含项</h3><p>包含项：include_模块.xml<br>eg：include_head.xml、include_bottom.xml</p>
-<h3 id="adapter的子布局">adapter的子布局</h3><p>adapter的子布局：功能模块_item.xml<br>eg：main_item.xml、</p>
-<h2 id="资源id命名规范">资源id命名规范</h2><p>命名模式为：view缩写_模块名称_view的逻辑名称</p>
+<h3 id="Dialog"><a href="#Dialog" class="headerlink" title="Dialog"></a>Dialog</h3><p>Dialog命名：dialog_描述.xml<br>eg：dlg_hint.xml</p>
+<h3 id="PopupWindow"><a href="#PopupWindow" class="headerlink" title="PopupWindow"></a>PopupWindow</h3><p>PopupWindow命名：ppw_描述.xml<br>eg：ppw_info.xml</p>
+<h3 id="列表项"><a href="#列表项" class="headerlink" title="列表项"></a>列表项</h3><p>列表项命名listitem_描述.xml<br>eg：listitem_city.xml</p>
+<h3 id="包含项"><a href="#包含项" class="headerlink" title="包含项"></a>包含项</h3><p>包含项：include_模块.xml<br>eg：include_head.xml、include_bottom.xml</p>
+<h3 id="adapter的子布局"><a href="#adapter的子布局" class="headerlink" title="adapter的子布局"></a>adapter的子布局</h3><p>adapter的子布局：功能模块_item.xml<br>eg：main_item.xml、</p>
+<h2 id="资源id命名规范"><a href="#资源id命名规范" class="headerlink" title="资源id命名规范"></a>资源id命名规范</h2><p>命名模式为：view缩写_模块名称_view的逻辑名称</p>
 <p>view的缩写详情如下：</p>
 <table>
 <thead>
@@ -629,7 +629,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="动画文件命名">动画文件命名</h2><p>动画文件（anim文件夹下）：全部小写，采用下划线命名法，加前缀区分。</p>
+<h2 id="动画文件命名"><a href="#动画文件命名" class="headerlink" title="动画文件命名"></a>动画文件命名</h2><p>动画文件（anim文件夹下）：全部小写，采用下划线命名法，加前缀区分。</p>
 <blockquote>
 <p>前面为动画的类型，后面为方向</p>
 </blockquote>
@@ -679,7 +679,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="图片资源文件命名">图片资源文件命名</h2><table>
+<h2 id="图片资源文件命名"><a href="#图片资源文件命名" class="headerlink" title="图片资源文件命名"></a>图片资源文件命名</h2><table>
 <thead>
 <tr>
 <th>命名</th>
@@ -713,7 +713,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="一些常见的单词缩写">一些常见的单词缩写</h2><table>
+<h2 id="一些常见的单词缩写"><a href="#一些常见的单词缩写" class="headerlink" title="一些常见的单词缩写"></a>一些常见的单词缩写</h2><table>
 <thead>
 <tr>
 <th>名称</th>
@@ -949,7 +949,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -966,7 +966,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-count">31</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

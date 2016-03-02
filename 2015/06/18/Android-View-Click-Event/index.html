@@ -74,7 +74,7 @@
 <meta property="og:image" content="http://7xjhi6.com1.z0.glb.clouddn.com/Android-View-Click-Event-03.png">
 <meta property="og:image" content="http://7xjhi6.com1.z0.glb.clouddn.com/Android-View-Click-Event-04.png">
 <meta property="og:image" content="http://7xjhi6.com1.z0.glb.clouddn.com/Android-View-Click-Event-05.png">
-<meta property="og:updated_time" content="2015-06-25T13:28:14.703Z">
+<meta property="og:updated_time" content="2016-03-02T14:58:41.210Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="View的Click,LongClick,Touch事件的研究">
 <meta name="twitter:description" content="概述我们都知道一个View有以下三个事件监听方法:123setOnClickListener();setOnLongClickListener();setOnTouchListener();
@@ -328,7 +328,7 @@
       
 
       
-        <h2 id="概述">概述</h2><p>我们都知道一个View有以下三个事件监听方法:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setOnClickListener();</span><br><span class="line">setOnLongClickListener();</span><br><span class="line">setOnTouchListener();</span><br></pre></td></tr></table></figure></p>
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>我们都知道一个View有以下三个事件监听方法:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setOnClickListener();</span><br><span class="line">setOnLongClickListener();</span><br><span class="line">setOnTouchListener();</span><br></pre></td></tr></table></figure></p>
 <p>每一个方法代表着用户不同的操作,分别为:短按,长按和触摸操作.</p>
 <a id="more"></a>
 <p><strong>短按事件</strong><br>通常一个View设置短按事件监听的代码如下:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">view.setOnClickListener(<span class="keyword">new</span> OnClickListener() &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//do something</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
@@ -342,8 +342,8 @@
 <p>这里每一个动作都有一个返回值,返回值会影响触摸事件.一个View如果只设置了onTouchListener事件监听.<br>只有Down返回值为true时,Move和Up动作才能监听到.</p>
 <p>如果给一个View同时设置以上三个方法,会出现怎样的结果呢?</p>
 <hr>
-<h2 id="测试">测试</h2><h3 id="1-测试界面">1.测试界面</h3><p>先附上测试界面的效果图,如下:<br><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Android-View-Click-Event-01.png" alt="HomePage"><br>上图有8个按钮,全部都是设置了onClickListener,onLongClickListener,onTouchListener.正如图中所示,按钮上的字母代表不同的含义.点击不同的按钮进行测试.</p>
-<h3 id="2-测试结果">2.测试结果</h3><p>最终的测试结果列表如下:</p>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><h3 id="1-测试界面"><a href="#1-测试界面" class="headerlink" title="1.测试界面"></a>1.测试界面</h3><p>先附上测试界面的效果图,如下:<br><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Android-View-Click-Event-01.png" alt="HomePage"><br>上图有8个按钮,全部都是设置了onClickListener,onLongClickListener,onTouchListener.正如图中所示,按钮上的字母代表不同的含义.点击不同的按钮进行测试.</p>
+<h3 id="2-测试结果"><a href="#2-测试结果" class="headerlink" title="2.测试结果"></a>2.测试结果</h3><p>最终的测试结果列表如下:</p>
 <table>
 <thead>
 <tr>
@@ -445,8 +445,8 @@
 </table>
 <p>其中上表中的第2项结果如下图(上为短按,下为长按),按钮不会弹起:<br><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Android-View-Click-Event-02.png" alt="短按"><br><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Android-View-Click-Event-03.png" alt="长按"></p>
 <p>第6项结果如下图(上为短按,下为长按),按钮不会弹起:<br><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Android-View-Click-Event-04.png" alt="短按"><br><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Android-View-Click-Event-05.png" alt="长按"></p>
-<h3 id="3-结论">3.结论</h3><p>测试结果因返回值不同而不同.所以尽管onTouchListener中down返回true时move和up才起作用,但是如果设置了onlongclciklistener,即使down返回false也能触发move和up事件.<br><strong>一般地,View的onTouchListener优先级高于onClickListener和onLongClickListener.</strong><br>可以根据需要使用不同的事件监听进行组合.</p>
-<h3 id="4-源码">4.源码</h3><p>源码在我的GitHub中:<a href="https://github.com/sn10086/ViewClickDemo" target="_blank" rel="external">DevWiki的GitHub:ViewClickDemo</a></p>
+<h3 id="3-结论"><a href="#3-结论" class="headerlink" title="3.结论"></a>3.结论</h3><p>测试结果因返回值不同而不同.所以尽管onTouchListener中down返回true时move和up才起作用,但是如果设置了onlongclciklistener,即使down返回false也能触发move和up事件.<br><strong>一般地,View的onTouchListener优先级高于onClickListener和onLongClickListener.</strong><br>可以根据需要使用不同的事件监听进行组合.</p>
+<h3 id="4-源码"><a href="#4-源码" class="headerlink" title="4.源码"></a>4.源码</h3><p>源码在我的GitHub中:<a href="https://github.com/sn10086/ViewClickDemo" target="_blank" rel="external">DevWiki的GitHub:ViewClickDemo</a></p>
 
       
     </div>
@@ -571,7 +571,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -588,7 +588,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-count">31</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

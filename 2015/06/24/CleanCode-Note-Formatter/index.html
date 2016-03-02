@@ -68,7 +68,7 @@
 <meta property="og:site_name" content="DevWiki Blog">
 <meta property="og:description">
 <meta property="og:image" content="http://7xjhi6.com1.z0.glb.clouddn.com/Clean-Code-LOGO.png">
-<meta property="og:updated_time" content="2015-07-06T04:56:02.497Z">
+<meta property="og:updated_time" content="2016-03-02T15:04:44.135Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CleanCode笔记---格式">
 <meta name="twitter:description">
@@ -343,20 +343,20 @@
         <p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Clean-Code-LOGO.png" alt="CleanCode"></p>
 <a id="more"></a>
 <p>我本人算是一个有洁癖的程序猿,喜欢整齐格式的代码.</p>
-<h2 id="格式的意义">格式的意义</h2><p>让代码能工作不是编程的头等大事,因为代码首先是给人看的,其次才是给计算机看的.</p>
+<h2 id="格式的意义"><a href="#格式的意义" class="headerlink" title="格式的意义"></a>格式的意义</h2><p>让代码能工作不是编程的头等大事,因为代码首先是给人看的,其次才是给计算机看的.</p>
 <p>代码是团队沟通的桥梁,乱糟糟的代码是没有人想看的.</p>
-<h2 id="垂直格式">垂直格式</h2><p>一个Java类文件应该有多长?这是个问题.有人可能说100行,有人可能说1000行.</p>
+<h2 id="垂直格式"><a href="#垂直格式" class="headerlink" title="垂直格式"></a>垂直格式</h2><p>一个Java类文件应该有多长?这是个问题.有人可能说100行,有人可能说1000行.</p>
 <p>但是人们倾向于短的代码文件,所以一个类文件应该越短越好,尽量不要超过1000行.</p>
-<h3 id="向报纸学习">向报纸学习</h3><p>代码排版应该像报纸一样.从上往下读,在顶部应该有个类似标题一样的东西,告诉读者大致内容是什么,再往下是章节,告诉读者代码有哪些部分组成,章节下面是细节,如果读者感兴趣可以了解这部分实现的细节.</p>
+<h3 id="向报纸学习"><a href="#向报纸学习" class="headerlink" title="向报纸学习"></a>向报纸学习</h3><p>代码排版应该像报纸一样.从上往下读,在顶部应该有个类似标题一样的东西,告诉读者大致内容是什么,再往下是章节,告诉读者代码有哪些部分组成,章节下面是细节,如果读者感兴趣可以了解这部分实现的细节.</p>
 <p>比如:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Button backButton;</span><br><span class="line"><span class="keyword">private</span> TextView titleView;</span><br><span class="line"><span class="keyword">private</span> Button settingButton;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    initUtil();</span><br><span class="line">    initUI();</span><br><span class="line">    initData();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initUtil</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initUI</span><span class="params">()</span></span>&#123;</span><br><span class="line">    initNavigationView();</span><br><span class="line">    </span><br><span class="line">    initContentView();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initNavigationView</span><span class="params">()</span></span>&#123;</span><br><span class="line">    backButton = (Button) findViewById(R.id.btn_back);</span><br><span class="line">    backButton.setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line">    titleView = (TextView) findViewById(R.id.tv_title);</span><br><span class="line">    settingButton = (Button) findViewById(R.id.btn_setting);</span><br><span class="line">    settingButton.setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initNavigationView</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//....</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initContentView</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initData</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h3 id="垂直方向上的分割">垂直方向上的分割</h3><p>几乎所有的代码都是从上往下读,从左往右读.每行展现一个表达式或者一个字句或者一个方法调用,每组代码行展示一条完整的思路.这些思路都是用空白行分隔开来.</p>
+<h3 id="垂直方向上的分割"><a href="#垂直方向上的分割" class="headerlink" title="垂直方向上的分割"></a>垂直方向上的分割</h3><p>几乎所有的代码都是从上往下读,从左往右读.每行展现一个表达式或者一个字句或者一个方法调用,每组代码行展示一条完整的思路.这些思路都是用空白行分隔开来.</p>
 <p>就像上面的initUI()方法:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initUI</span><span class="params">()</span></span>&#123;</span><br><span class="line">    initNavigationView();</span><br><span class="line">    </span><br><span class="line">    initContentView();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>空白行让我们很容易明白初始化界面的步骤:</p>
 <ol>
 <li>初始化导航栏组件</li>
 <li>初始化内容视图</li>
 </ol>
-<h3 id="垂直距离">垂直距离</h3><p>从上面的代码可以看出,关系密切的方法应该靠近;关系不密切的要分隔开来.这样很容易理解系统要做什么,怎么去做,不需要你去记住查找和记住代码碎片在哪里.</p>
+<h3 id="垂直距离"><a href="#垂直距离" class="headerlink" title="垂直距离"></a>垂直距离</h3><p>从上面的代码可以看出,关系密切的方法应该靠近;关系不密切的要分隔开来.这样很容易理解系统要做什么,怎么去做,不需要你去记住查找和记住代码碎片在哪里.</p>
 <p>如何做到靠近与分隔呢?</p>
 <ol>
 <li>方法内的局部变量声明放在方法的顶部.</li>
@@ -364,14 +364,14 @@
 <li>相关的函数应靠近放置.</li>
 <li>概念相近的代码应该放在一起.</li>
 </ol>
-<h3 id="垂直顺序">垂直顺序</h3><p>一般而言,我们都想自上而下展示函数的依赖调用.也就是说被调用的函数在执行函数的下面.</p>
-<h2 id="横向格式">横向格式</h2><p>一般而言,一行代码不应多于100个字符.</p>
-<h3 id="水平方向上的分隔与靠近">水平方向上的分隔与靠近</h3><p>赋值语句的等号左右空一格,可以起到强调的作用.</p>
+<h3 id="垂直顺序"><a href="#垂直顺序" class="headerlink" title="垂直顺序"></a>垂直顺序</h3><p>一般而言,我们都想自上而下展示函数的依赖调用.也就是说被调用的函数在执行函数的下面.</p>
+<h2 id="横向格式"><a href="#横向格式" class="headerlink" title="横向格式"></a>横向格式</h2><p>一般而言,一行代码不应多于100个字符.</p>
+<h3 id="水平方向上的分隔与靠近"><a href="#水平方向上的分隔与靠近" class="headerlink" title="水平方向上的分隔与靠近"></a>水平方向上的分隔与靠近</h3><p>赋值语句的等号左右空一格,可以起到强调的作用.</p>
 <p>多参方法中,参数的逗号后空一格,表明参数的独立性.</p>
 <p>所以水平方向上也应遵循关系密切的靠近,关系交远的分隔.</p>
-<h3 id="水平对齐">水平对齐</h3><p><strong>不需要水平方向上的有意识的对齐</strong>,比如下面:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Button   backButton;</span><br><span class="line"><span class="keyword">private</span> TextView titleView;</span><br><span class="line"><span class="keyword">private</span> Button   settingButton;</span><br></pre></td></tr></table></figure></p>
+<h3 id="水平对齐"><a href="#水平对齐" class="headerlink" title="水平对齐"></a>水平对齐</h3><p><strong>不需要水平方向上的有意识的对齐</strong>,比如下面:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Button   backButton;</span><br><span class="line"><span class="keyword">private</span> TextView titleView;</span><br><span class="line"><span class="keyword">private</span> Button   settingButton;</span><br></pre></td></tr></table></figure></p>
 <p>如果出现名称更长的类型,所有的变量又得重新对齐.所以不推荐此种方式.</p>
-<h3 id="缩进">缩进</h3><p><strong>缩进表明的代码的影响范围!</strong></p>
+<h3 id="缩进"><a href="#缩进" class="headerlink" title="缩进"></a>缩进</h3><p><strong>缩进表明的代码的影响范围!</strong></p>
 <p>缩进有利于代码的阅读,明确代码之间的等级关系和影响范围.</p>
 <p>切记:单行也要缩进.不要违反缩进规则.</p>
 <p>每个人都有不同的写代码的风格,个人建议按照Google的Java代码风格来编写代码.详情请点击此处查看:<br><a href="http://www.hawstein.com/posts/google-java-style.html" target="_blank" rel="external">Google Java编程风格</a></p>
@@ -499,7 +499,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -516,7 +516,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-count">31</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
