@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.devwiki.net/2016/03/02/Retrofit-Use-Course-1/</loc>
+    
+    <lastmod>2016-03-04T16:46:52.313Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.devwiki.net/categories/index.html</loc>
     
     <lastmod>2016-03-04T16:30:22.236Z</lastmod>
@@ -26,13 +33,6 @@
     <loc>http://www.devwiki.net/2015/06/25/Qiniu-Upload-Tool/</loc>
     
     <lastmod>2016-03-02T15:07:32.508Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.devwiki.net/2016/03/02/Retrofit-Use-Course-1/</loc>
-    
-    <lastmod>2016-03-02T15:07:07.662Z</lastmod>
     
   </url>
   

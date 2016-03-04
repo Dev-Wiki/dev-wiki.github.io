@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.devwiki.net/"/>
-  <updated>2016-03-02T15:07:07.662Z</updated>
+  <updated>2016-03-04T16:46:52.313Z</updated>
   <id>http://www.devwiki.net/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Retrofir使用教程(一)</title>
+    <title>Retrofit使用教程(一)</title>
     <link href="http://www.devwiki.net/2016/03/02/Retrofit-Use-Course-1/"/>
     <id>http://www.devwiki.net/2016/03/02/Retrofit-Use-Course-1/</id>
     <published>2016-03-02T14:45:26.000Z</published>
-    <updated>2016-03-02T15:07:07.662Z</updated>
+    <updated>2016-03-04T16:46:52.313Z</updated>
     
     <content type="html">&lt;p&gt;&lt;a href=&quot;http://square.github.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Square&lt;/a&gt;公司开源了许多优秀的库，Retrofit就是其中之一。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;Retrofit&lt;/code&gt;是用来简化APP访问服务器API，如果你的服务器使用的使RESTAPI，那么赶紧使用&lt;code&gt;Retrofit&lt;/code&gt;吧。&lt;/p&gt;
