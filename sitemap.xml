@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.devwiki.net/categories/index.html</loc>
+    
+    <lastmod>2016-03-04T16:30:22.236Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.devwiki.net/tags/index.html</loc>
+    
+    <lastmod>2016-03-04T16:30:09.238Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.devwiki.net/2015/06/18/JDK-Source-String/</loc>
     
     <lastmod>2016-03-02T15:08:36.106Z</lastmod>
@@ -187,20 +201,6 @@
     <loc>http://www.devwiki.net/2016/02/27/Java-Design-Pattern-Singleton/</loc>
     
     <lastmod>2016-03-02T14:54:47.702Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.devwiki.net/tags/index.html</loc>
-    
-    <lastmod>2016-02-27T16:08:57.502Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.devwiki.net/categories/index.html</loc>
-    
-    <lastmod>2016-02-27T16:08:57.496Z</lastmod>
     
   </url>
   
