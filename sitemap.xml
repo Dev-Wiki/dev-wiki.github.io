@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.devwiki.net/about/index.html</loc>
+    
+    <lastmod>2016-03-05T11:51:26.648Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.devwiki.net/2016/03/02/Retrofit-Use-Course-1/</loc>
     
     <lastmod>2016-03-04T16:46:52.313Z</lastmod>
@@ -201,13 +208,6 @@
     <loc>http://www.devwiki.net/2016/02/27/Java-Design-Pattern-Singleton/</loc>
     
     <lastmod>2016-03-02T14:54:47.702Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.devwiki.net/about/index.html</loc>
-    
-    <lastmod>2016-02-27T16:08:57.493Z</lastmod>
     
   </url>
   
