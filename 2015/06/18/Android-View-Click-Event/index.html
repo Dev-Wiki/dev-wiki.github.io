@@ -74,7 +74,8 @@
 <meta property="og:image" content="http://7xjhi6.com1.z0.glb.clouddn.com/Android-View-Click-Event-03.png">
 <meta property="og:image" content="http://7xjhi6.com1.z0.glb.clouddn.com/Android-View-Click-Event-04.png">
 <meta property="og:image" content="http://7xjhi6.com1.z0.glb.clouddn.com/Android-View-Click-Event-05.png">
-<meta property="og:updated_time" content="2016-03-02T14:58:41.210Z">
+<meta property="og:image" content="http://7xjhi6.com1.z0.glb.clouddn.com/WeiXin-DevWiki-Common.jpg">
+<meta property="og:updated_time" content="2016-03-13T14:39:35.221Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="View的Click,LongClick,Touch事件的研究">
 <meta name="twitter:description" content="概述我们都知道一个View有以下三个事件监听方法:123setOnClickListener();setOnLongClickListener();setOnTouchListener();
@@ -452,6 +453,10 @@
 <p>第6项结果如下图(上为短按,下为长按),按钮不会弹起:<br><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Android-View-Click-Event-04.png" alt="短按"><br><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Android-View-Click-Event-05.png" alt="长按"></p>
 <h3 id="3-结论"><a href="#3-结论" class="headerlink" title="3.结论"></a>3.结论</h3><p>测试结果因返回值不同而不同.所以尽管onTouchListener中down返回true时move和up才起作用,但是如果设置了onlongclciklistener,即使down返回false也能触发move和up事件.<br><strong>一般地,View的onTouchListener优先级高于onClickListener和onLongClickListener.</strong><br>可以根据需要使用不同的事件监听进行组合.</p>
 <h3 id="4-源码"><a href="#4-源码" class="headerlink" title="4.源码"></a>4.源码</h3><p>源码在我的GitHub中:<a href="https://github.com/sn10086/ViewClickDemo" target="_blank" rel="external">DevWiki的GitHub:ViewClickDemo</a></p>
+<hr>
+<p><strong>重要说明</strong></p>
+<p>想随时获取最新博客文章更新,请关注公共账号DevWiki,或扫描下面的二维码:</p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/WeiXin-DevWiki-Common.jpg" alt="微信公共号"></p>
 
       
     </div>

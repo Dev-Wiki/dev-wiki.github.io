@@ -2,9 +2,226 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.devwiki.net/2015/06/18/Agile-Develop-Beginning-Agility/</loc>
+    
+    <lastmod>2016-03-13T14:40:54.373Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.devwiki.net/2015/06/18/Agile-Develop-Delivering-What-Users-Want/</loc>
+    
+    <lastmod>2016-03-13T14:40:49.459Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.devwiki.net/2015/06/18/Agile-Develop-Feeding-Agility/</loc>
+    
+    <lastmod>2016-03-13T14:40:44.487Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.devwiki.net/2015/07/08/Android-Best-Practices/</loc>
+    
+    <lastmod>2016-03-13T14:40:39.271Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.devwiki.net/2015/07/27/Android-Code-Pattern/</loc>
+    
+    <lastmod>2016-03-13T14:40:32.782Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.devwiki.net/2016/02/01/Android-Custom-ViewHolder/</loc>
+    
+    <lastmod>2016-03-13T14:40:26.931Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.devwiki.net/2015/11/18/Android-Device-Code/</loc>
+    
+    <lastmod>2016-03-13T14:40:23.205Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.devwiki.net/2015/09/20/Android-Music-Play-Mode/</loc>
+    
+    <lastmod>2016-03-13T14:40:16.689Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.devwiki.net/2015/06/24/Android-New-Log/</loc>
+    
+    <lastmod>2016-03-13T14:40:01.011Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.devwiki.net/2015/06/23/Android-Pcm2Amr/</loc>
+    
+    <lastmod>2016-03-13T14:39:54.066Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.devwiki.net/2015/06/18/AndroidStudio-export-aar/</loc>
+    
+    <lastmod>2016-03-13T14:39:47.424Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.devwiki.net/2015/10/07/Android-TextWatcher-Add-Space-To-Phone_Number/</loc>
+    
+    <lastmod>2016-03-13T14:39:43.044Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.devwiki.net/2015/06/18/Android-View-Click-Event/</loc>
+    
+    <lastmod>2016-03-13T14:39:35.221Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.devwiki.net/2015/06/18/Android-View-Custom-Navigation/</loc>
+    
+    <lastmod>2016-03-13T14:39:29.591Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.devwiki.net/2015/11/11/Android-WeiXin-Line-Timer-View/</loc>
+    
+    <lastmod>2016-03-13T14:39:22.205Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.devwiki.net/2015/06/24/CleanCode-Note-Comments/</loc>
+    
+    <lastmod>2016-03-13T14:39:14.898Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.devwiki.net/2015/06/24/CleanCode-Note-Formatter/</loc>
+    
+    <lastmod>2016-03-13T14:39:09.817Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.devwiki.net/2015/06/24/CleanCode-Note-Function/</loc>
+    
+    <lastmod>2016-03-13T14:39:03.494Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.devwiki.net/2015/06/18/CleanCode-Note-Name/</loc>
+    
+    <lastmod>2016-03-13T14:38:56.582Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.devwiki.net/2015/07/08/CleanCode-Note-Object-Data/</loc>
+    
+    <lastmod>2016-03-13T14:38:51.245Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.devwiki.net/2015/12/30/Code-Version-Controller/</loc>
+    
+    <lastmod>2016-03-13T14:38:43.824Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.devwiki.net/2016/03/13/Gradle-Get-SVN-Version-Code/</loc>
     
-    <lastmod>2016-03-13T09:15:57.483Z</lastmod>
+    <lastmod>2016-03-13T14:38:28.252Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.devwiki.net/2015/06/24/Http-Status-Code/</loc>
+    
+    <lastmod>2016-03-13T14:38:20.942Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.devwiki.net/2015/07/02/Http-Web-Internet-Base/</loc>
+    
+    <lastmod>2016-03-13T14:38:15.869Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.devwiki.net/2015/06/18/Java-Design-Pattern-Observer/</loc>
+    
+    <lastmod>2016-03-13T14:38:09.470Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.devwiki.net/2015/06/18/Java-Design-Pattern-Principle/</loc>
+    
+    <lastmod>2016-03-13T14:38:02.289Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.devwiki.net/2016/02/27/Java-Design-Pattern-Singleton/</loc>
+    
+    <lastmod>2016-03-13T14:37:52.795Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.devwiki.net/2015/08/05/Java-Simple-Log/</loc>
+    
+    <lastmod>2016-03-13T14:37:38.061Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.devwiki.net/2015/06/18/JDK-Source-String/</loc>
+    
+    <lastmod>2016-03-13T14:37:30.241Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.devwiki.net/2015/06/25/Qiniu-Upload-Tool/</loc>
+    
+    <lastmod>2016-03-13T14:37:24.298Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.devwiki.net/2016/03/02/Retrofit-Use-Course-1/</loc>
+    
+    <lastmod>2016-03-13T14:37:16.764Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.devwiki.net/2015/07/01/Agile-Develop-Agile-Feedback/</loc>
+    
+    <lastmod>2016-03-13T14:35:53.355Z</lastmod>
     
   </url>
   
@@ -12,13 +229,6 @@
     <loc>http://www.devwiki.net/about/index.html</loc>
     
     <lastmod>2016-03-05T11:51:26.648Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.devwiki.net/2016/03/02/Retrofit-Use-Course-1/</loc>
-    
-    <lastmod>2016-03-04T16:46:52.313Z</lastmod>
     
   </url>
   
@@ -33,216 +243,6 @@
     <loc>http://www.devwiki.net/tags/index.html</loc>
     
     <lastmod>2016-03-04T16:30:09.238Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.devwiki.net/2015/06/18/JDK-Source-String/</loc>
-    
-    <lastmod>2016-03-02T15:08:36.106Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.devwiki.net/2015/06/25/Qiniu-Upload-Tool/</loc>
-    
-    <lastmod>2016-03-02T15:07:32.508Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.devwiki.net/2015/06/18/Java-Design-Pattern-Observer/</loc>
-    
-    <lastmod>2016-03-02T15:06:39.019Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.devwiki.net/2015/06/18/Java-Design-Pattern-Principle/</loc>
-    
-    <lastmod>2016-03-02T15:05:34.689Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.devwiki.net/2015/06/24/CleanCode-Note-Comments/</loc>
-    
-    <lastmod>2016-03-02T15:04:51.890Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.devwiki.net/2015/06/24/CleanCode-Note-Formatter/</loc>
-    
-    <lastmod>2016-03-02T15:04:44.135Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.devwiki.net/2015/06/24/CleanCode-Note-Function/</loc>
-    
-    <lastmod>2016-03-02T15:04:26.381Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.devwiki.net/2015/06/18/CleanCode-Note-Name/</loc>
-    
-    <lastmod>2016-03-02T15:03:54.614Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.devwiki.net/2015/07/08/CleanCode-Note-Object-Data/</loc>
-    
-    <lastmod>2016-03-02T15:03:15.933Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.devwiki.net/2015/12/30/Code-Version-Controller/</loc>
-    
-    <lastmod>2016-03-02T15:03:00.956Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.devwiki.net/2015/06/24/Http-Status-Code/</loc>
-    
-    <lastmod>2016-03-02T15:02:40.147Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.devwiki.net/2015/07/02/Http-Web-Internet-Base/</loc>
-    
-    <lastmod>2016-03-02T15:02:27.961Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.devwiki.net/2015/11/11/Android-WeiXin-Line-Timer-View/</loc>
-    
-    <lastmod>2016-03-02T15:01:42.336Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.devwiki.net/2015/06/18/Agile-Develop-Delivering-What-Users-Want/</loc>
-    
-    <lastmod>2016-03-02T15:01:34.590Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.devwiki.net/2015/06/18/Agile-Develop-Feeding-Agility/</loc>
-    
-    <lastmod>2016-03-02T15:01:18.381Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.devwiki.net/2015/07/08/Android-Best-Practices/</loc>
-    
-    <lastmod>2016-03-02T15:01:09.473Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.devwiki.net/2015/07/27/Android-Code-Pattern/</loc>
-    
-    <lastmod>2016-03-02T15:00:45.699Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.devwiki.net/2015/11/18/Android-Device-Code/</loc>
-    
-    <lastmod>2016-03-02T15:00:20.912Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.devwiki.net/2015/09/20/Android-Music-Play-Mode/</loc>
-    
-    <lastmod>2016-03-02T15:00:07.689Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.devwiki.net/2015/06/24/Android-New-Log/</loc>
-    
-    <lastmod>2016-03-02T14:59:38.531Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.devwiki.net/2015/06/23/Android-Pcm2Amr/</loc>
-    
-    <lastmod>2016-03-02T14:59:28.377Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.devwiki.net/2015/10/07/Android-TextWatcher-Add-Space-To-Phone_Number/</loc>
-    
-    <lastmod>2016-03-02T14:59:05.773Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.devwiki.net/2015/06/18/Android-View-Click-Event/</loc>
-    
-    <lastmod>2016-03-02T14:58:41.210Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.devwiki.net/2015/06/18/Agile-Develop-Beginning-Agility/</loc>
-    
-    <lastmod>2016-03-02T14:57:30.568Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.devwiki.net/2015/07/01/Agile-Develop-Agile-Feedback/</loc>
-    
-    <lastmod>2016-03-02T14:56:43.062Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.devwiki.net/2016/02/27/Java-Design-Pattern-Singleton/</loc>
-    
-    <lastmod>2016-03-02T14:54:47.702Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.devwiki.net/2015/08/05/Java-Simple-Log/</loc>
-    
-    <lastmod>2016-02-27T16:08:57.485Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.devwiki.net/2015/06/18/AndroidStudio-export-aar/</loc>
-    
-    <lastmod>2016-02-27T16:08:57.426Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.devwiki.net/2015/06/18/Android-View-Custom-Navigation/</loc>
-    
-    <lastmod>2016-02-27T16:08:57.419Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.devwiki.net/2016/02/01/Android-Custom-ViewHolder/</loc>
-    
-    <lastmod>2016-02-27T16:08:57.387Z</lastmod>
     
   </url>
   

@@ -69,7 +69,8 @@
 <meta property="og:site_name" content="DevWiki Blog">
 <meta property="og:description" content="背景在Android开发过程中,为了提高效率,我们会使用自动编译来提高我们版本迭代过程中的app编译.我的项目中目前使用的是Gradle+Jenkins+SVN来进行版本控制和自动编译的.
 自动编译要控制好每一次的编译的代号和名称,方便出现问题时查找.为了实现这个唯一的编号,我们可能有很多种实现方式,这里我使用的是:SVN项目名称_分支名称_APP版本号_SVN版本号_build版本号,如:QQ_">
-<meta property="og:updated_time" content="2016-03-13T09:15:57.483Z">
+<meta property="og:image" content="http://7xjhi6.com1.z0.glb.clouddn.com/WeiXin-DevWiki-Common.jpg">
+<meta property="og:updated_time" content="2016-03-13T14:38:28.252Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Gradle中获取SVN版本号和Jenkins的Build号">
 <meta name="twitter:description" content="背景在Android开发过程中,为了提高效率,我们会使用自动编译来提高我们版本迭代过程中的app编译.我的项目中目前使用的是Gradle+Jenkins+SVN来进行版本控制和自动编译的.
@@ -348,7 +349,10 @@
 <p>我们需要在build.gradle的android{}中添加以下代码:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">applicationVariants.all &#123; variant -&gt;</span><br><span class="line">        variant.outputs.each &#123; output -&gt;</span><br><span class="line">            def outputFile = output.outputFile</span><br><span class="line">            <span class="comment">// 输出apk名称为QQ_GroupChat_8.0.0_4585_256.apk</span></span><br><span class="line">            <span class="keyword">if</span> (outputFile != <span class="keyword">null</span> &amp;&amp; outputFile.name.endsWith(<span class="string">'.apk'</span>)) &#123;</span><br><span class="line">                <span class="function">def fileName</span><br><span class="line">                <span class="title">if</span> <span class="params">(variant.buildType.name == <span class="string">"release"</span>)</span> </span>&#123;</span><br><span class="line">                    fileName = <span class="string">"QQ_GroupChat_$&#123;defaultConfig.versionName&#125;_$&#123;getSvnRevisionByPlatform()&#125;_$&#123;getJenkinsBuildCode()&#125;.apk"</span></span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    fileName = <span class="string">"QQ_GroupChat_$&#123;defaultConfig.versionName&#125;_$&#123;getSvnRevisionByPlatform()&#125;_$&#123;getJenkinsBuildCode()&#125;_debug.apk"</span></span><br><span class="line">                &#125;</span><br><span class="line">                output.outputFile = <span class="keyword">new</span> File(outputFile.parent, fileName)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p>好啦,大功告成,试试吧!</p>
-<p>更多文章请访问我的博客:<a href="http://www.devwiki.net">DevWiki Blog</a></p>
+<hr>
+<p><strong>重要说明</strong></p>
+<p>想随时获取最新博客文章更新,请关注公共账号DevWiki,或扫描下面的二维码:</p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/WeiXin-DevWiki-Common.jpg" alt="微信公共号"></p>
 
       
     </div>

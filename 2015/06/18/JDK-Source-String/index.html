@@ -73,7 +73,8 @@ final被final修饰的类为终类,不可被继承不可被覆盖">
 定义12public final class String extends Object implements Serializable,	Comparable&amp;lt;String&amp;gt;, CharSequence
 关键字public被public修饰的类为全局可访问的类
 final被final修饰的类为终类,不可被继承不可被覆盖">
-<meta property="og:updated_time" content="2016-03-02T15:08:36.106Z">
+<meta property="og:image" content="http://7xjhi6.com1.z0.glb.clouddn.com/WeiXin-DevWiki-Common.jpg">
+<meta property="og:updated_time" content="2016-03-13T14:37:30.241Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JDK源码学习之String">
 <meta name="twitter:description" content="String类是最常用的类之一了.
@@ -418,6 +419,10 @@ final被final修饰的类为终类,不可被继承不可被覆盖">
 <p>调用String的构造方法创建一个String对象.<br>此系列的方法还有:<br><strong>String valueOf(boolean b)</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">valueOf</span><span class="params">(<span class="keyword">boolean</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> b ? <span class="string">"true"</span> : <span class="string">"false"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><strong>String valueOf(char value)</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">valueOf</span><span class="params">(<span class="keyword">char</span> c)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> data[] = &#123;c&#125;;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> String(data, <span class="keyword">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>一以下方法均是调用相应的包装类的toString方法.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">String <span class="title">valueOf</span><span class="params">(<span class="keyword">char</span> c)</span></span><br><span class="line">String <span class="title">valueOf</span><span class="params">(<span class="keyword">int</span> i)</span></span><br><span class="line">String <span class="title">valueOf</span><span class="params">(<span class="keyword">long</span> l)</span></span><br><span class="line">String <span class="title">valueOf</span><span class="params">(<span class="keyword">float</span> f)</span> </span><br><span class="line">String <span class="title">valueOf</span><span class="params">(<span class="keyword">double</span> d)</span></span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<p><strong>重要说明</strong></p>
+<p>想随时获取最新博客文章更新,请关注公共账号DevWiki,或扫描下面的二维码:</p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/WeiXin-DevWiki-Common.jpg" alt="微信公共号"></p>
 
       
     </div>
