@@ -287,6 +287,245 @@
             
               
                 
+                <a class="post-title-link" href="/2016/03/19/Retrofit-Use-Course-2/" itemprop="url">
+                  Retrofit使用教程(二)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-19T19:28:26+08:00" content="2016-03-19">
+              2016-03-19
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/19/Retrofit-Use-Course-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/19/Retrofit-Use-Course-2/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>上一篇文章讲述了Retrofit的简单使用,这次我们学习一下Retrofit的各种HTTP请求.</p>
+<h2 id="Retrofit基础"><a href="#Retrofit基础" class="headerlink" title="Retrofit基础"></a>Retrofit基础</h2><p>在Retrofit中使用注解的方式来区分请求类型.比如<code>@GET(&quot;&quot;)</code>表示一个GET请求,括号中的内容为请求的地址.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">格式</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>@GET</code></td>
+<td style="text-align:left">表示这是一个GET请求</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>@POST</code></td>
+<td style="text-align:left">表示这个一个POST请求</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>@PUT</code></td>
+<td style="text-align:left">表示这是一个PUT请求</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>@DELETE</code></td>
+<td style="text-align:left">表示这是一个DELETE请求</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>@HEAD</code></td>
+<td style="text-align:left">表示这是一个HEAD请求</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>@OPTIONS</code></td>
+<td style="text-align:left">表示这是一个OPTION请求</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>@PATCH</code></td>
+<td style="text-align:left">表示这是一个PAT请求</td>
+</tr>
+</tbody>
+</table>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/03/19/Retrofit-Use-Course-2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/19/Code-Version-Control-Ignore-File/" itemprop="url">
+                  Android项目版本控制提交忽略表
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-19T19:25:26+08:00" content="2016-03-19">
+              2016-03-19
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/19/Code-Version-Control-Ignore-File/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/19/Code-Version-Control-Ignore-File/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>我们在Android Studio中创建项目后往往会使用版本控制来控制代码,但是项目中哪些文件该提交到版本控制呢?</p>
+<p>其实,Android Studio自己已经帮你做好了!</p>
+<p>在Project和app下各有一个<code>.gitignore</code>文件,如下:</p>
+<p>Project下的忽略文件:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">*.iml</span><br><span class="line">.gradle</span><br><span class="line">/local.properties</span><br><span class="line">/.idea/workspace.xml</span><br><span class="line">/.idea/libraries</span><br><span class="line">.DS_Store</span><br><span class="line">/build</span><br><span class="line">/captures</span><br></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/03/19/Code-Version-Control-Ignore-File/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/03/13/Gradle-Get-SVN-Version-Code/" itemprop="url">
                   Gradle中获取SVN版本号和Jenkins的Build号
                 </a>
@@ -1067,203 +1306,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/09/20/Android-Music-Play-Mode/" itemprop="url">
-                  Android音乐播放模式切换-外放、听筒、耳机
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-09-20T16:30:28+08:00" content="2015-09-20">
-              2015-09-20
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/09/20/Android-Music-Play-Mode/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/20/Android-Music-Play-Mode/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>最近比较忙,好久都没有更新博客!</p>
-<p>最近由于项目需求要做音乐播放模式的切换,经过好多次尝试,发现这里面满满的都是坑啊,所以就写一篇日志记录下来,也给大家分享下遇到的坑及解决办法.</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/20/Android-Music-Play-Mode/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/08/05/Java-Simple-Log/" itemprop="url">
-                  Java简易Log
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-08-05T20:23:03+08:00" content="2015-08-05">
-              2015-08-05
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/08/05/Java-Simple-Log/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/05/Java-Simple-Log/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>在写代码时,经常打印一些信息用于调试,我经常使用<code>System.out.println()</code>打印,但是有一个问题,打印的信息多的时候就很难找到输出的位置,为了方便找到打印的位置,写了个简易的Log类,以后有机会在添加功能.</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/05/Java-Simple-Log/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1310,7 +1352,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-count">34</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

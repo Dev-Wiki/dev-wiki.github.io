@@ -1,0 +1,1025 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="NbE9T9ctqaOBpXu_MkSghUCx0o5WkpO80-NyLjiFEOc" />
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android, Retrofit, RESET, DevWiki, Retrofit使用教程" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="DevWiki Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/devwiki.png?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="上一篇文章讲述了Retrofit的简单使用,这次我们学习一下Retrofit的各种HTTP请求.
+Retrofit基础在Retrofit中使用注解的方式来区分请求类型.比如@GET(&amp;quot;&amp;quot;)表示一个GET请求,括号中的内容为请求的地址.
+
+
+
+格式
+含义
+
+
+
+
+@GET
+表示这是一个GET请求
+
+
+@POST
+表示这个一个POST请求
+
+
+@PUT
+表示这是一个PUT请求">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Retrofit使用教程(二)">
+<meta property="og:url" content="http://www.devwiki.net/2016/03/19/Retrofit-Use-Course-2/index.html">
+<meta property="og:site_name" content="DevWiki Blog">
+<meta property="og:description" content="上一篇文章讲述了Retrofit的简单使用,这次我们学习一下Retrofit的各种HTTP请求.
+Retrofit基础在Retrofit中使用注解的方式来区分请求类型.比如@GET(&amp;quot;&amp;quot;)表示一个GET请求,括号中的内容为请求的地址.
+
+
+
+格式
+含义
+
+
+
+
+@GET
+表示这是一个GET请求
+
+
+@POST
+表示这个一个POST请求
+
+
+@PUT
+表示这是一个PUT请求">
+<meta property="og:image" content="http://7xjhi6.com1.z0.glb.clouddn.com/WeiXin-DevWiki-Common.jpg">
+<meta property="og:updated_time" content="2016-03-19T11:44:32.744Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Retrofit使用教程(二)">
+<meta name="twitter:description" content="上一篇文章讲述了Retrofit的简单使用,这次我们学习一下Retrofit的各种HTTP请求.
+Retrofit基础在Retrofit中使用注解的方式来区分请求类型.比如@GET(&amp;quot;&amp;quot;)表示一个GET请求,括号中的内容为请求的地址.
+
+
+
+格式
+含义
+
+
+
+
+@GET
+表示这是一个GET请求
+
+
+@POST
+表示这个一个POST请求
+
+
+@PUT
+表示这是一个PUT请求">
+<meta name="twitter:image" content="http://7xjhi6.com1.z0.glb.clouddn.com/WeiXin-DevWiki-Common.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"remove"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Retrofit使用教程(二) | DevWiki Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-37158281-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?f5a1bf8b7591014a8624c8a285456dd0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">DevWiki Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">DevWiki,the Develop Wiki!</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+        <li class="menu-item menu-item-search">
+        
+          <a href="#" class="st-search-show-outputs">
+        
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'NddmkrLTpaggCULS9VLU','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Retrofit使用教程(二)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-19T19:28:26+08:00" content="2016-03-19">
+              2016-03-19
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/19/Retrofit-Use-Course-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/19/Retrofit-Use-Course-2/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>上一篇文章讲述了Retrofit的简单使用,这次我们学习一下Retrofit的各种HTTP请求.</p>
+<h2 id="Retrofit基础"><a href="#Retrofit基础" class="headerlink" title="Retrofit基础"></a>Retrofit基础</h2><p>在Retrofit中使用注解的方式来区分请求类型.比如<code>@GET(&quot;&quot;)</code>表示一个GET请求,括号中的内容为请求的地址.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">格式</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>@GET</code></td>
+<td style="text-align:left">表示这是一个GET请求</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>@POST</code></td>
+<td style="text-align:left">表示这个一个POST请求</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>@PUT</code></td>
+<td style="text-align:left">表示这是一个PUT请求</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>@DELETE</code></td>
+<td style="text-align:left">表示这是一个DELETE请求</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>@HEAD</code></td>
+<td style="text-align:left">表示这是一个HEAD请求</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>@OPTIONS</code></td>
+<td style="text-align:left">表示这是一个OPTION请求</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>@PATCH</code></td>
+<td style="text-align:left">表示这是一个PAT请求</td>
+</tr>
+</tbody>
+</table>
+<a id="more"></a>
+<h2 id="基本的HTTP请求"><a href="#基本的HTTP请求" class="headerlink" title="基本的HTTP请求"></a>基本的HTTP请求</h2><p>Retrofit可实现基本HTTP请求,包括<code>GET</code>,<code>POST</code>,<code>PUT</code>,<code>DELETE</code>等.</p>
+<p>1.<code>GET</code>请求</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GET</span>(<span class="string">"/record"</span>)</span><br><span class="line"><span class="function">Call&lt;PhoneResult&gt; <span class="title">getResult</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<p>2.<code>POST</code>请求</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@POST</span>(<span class="string">"/record"</span>)</span><br><span class="line"><span class="function">Call&lt;PhoneResult&gt; <span class="title">getResult</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<p>3.<code>PUT</code>请求</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@PUT</span>(<span class="string">"/record"</span>)</span><br><span class="line"><span class="function">Call&lt;PhoneResult&gt; <span class="title">getResult</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<p>4.<code>DELETE</code>请求</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DELETE</span>(<span class="string">"/record"</span>)</span><br><span class="line"><span class="function">Call&lt;PhoneResult&gt; <span class="title">getResult</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<h2 id="服务器接口类型"><a href="#服务器接口类型" class="headerlink" title="服务器接口类型"></a>服务器接口类型</h2><p>服务器接口有很多中,本人经验有限,目前接触较多为以下几种:</p>
+<h3 id="直接请求型"><a href="#直接请求型" class="headerlink" title="直接请求型"></a>直接请求型</h3><blockquote>
+<p>即直接对某一地址或组合某一地址发起请求</p>
+</blockquote>
+<p>如:对<code>/result</code>和<code>/result/{id}</code>发起<code>GET</code>请求,其中<code>{id}</code>中的<code>id</code>在实际使用时填写实际值即可.</p>
+<h3 id="带参查询型"><a href="#带参查询型" class="headerlink" title="带参查询型"></a>带参查询型</h3><blockquote>
+<p>对某一地址进行带参查询请求</p>
+</blockquote>
+<p>如:<code>https://www.baidu.com/s?wd=123</code>为对接口<code>https://www.baidu.com/s</code>进行参数为<code>wd=123</code>的<code>GET</code>查询请求.</p>
+<h3 id="带Header型"><a href="#带Header型" class="headerlink" title="带Header型"></a>带Header型</h3><blockquote>
+<p>　即请求时要求带上Header</p>
+</blockquote>
+<h2 id="Retrofit中如何写"><a href="#Retrofit中如何写" class="headerlink" title="Retrofit中如何写?"></a>Retrofit中如何写?</h2><h3 id="直接请求型-1"><a href="#直接请求型-1" class="headerlink" title="直接请求型"></a>直接请求型</h3><p>1.如果是直接请求某一地址,写法如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GET</span>(<span class="string">"/record"</span>)</span><br><span class="line"><span class="function">Call&lt;PhoneResult&gt; <span class="title">getResult</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<p>2.如果是组合后直接请求,如<code>/result/{id}</code>写法如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GET</span>(<span class="string">"/result/&#123;id&#125;"</span>)</span><br><span class="line"><span class="function">Call&lt;PhoneResult&gt; <span class="title">getResult</span><span class="params">(@Path(<span class="string">"id"</span>)</span> String id)</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="带参查询型-1"><a href="#带参查询型-1" class="headerlink" title="带参查询型"></a>带参查询型</h3><p>如12306的查询接口<code>https://kyfw.12306.cn/otn/lcxxcx/query?purpose_codes=ADULT&amp;queryDate=2016-03-18&amp;from_station=BJP&amp;to_station=CDW</code>,写法如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GET</span>(<span class="string">"/otn/lcxxcx/query"</span>)</span><br><span class="line"><span class="function">Call&lt;Result&gt; <span class="title">query</span><span class="params">(@Query(<span class="string">"purpose_codes"</span>)</span> String codes, @<span class="title">Query</span><span class="params">(<span class="string">"queryDate"</span>)</span> String date,</span><br><span class="line">    @<span class="title">Query</span><span class="params">(<span class="string">"from_station"</span>)</span> String from, @<span class="title">Query</span><span class="params">(<span class="string">"to_station"</span>)</span> String to)</span></span><br></pre></td></tr></table></figure>
+<h3 id="带Header型-1"><a href="#带Header型-1" class="headerlink" title="带Header型"></a>带Header型</h3><p>比如要更新某个账户信息,其接口地址为<code>/info</code>,需要带的Header有设备信息<code>device</code>,系统版本<code>version</code>,还要带请求参数要更新账户的<code>id</code>,代码如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@POST</span>(<span class="string">"/info"</span>)</span><br><span class="line"><span class="function">Call&lt;Object&gt; <span class="title">updateInfo</span><span class="params">(@Header(<span class="string">"device"</span>)</span> String device, @<span class="title">Header</span><span class="params">(<span class="string">"version"</span>)</span> <span class="keyword">int</span> version,</span><br><span class="line">                        @<span class="title">Field</span><span class="params">(<span class="string">"id"</span>)</span> String id)</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>注:本想给每一种请求添加一个请求实例,但是确实不太好找.</strong></p>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>找了很久发现多说提供了一些POST请求接口,下面就以多说的接口为例,看一下如何使用<code>Retrofit</code>写请求.</p>
+<h3 id="基础URL"><a href="#基础URL" class="headerlink" title="基础URL"></a>基础URL</h3><p>多说的接口基础地址为:<code>http://api.duoshuo.com</code>,则构建Retrofit实例代码如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Retrofit retrofit = <span class="keyword">new</span> Retrofit.Builder()</span><br><span class="line">        .addConverterFactory(GsonConverterFactory.create())</span><br><span class="line">        .baseUrl(<span class="string">"http://api.duoshuo.com"</span>)</span><br><span class="line">        .build();</span><br></pre></td></tr></table></figure>
+<h3 id="获取文章评论、转发数"><a href="#获取文章评论、转发数" class="headerlink" title="获取文章评论、转发数"></a>获取文章评论、转发数</h3><p>接口地址为:<code>/threads/counts</code></p>
+<p>HTTP请求方式:<code>GET</code></p>
+<p>请求示例为:<code>http://api.duoshuo.com/threads/counts.json?short_name=official&amp;threads=4ff1cbc43ae636b72a00001d</code></p>
+<p>后面的<code>.json</code>为返回数据的格式,此处我们使用<code>json</code>格式.</p>
+<p>请求代码如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GET</span>(<span class="string">"/threads/counts.json"</span>)</span><br><span class="line"><span class="function">Call&lt;Object&gt; <span class="title">getCommit</span><span class="params">(@Query(<span class="string">"short_name"</span>)</span> String shortName,</span><br><span class="line">                       @<span class="title">Query</span><span class="params">(<span class="string">"threads"</span>)</span> String threads)</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="匿名发表新评论"><a href="#匿名发表新评论" class="headerlink" title="匿名发表新评论"></a>匿名发表新评论</h3><p>接口地址为:<code>/posts/create</code></p>
+<p>HTTP请求方式:<code>POST</code></p>
+<p>请求示例为:</p>
+<blockquote>
+<p>Request URL:<code>http://api.duoshuo.com/posts/create.json</code><br>Request Method:<code>POST</code><br>Post Data:<code>short_name=official&amp;author_email=jp.chenyang%40gmail.com&amp;author_name=Perchouli&amp;thread_id=1152923703638301959&amp;author_url=http%3A%2F%2Fduoshuo.com&amp;message=匿名发表新评论</code></p>
+</blockquote>
+<p>1.Field方式实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FormUrlEncoded</span></span><br><span class="line"><span class="meta">@POST</span>(<span class="string">"/posts/create.json"</span>)</span><br><span class="line"><span class="function">Call&lt;CommitResult&gt; <span class="title">createCommit</span><span class="params">(@Field(<span class="string">"secret"</span>)</span> String secret,</span><br><span class="line">                                @<span class="title">Field</span><span class="params">(<span class="string">"short_name"</span>)</span> String shortName,</span><br><span class="line">                                @<span class="title">Field</span><span class="params">(<span class="string">"author_email"</span>)</span> String authorEmail,</span><br><span class="line">                                @<span class="title">Field</span><span class="params">(<span class="string">"author_name"</span>)</span> String authorName,</span><br><span class="line">                                @<span class="title">Field</span><span class="params">(<span class="string">"thread_key"</span>)</span> String threadKey,</span><br><span class="line">                                @<span class="title">Field</span><span class="params">(<span class="string">"author_url"</span>)</span> String author_url,</span><br><span class="line">                                @<span class="title">Field</span><span class="params">(<span class="string">"message"</span>)</span> String message)</span>;</span><br></pre></td></tr></table></figure>
+<p>2.Field Map实现方式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FormUrlEncoded</span></span><br><span class="line"><span class="meta">@POST</span>(<span class="string">"/posts/create.json"</span>)</span><br><span class="line"><span class="function">Call&lt;CommitResult&gt; <span class="title">createCommit</span><span class="params">(@FieldMap Map&lt;String, String&gt; map)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>获取Map方式如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CommitParam</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String short_name;</span><br><span class="line">    <span class="keyword">private</span> String author_email;</span><br><span class="line">    <span class="keyword">private</span> String author_name;</span><br><span class="line">    <span class="keyword">private</span> String thread_id;</span><br><span class="line">    <span class="keyword">private</span> String author_url;</span><br><span class="line">    <span class="keyword">private</span> String message;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getShort_name</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> short_name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setShort_name</span><span class="params">(String short_name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.short_name = short_name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getAuthor_email</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> author_email;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAuthor_email</span><span class="params">(String author_email)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.author_email = author_email;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getAuthor_name</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> author_name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAuthor_name</span><span class="params">(String author_name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.author_name = author_name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getThread_id</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> thread_id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setThread_id</span><span class="params">(String thread_id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.thread_id = thread_id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getAuthor_url</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> author_url;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAuthor_url</span><span class="params">(String author_url)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.author_url = author_url;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getMessage</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> message;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMessage</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.message = message;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Map&lt;String, String&gt; <span class="title">createCommitParams</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Map&lt;String, String&gt; params = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        params.put(<span class="string">"short_name"</span>, short_name);</span><br><span class="line">        params.put(<span class="string">"author_email"</span>, author_email);</span><br><span class="line">        params.put(<span class="string">"author_name"</span>, author_name);</span><br><span class="line">        params.put(<span class="string">"thread_id"</span>, thread_id);</span><br><span class="line">        params.put(<span class="string">"author_url"</span>, author_url);</span><br><span class="line">        params.put(<span class="string">"message"</span>, message);</span><br><span class="line">        <span class="keyword">return</span> params;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>项目地址在此:<a href="https://github.com/Dev-Wiki/RetrofitDemo" target="_blank" rel="external">Dev-Wiki/RetrofitDemo</a></p>
+<p>更多文章请移步我的博客:<a href="http://www.devwiki.net">DevWiki Blog</a></p>
+<p><strong>重要说明</strong></p>
+<p>想随时获取最新博客文章更新,请关注公共账号DevWiki,或扫描下面的二维码:</p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/WeiXin-DevWiki-Common.jpg" alt="微信公共号"></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/Retrofit/" rel="tag">#Retrofit</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/19/Code-Version-Control-Ignore-File/" rel="next" title="Android项目版本控制提交忽略表">
+                <i class="fa fa-chevron-left"></i> Android项目版本控制提交忽略表
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/03/19/Retrofit-Use-Course-2/"
+           data-title="Retrofit使用教程(二)" data-url="http://www.devwiki.net/2016/03/19/Retrofit-Use-Course-2/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/favicon.ico"
+               alt="DevWiki" />
+          <p class="site-author-name" itemprop="name">DevWiki</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">34</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://github.com/dev-wiki" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/devwiki" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/devwiki" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> ZhiHu
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/c9c118608767/latest_articles" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> JianShu
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Retrofit基础"><span class="nav-number">1.</span> <span class="nav-text">Retrofit基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本的HTTP请求"><span class="nav-number">2.</span> <span class="nav-text">基本的HTTP请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器接口类型"><span class="nav-number">3.</span> <span class="nav-text">服务器接口类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#直接请求型"><span class="nav-number">3.1.</span> <span class="nav-text">直接请求型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#带参查询型"><span class="nav-number">3.2.</span> <span class="nav-text">带参查询型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#带Header型"><span class="nav-number">3.3.</span> <span class="nav-text">带Header型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Retrofit中如何写"><span class="nav-number">4.</span> <span class="nav-text">Retrofit中如何写?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#直接请求型-1"><span class="nav-number">4.1.</span> <span class="nav-text">直接请求型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#带参查询型-1"><span class="nav-number">4.2.</span> <span class="nav-text">带参查询型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#带Header型-1"><span class="nav-number">4.3.</span> <span class="nav-text">带Header型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例"><span class="nav-number">5.</span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础URL"><span class="nav-number">5.1.</span> <span class="nav-text">基础URL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取文章评论、转发数"><span class="nav-number">5.2.</span> <span class="nav-text">获取文章评论、转发数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匿名发表新评论"><span class="nav-number">5.3.</span> <span class="nav-text">匿名发表新评论</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015.06 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DevWiki</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<span id="busuanzi_container_site_uv" style='display:none'>
+         |   您是本站第 <span id="busuanzi_value_site_uv" font style="color:black"></span> 个访客
+</span>
+
+<span id="busuanzi_container_site_pv" style='display:none'>
+    , 本站总访问量 : <span id="busuanzi_value_site_pv"></span>次
+</span>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"devwiki"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+  
+
+
+</body>
+</html>

@@ -43,7 +43,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="敏捷开发, 敏捷反馈, 高效程序员, DevWiki" />
+  <meta name="keywords" content="版本控制, SVN, Git, gitignore, DevWiki, Android项目版本控制提交忽略表" />
 
 
 
@@ -61,19 +61,33 @@
 
 
 
-<meta name="description">
+<meta name="description" content="我们在Android Studio中创建项目后往往会使用版本控制来控制代码,但是项目中哪些文件该提交到版本控制呢?
+其实,Android Studio自己已经帮你做好了!
+在Project和app下各有一个.gitignore文件,如下:
+Project下的忽略文件:
+12345678*.iml.gradle/local.properties/.idea/workspace.xml/.idea/l">
 <meta property="og:type" content="article">
-<meta property="og:title" content="敏捷反馈---高效程序员的45个习惯读书笔记">
-<meta property="og:url" content="http://www.devwiki.net/2015/07/01/Agile-Develop-Agile-Feedback/index.html">
+<meta property="og:title" content="Android项目版本控制提交忽略表">
+<meta property="og:url" content="http://www.devwiki.net/2016/03/19/Code-Version-Control-Ignore-File/index.html">
 <meta property="og:site_name" content="DevWiki Blog">
-<meta property="og:description">
-<meta property="og:image" content="http://7xjhi6.com1.z0.glb.clouddn.com/Agile-Develop.png">
+<meta property="og:description" content="我们在Android Studio中创建项目后往往会使用版本控制来控制代码,但是项目中哪些文件该提交到版本控制呢?
+其实,Android Studio自己已经帮你做好了!
+在Project和app下各有一个.gitignore文件,如下:
+Project下的忽略文件:
+12345678*.iml.gradle/local.properties/.idea/workspace.xml/.idea/l">
+<meta property="og:image" content="http://7xjhi6.com1.z0.glb.clouddn.com/Commit_Test_Total_Commit.png">
+<meta property="og:image" content="http://7xjhi6.com1.z0.glb.clouddn.com/Commit_Test_Model_App_Commit.png">
+<meta property="og:image" content="http://7xjhi6.com1.z0.glb.clouddn.com/Commit_Test_Project_Commit.png">
 <meta property="og:image" content="http://7xjhi6.com1.z0.glb.clouddn.com/WeiXin-DevWiki-Common.jpg">
-<meta property="og:updated_time" content="2016-03-19T11:32:39.585Z">
+<meta property="og:updated_time" content="2016-03-19T11:29:11.233Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="敏捷反馈---高效程序员的45个习惯读书笔记">
-<meta name="twitter:description">
-<meta name="twitter:image" content="http://7xjhi6.com1.z0.glb.clouddn.com/Agile-Develop.png">
+<meta name="twitter:title" content="Android项目版本控制提交忽略表">
+<meta name="twitter:description" content="我们在Android Studio中创建项目后往往会使用版本控制来控制代码,但是项目中哪些文件该提交到版本控制呢?
+其实,Android Studio自己已经帮你做好了!
+在Project和app下各有一个.gitignore文件,如下:
+Project下的忽略文件:
+12345678*.iml.gradle/local.properties/.idea/workspace.xml/.idea/l">
+<meta name="twitter:image" content="http://7xjhi6.com1.z0.glb.clouddn.com/Commit_Test_Total_Commit.png">
 
 
 
@@ -91,7 +105,7 @@
   };
 </script>
 
-  <title> 敏捷反馈---高效程序员的45个习惯读书笔记 | DevWiki Blog </title>
+  <title> Android项目版本控制提交忽略表 | DevWiki Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -282,7 +296,7 @@
             
             
               
-                敏捷反馈---高效程序员的45个习惯读书笔记
+                Android项目版本控制提交忽略表
               
             
           </h1>
@@ -294,38 +308,19 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-07-01T08:01:12+08:00" content="2015-07-01">
-              2015-07-01
+            <time itemprop="dateCreated" datetime="2016-03-19T19:25:26+08:00" content="2016-03-19">
+              2016-03-19
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/高效程序员的45个习惯/" itemprop="url" rel="index">
-                    <span itemprop="name">高效程序员的45个习惯</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/07/01/Agile-Develop-Agile-Feedback/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/01/Agile-Develop-Agile-Feedback/" itemprop="commentsCount"></span>
+                <a href="/2016/03/19/Code-Version-Control-Ignore-File/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/19/Code-Version-Control-Ignore-File/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -347,76 +342,32 @@
       
 
       
-        <p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Agile-Develop.png" alt="敏捷开发之道"></p>
+        <p>我们在Android Studio中创建项目后往往会使用版本控制来控制代码,但是项目中哪些文件该提交到版本控制呢?</p>
+<p>其实,Android Studio自己已经帮你做好了!</p>
+<p>在Project和app下各有一个<code>.gitignore</code>文件,如下:</p>
+<p>Project下的忽略文件:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">*.iml</span><br><span class="line">.gradle</span><br><span class="line">/local.properties</span><br><span class="line">/.idea/workspace.xml</span><br><span class="line">/.idea/libraries</span><br><span class="line">.DS_Store</span><br><span class="line">/build</span><br><span class="line">/captures</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h2 id="守护天使"><a href="#守护天使" class="headerlink" title="守护天使"></a>守护天使</h2><blockquote>
-<p>coding feedback 编写能产生反馈的代码</p>
-</blockquote>
-<p>1.为了应对代码的变化,你需要持续获得代码的健康状态的反馈:它是在做你期望的事情吗?</p>
-<p>2.用代码来测试变量的具体值(以及跟踪运行了多少个测试),已经是非常普遍的做法.</p>
-<p>3.对于测试我们要做到:</p>
-<ul>
-<li>确保测试是可重复的</li>
-<li>测试你的边界条件</li>
-<li>不要放过任何一个失败的测试</li>
-</ul>
-<p>4.只要有了单元测试,就要他们自动运行.也就是每次编译或者构建代码的时候就运行一次测试.</p>
-<p>5.单元测试的理由:</p>
-<ul>
-<li>单元测试能及时提供反馈</li>
-<li>单元测试让你的代码更加健壮</li>
-<li>单元测试是有用的设计工具</li>
-<li>单元测试是让你自信的后台</li>
-<li>单元测试是解决问题时的探测器</li>
-<li>单元测试是可信的文档</li>
-<li>单元测试是学习工具</li>
-</ul>
-<p>6.单元测试是优质股,只得投资.</p>
-<p>7.人们不编写单元测试的很多借口都是因为代码中的设计缺陷</p>
-<p>8.单元测试只有在达到一定的覆盖率时才能真正地发挥作用.</p>
-<p>9.不是测试越多质量就越高,测试必须要有效.</p>
-<h2 id="先用它在实现它"><a href="#先用它在实现它" class="headerlink" title="先用它在实现它"></a>先用它在实现它</h2><blockquote>
-<p>Write tests before writeing code 编码之前先写测试</p>
-</blockquote>
-<p>1.如果要让你的产品尽可能的好,自己要先积极地使用它.</p>
-<p>2.对于我们自己写的接口,在说服其他人使用之前,先得让自己切实地使用它们.</p>
-<p>3.你会发现,因为你自己要使用它们,所以能设计一个更有用,更一致的接口.</p>
-<p>4.学会使用TDD—Test Driven Development,测试驱动开发.TDD有机会让你在编写代码之前,可以深思熟虑将如何使用它.这迫使你去思考它的可用性和便利性,并让你的设计更加注重实效.</p>
-<p>5.设计不是开始编码的时候就结束了.你需要在设计的生命周期中持续地添加测试,添加代码,并重新设计代码.</p>
-<p>6.任何一个设计都可以被改进.</p>
-<p>7.单纯的单元测试是无法保证好的设计,但它们会对设计有帮助.</p>
-<h2 id="不同环境就有不同的问题"><a href="#不同环境就有不同的问题" class="headerlink" title="不同环境就有不同的问题"></a>不同环境就有不同的问题</h2><p>1.同一段代码可能在不同的机器上运行就会有不同的结果.</p>
-<p>2.测试团队应该在项目所支持的所有平台上进行测试.</p>
-<p>3.在保持可以发布中学过,用一个持续集成工具,周期性地从源代码控制系统中取得代码,并运行代码.如果测试失败了,就会通知相关的开发人员.要在多个平台上测试,你只要为每个平台设置持续集成系统就行了.</p>
-<p>4.要积极地寻找问题,而不是等问题来找你.</p>
-<p>5.硬件比开发人员的时间便宜.</p>
-<p>6.软件在很多平台上出现bug很可能只是因为栈布局的差异,机器字大小的端的不同导致.</p>
-<h2 id="自动验收测试"><a href="#自动验收测试" class="headerlink" title="自动验收测试"></a>自动验收测试</h2><p>1.关键的业务逻辑必须要独立进行严格的测试,并且最后需要通过用户的审批.</p>
-<p>2.使用集成测试框架,可以更容易地让用户验证是否为他们需要的业务.</p>
-<p>3.让你的客户单独验证核心的业务逻辑,要让它们像一般的测试一样可以自动运行.</p>
-<p>4.使用客户的业务逻辑,但不要陷入无边无际的文档写作之中.</p>
-<h2 id="度量真实的进度"><a href="#度量真实的进度" class="headerlink" title="度量真实的进度"></a>度量真实的进度</h2><blockquote>
-<p>Focus on where you’re going 专注于你的方向</p>
-</blockquote>
-<p>1.判断工作进度最好的是看实际花费的时间,而不是估计的时间.</p>
-<p>2.时间表很难真实地反应工作的完成状况,因此它不可以用来进行项目计划,评估或表现评估.</p>
-<p>3.我们不应该去计算工作量完成的百分比,而应该测定还剩下多少工作量没有完成.</p>
-<p>4.在你最后真正完成一项任务时,要清楚知道完成这个任务真正花费的时间,并在下一次评估任务时作为参考.</p>
-<p>5.如果能一直让下一步工作是可见的,会有助于进度的度量.最好的做法就是使用待办事项.(bakclog)通过待办事项就可以随时知道下一步最重要的任务是什么.</p>
-<p>6.<strong>不要用不巧当的度量来欺骗自己或者团队</strong></p>
-<p>7.10分钟作为一个时间单位,它的颗粒度实在太细了.一周或者一个月的时间单元,它的颗粒度太粗了.一般以一天或者半天作为时间单位.</p>
-<p>8.一周工作40小时,不是说你就有40小时的编码时间.</p>
-<h2 id="倾听用户的声音"><a href="#倾听用户的声音" class="headerlink" title="倾听用户的声音"></a>倾听用户的声音</h2><blockquote>
-<p>It is a bug! 这是一个bug.</p>
-</blockquote>
-<p>1.每一个抱怨的背后都隐藏一个事实,找出真相,修复真正的问题.</p>
-<p>2.没有愚蠢的用户,只有愚蠢的自大的开发人员.</p>
-<p>3.当除了问题,你要尽可能地提供详细的信息.</p>
-<p>4.不管是产品的bug,还是文档的bug,或者是对用户社区理解的bug,他都是团队的问题,而不是用户的问题.</p>
-<p>5.我们花费了很大精力从单元测试之类的代码中获得反馈,但却容易忽略最终用户的反馈.</p>
-<p>6.不仅需要和真实的用户进行交谈,还需要耐心地倾听.</p>
-<p>7.如果代码解决不了问题,也许可以考虑通过修改文档或者培训来弥补.</p>
-<hr>
+<p>app文件夹下的忽略文件:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/build</span><br></pre></td></tr></table></figure>
+<p>以上可以看出:</p>
+<ol>
+<li>所有的<code>.iml</code>文件都不需要提交</li>
+<li><code>build</code>文件夹下的文件不需要提交,这是编译文件</li>
+<li>本地设置相关文件不需要提交</li>
+<li>性能分析时的文件会在/captures文件夹下,也不需要提交</li>
+</ol>
+<p>如果你把项目分享到Github上,如下操作:</p>
+<ol>
+<li>打开AndroidStudio,创建一个新项目</li>
+<li><code>VCS</code> —&gt; <code>Import into version control</code> —&gt; <code>Share Project on GitHub</code></li>
+</ol>
+<p>然后AS就会自动选择哪些需要提交到版本控制,如下图:</p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Commit_Test_Total_Commit.png" alt="总览"></p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Commit_Test_Model_App_Commit.png" alt="Model"></p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Commit_Test_Project_Commit.png" alt="Project"></p>
+<p>虽然这个知识点很小,但是也需要注意,所以写下来留着以后用吧!</p>
+<p>更多文章请移步我的博客:<a href="http://www.devwiki.net">DevWiki Blog</a></p>
 <p><strong>重要说明</strong></p>
 <p>想随时获取最新博客文章更新,请关注公共账号DevWiki,或扫描下面的二维码:</p>
 <p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/WeiXin-DevWiki-Common.jpg" alt="微信公共号"></p>
@@ -434,9 +385,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/敏捷开发/" rel="tag">#敏捷开发</a>
-          
-            <a href="/tags/高效程序员/" rel="tag">#高效程序员</a>
+            <a href="/tags/版本控制/" rel="tag">#版本控制</a>
           
         </div>
       
@@ -445,16 +394,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/06/25/Qiniu-Upload-Tool/" rel="next" title="七牛简易上传工具的制作">
-                <i class="fa fa-chevron-left"></i> 七牛简易上传工具的制作
+              <a href="/2016/03/13/Gradle-Get-SVN-Version-Code/" rel="next" title="Gradle中获取SVN版本号和Jenkins的Build号">
+                <i class="fa fa-chevron-left"></i> Gradle中获取SVN版本号和Jenkins的Build号
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/07/02/Http-Web-Internet-Base/" rel="prev" title="HTTP学习笔记---了解Web及网络基础">
-                HTTP学习笔记---了解Web及网络基础 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/03/19/Retrofit-Use-Course-2/" rel="prev" title="Retrofit使用教程(二)">
+                Retrofit使用教程(二) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -507,8 +456,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/07/01/Agile-Develop-Agile-Feedback/"
-           data-title="敏捷反馈---高效程序员的45个习惯读书笔记" data-url="http://www.devwiki.net/2015/07/01/Agile-Develop-Agile-Feedback/">
+      <div class="ds-thread" data-thread-key="2016/03/19/Code-Version-Control-Ignore-File/"
+           data-title="Android项目版本控制提交忽略表" data-url="http://www.devwiki.net/2016/03/19/Code-Version-Control-Ignore-File/">
       </div>
     
   </div>
@@ -650,7 +599,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#守护天使"><span class="nav-number">1.</span> <span class="nav-text">守护天使</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#先用它在实现它"><span class="nav-number">2.</span> <span class="nav-text">先用它在实现它</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不同环境就有不同的问题"><span class="nav-number">3.</span> <span class="nav-text">不同环境就有不同的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动验收测试"><span class="nav-number">4.</span> <span class="nav-text">自动验收测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#度量真实的进度"><span class="nav-number">5.</span> <span class="nav-text">度量真实的进度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#倾听用户的声音"><span class="nav-number">6.</span> <span class="nav-text">倾听用户的声音</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
