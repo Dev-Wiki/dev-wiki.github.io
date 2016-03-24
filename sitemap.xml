@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.devwiki.net/2016/03/02/Retrofit-Use-Course-1/</loc>
+    
+    <lastmod>2016-03-24T16:22:47.627Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.devwiki.net/2016/03/25/Retrofit-Use-Course-3/</loc>
+    
+    <lastmod>2016-03-24T16:22:41.098Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.devwiki.net/2016/03/19/Retrofit-Use-Course-2/</loc>
+    
+    <lastmod>2016-03-24T16:22:15.212Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.devwiki.net/2016/03/19/Code-Version-Control-Ignore-File/</loc>
+    
+    <lastmod>2016-03-24T16:15:34.940Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.devwiki.net/2015/06/18/Agile-Develop-Beginning-Agility/</loc>
     
     <lastmod>2016-03-13T14:40:54.373Z</lastmod>
@@ -208,13 +236,6 @@
     <loc>http://www.devwiki.net/2015/06/25/Qiniu-Upload-Tool/</loc>
     
     <lastmod>2016-03-13T14:37:24.298Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.devwiki.net/2016/03/02/Retrofit-Use-Course-1/</loc>
-    
-    <lastmod>2016-03-13T14:37:16.764Z</lastmod>
     
   </url>
   
