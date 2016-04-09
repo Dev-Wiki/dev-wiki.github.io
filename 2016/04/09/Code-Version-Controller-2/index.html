@@ -43,7 +43,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="HTTP, HTTP状态码, HTTP学习笔记, DevWiki" />
+  <meta name="keywords" content="敏捷开发, 快速迭代, 版本控制, SVN, Git, Jenkins, DevWiki" />
 
 
 
@@ -61,18 +61,72 @@
 
 
 
-<meta name="description">
+<meta name="description" content="这是根据我做项目总结出来的版本控制方案,大家可以参考一下.不同的项目可能要求不同.
+其中代码分为四个部分:
+
+trunk : 主干代码
+branches : 分支代码(包含开发版分支)
+tags : 发布标记
+integrate : 集成分支
+
+app的版本有:
+
+develope : 开发版
+integrate : 集成版
+grey : 灰度版
+release : 正式版
+
+
+
+重要说明
+想随时">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HTTP学习笔记---状态码">
-<meta property="og:url" content="http://www.devwiki.net/2015/06/24/Http-Status-Code/index.html">
+<meta property="og:title" content="版本控制方案">
+<meta property="og:url" content="http://www.devwiki.net/2016/04/09/Code-Version-Controller-2/index.html">
 <meta property="og:site_name" content="DevWiki Blog">
-<meta property="og:description">
-<meta property="og:image" content="http://7xjhi6.com1.z0.glb.clouddn.com/Learn-HTTP-With-Image.png">
+<meta property="og:description" content="这是根据我做项目总结出来的版本控制方案,大家可以参考一下.不同的项目可能要求不同.
+其中代码分为四个部分:
+
+trunk : 主干代码
+branches : 分支代码(包含开发版分支)
+tags : 发布标记
+integrate : 集成分支
+
+app的版本有:
+
+develope : 开发版
+integrate : 集成版
+grey : 灰度版
+release : 正式版
+
+
+
+重要说明
+想随时">
+<meta property="og:image" content="http://7xjhi6.com1.z0.glb.clouddn.com/Code-App-Version-Control.png">
 <meta property="og:image" content="http://7xjhi6.com1.z0.glb.clouddn.com/WeiXin-DevWiki-Common.jpg">
-<meta property="og:updated_time" content="2016-03-13T14:38:20.942Z">
+<meta property="og:updated_time" content="2016-04-09T15:07:06.210Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HTTP学习笔记---状态码">
-<meta name="twitter:description">
+<meta name="twitter:title" content="版本控制方案">
+<meta name="twitter:description" content="这是根据我做项目总结出来的版本控制方案,大家可以参考一下.不同的项目可能要求不同.
+其中代码分为四个部分:
+
+trunk : 主干代码
+branches : 分支代码(包含开发版分支)
+tags : 发布标记
+integrate : 集成分支
+
+app的版本有:
+
+develope : 开发版
+integrate : 集成版
+grey : 灰度版
+release : 正式版
+
+
+
+重要说明
+想随时">
 
 
 
@@ -90,7 +144,7 @@
   };
 </script>
 
-  <title> HTTP学习笔记---状态码 | DevWiki Blog </title>
+  <title> 版本控制方案 | DevWiki Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -281,7 +335,7 @@
             
             
               
-                HTTP学习笔记---状态码
+                版本控制方案
               
             
           </h1>
@@ -293,38 +347,19 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-06-24T19:06:15+08:00" content="2015-06-24">
-              2015-06-24
+            <time itemprop="dateCreated" datetime="2016-04-09T23:06:49+08:00" content="2016-04-09">
+              2016-04-09
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/HTTP学习笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">HTTP学习笔记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/06/24/Http-Status-Code/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/24/Http-Status-Code/" itemprop="commentsCount"></span>
+                <a href="/2016/04/09/Code-Version-Controller-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/09/Code-Version-Controller-2/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -346,82 +381,22 @@
       
 
       
-        <p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Learn-HTTP-With-Image.png" alt="HTTP"></p>
-<a id="more"></a>
-<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><blockquote>
-<p>状态码:客户端访问服务器时返回的结果状态.</p>
-</blockquote>
-<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><p>通常状态码是三位数字和原因短语组成,其中第一位数字为响应类别.比如</p>
-<blockquote>
-<p>200 OK</p>
-</blockquote>
-<h2 id="类别"><a href="#类别" class="headerlink" title="类别"></a>类别</h2><p>响应类别有以下5种:</p>
-<table>
-<thead>
-<tr>
-<th>状态码</th>
-<th>类别</th>
-<th>原因短语</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1XX</td>
-<td>Information(信息性状态码)</td>
-<td>接收的请求长在处理</td>
-</tr>
-<tr>
-<td>2XX</td>
-<td>Success(成功状态码)</td>
-<td>请求正常处理完毕</td>
-</tr>
-<tr>
-<td>3XX</td>
-<td>Redirection(重定向状态码)</td>
-<td>需要进行附加操作以完成请求</td>
-</tr>
-<tr>
-<td>4XX</td>
-<td>Client Error(客户端错误状态码)</td>
-<td>服务器无法处理请求</td>
-</tr>
-<tr>
-<td>5XX</td>
-<td>Server Error(服务器错误窗台吗)</td>
-<td>服务器处理请求出错</td>
-</tr>
-</tbody>
-</table>
-<h2 id="常用状态码"><a href="#常用状态码" class="headerlink" title="常用状态码"></a>常用状态码</h2><h3 id="2XX-成功"><a href="#2XX-成功" class="headerlink" title="2XX 成功"></a>2XX 成功</h3><blockquote>
+        <p>这是根据我做项目总结出来的版本控制方案,大家可以参考一下.不同的项目可能要求不同.</p>
+<p>其中代码分为四个部分:</p>
 <ul>
-<li>200 OK 表示客户端发来的请求在服务器被正常处理了.</li>
-<li>204 No Content 服务器接收的请求已经成功处理,但返回的响应报文中不含实体的主体部分.</li>
-<li>206 Partial Content 客户端进行了范围请求,服务器成功执行了这部分的GET请求.</li>
+<li>trunk : 主干代码</li>
+<li>branches : 分支代码(包含开发版分支)</li>
+<li>tags : 发布标记</li>
+<li>integrate : 集成分支</li>
 </ul>
-</blockquote>
-<h3 id="3XX-重定向"><a href="#3XX-重定向" class="headerlink" title="3XX 重定向"></a>3XX 重定向</h3><blockquote>
+<p>app的版本有:</p>
 <ul>
-<li>301 Moved Permanently 永久性重定向</li>
-<li>302 Found 临时性重定向</li>
-<li>303 See Other 请求对应的资源存在着另一个URI,应使用GET方法重新获取请求的资源.</li>
-<li>304 Not Modify 客户端发送附加条件的请求时,服务器端允许请求访问资源.</li>
-<li>307 Temporary Redirect 临时重定向</li>
+<li>develope : 开发版</li>
+<li>integrate : 集成版</li>
+<li>grey : 灰度版</li>
+<li>release : 正式版</li>
 </ul>
-</blockquote>
-<h3 id="4XX-客户端错误"><a href="#4XX-客户端错误" class="headerlink" title="4XX 客户端错误"></a>4XX 客户端错误</h3><blockquote>
-<ul>
-<li>400 Bad Request 请求报文中存在语法错误.</li>
-<li>401 Unauthorized 权鉴失败,需要有HTTP认证的认证信息.</li>
-<li>403 Forbidden 请求的资源被服务器拒绝了</li>
-<li>404 Not Fount 服务器无法找到该资源.</li>
-</ul>
-</blockquote>
-<h3 id="5XX-服务器错误"><a href="#5XX-服务器错误" class="headerlink" title="5XX 服务器错误"></a>5XX 服务器错误</h3><blockquote>
-<ul>
-<li>500 Internal Server Error 服务器执行请求时发生错误</li>
-<li>503 Service Unavailable 服务器暂时处于超负载或正在进行停机维护,现在无法处理请求.</li>
-</ul>
-</blockquote>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Code-App-Version-Control.png" alt=""></p>
 <hr>
 <p><strong>重要说明</strong></p>
 <p>想随时获取最新博客文章更新,请关注公共账号DevWiki,或扫描下面的二维码:</p>
@@ -440,9 +415,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/HTTP/" rel="tag">#HTTP</a>
-          
-            <a href="/tags/HTTP状态码/" rel="tag">#HTTP状态码</a>
+            <a href="/tags/版本控制/" rel="tag">#版本控制</a>
           
         </div>
       
@@ -451,17 +424,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/06/24/CleanCode-Note-Comments/" rel="next" title="CleanCode笔记---注释">
-                <i class="fa fa-chevron-left"></i> CleanCode笔记---注释
+              <a href="/2016/03/25/Retrofit-Use-Course-3/" rel="next" title="Retrofit使用教程(三):Retrofit与RxJava初相逢">
+                <i class="fa fa-chevron-left"></i> Retrofit使用教程(三):Retrofit与RxJava初相逢
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/06/24/Android-New-Log/" rel="prev" title="Android调试Log二次包装">
-                Android调试Log二次包装 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -513,8 +482,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/06/24/Http-Status-Code/"
-           data-title="HTTP学习笔记---状态码" data-url="http://www.devwiki.net/2015/06/24/Http-Status-Code/">
+      <div class="ds-thread" data-thread-key="2016/04/09/Code-Version-Controller-2/"
+           data-title="版本控制方案" data-url="http://www.devwiki.net/2016/04/09/Code-Version-Controller-2/">
       </div>
     
   </div>
@@ -656,7 +625,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#格式"><span class="nav-number">2.</span> <span class="nav-text">格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类别"><span class="nav-number">3.</span> <span class="nav-text">类别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用状态码"><span class="nav-number">4.</span> <span class="nav-text">常用状态码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2XX-成功"><span class="nav-number">4.1.</span> <span class="nav-text">2XX 成功</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3XX-重定向"><span class="nav-number">4.2.</span> <span class="nav-text">3XX 重定向</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4XX-客户端错误"><span class="nav-number">4.3.</span> <span class="nav-text">4XX 客户端错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5XX-服务器错误"><span class="nav-number">4.4.</span> <span class="nav-text">5XX 服务器错误</span></a></li></ol></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

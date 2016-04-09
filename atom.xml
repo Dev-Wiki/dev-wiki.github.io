@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.devwiki.net/"/>
-  <updated>2016-03-24T16:40:06.285Z</updated>
+  <updated>2016-04-09T15:07:06.210Z</updated>
   <id>http://www.devwiki.net/</id>
   
   <author>
@@ -14,6 +14,51 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>版本控制方案</title>
+    <link href="http://www.devwiki.net/2016/04/09/Code-Version-Controller-2/"/>
+    <id>http://www.devwiki.net/2016/04/09/Code-Version-Controller-2/</id>
+    <published>2016-04-09T15:06:49.000Z</published>
+    <updated>2016-04-09T15:07:06.210Z</updated>
+    
+    <content type="html">&lt;p&gt;这是根据我做项目总结出来的版本控制方案,大家可以参考一下.不同的项目可能要求不同.&lt;/p&gt;
+&lt;p&gt;其中代码分为四个部分:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;trunk : 主干代码&lt;/li&gt;
+&lt;li&gt;branches : 分支代码(包含开发版分支)&lt;/li&gt;
+&lt;li&gt;tags : 发布标记&lt;/li&gt;
+&lt;li&gt;integrate : 集成分支&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;app的版本有:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;develope : 开发版&lt;/li&gt;
+&lt;li&gt;integrate : 集成版&lt;/li&gt;
+&lt;li&gt;grey : 灰度版&lt;/li&gt;
+&lt;li&gt;release : 正式版&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xjhi6.com1.z0.glb.clouddn.com/Code-App-Version-Control.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;重要说明&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;想随时获取最新博客文章更新,请关注公共账号DevWiki,或扫描下面的二维码:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xjhi6.com1.z0.glb.clouddn.com/WeiXin-DevWiki-Common.jpg&quot; alt=&quot;微信公共号&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这是根据我做项目总结出来的版本控制方案,大家可以参考一下.不同的项目可能要求不同.&lt;/p&gt;
+&lt;p&gt;其中代码分为四个部分:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;trunk : 主干代码&lt;/li&gt;
+&lt;li&gt;branches : 分支代码(包含开发版分支)&lt;/li&gt;
+&lt;li&gt;tags : 
+    
+    </summary>
+    
+    
+      <category term="版本控制" scheme="http://www.devwiki.net/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>Retrofit使用教程(三):Retrofit与RxJava初相逢</title>
@@ -2125,69 +2170,6 @@
       <category term="七牛" scheme="http://www.devwiki.net/tags/%E4%B8%83%E7%89%9B/"/>
     
       <category term="上传工具" scheme="http://www.devwiki.net/tags/%E4%B8%8A%E4%BC%A0%E5%B7%A5%E5%85%B7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CleanCode笔记---格式</title>
-    <link href="http://www.devwiki.net/2015/06/24/CleanCode-Note-Formatter/"/>
-    <id>http://www.devwiki.net/2015/06/24/CleanCode-Note-Formatter/</id>
-    <published>2015-06-24T15:46:05.000Z</published>
-    <updated>2016-03-13T14:39:09.817Z</updated>
-    
-    <content type="html">&lt;p&gt;&lt;img src=&quot;http://7xjhi6.com1.z0.glb.clouddn.com/Clean-Code-LOGO.png&quot; alt=&quot;CleanCode&quot;&gt;&lt;/p&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;我本人算是一个有洁癖的程序猿,喜欢整齐格式的代码.&lt;/p&gt;
-&lt;h2 id=&quot;格式的意义&quot;&gt;&lt;a href=&quot;#格式的意义&quot; class=&quot;headerlink&quot; title=&quot;格式的意义&quot;&gt;&lt;/a&gt;格式的意义&lt;/h2&gt;&lt;p&gt;让代码能工作不是编程的头等大事,因为代码首先是给人看的,其次才是给计算机看的.&lt;/p&gt;
-&lt;p&gt;代码是团队沟通的桥梁,乱糟糟的代码是没有人想看的.&lt;/p&gt;
-&lt;h2 id=&quot;垂直格式&quot;&gt;&lt;a href=&quot;#垂直格式&quot; class=&quot;headerlink&quot; title=&quot;垂直格式&quot;&gt;&lt;/a&gt;垂直格式&lt;/h2&gt;&lt;p&gt;一个Java类文件应该有多长?这是个问题.有人可能说100行,有人可能说1000行.&lt;/p&gt;
-&lt;p&gt;但是人们倾向于短的代码文件,所以一个类文件应该越短越好,尽量不要超过1000行.&lt;/p&gt;
-&lt;h3 id=&quot;向报纸学习&quot;&gt;&lt;a href=&quot;#向报纸学习&quot; class=&quot;headerlink&quot; title=&quot;向报纸学习&quot;&gt;&lt;/a&gt;向报纸学习&lt;/h3&gt;&lt;p&gt;代码排版应该像报纸一样.从上往下读,在顶部应该有个类似标题一样的东西,告诉读者大致内容是什么,再往下是章节,告诉读者代码有哪些部分组成,章节下面是细节,如果读者感兴趣可以了解这部分实现的细节.&lt;/p&gt;
-&lt;p&gt;比如:&lt;br&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; Button backButton;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; TextView titleView;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; Button settingButton;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    initUtil();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    initUI();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    initData();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;initUtil&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//...&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;initUI&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    initNavigationView();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    initContentView();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;initNavigationView&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    backButton = (Button) findViewById(R.id.btn_back);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    backButton.setOnClickListener(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    titleView = (TextView) findViewById(R.id.tv_title);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    settingButton = (Button) findViewById(R.id.btn_setting);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    settingButton.setOnClickListener(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;initNavigationView&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//....&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;initContentView&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//...&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;initData&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//...&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h3 id=&quot;垂直方向上的分割&quot;&gt;&lt;a href=&quot;#垂直方向上的分割&quot; class=&quot;headerlink&quot; title=&quot;垂直方向上的分割&quot;&gt;&lt;/a&gt;垂直方向上的分割&lt;/h3&gt;&lt;p&gt;几乎所有的代码都是从上往下读,从左往右读.每行展现一个表达式或者一个字句或者一个方法调用,每组代码行展示一条完整的思路.这些思路都是用空白行分隔开来.&lt;/p&gt;
-&lt;p&gt;就像上面的initUI()方法:&lt;br&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;initUI&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    initNavigationView();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    initContentView();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;空白行让我们很容易明白初始化界面的步骤:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;初始化导航栏组件&lt;/li&gt;
-&lt;li&gt;初始化内容视图&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&quot;垂直距离&quot;&gt;&lt;a href=&quot;#垂直距离&quot; class=&quot;headerlink&quot; title=&quot;垂直距离&quot;&gt;&lt;/a&gt;垂直距离&lt;/h3&gt;&lt;p&gt;从上面的代码可以看出,关系密切的方法应该靠近;关系不密切的要分隔开来.这样很容易理解系统要做什么,怎么去做,不需要你去记住查找和记住代码碎片在哪里.&lt;/p&gt;
-&lt;p&gt;如何做到靠近与分隔呢?&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;方法内的局部变量声明放在方法的顶部.&lt;/li&gt;
-&lt;li&gt;对象变量的声明放在类的顶部.&lt;/li&gt;
-&lt;li&gt;相关的函数应靠近放置.&lt;/li&gt;
-&lt;li&gt;概念相近的代码应该放在一起.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&quot;垂直顺序&quot;&gt;&lt;a href=&quot;#垂直顺序&quot; class=&quot;headerlink&quot; title=&quot;垂直顺序&quot;&gt;&lt;/a&gt;垂直顺序&lt;/h3&gt;&lt;p&gt;一般而言,我们都想自上而下展示函数的依赖调用.也就是说被调用的函数在执行函数的下面.&lt;/p&gt;
-&lt;h2 id=&quot;横向格式&quot;&gt;&lt;a href=&quot;#横向格式&quot; class=&quot;headerlink&quot; title=&quot;横向格式&quot;&gt;&lt;/a&gt;横向格式&lt;/h2&gt;&lt;p&gt;一般而言,一行代码不应多于100个字符.&lt;/p&gt;
-&lt;h3 id=&quot;水平方向上的分隔与靠近&quot;&gt;&lt;a href=&quot;#水平方向上的分隔与靠近&quot; class=&quot;headerlink&quot; title=&quot;水平方向上的分隔与靠近&quot;&gt;&lt;/a&gt;水平方向上的分隔与靠近&lt;/h3&gt;&lt;p&gt;赋值语句的等号左右空一格,可以起到强调的作用.&lt;/p&gt;
-&lt;p&gt;多参方法中,参数的逗号后空一格,表明参数的独立性.&lt;/p&gt;
-&lt;p&gt;所以水平方向上也应遵循关系密切的靠近,关系交远的分隔.&lt;/p&gt;
-&lt;h3 id=&quot;水平对齐&quot;&gt;&lt;a href=&quot;#水平对齐&quot; class=&quot;headerlink&quot; title=&quot;水平对齐&quot;&gt;&lt;/a&gt;水平对齐&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;不需要水平方向上的有意识的对齐&lt;/strong&gt;,比如下面:&lt;br&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; Button   backButton;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; TextView titleView;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; Button   settingButton;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;如果出现名称更长的类型,所有的变量又得重新对齐.所以不推荐此种方式.&lt;/p&gt;
-&lt;h3 id=&quot;缩进&quot;&gt;&lt;a href=&quot;#缩进&quot; class=&quot;headerlink&quot; title=&quot;缩进&quot;&gt;&lt;/a&gt;缩进&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;缩进表明的代码的影响范围!&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;缩进有利于代码的阅读,明确代码之间的等级关系和影响范围.&lt;/p&gt;
-&lt;p&gt;切记:单行也要缩进.不要违反缩进规则.&lt;/p&gt;
-&lt;p&gt;每个人都有不同的写代码的风格,个人建议按照Google的Java代码风格来编写代码.详情请点击此处查看:&lt;br&gt;&lt;a href=&quot;http://www.hawstein.com/posts/google-java-style.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Google Java编程风格&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;重要说明&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;想随时获取最新博客文章更新,请关注公共账号DevWiki,或扫描下面的二维码:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xjhi6.com1.z0.glb.clouddn.com/WeiXin-DevWiki-Common.jpg&quot; alt=&quot;微信公共号&quot;&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;http://7xjhi6.com1.z0.glb.clouddn.com/Clean-Code-LOGO.png&quot; alt=&quot;CleanCode&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="CleanCode-代码整洁之道" scheme="http://www.devwiki.net/categories/CleanCode-%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93/"/>
-    
-    
-      <category term="CleanCode" scheme="http://www.devwiki.net/tags/CleanCode/"/>
-    
-      <category term="代码整洁之道" scheme="http://www.devwiki.net/tags/%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93/"/>
     
   </entry>
   
