@@ -61,72 +61,46 @@
 
 
 
-<meta name="description" content="这是根据我做项目总结出来的版本控制方案,大家可以参考一下.不同的项目可能要求不同.
-其中代码分为四个部分:
+<meta name="description" content="代码分支结构APP在开发过程中,合理的代码版本控制管理会节省许多合并代码的时间.
+为此我们将代码分支分为四个目录,其 结构图如下:
 
-trunk : 主干代码
-branches : 分支代码(包含开发版分支)
-tags : 发布标记
-integrate : 集成分支
+其中:
 
-app的版本有:
-
-develope : 开发版
-integrate : 集成版
-grey : 灰度版
-release : 正式版
-
-
-
-重要说明
-想随时">
+trunk : 开发分支
+branches : 模块分支
+integrates : 集成分支
+tags : 标签分支">
 <meta property="og:type" content="article">
 <meta property="og:title" content="版本控制方案">
 <meta property="og:url" content="http://www.devwiki.net/2016/04/09/Code-Version-Controller-2/index.html">
 <meta property="og:site_name" content="DevWiki Blog">
-<meta property="og:description" content="这是根据我做项目总结出来的版本控制方案,大家可以参考一下.不同的项目可能要求不同.
-其中代码分为四个部分:
+<meta property="og:description" content="代码分支结构APP在开发过程中,合理的代码版本控制管理会节省许多合并代码的时间.
+为此我们将代码分支分为四个目录,其 结构图如下:
 
-trunk : 主干代码
-branches : 分支代码(包含开发版分支)
-tags : 发布标记
-integrate : 集成分支
+其中:
 
-app的版本有:
-
-develope : 开发版
-integrate : 集成版
-grey : 灰度版
-release : 正式版
-
-
-
-重要说明
-想随时">
-<meta property="og:image" content="http://7xjhi6.com1.z0.glb.clouddn.com/Code-App-Version-Control.png">
+trunk : 开发分支
+branches : 模块分支
+integrates : 集成分支
+tags : 标签分支">
+<meta property="og:image" content="http://7xjhi6.com1.z0.glb.clouddn.com/Version-Control-Branch-Construction.png">
+<meta property="og:image" content="http://7xjhi6.com1.z0.glb.clouddn.com/Version-Control-Trunk-Flow.png">
+<meta property="og:image" content="http://7xjhi6.com1.z0.glb.clouddn.com/Version-Control-Single-Model-Flow.png">
+<meta property="og:image" content="http://7xjhi6.com1.z0.glb.clouddn.com/Version-Control-Integrate-Flow.png">
+<meta property="og:image" content="http://7xjhi6.com1.z0.glb.clouddn.com/Version-Control-Total-Flow.png">
 <meta property="og:image" content="http://7xjhi6.com1.z0.glb.clouddn.com/WeiXin-DevWiki-Common.jpg">
-<meta property="og:updated_time" content="2016-04-09T15:07:06.210Z">
+<meta property="og:updated_time" content="2016-04-11T15:07:40.143Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="版本控制方案">
-<meta name="twitter:description" content="这是根据我做项目总结出来的版本控制方案,大家可以参考一下.不同的项目可能要求不同.
-其中代码分为四个部分:
+<meta name="twitter:description" content="代码分支结构APP在开发过程中,合理的代码版本控制管理会节省许多合并代码的时间.
+为此我们将代码分支分为四个目录,其 结构图如下:
 
-trunk : 主干代码
-branches : 分支代码(包含开发版分支)
-tags : 发布标记
-integrate : 集成分支
+其中:
 
-app的版本有:
-
-develope : 开发版
-integrate : 集成版
-grey : 灰度版
-release : 正式版
-
-
-
-重要说明
-想随时">
+trunk : 开发分支
+branches : 模块分支
+integrates : 集成分支
+tags : 标签分支">
 
 
 
@@ -381,23 +355,45 @@ release : 正式版
       
 
       
-        <p>这是根据我做项目总结出来的版本控制方案,大家可以参考一下.不同的项目可能要求不同.</p>
-<p>其中代码分为四个部分:</p>
+        <h2 id="代码分支结构"><a href="#代码分支结构" class="headerlink" title="代码分支结构"></a>代码分支结构</h2><p>APP在开发过程中,合理的代码版本控制管理会节省许多合并代码的时间.</p>
+<p>为此我们将代码分支分为四个目录,其 结构图如下:</p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Version-Control-Branch-Construction.png" alt=""></p>
+<p>其中:</p>
 <ul>
-<li>trunk : 主干代码</li>
-<li>branches : 分支代码(包含开发版分支)</li>
-<li>tags : 发布标记</li>
-<li>integrate : 集成分支</li>
+<li>trunk : 开发分支</li>
+<li>branches : 模块分支</li>
+<li>integrates : 集成分支</li>
+<li>tags : 标签分支</li>
 </ul>
-<p>app的版本有:</p>
-<ul>
-<li>develope : 开发版</li>
-<li>integrate : 集成版</li>
-<li>grey : 灰度版</li>
-<li>release : 正式版</li>
-</ul>
-<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Code-App-Version-Control.png" alt=""></p>
-<hr>
+<a id="more"></a>
+<h2 id="各分支说明"><a href="#各分支说明" class="headerlink" title="各分支说明"></a>各分支说明</h2><h3 id="trunk-分支"><a href="#trunk-分支" class="headerlink" title="trunk 分支"></a>trunk 分支</h3><p>trunk 分支为 主干分支,该分支代码总为最新,又称为开发分支,该分支用于:</p>
+<ol>
+<li>修复上一发布版本的bug</li>
+<li>合并模块分支代码</li>
+</ol>
+<p>其开发流程如下:</p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Version-Control-Trunk-Flow.png" alt=""></p>
+<p>在某个集成分支测试并发布完毕后,将集成分支的代码合并至trunk,同时将trunk的版本号上调.上调的多少按项目的实际需要确定.</p>
+<h3 id="branches-分支"><a href="#branches-分支" class="headerlink" title="branches  分支"></a>branches  分支</h3><p>branches 分支为各个功能模块的分支,即模块分支.</p>
+<p>当有了新的功能需求,需要建立相应的分支进行模块开发,模块开发的阶段为:</p>
+<ol>
+<li>开发功能</li>
+<li>模块测试</li>
+<li>灰度测试</li>
+<li>集成测试</li>
+<li>发布版本</li>
+</ol>
+<p>注: <strong>模块开发过程中需要定期同步trunk分支代码</strong></p>
+<p>模块分支的生命周期图如下:</p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Version-Control-Single-Model-Flow.png" alt=""></p>
+<h3 id="integrates-分支"><a href="#integrates-分支" class="headerlink" title="integrates 分支"></a>integrates 分支</h3><p>integrates 分支为多个模块集成时建立的分支,即集成分支.</p>
+<p>在一个或多个模块开发并测试合格时,需要进行集成测试,这时需要建立集成分支,其生命周期如下:</p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Version-Control-Integrate-Flow.png" alt=""></p>
+<p>注 : <strong>集成分支需定期同步trunk分支代码</strong></p>
+<h3 id="tags-分支"><a href="#tags-分支" class="headerlink" title="tags 分支"></a>tags 分支</h3><p>tags 分支下为发布分支,用于快速定位任一发布版本,包含灰度版本,正式版本等.</p>
+<h2 id="总流程"><a href="#总流程" class="headerlink" title="总流程"></a>总流程</h2><p>通过第2章节,我们知道的各个分支的意义及流程,那么总的流程是怎样呢?</p>
+<p>总的流程,如下图所示:</p>
+<p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/Version-Control-Total-Flow.png" alt=""></p>
 <p><strong>重要说明</strong></p>
 <p>想随时获取最新博客文章更新,请关注公共账号DevWiki,或扫描下面的二维码:</p>
 <p><img src="http://7xjhi6.com1.z0.glb.clouddn.com/WeiXin-DevWiki-Common.jpg" alt="微信公共号"></p>
@@ -625,7 +621,7 @@ release : 正式版
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#代码分支结构"><span class="nav-number">1.</span> <span class="nav-text">代码分支结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#各分支说明"><span class="nav-number">2.</span> <span class="nav-text">各分支说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#trunk-分支"><span class="nav-number">2.1.</span> <span class="nav-text">trunk 分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#branches-分支"><span class="nav-number">2.2.</span> <span class="nav-text">branches  分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#integrates-分支"><span class="nav-number">2.3.</span> <span class="nav-text">integrates 分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tags-分支"><span class="nav-number">2.4.</span> <span class="nav-text">tags 分支</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总流程"><span class="nav-number">3.</span> <span class="nav-text">总流程</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
