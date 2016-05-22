@@ -287,6 +287,105 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/22/Recycler-View-Adapter-ViewHolder/" itemprop="url">
+                  RecyclerView中Adapter和ViewHolder的封装
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-22T22:42:11+08:00" content="2016-05-22">
+              2016-05-22
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/22/Recycler-View-Adapter-ViewHolder/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/22/Recycler-View-Adapter-ViewHolder/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>最近项目我在项目中使用了<code>RecyclerView</code>代替了<code>ListView</code>.由于项目中有多出列表项使用<code>RecyclerView</code>,这就导致需要写多个<code>Adapter</code>和<code>ViewHolder</code>.</p>
+<p>其实,怎么说呢?就是懒,想少写代码,所以想研究一下能否简化一下.</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/05/22/Recycler-View-Adapter-ViewHolder/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/09/Code-Version-Controller-2/" itemprop="url">
                   版本控制方案
                 </a>
@@ -1276,106 +1375,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/11/18/Android-Device-Code/" itemprop="url">
-                  Android设备获取唯一识别码(转)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-11-18T12:20:07+08:00" content="2015-11-18">
-              2015-11-18
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/11/18/Android-Device-Code/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/18/Android-Device-Code/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>本文转载自<a href="http://www.cnblogs.com/lqminn/p/4204855.html">此处</a></p>
-<p>Android系统以及设备都有很多的“标识”号，比如常见的IMEI，SerizalNumber，UUID等概念，但是这些都存在一定程度上的不可靠性，到底如何标记一台Android设备？</p>
-<h2 id="DEVICE-ID"><a href="#DEVICE-ID" class="headerlink" title="DEVICE_ID"></a>DEVICE_ID</h2><p>假设我们确实需要用到真实设备的标识，可能就需要用到DEVICE_ID。在以前，我们的Android设备是手机，这个DEVICE_ID可以同通过TelephonyManager.getDeviceId()获取，它根据不同的手机设备返回IMEI，MEID或者ESN码，但它在使用的过程中会遇到很多问题：</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/11/18/Android-Device-Code/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1422,7 +1421,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-count">37</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1439,7 +1438,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-count">35</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
